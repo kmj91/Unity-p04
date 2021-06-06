@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 1d6a159ea0abaa74993e94e1de195e6a
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: guangmu_suc13_2
+    second: {fileID: 2100000, guid: a4fffc78f0331164987b478fc4645804, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: guangmu_suc15
+    second: {fileID: 2100000, guid: 81c7fe7e15f94ed4cb5b66750b066d5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_BUildingTile_a
+    second: {fileID: 2100000, guid: d5d7d1db8951cbe44b5a3aef0912ff33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_BUildingTile_b
+    second: {fileID: 2100000, guid: 275cdae68bb56dd46b94afc7025d44be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_BUildingWall_a
+    second: {fileID: 2100000, guid: 907389648ebd45541aa200d93b1d6c21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_BUildingWall_c
+    second: {fileID: 2100000, guid: c260efbfe3a7d1a48b619b9d6d01dc6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_Building_C
+    second: {fileID: 2100000, guid: 4ebebbeabd69cc24ebe22162ed93fccf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_FloorRound_a
+    second: {fileID: 2100000, guid: 03162333bb73921448d877c69feab229, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_FloorSquare_a
+    second: {fileID: 2100000, guid: 427ffea0ac7af8541b6a7f4b417bb7d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_Metaldoor_a
+    second: {fileID: 2100000, guid: 4eb75bbd2a2351747a60b969ca5a5099, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_Ned_A
+    second: {fileID: 2100000, guid: 3a0cd8b4af42026439a117382cc207c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_Plan_c
+    second: {fileID: 2100000, guid: c623040ce6adcea4b91298dab7dcf9e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_Road_e
+    second: {fileID: 2100000, guid: 1eb3fecd92cfd3a4fba7866e3044037a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_TreePlate_a
+    second: {fileID: 2100000, guid: f0c7292fc6498574ebfbebddb770f522, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_Tree_leaf 1
+    second: {fileID: 2100000, guid: fc2fc223e6f8a6f44800125acd109579, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_Wall_AB
+    second: {fileID: 2100000, guid: c6262c0a6c049804e9596a1c47655fe4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_baricade
+    second: {fileID: 2100000, guid: e3c51fcf484d4034e88e8cc5a5a0f2dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_bd_ab
+    second: {fileID: 2100000, guid: 18bb838dbb6196140aebddd481623d64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_bokl
+    second: {fileID: 2100000, guid: be5f0ff54ee126547afd73edc4126aa9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_car
+    second: {fileID: 2100000, guid: b26446b195293bc429be3f8675988e63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_che
+    second: {fileID: 2100000, guid: 1b935c5d27299af40bf63d303d84995d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_denga
+    second: {fileID: 2100000, guid: 4eb75bbd2a2351747a60b969ca5a5099, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_denglight
+    second: {fileID: 2100000, guid: f94e6d647a53b984fb1c1f6bdb8c8b0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_denglight 2
+    second: {fileID: 2100000, guid: baac63bcc7042d84b9d0fa528d0cf9a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_dianxiangan
+    second: {fileID: 2100000, guid: 6419ffce37bb1b243a6b77ec97473e40, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_diban_a
+    second: {fileID: 2100000, guid: 9a73e7c50b3bb2447914f9838d93de78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_dijie
+    second: {fileID: 2100000, guid: db49a45d72bca084982490bff2c58746, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
