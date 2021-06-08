@@ -139,6 +139,136 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: kdc_dijie
     second: {fileID: 2100000, guid: db49a45d72bca084982490bff2c58746, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_duanshi
+    second: {fileID: 2100000, guid: 912a3389c6e9de54e80a8585e55e513d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_fanmianji
+    second: {fileID: 2100000, guid: 8409c3c0e0830dc45b7d291457839baf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_feiji
+    second: {fileID: 2100000, guid: 0775ff7fa2d0cd94f8d819fbe57a7ee4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_gaogaopai_c
+    second: {fileID: 2100000, guid: 4e31f05314f9e66408d9dd1979ea9903, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_guanggaopai
+    second: {fileID: 2100000, guid: cf56edf251c32834e8c893174dbea2c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_guanggaopai 1
+    second: {fileID: 2100000, guid: cf56edf251c32834e8c893174dbea2c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_guanggaopia
+    second: {fileID: 2100000, guid: cf56edf251c32834e8c893174dbea2c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_guanggaopia 1
+    second: {fileID: 2100000, guid: cf56edf251c32834e8c893174dbea2c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_heliport_a
+    second: {fileID: 2100000, guid: b913369c549b5414fa4400771b9c3737, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_honglvdeng
+    second: {fileID: 2100000, guid: f4d0e7a4e9cca5d4bbcdf3db60d3d850, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_huangyun 2
+    second: {fileID: 2100000, guid: 917a9c758696fe2458b18cf143a004ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_jianzhu
+    second: {fileID: 2100000, guid: bcbe5c8c6b7390f4d909aec7fa1e8880, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_jiuhuche
+    second: {fileID: 2100000, guid: 6c7796f94f53f684e9610b018f419a52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_louti_a
+    second: {fileID: 2100000, guid: 9c9d3a51f0c8bbf46911ed138e719361, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_muban_a
+    second: {fileID: 2100000, guid: f42fd1e44abe9884dabb103265a8f41a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_pian
+    second: {fileID: 2100000, guid: d694bf3962c89ae498cbb0ebdccfb5c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_pian 1
+    second: {fileID: 2100000, guid: c8831770e0e1aa342ac7c8fe239316e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_shugan
+    second: {fileID: 2100000, guid: 7138f372f67caaa478e0b6fca488a013, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_tile_a
+    second: {fileID: 2100000, guid: df699890c0485b642abc1402f6630212, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_tile_c
+    second: {fileID: 2100000, guid: bcfc7821d7eb7134ead1ca7a63892160, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_toutie
+    second: {fileID: 2100000, guid: 6cba8afd11a37bb47881ce6443c7cd9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_wujian
+    second: {fileID: 2100000, guid: 3a0cd8b4af42026439a117382cc207c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_xiangzi_a
+    second: {fileID: 2100000, guid: 45164967b0160254ca6ed95c9ebc07e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_xiaodeng_a
+    second: {fileID: 2100000, guid: 912a3389c6e9de54e80a8585e55e513d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_zhawu001
+    second: {fileID: 2100000, guid: f18bd86a285dc494f82096ce876375f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kdc_zhuoyi
+    second: {fileID: 2100000, guid: ea9b1d74f7da1074abeee7a64740381c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
