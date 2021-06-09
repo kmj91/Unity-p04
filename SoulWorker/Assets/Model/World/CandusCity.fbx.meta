@@ -262,6 +262,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: kdc_zhangpeng
+    second: {fileID: 2100000, guid: 5d80104c45fe05b43bde1a5affe62141, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: kdc_zhawu001
     second: {fileID: 2100000, guid: f18bd86a285dc494f82096ce876375f1, type: 2}
   - first:

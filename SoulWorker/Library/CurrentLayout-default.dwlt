@@ -1030,9 +1030,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 54.243343, y: -36.934723, z: 194.57141}
+    m_Target: {x: -40.936047, y: -52.329243, z: 401.11627}
     speed: 2
-    m_Value: {x: 54.243343, y: -36.934723, z: 194.57141}
+    m_Value: {x: -40.936047, y: -52.329243, z: 401.11627}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1078,13 +1078,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.22252275, y: -0.013252859, z: 0.0031992507, w: -0.9749506}
+    m_Target: {x: -0.09007319, y: 0.12621588, z: -0.01135464, w: -0.9879819}
     speed: 2
-    m_Value: {x: -0.22395906, y: -0.013246513, z: 0.0032187637, w: -0.97450316}
+    m_Value: {x: -0.09007747, y: 0.12471625, z: -0.011217942, w: -0.9880314}
   m_Size:
-    m_Target: 69.65487
+    m_Target: 181.3779
     speed: 2
-    m_Value: 69.65487
+    m_Value: 173.56737
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1205,7 +1205,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 26f3ffff7cf3ffff44f5ffffbcf5fffff4f5fffff4f6ffff22f7ffff60f7ffff6ef7ffff70f8ffff82f8ffff24f9ffff3af9ffff84f9ffffa4f9ffffe0f9ffff4afbffff5afbffff68fbffff
+      m_ExpandedIDs: 76f4ffff44f5ffff1ef6ffff12f7ffff22f7ffff60f7ffff70f8ffff58f9ffff84f9ffffa4f9ffff4afbffff5afbffff68fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1268,20 +1268,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Material/CandusCity
+    - Assets/Model/World
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Material/CandusCity
+  - Assets/Model/World
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\PC\Documents\GitHub\Unity-p04\SoulWorker
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 704e0000
-    m_LastClickedID: 20080
-    m_ExpandedIDs: 000000002c4e00002e4e0000304e0000324e0000344e000000ca9a3b
+    m_SelectedIDs: 8c4e0000
+    m_LastClickedID: 20108
+    m_ExpandedIDs: 00000000224e0000244e0000264e0000284e00002a4e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1309,7 +1309,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: ba340000
     m_LastClickedID: 13498
-    m_ExpandedIDs: 000000002c4e00002e4e0000304e0000324e0000344e0000
+    m_ExpandedIDs: 00000000224e0000244e0000264e0000284e00002a4e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1353,7 +1353,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 11}
+      m_ClientGUIView: {fileID: 8}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1361,7 +1361,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 407}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 148
