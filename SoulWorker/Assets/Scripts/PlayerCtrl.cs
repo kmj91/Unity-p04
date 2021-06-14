@@ -7,6 +7,12 @@ using Vector3 = UnityEngine.Vector3;
 public class PlayerCtrl : MonoBehaviour
 {
     public float moveSpeed = 5.0f;     // 이동속도
+    public Animator hairAnime;
+    public Animator faceAnime;
+    public Animator bodyAnime;
+    public Animator pantsAnime;
+    public Animator handsAnime;
+    public Animator footAnime;
 
     private Transform playerTransform;
     private float h = 0.0f;
@@ -27,6 +33,11 @@ public class PlayerCtrl : MonoBehaviour
         Vector3 vecDir = (Vector3.forward * v) + (Vector3.right * h);
         playerTransform.Translate(vecDir.normalized * moveSpeed * Time.deltaTime, Space.World);
 
-
+        hairAnime.SetFloat("Speed", v);
+        faceAnime.SetFloat("Speed", v);
+        bodyAnime.SetFloat("Speed", v);
+        pantsAnime.SetFloat("Speed", v);
+        handsAnime.SetFloat("Speed", v);
+        footAnime.SetFloat("Speed", v);
     }
 }
