@@ -10,6 +10,8 @@ using System;
 public class PlayerCtrl : MonoBehaviour
 {
     public float moveSpeed = 5.0f;     // 이동속도
+    public Transform weaponholder;
+    public Transform weapon;
     public Transform aimTransform;
     public Animator hairAnime;
     public Animator faceAnime;
@@ -27,6 +29,11 @@ public class PlayerCtrl : MonoBehaviour
     void Start()
     {
         playerTransform = GetComponent<Transform>();
+
+        weapon.parent = weaponholder;
+        weapon.localPosition = Vector3.zero;
+        weapon.localRotation = Quaternion.Euler(Vector3.zero);
+        weapon.localScale = Vector3.one;
     }
 
     // Update is called once per frame
