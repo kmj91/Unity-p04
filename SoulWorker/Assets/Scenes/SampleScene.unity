@@ -650,6 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  aimTransform: {fileID: 264918819}
   hairAnime: {fileID: 1747235964}
   faceAnime: {fileID: 79026649}
   bodyAnime: {fileID: 52939276}
@@ -754,7 +755,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 264918819}
   distance: 3
-  height: 0
 --- !u!1 &1054593632 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 171a8c6b092df964e91d8f72632bd3d6,
