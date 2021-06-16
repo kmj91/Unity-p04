@@ -11,6 +11,7 @@ public class PlayerCtrl : MonoBehaviour
 {
     public float moveSpeed = 5.0f;     // 이동속도
     public Transform modelTransform;
+    public Transform cameraTransform;
     public Transform weaponholder;
     public Transform weapon;
     public Transform aimTransform;
@@ -22,7 +23,8 @@ public class PlayerCtrl : MonoBehaviour
     public Animator footAnime;
 
     private Transform playerTransform;
-    private float cameraSpeed = 100.0f;
+    private float mouseSpeed = 100.0f;
+    private float rotationSpeed = 15.0f;
 
     // Start is called before the first frame update
     private void Start()
@@ -52,7 +54,7 @@ public class PlayerCtrl : MonoBehaviour
             return;
 
         Vector3 forwardDir = modelTransform.forward;
-        Vector3 moveDir = (aimTransform.forward * vertical) + (aimTransform.right * horizontal);
+        Vector3 moveDir = (cameraTransform.forward * vertical) + (cameraTransform.right * horizontal);
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
@@ -60,7 +62,7 @@ public class PlayerCtrl : MonoBehaviour
         if (forwardDir != moveDir)
         {
             Quaternion rotation = Quaternion.LookRotation(moveDir);
-            modelTransform.rotation = Quaternion.Slerp(modelTransform.rotation, rotation, 10.0f * Time.fixedDeltaTime);
+            modelTransform.rotation = Quaternion.Slerp(modelTransform.rotation, rotation, rotationSpeed * Time.fixedDeltaTime);
         }
 
         playerTransform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, Space.World);
@@ -80,7 +82,7 @@ public class PlayerCtrl : MonoBehaviour
         float xRotation = Input.GetAxis("Mouse Y");
 
         // X축 회전 제한
-        Quaternion rotation = aimTransform.rotation * Quaternion.Euler(new Vector3(-xRotation, 0, 0));
+        Quaternion rotation = aimTransform.rotation * Quaternion.Euler(new Vector3(-xRotation * mouseSpeed * Time.fixedDeltaTime, 0, 0));
         float xAngle = Mathf.Round(rotation.eulerAngles.x);
         if (180.0f <= xAngle && xAngle < 310.0f)
         {
@@ -94,6 +96,6 @@ public class PlayerCtrl : MonoBehaviour
         aimTransform.rotation = Quaternion.Euler(new Vector3(xAngle, aimTransform.eulerAngles.y, aimTransform.eulerAngles.x));
 
         // Y축 자전
-        aimTransform.RotateAround(playerTransform.position, Vector3.up, yRotation * cameraSpeed * Time.fixedDeltaTime);
+        aimTransform.RotateAround(playerTransform.position, Vector3.up, yRotation * mouseSpeed * Time.fixedDeltaTime);
     }
 }

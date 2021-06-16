@@ -694,6 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   modelTransform: {fileID: 751078148}
+  cameraTransform: {fileID: 963194228}
   weaponholder: {fileID: 1547064099}
   weapon: {fileID: 570534393}
   aimTransform: {fileID: 264918819}
