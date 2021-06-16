@@ -10,6 +10,7 @@ using System;
 public class PlayerCtrl : MonoBehaviour
 {
     public float moveSpeed = 5.0f;     // 이동속도
+    public Transform modelTransform;
     public Transform weaponholder;
     public Transform weapon;
     public Transform aimTransform;
@@ -22,11 +23,9 @@ public class PlayerCtrl : MonoBehaviour
 
     private Transform playerTransform;
     private float cameraSpeed = 100.0f;
-    private float h = 0.0f;
-    private float v = 0.0f;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         playerTransform = GetComponent<Transform>();
 
@@ -36,36 +35,53 @@ public class PlayerCtrl : MonoBehaviour
         weapon.localScale = Vector3.one;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        // 이동 방향키
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
-
-        Vector3 vecDir = (aimTransform.forward * v) + (aimTransform.right * h);
-        vecDir.y = 0.0f;
-        playerTransform.Translate(vecDir.normalized * moveSpeed * Time.deltaTime, Space.World);
-
-        hairAnime.SetFloat("Speed", v);
-        faceAnime.SetFloat("Speed", v);
-        bodyAnime.SetFloat("Speed", v);
-        pantsAnime.SetFloat("Speed", v);
-        handsAnime.SetFloat("Speed", v);
-        footAnime.SetFloat("Speed", v);
-
+        Move();
         AimRotation();
     }
 
-    // 에임 회전
-    void AimRotation()
+    // 이동
+    private void Move()
     {
-        var yRotation = Input.GetAxis("Mouse X");
-        var xRotation = Input.GetAxis("Mouse Y");
+        // 이동 방향키
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        if (horizontal == 0.0f && vertical == 0.0f)
+            return;
+
+        Vector3 forwardDir = modelTransform.forward;
+        Vector3 moveDir = (aimTransform.forward * vertical) + (aimTransform.right * horizontal);
+        moveDir.y = 0.0f;
+        moveDir = moveDir.normalized;
+
+        // 방향이 같지 않음
+        if (forwardDir != moveDir)
+        {
+            Quaternion rotation = Quaternion.LookRotation(moveDir);
+            modelTransform.rotation = Quaternion.Slerp(modelTransform.rotation, rotation, 10.0f * Time.fixedDeltaTime);
+        }
+
+        playerTransform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, Space.World);
+        
+        hairAnime.SetFloat("Speed", vertical);
+        faceAnime.SetFloat("Speed", vertical);
+        bodyAnime.SetFloat("Speed", vertical);
+        pantsAnime.SetFloat("Speed", vertical);
+        handsAnime.SetFloat("Speed", vertical);
+        footAnime.SetFloat("Speed", vertical);
+    }
+
+    // 에임 회전
+    private void AimRotation()
+    {
+        float yRotation = Input.GetAxis("Mouse X");
+        float xRotation = Input.GetAxis("Mouse Y");
 
         // X축 회전 제한
-        var rotation = aimTransform.rotation * Quaternion.Euler(new Vector3(-xRotation, 0, 0));
-        var xAngle = Mathf.Round(rotation.eulerAngles.x);
+        Quaternion rotation = aimTransform.rotation * Quaternion.Euler(new Vector3(-xRotation, 0, 0));
+        float xAngle = Mathf.Round(rotation.eulerAngles.x);
         if (180.0f <= xAngle && xAngle < 310.0f)
         {
             xAngle = 310.0f;
@@ -75,9 +91,9 @@ public class PlayerCtrl : MonoBehaviour
             xAngle = 50.0f;
         }
 
-        aimTransform.rotation = Quaternion.Euler(new Vector3(xAngle, aimTransform.rotation.eulerAngles.y, aimTransform.rotation.eulerAngles.x));
+        aimTransform.rotation = Quaternion.Euler(new Vector3(xAngle, aimTransform.eulerAngles.y, aimTransform.eulerAngles.x));
 
         // Y축 자전
-        aimTransform.RotateAround(playerTransform.position, Vector3.up, yRotation * cameraSpeed * Time.deltaTime);
+        aimTransform.RotateAround(playerTransform.position, Vector3.up, yRotation * cameraSpeed * Time.fixedDeltaTime);
     }
 }
