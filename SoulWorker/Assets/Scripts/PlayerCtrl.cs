@@ -24,7 +24,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private Transform playerTransform;
     private float mouseSpeed = 100.0f;
-    private float rotationSpeed = 15.0f;
+    private float rotationSpeed = 10.0f;
 
     // Start is called before the first frame update
     private void Start()
@@ -37,21 +37,76 @@ public class PlayerCtrl : MonoBehaviour
         weapon.localScale = Vector3.one;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Move();
         AimRotation();
     }
 
+    public void MoveNone()
+    {
+        Move(0, 0);
+    }
+
+    public void MoveFF()
+    {
+        Move(1.0f, 0);
+    }
+
+    public void MoveFL()
+    {
+        Move(1.0f, -1.0f);
+    }
+
+    public void MoveFR()
+    {
+        Move(1.0f, 1.0f);
+    }
+
+    public void MoveBB()
+    {
+        Move(-1.0f, 0);
+    }
+
+    public void MoveBL()
+    {
+        Move(-1.0f, -1.0f);
+    }
+
+    public void MoveBR()
+    {
+        Move(-1.0f, 1.0f);
+    }
+
+    public void MoveLL()
+    {
+        Move(0, -1.0f);
+    }
+
+    public void MoveRR()
+    {
+        Move(0, 1.0f);
+    }
+
     // 이동
-    private void Move()
+    private void Move(float vertical, float horizontal)
     {
         // 이동 방향키
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        //float horizontal = Input.GetAxis("Horizontal");
+        //float vertical = Input.GetAxis("Vertical");
+
+        //Vector3 vec3 = new Vector3(horizontal, 0, vertical);
+        //Debug.Log(vec3);
 
         if (horizontal == 0.0f && vertical == 0.0f)
+        {
+            hairAnime.SetFloat("Speed", 0);
+            faceAnime.SetFloat("Speed", 0);
+            bodyAnime.SetFloat("Speed", 0);
+            pantsAnime.SetFloat("Speed", 0);
+            handsAnime.SetFloat("Speed", 0);
+            footAnime.SetFloat("Speed", 0);
             return;
+        }
 
         Vector3 forwardDir = modelTransform.forward;
         Vector3 moveDir = (cameraTransform.forward * vertical) + (cameraTransform.right * horizontal);
@@ -67,12 +122,12 @@ public class PlayerCtrl : MonoBehaviour
 
         playerTransform.Translate(moveDir * moveSpeed * Time.fixedDeltaTime, Space.World);
         
-        hairAnime.SetFloat("Speed", vertical);
-        faceAnime.SetFloat("Speed", vertical);
-        bodyAnime.SetFloat("Speed", vertical);
-        pantsAnime.SetFloat("Speed", vertical);
-        handsAnime.SetFloat("Speed", vertical);
-        footAnime.SetFloat("Speed", vertical);
+        hairAnime.SetFloat("Speed", 1);
+        faceAnime.SetFloat("Speed", 1);
+        bodyAnime.SetFloat("Speed", 1);
+        pantsAnime.SetFloat("Speed", 1);
+        handsAnime.SetFloat("Speed", 1);
+        footAnime.SetFloat("Speed", 1);
     }
 
     // 에임 회전
