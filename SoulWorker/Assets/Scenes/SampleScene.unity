@@ -152,6 +152,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &57194103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4013695095941602943, guid: c49c4ec44b670e141a666dcb51f62a44,
+    type: 3}
+  m_PrefabInstance: {fileID: 626496898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &57194107
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57194103}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5152525125890301544, guid: c49c4ec44b670e141a666dcb51f62a44, type: 3}
 --- !u!1 &79026647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e4af22589283d48419977be99f78ae54,
@@ -657,6 +677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 918533823}
   - component: {fileID: 918533824}
+  - component: {fileID: 918533825}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -693,6 +714,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  mouseSpeed: 100
+  rotationSpeed: 10
+  jumpVelocity: 20
+  airControlPercent: 1
+  speedSmoothTime: 0.1
+  turnSmoothTime: 0.1
   modelTransform: {fileID: 751078148}
   cameraTransform: {fileID: 963194228}
   weaponholder: {fileID: 1547064099}
@@ -704,6 +731,24 @@ MonoBehaviour:
   pantsAnime: {fileID: 127354353}
   handsAnime: {fileID: 1054593634}
   footAnime: {fileID: 1309591280}
+--- !u!143 &918533825
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918533822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.6
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.86, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCtrl: {fileID: 918533824}
+  useMouse: 0
 --- !u!4 &1364413205
 Transform:
   m_ObjectHideFlags: 0

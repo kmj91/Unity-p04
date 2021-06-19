@@ -6,4 +6,11 @@
         Down,
         Hold
     }
+
+    public enum PlayerState
+    {
+        Idle,
+        Run,
+        End
+    }
 }
