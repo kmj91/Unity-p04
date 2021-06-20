@@ -716,10 +716,9 @@ MonoBehaviour:
   moveSpeed: 5
   mouseSpeed: 100
   rotationSpeed: 10
-  jumpVelocity: 20
-  airControlPercent: 1
+  jumpVelocity: 7
+  airControlPercent: 0.1
   speedSmoothTime: 0.1
-  turnSmoothTime: 0.1
   modelTransform: {fileID: 751078148}
   cameraTransform: {fileID: 963194228}
   weaponholder: {fileID: 1547064099}

@@ -14,7 +14,7 @@ public class PlayerCtrl : MonoBehaviour
     public float moveSpeed = 5.0f;          // 이동 속도
     public float mouseSpeed = 100.0f;       // 마우스 속도
     public float rotationSpeed = 10.0f;     // 회전 속도
-    public float jumpVelocity = 20.0f;      // 점프력
+    public float jumpVelocity = 5.0f;      // 점프력
     [Range(0.01f, 1.0f)] public float airControlPercent;
     public float speedSmoothTime = 0.1f;
     // 캐릭터 컬라이더가 실제 움직인 거리
@@ -37,12 +37,13 @@ public class PlayerCtrl : MonoBehaviour
     private Transform playerTransform;
     private PlayerState state = PlayerState.Idle;
     private Vector2 moveInput = Vector2.zero;
-    private Vector3 moveDir = Vector3.forward;
+    private Vector3 playerDir = Vector3.forward;
 
     private float speedSmoothVelocity;
     private float currentVelocityY;
     private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
     private Action[] animeUpdate;
+    private bool jump = false;
 
 
     // Start is called before the first frame update
@@ -52,8 +53,9 @@ public class PlayerCtrl : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         animeUpdate = new Action[(int)PlayerState.End];
-        animeUpdate[(int)PlayerState.Idle] = Idle;
-        animeUpdate[(int)PlayerState.Run] = Run;
+        animeUpdate[(int)PlayerState.Idle] = Ani_Idle;
+        animeUpdate[(int)PlayerState.Run] = Ani_Run;
+        animeUpdate[(int)PlayerState.Jump] = Ani_Jump;
 
         weapon.parent = weaponholder;
         weapon.localPosition = Vector3.zero;
@@ -127,10 +129,27 @@ public class PlayerCtrl : MonoBehaviour
         state = PlayerState.Run;
     }
 
+    public void Jump()
+    {
+        if (characterController.isGrounded)
+        {
+            state = PlayerState.Jump;
+            currentVelocityY = jumpVelocity;
+            jump = true;
+
+            hairAnime.SetTrigger("Jump");
+            faceAnime.SetTrigger("Jump");
+            bodyAnime.SetTrigger("Jump");
+            pantsAnime.SetTrigger("Jump");
+            handsAnime.SetTrigger("Jump");
+            footAnime.SetTrigger("Jump");
+        }
+    }
+
     // 이동
     private void Move()
     {
-        if (moveInput == Vector2.zero)
+        if (moveInput == Vector2.zero && !jump)
         {
             characterController.Move(Vector3.zero);
             return;
@@ -139,7 +158,7 @@ public class PlayerCtrl : MonoBehaviour
         float smoothTime = characterController.isGrounded ? speedSmoothTime : speedSmoothTime / airControlPercent;
         targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, smoothTime);
         
-        moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
+        Vector3 moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
@@ -147,16 +166,37 @@ public class PlayerCtrl : MonoBehaviour
         Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
         characterController.Move(velocity * Time.deltaTime);
 
+        // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
+        // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
+        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            playerDir = moveDir;
+
+        // 땅에 닿으면 초기화
         if (characterController.isGrounded)
+        {
             currentVelocityY = 0.0f;
+
+            // 점프 중이면 착지
+            if (jump)
+            {
+                jump = false;
+
+                hairAnime.SetTrigger("Land");
+                faceAnime.SetTrigger("Land");
+                bodyAnime.SetTrigger("Land");
+                pantsAnime.SetTrigger("Land");
+                handsAnime.SetTrigger("Land");
+                footAnime.SetTrigger("Land");
+            }
+        }
     }
 
     private void PlayerRotation()
     {
         // 방향이 같지 않음
-        if (modelTransform.forward != moveDir)
+        if (modelTransform.forward != playerDir)
         {
-            Quaternion rotation = Quaternion.LookRotation(moveDir);
+            Quaternion rotation = Quaternion.LookRotation(playerDir);
             modelTransform.rotation = Quaternion.Lerp(modelTransform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
     }
@@ -191,7 +231,7 @@ public class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)state]();
     }
 
-    private void Idle()
+    private void Ani_Idle()
     {
         hairAnime.SetFloat("Speed", 0);
         faceAnime.SetFloat("Speed", 0);
@@ -201,7 +241,7 @@ public class PlayerCtrl : MonoBehaviour
         footAnime.SetFloat("Speed", 0);
     }
 
-    private void Run()
+    private void Ani_Run()
     {
         float speedPer = targetSpeed / moveSpeed;
 
@@ -211,5 +251,10 @@ public class PlayerCtrl : MonoBehaviour
         pantsAnime.SetFloat("Speed", speedPer);
         handsAnime.SetFloat("Speed", speedPer);
         footAnime.SetFloat("Speed", speedPer);
+    }
+
+    private void Ani_Jump()
+    {
+
     }
 }

@@ -11,6 +11,7 @@
     {
         Idle,
         Run,
+        Jump,
         End
     }
 }

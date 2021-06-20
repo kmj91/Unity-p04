@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     private KeyInputQueue<KeyInfo> keyQueue;        // 키 입력 큐
     private Dictionary<KeyCode, Action> keyDown;    // 키 누름
-    private Dictionary<KeyCode, Action> keyHold;    // 키 계속 누름
     private Dictionary<KeyCode, Action> keyUp;      // 키 뗌
 
     private void Start()
@@ -37,13 +36,8 @@ public class GameManager : MonoBehaviour
             { KeyCode.W, KeyDown_Forward },     // 앞으로 이동
             { KeyCode.S, KeyDown_Back },        // 뒤로 이동
             { KeyCode.A, KeyDown_Left },        // 왼쪽으로 이동
-            { KeyCode.D, KeyDown_Right }        // 오른쪽으로 이동
-        };
-
-        // 키 계속 누름
-        keyHold = new Dictionary<KeyCode, Action>
-        {
-            { KeyCode.F, KeyHold_Forward }      // 앞으로 이동
+            { KeyCode.D, KeyDown_Right },       // 오른쪽으로 이동
+            { KeyCode.Space, KeyDown_Jump }     // 점프
         };
 
         // 키 뗌
@@ -53,6 +47,7 @@ public class GameManager : MonoBehaviour
             { KeyCode.S, KeyUp_Back },          // 뒤로 이동
             { KeyCode.A, KeyUp_Left },          // 왼쪽으로 이동
             { KeyCode.D, KeyUp_Right },         // 오른쪽으로 이동
+            { KeyCode.Space, KeyUp_Jump },      // 점프
             { KeyCode.I, KeyUp_Inventory }      // 인벤토리
         };
     }
@@ -83,23 +78,33 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // 키 계속 누름
-        // 조작 관련
-        if (Input.anyKey)
-        {
-            foreach (var dic in keyHold)
-            {
-                if (Input.GetKey(dic.Key))
-                {
-                    dic.Value();
-                }
-            }
-        }
-
-
+        JumpCheck();
         MoveCheck();
     }
 
+
+    private void JumpCheck()
+    {
+        var queue = keyQueue.GetQueue();
+        int iSize = keyQueue.GetQueueSize();
+        int iRear = keyQueue.GetRear();
+        int iFront = keyQueue.GetFront();
+
+        while (iRear != iFront)
+        {
+            --iRear;
+            if (iRear < 0)
+            {
+                iRear = iSize - 1;
+            }
+
+            // 점프
+            if (queue[iRear].key == KeyCode.Space)
+            {
+                playerCtrl.Jump();
+            }
+        }
+    }
 
     private void MoveCheck()
     {
@@ -293,15 +298,11 @@ public class GameManager : MonoBehaviour
         keyQueue.Enqueue(in key);
     }
 
-
-
-    //***************************
-    // Key Hold
-    //***************************
-
-    private void KeyHold_Forward()
+    // 점프
+    private void KeyDown_Jump()
     {
-        Debug.Log("계속 누름");
+        KeyInfo key = new KeyInfo(KeyState.Down, KeyCode.Space, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
     }
 
 
@@ -328,6 +329,11 @@ public class GameManager : MonoBehaviour
     private void KeyUp_Right()
     {
         EraseKey(KeyCode.D);
+    }
+
+    private void KeyUp_Jump()
+    {
+        EraseKey(KeyCode.Space);
     }
 
     // 인벤토리
