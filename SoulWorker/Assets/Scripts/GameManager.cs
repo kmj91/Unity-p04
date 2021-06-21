@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     }
 
 
+    // 점프
     private void JumpCheck()
     {
         var queue = keyQueue.GetQueue();
@@ -106,6 +107,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // 이동
     private void MoveCheck()
     {
         var queue = keyQueue.GetQueue();
@@ -124,6 +126,12 @@ public class GameManager : MonoBehaviour
             // 앞으로 이동
             if (queue[iRear].key == KeyCode.W)
             {
+                // 대쉬 입력 확인
+                if (DashCheck(KeyCode.W, queue[iRear].time, iRear))
+                {
+                    playerCtrl.Dash();
+                }
+
                 while (iRear != iFront)
                 {
                     --iRear;
@@ -153,6 +161,12 @@ public class GameManager : MonoBehaviour
             // 뒤로 이동
             else if (queue[iRear].key == KeyCode.S)
             {
+                // 대쉬 입력 확인
+                if (DashCheck(KeyCode.S, queue[iRear].time, iRear))
+                {
+                    playerCtrl.Dash();
+                }
+
                 while (iRear != iFront)
                 {
                     --iRear;
@@ -182,6 +196,12 @@ public class GameManager : MonoBehaviour
             // 왼쪽으로 이동
             else if (queue[iRear].key == KeyCode.A)
             {
+                // 대쉬 입력 확인
+                if (DashCheck(KeyCode.A, queue[iRear].time, iRear))
+                {
+                    playerCtrl.Dash();
+                }
+
                 while (iRear != iFront)
                 {
                     --iRear;
@@ -211,6 +231,12 @@ public class GameManager : MonoBehaviour
             // 오른쪽으로 이동
             else if (queue[iRear].key == KeyCode.D)
             {
+                // 대쉬 입력 확인
+                if (DashCheck(KeyCode.D, queue[iRear].time, iRear))
+                {
+                    playerCtrl.Dash();
+                }
+
                 while (iRear != iFront)
                 {
                     --iRear;
@@ -242,6 +268,36 @@ public class GameManager : MonoBehaviour
         playerCtrl.MoveNone();
     }
 
+    // 대쉬 입력 확인
+    private bool DashCheck(KeyCode key, float time, int iRear)
+    {
+        var queue = keyQueue.GetQueue();
+        int iSize = keyQueue.GetQueueSize();
+        int iFront = keyQueue.GetFront();
+
+        while (iRear != iFront)
+        {
+            --iRear;
+            if (iRear < 0)
+            {
+                iRear = iSize - 1;
+            }
+
+            // 같은 키 값 찾기
+            if (queue[iRear].backupKey == key)
+            {
+                // 짧은 시간안에 눌렀을 경우 true
+                if (time - queue[iRear].time <= 0.5f)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        return false;
+    }
+
+    // 키값 지우기
     private void EraseKey(KeyCode key)
     {
         var queue = keyQueue.GetQueue();
@@ -273,35 +329,35 @@ public class GameManager : MonoBehaviour
     // 앞으로 이동
     private void KeyDown_Forward()
     {
-        KeyInfo key = new KeyInfo(KeyState.Down, KeyCode.W, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.W, Time.realtimeSinceStartup);
         keyQueue.Enqueue(in key);
     }
 
     // 뒤로 이동
     private void KeyDown_Back()
     {
-        KeyInfo key = new KeyInfo(KeyState.Down, KeyCode.S, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.S, Time.realtimeSinceStartup);
         keyQueue.Enqueue(in key);
     }
 
     // 왼쪽으로 이동
     private void KeyDown_Left()
     {
-        KeyInfo key = new KeyInfo(KeyState.Down, KeyCode.A, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.A, Time.realtimeSinceStartup);
         keyQueue.Enqueue(in key);
     }
 
     // 오른쪽으로 이동
     private void KeyDown_Right()
     {
-        KeyInfo key = new KeyInfo(KeyState.Down, KeyCode.D, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.D, Time.realtimeSinceStartup);
         keyQueue.Enqueue(in key);
     }
 
     // 점프
     private void KeyDown_Jump()
     {
-        KeyInfo key = new KeyInfo(KeyState.Down, KeyCode.Space, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Space, Time.realtimeSinceStartup);
         keyQueue.Enqueue(in key);
     }
 

@@ -44,6 +44,7 @@ public class PlayerCtrl : MonoBehaviour
     private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
     private Action[] animeUpdate;
     private bool jump = false;
+    private bool dash = false;
 
 
     // Start is called before the first frame update
@@ -78,55 +79,73 @@ public class PlayerCtrl : MonoBehaviour
     public void MoveNone()
     {
         moveInput = new Vector2(0, 0);
-        state = PlayerState.Idle;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Idle;
     }
 
     public void MoveFF()
     {
         moveInput = new Vector2(0, 1.0f);
-        state = PlayerState.Run;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Run;
     }
 
     public void MoveFL()
     {
         moveInput = new Vector2(-1.0f, 1.0f);
-        state = PlayerState.Run;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Run;
     }
 
     public void MoveFR()
     {
         moveInput = new Vector2(1.0f, 1.0f);
-        state = PlayerState.Run;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Run;
     }
 
     public void MoveBB()
     {
         moveInput = new Vector2(0, -1.0f);
-        state = PlayerState.Run;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Run;
     }
 
     public void MoveBL()
     {
         moveInput = new Vector2(-1.0f, -1.0f);
-        state = PlayerState.Run;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Run;
     }
 
     public void MoveBR()
     {
         moveInput = new Vector2(1.0f, -1.0f);
-        state = PlayerState.Run;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Run;
     }
 
     public void MoveLL()
     {
         moveInput = new Vector2(-1.0f, 0);
-        state = PlayerState.Run;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Run;
     }
 
     public void MoveRR()
     {
         moveInput = new Vector2(1.0f, 0);
-        state = PlayerState.Run;
+
+        if (state != PlayerState.Jump)
+            state = PlayerState.Run;
     }
 
     public void Jump()
@@ -135,15 +154,13 @@ public class PlayerCtrl : MonoBehaviour
         {
             state = PlayerState.Jump;
             currentVelocityY = jumpVelocity;
-            jump = true;
-
-            hairAnime.SetTrigger("Jump");
-            faceAnime.SetTrigger("Jump");
-            bodyAnime.SetTrigger("Jump");
-            pantsAnime.SetTrigger("Jump");
-            handsAnime.SetTrigger("Jump");
-            footAnime.SetTrigger("Jump");
         }
+    }
+
+    public void Dash()
+    {
+        if (state != PlayerState.Jump)
+            dash = true;
     }
 
     // 이동
@@ -151,7 +168,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (moveInput == Vector2.zero && !jump)
         {
-            characterController.Move(Vector3.zero);
+            characterController.Move(Vector3.down);
             return;
         }
 
@@ -175,19 +192,6 @@ public class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             currentVelocityY = 0.0f;
-
-            // 점프 중이면 착지
-            if (jump)
-            {
-                jump = false;
-
-                hairAnime.SetTrigger("Land");
-                faceAnime.SetTrigger("Land");
-                bodyAnime.SetTrigger("Land");
-                pantsAnime.SetTrigger("Land");
-                handsAnime.SetTrigger("Land");
-                footAnime.SetTrigger("Land");
-            }
         }
     }
 
@@ -239,22 +243,71 @@ public class PlayerCtrl : MonoBehaviour
         pantsAnime.SetFloat("Speed", 0);
         handsAnime.SetFloat("Speed", 0);
         footAnime.SetFloat("Speed", 0);
+
+        if (dash) 
+        {
+            dash = false;
+
+            hairAnime.SetBool("Dash", false);
+            faceAnime.SetBool("Dash", false);
+            bodyAnime.SetBool("Dash", false);
+            pantsAnime.SetBool("Dash", false);
+            handsAnime.SetBool("Dash", false);
+            footAnime.SetBool("Dash", false);
+        }
     }
 
     private void Ani_Run()
     {
-        float speedPer = targetSpeed / moveSpeed;
+        if (dash)
+        {
+            hairAnime.SetBool("Dash", true);
+            faceAnime.SetBool("Dash", true);
+            bodyAnime.SetBool("Dash", true);
+            pantsAnime.SetBool("Dash", true);
+            handsAnime.SetBool("Dash", true);
+            footAnime.SetBool("Dash", true);
+        }
+        else
+        {
+            float speedPer = targetSpeed / moveSpeed;
 
-        hairAnime.SetFloat("Speed", speedPer);
-        faceAnime.SetFloat("Speed", speedPer);
-        bodyAnime.SetFloat("Speed", speedPer);
-        pantsAnime.SetFloat("Speed", speedPer);
-        handsAnime.SetFloat("Speed", speedPer);
-        footAnime.SetFloat("Speed", speedPer);
+            hairAnime.SetFloat("Speed", speedPer);
+            faceAnime.SetFloat("Speed", speedPer);
+            bodyAnime.SetFloat("Speed", speedPer);
+            pantsAnime.SetFloat("Speed", speedPer);
+            handsAnime.SetFloat("Speed", speedPer);
+            footAnime.SetFloat("Speed", speedPer);
+        }
     }
 
     private void Ani_Jump()
     {
+        if (!jump)
+        {
+            jump = true;
+            hairAnime.SetBool("Jump", true);
+            faceAnime.SetBool("Jump", true);
+            bodyAnime.SetBool("Jump", true);
+            pantsAnime.SetBool("Jump", true);
+            handsAnime.SetBool("Jump", true);
+            footAnime.SetBool("Jump", true);
+        }
+        else
+        {
+            // 착지
+            if (characterController.isGrounded)
+            {
+                jump = false;
+                state = PlayerState.Idle;
 
+                hairAnime.SetBool("Jump", false);
+                faceAnime.SetBool("Jump", false);
+                bodyAnime.SetBool("Jump", false);
+                pantsAnime.SetBool("Jump", false);
+                handsAnime.SetBool("Jump", false);
+                footAnime.SetBool("Jump", false);
+            }
+        }
     }
 }

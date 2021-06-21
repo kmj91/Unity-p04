@@ -5,15 +5,15 @@ namespace MyStruct
 {
     public struct KeyInfo
     {
-        public KeyInfo(KeyState state, KeyCode key, float time)
+        public KeyInfo(KeyCode key, float time)
         {
-            this.state = state;
             this.key = key;
+            backupKey = key;
             this.time = time;
         }
 
-        public KeyState state;
         public KeyCode key;
+        public KeyCode backupKey;
         public float time;
     }
 }
