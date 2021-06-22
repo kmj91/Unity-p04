@@ -8,6 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
 using System;
 using MyEnum;
+using UnityEditorInternal;
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -39,10 +40,11 @@ public class PlayerCtrl : MonoBehaviour
     private Vector2 moveInput = Vector2.zero;
     private Vector3 playerDir = Vector3.forward;
 
+    private Action[] animeUpdate;
     private float speedSmoothVelocity;
     private float currentVelocityY;
     private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
-    private Action[] animeUpdate;
+    private float jumpTime;
     private bool jump = false;
     private bool dash = false;
 
@@ -154,6 +156,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             state = PlayerState.Jump;
             currentVelocityY = jumpVelocity;
+            jumpTime = Time.realtimeSinceStartup;
         }
     }
 
@@ -298,7 +301,11 @@ public class PlayerCtrl : MonoBehaviour
             // 착지
             if (characterController.isGrounded)
             {
-                jump = false;
+                // 점프 한지 얼마 안됬으면 무시
+                if (Time.realtimeSinceStartup - jumpTime <= 0.5f)
+                    return;
+
+                    jump = false;
                 state = PlayerState.Idle;
 
                 hairAnime.SetBool("Jump", false);

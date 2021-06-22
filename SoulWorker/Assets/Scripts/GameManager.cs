@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyStruct;
 using MyEnum;
+using System.Xml.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,7 +38,8 @@ public class GameManager : MonoBehaviour
             { KeyCode.S, KeyDown_Back },        // 뒤로 이동
             { KeyCode.A, KeyDown_Left },        // 왼쪽으로 이동
             { KeyCode.D, KeyDown_Right },       // 오른쪽으로 이동
-            { KeyCode.Space, KeyDown_Jump }     // 점프
+            { KeyCode.Space, KeyDown_Jump },    // 점프
+            { KeyCode.LeftShift, KeyDown_Dvade }    // 회피
         };
 
         // 키 뗌
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
             { KeyCode.A, KeyUp_Left },          // 왼쪽으로 이동
             { KeyCode.D, KeyUp_Right },         // 오른쪽으로 이동
             { KeyCode.Space, KeyUp_Jump },      // 점프
+            { KeyCode.LeftShift, KeyUp_Dvade }, // 회피
             { KeyCode.I, KeyUp_Inventory }      // 인벤토리
         };
     }
@@ -361,6 +364,13 @@ public class GameManager : MonoBehaviour
         keyQueue.Enqueue(in key);
     }
 
+    // 회피
+    private void KeyDown_Dvade()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.LeftShift, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
 
 
     //***************************
@@ -387,9 +397,16 @@ public class GameManager : MonoBehaviour
         EraseKey(KeyCode.D);
     }
 
+    // 점프
     private void KeyUp_Jump()
     {
         EraseKey(KeyCode.Space);
+    }
+
+    // 회피
+    private void KeyUp_Dvade()
+    {
+        EraseKey(KeyCode.LeftShift);
     }
 
     // 인벤토리
