@@ -150,6 +150,12 @@ public class PlayerCtrl : MonoBehaviour
             state = PlayerState.Run;
     }
 
+    public void Dash()
+    {
+        if (state != PlayerState.Jump)
+            dash = true;
+    }
+
     public void Jump()
     {
         if (characterController.isGrounded)
@@ -160,11 +166,36 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    public void Dash()
+    public void SkillSlot1()
     {
-        if (state != PlayerState.Jump)
-            dash = true;
+
     }
+
+    public void SkillSlot2()
+    {
+
+    }
+
+    public void SkillSlot3()
+    {
+
+    }
+
+    public void SkillSlot4()
+    {
+
+    }
+
+    public void SkillSlot5()
+    {
+
+    }
+
+    public void SkillSlot6()
+    {
+
+    }
+
 
     // 이동
     private void Move()

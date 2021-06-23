@@ -39,7 +39,13 @@ public class GameManager : MonoBehaviour
             { KeyCode.A, KeyDown_Left },        // 왼쪽으로 이동
             { KeyCode.D, KeyDown_Right },       // 오른쪽으로 이동
             { KeyCode.Space, KeyDown_Jump },    // 점프
-            { KeyCode.LeftShift, KeyDown_Dvade }    // 회피
+            { KeyCode.LeftShift, KeyDown_Dvade },   // 회피
+            { KeyCode.Alpha1 , KeyDown_Alpha1 },    // 스킬 슬롯 1
+            { KeyCode.Alpha2 , KeyDown_Alpha2 },    // 스킬 슬롯 2
+            { KeyCode.Alpha3 , KeyDown_Alpha3 },    // 스킬 슬롯 3
+            { KeyCode.Alpha4 , KeyDown_Alpha4 },    // 스킬 슬롯 4
+            { KeyCode.Alpha5 , KeyDown_Alpha5 },    // 스킬 슬롯 5
+            { KeyCode.Alpha6 , KeyDown_Alpha6 }     // 스킬 슬롯 6
         };
 
         // 키 뗌
@@ -51,6 +57,12 @@ public class GameManager : MonoBehaviour
             { KeyCode.D, KeyUp_Right },         // 오른쪽으로 이동
             { KeyCode.Space, KeyUp_Jump },      // 점프
             { KeyCode.LeftShift, KeyUp_Dvade }, // 회피
+            { KeyCode.Alpha1 , KeyUp_Alpha1 },  // 스킬 슬롯 1
+            { KeyCode.Alpha2 , KeyUp_Alpha2 },  // 스킬 슬롯 2
+            { KeyCode.Alpha3 , KeyUp_Alpha3 },  // 스킬 슬롯 3
+            { KeyCode.Alpha4 , KeyUp_Alpha4 },  // 스킬 슬롯 4
+            { KeyCode.Alpha5 , KeyUp_Alpha5 },  // 스킬 슬롯 5
+            { KeyCode.Alpha6 , KeyUp_Alpha6 },  // 스킬 슬롯 6
             { KeyCode.I, KeyUp_Inventory }      // 인벤토리
         };
     }
@@ -81,10 +93,60 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        SkillCheck();
         JumpCheck();
         MoveCheck();
     }
 
+
+    // 스킬
+    private void SkillCheck()
+    {
+        var queue = keyQueue.GetQueue();
+        int iSize = keyQueue.GetQueueSize();
+        int iRear = keyQueue.GetRear();
+        int iFront = keyQueue.GetFront();
+
+        while (iRear != iFront)
+        {
+            --iRear;
+            if (iRear < 0)
+            {
+                iRear = iSize - 1;
+            }
+
+            // 스킬 슬롯 1
+            if (queue[iRear].key == KeyCode.Alpha1)
+            {
+                playerCtrl.SkillSlot1();
+            }
+            // 스킬 슬롯 2
+            else if (queue[iRear].key == KeyCode.Alpha2)
+            {
+                playerCtrl.SkillSlot2();
+            }
+            // 스킬 슬롯 3
+            else if (queue[iRear].key == KeyCode.Alpha3)
+            {
+                playerCtrl.SkillSlot3();
+            }
+            // 스킬 슬롯 4
+            else if (queue[iRear].key == KeyCode.Alpha4)
+            {
+                playerCtrl.SkillSlot4();
+            }
+            // 스킬 슬롯 5
+            else if (queue[iRear].key == KeyCode.Alpha5)
+            {
+                playerCtrl.SkillSlot5();
+            }
+            // 스킬 슬롯 6
+            else if (queue[iRear].key == KeyCode.Alpha6)
+            {
+                playerCtrl.SkillSlot6();
+            }
+        }
+    }
 
     // 점프
     private void JumpCheck()
@@ -371,6 +433,48 @@ public class GameManager : MonoBehaviour
         keyQueue.Enqueue(in key);
     }
 
+    // 스킬 슬롯 1
+    private void KeyDown_Alpha1()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.Alpha1, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
+    // 스킬 슬롯 2
+    private void KeyDown_Alpha2()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.Alpha2, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
+    // 스킬 슬롯 3
+    private void KeyDown_Alpha3()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.Alpha3, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
+    // 스킬 슬롯 4
+    private void KeyDown_Alpha4()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.Alpha4, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
+    // 스킬 슬롯 5
+    private void KeyDown_Alpha5()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.Alpha5, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
+    // 스킬 슬롯 6
+    private void KeyDown_Alpha6()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.Alpha6, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
 
 
     //***************************
@@ -407,6 +511,42 @@ public class GameManager : MonoBehaviour
     private void KeyUp_Dvade()
     {
         EraseKey(KeyCode.LeftShift);
+    }
+
+    // 스킬 슬롯 1
+    private void KeyUp_Alpha1()
+    {
+        EraseKey(KeyCode.Alpha1);
+    }
+
+    // 스킬 슬롯 2
+    private void KeyUp_Alpha2()
+    {
+        EraseKey(KeyCode.Alpha2);
+    }
+
+    // 스킬 슬롯 3
+    private void KeyUp_Alpha3()
+    {
+        EraseKey(KeyCode.Alpha3);
+    }
+
+    // 스킬 슬롯 4
+    private void KeyUp_Alpha4()
+    {
+        EraseKey(KeyCode.Alpha4);
+    }
+
+    // 스킬 슬롯 5
+    private void KeyUp_Alpha5()
+    {
+        EraseKey(KeyCode.Alpha5);
+    }
+
+    // 스킬 슬롯 6
+    private void KeyUp_Alpha6()
+    {
+        EraseKey(KeyCode.Alpha6);
     }
 
     // 인벤토리
