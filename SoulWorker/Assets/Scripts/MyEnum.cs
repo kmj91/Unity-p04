@@ -11,7 +11,9 @@
     {
         Idle,
         Run,
+        Dash,
         Jump,
+        Land,
         End
     }
 }

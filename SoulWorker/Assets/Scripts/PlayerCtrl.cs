@@ -40,6 +40,7 @@ public class PlayerCtrl : MonoBehaviour
     private Vector2 moveInput = Vector2.zero;
     private Vector3 playerDir = Vector3.forward;
 
+    private bool[,] changeState;
     private Action[] animeUpdate;
     private float speedSmoothVelocity;
     private float currentVelocityY;
@@ -58,7 +59,40 @@ public class PlayerCtrl : MonoBehaviour
         animeUpdate = new Action[(int)PlayerState.End];
         animeUpdate[(int)PlayerState.Idle] = Ani_Idle;
         animeUpdate[(int)PlayerState.Run] = Ani_Run;
+        animeUpdate[(int)PlayerState.Dash] = Ani_Dash;
         animeUpdate[(int)PlayerState.Jump] = Ani_Jump;
+        animeUpdate[(int)PlayerState.Land] = Ani_Land;
+
+        changeState = new bool[(int)PlayerState.End, (int)PlayerState.End];
+        changeState[(int)PlayerState.Idle, (int)PlayerState.Idle] = false;
+        changeState[(int)PlayerState.Idle, (int)PlayerState.Run] = true;
+        changeState[(int)PlayerState.Idle, (int)PlayerState.Dash] = true;
+        changeState[(int)PlayerState.Idle, (int)PlayerState.Jump] = true;
+        changeState[(int)PlayerState.Idle, (int)PlayerState.Land] = true;
+
+        changeState[(int)PlayerState.Run, (int)PlayerState.Idle] = true;
+        changeState[(int)PlayerState.Run, (int)PlayerState.Run] = false;
+        changeState[(int)PlayerState.Run, (int)PlayerState.Dash] = true;
+        changeState[(int)PlayerState.Run, (int)PlayerState.Jump] = true;
+        changeState[(int)PlayerState.Run, (int)PlayerState.Land] = false;
+
+        changeState[(int)PlayerState.Dash, (int)PlayerState.Idle] = true;
+        changeState[(int)PlayerState.Dash, (int)PlayerState.Run] = false;
+        changeState[(int)PlayerState.Dash, (int)PlayerState.Dash] = false;
+        changeState[(int)PlayerState.Dash, (int)PlayerState.Jump] = false;
+        changeState[(int)PlayerState.Dash, (int)PlayerState.Land] = false;
+
+        changeState[(int)PlayerState.Jump, (int)PlayerState.Idle] = false;
+        changeState[(int)PlayerState.Jump, (int)PlayerState.Run] = false;
+        changeState[(int)PlayerState.Jump, (int)PlayerState.Dash] = false;
+        changeState[(int)PlayerState.Jump, (int)PlayerState.Jump] = false;
+        changeState[(int)PlayerState.Jump, (int)PlayerState.Land] = true;
+
+        changeState[(int)PlayerState.Land, (int)PlayerState.Idle] = false;
+        changeState[(int)PlayerState.Land, (int)PlayerState.Run] = false;
+        changeState[(int)PlayerState.Land, (int)PlayerState.Dash] = false;
+        changeState[(int)PlayerState.Land, (int)PlayerState.Jump] = true;
+        changeState[(int)PlayerState.Land, (int)PlayerState.Land] = false;
 
         weapon.parent = weaponholder;
         weapon.localPosition = Vector3.zero;
@@ -82,7 +116,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = new Vector2(0, 0);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Idle))
             state = PlayerState.Idle;
     }
 
@@ -90,15 +124,17 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = new Vector2(0, 1.0f);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Run))
+        {
             state = PlayerState.Run;
+        }
     }
 
     public void MoveFL()
     {
         moveInput = new Vector2(-1.0f, 1.0f);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Run))
             state = PlayerState.Run;
     }
 
@@ -106,7 +142,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = new Vector2(1.0f, 1.0f);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Run))
             state = PlayerState.Run;
     }
 
@@ -114,7 +150,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = new Vector2(0, -1.0f);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Run))
             state = PlayerState.Run;
     }
 
@@ -122,7 +158,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = new Vector2(-1.0f, -1.0f);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Run))
             state = PlayerState.Run;
     }
 
@@ -130,7 +166,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = new Vector2(1.0f, -1.0f);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Run))
             state = PlayerState.Run;
     }
 
@@ -138,7 +174,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = new Vector2(-1.0f, 0);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Run))
             state = PlayerState.Run;
     }
 
@@ -146,19 +182,22 @@ public class PlayerCtrl : MonoBehaviour
     {
         moveInput = new Vector2(1.0f, 0);
 
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Run))
             state = PlayerState.Run;
     }
 
     public void Dash()
     {
-        if (state != PlayerState.Jump)
+        if (CheckState(state, PlayerState.Dash))
+        {
+            state = PlayerState.Dash;
             dash = true;
+        }
     }
 
     public void Jump()
     {
-        if (characterController.isGrounded)
+        if (CheckState(state, PlayerState.Jump) && characterController.isGrounded)
         {
             state = PlayerState.Jump;
             currentVelocityY = jumpVelocity;
@@ -197,9 +236,18 @@ public class PlayerCtrl : MonoBehaviour
     }
 
 
+    // 상태 확인
+    private bool CheckState(PlayerState left, PlayerState right)
+    {
+        return changeState[(int)left, (int)right];
+    }
+
     // 이동
     private void Move()
     {
+        if (state == PlayerState.Land)
+            return;
+
         if (moveInput == Vector2.zero && !jump)
         {
             characterController.Move(Vector3.down);
@@ -293,26 +341,24 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Ani_Run()
     {
-        if (dash)
-        {
-            hairAnime.SetBool("Dash", true);
-            faceAnime.SetBool("Dash", true);
-            bodyAnime.SetBool("Dash", true);
-            pantsAnime.SetBool("Dash", true);
-            handsAnime.SetBool("Dash", true);
-            footAnime.SetBool("Dash", true);
-        }
-        else
-        {
-            float speedPer = targetSpeed / moveSpeed;
+        float speedPer = targetSpeed / moveSpeed;
 
-            hairAnime.SetFloat("Speed", speedPer);
-            faceAnime.SetFloat("Speed", speedPer);
-            bodyAnime.SetFloat("Speed", speedPer);
-            pantsAnime.SetFloat("Speed", speedPer);
-            handsAnime.SetFloat("Speed", speedPer);
-            footAnime.SetFloat("Speed", speedPer);
-        }
+        hairAnime.SetFloat("Speed", speedPer);
+        faceAnime.SetFloat("Speed", speedPer);
+        bodyAnime.SetFloat("Speed", speedPer);
+        pantsAnime.SetFloat("Speed", speedPer);
+        handsAnime.SetFloat("Speed", speedPer);
+        footAnime.SetFloat("Speed", speedPer);
+    }
+
+    private void Ani_Dash()
+    {
+        hairAnime.SetBool("Dash", true);
+        faceAnime.SetBool("Dash", true);
+        bodyAnime.SetBool("Dash", true);
+        pantsAnime.SetBool("Dash", true);
+        handsAnime.SetBool("Dash", true);
+        footAnime.SetBool("Dash", true);
     }
 
     private void Ani_Jump()
@@ -337,7 +383,8 @@ public class PlayerCtrl : MonoBehaviour
                     return;
 
                     jump = false;
-                state = PlayerState.Idle;
+                state = PlayerState.Land;
+                Debug.Log("Land");
 
                 hairAnime.SetBool("Jump", false);
                 faceAnime.SetBool("Jump", false);
@@ -346,6 +393,16 @@ public class PlayerCtrl : MonoBehaviour
                 handsAnime.SetBool("Jump", false);
                 footAnime.SetBool("Jump", false);
             }
+        }
+    }
+
+    private void Ani_Land()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.B_Jump_Land_C") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            Debug.Log(hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            state = PlayerState.Idle;
         }
     }
 }
