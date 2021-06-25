@@ -13,7 +13,9 @@
         Run,
         Dash,
         Jump,
+        DashJump,
         Land,
+        DashLand,
         End
     }
 }

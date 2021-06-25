@@ -61,38 +61,66 @@ public class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)PlayerState.Run] = Ani_Run;
         animeUpdate[(int)PlayerState.Dash] = Ani_Dash;
         animeUpdate[(int)PlayerState.Jump] = Ani_Jump;
+        animeUpdate[(int)PlayerState.DashJump] = Ani_DashJump;
         animeUpdate[(int)PlayerState.Land] = Ani_Land;
+        animeUpdate[(int)PlayerState.DashLand] = Ani_DashLand;
 
         changeState = new bool[(int)PlayerState.End, (int)PlayerState.End];
         changeState[(int)PlayerState.Idle, (int)PlayerState.Idle] = false;
         changeState[(int)PlayerState.Idle, (int)PlayerState.Run] = true;
         changeState[(int)PlayerState.Idle, (int)PlayerState.Dash] = true;
         changeState[(int)PlayerState.Idle, (int)PlayerState.Jump] = true;
-        changeState[(int)PlayerState.Idle, (int)PlayerState.Land] = true;
+        changeState[(int)PlayerState.Idle, (int)PlayerState.DashJump] = false;
+        changeState[(int)PlayerState.Idle, (int)PlayerState.Land] = false;
+        changeState[(int)PlayerState.Idle, (int)PlayerState.DashLand] = false;
 
         changeState[(int)PlayerState.Run, (int)PlayerState.Idle] = true;
         changeState[(int)PlayerState.Run, (int)PlayerState.Run] = false;
         changeState[(int)PlayerState.Run, (int)PlayerState.Dash] = true;
         changeState[(int)PlayerState.Run, (int)PlayerState.Jump] = true;
+        changeState[(int)PlayerState.Run, (int)PlayerState.DashJump] = false;
         changeState[(int)PlayerState.Run, (int)PlayerState.Land] = false;
+        changeState[(int)PlayerState.Run, (int)PlayerState.DashLand] = false;
 
         changeState[(int)PlayerState.Dash, (int)PlayerState.Idle] = true;
         changeState[(int)PlayerState.Dash, (int)PlayerState.Run] = false;
         changeState[(int)PlayerState.Dash, (int)PlayerState.Dash] = false;
         changeState[(int)PlayerState.Dash, (int)PlayerState.Jump] = false;
+        changeState[(int)PlayerState.Dash, (int)PlayerState.DashJump] = true;
         changeState[(int)PlayerState.Dash, (int)PlayerState.Land] = false;
+        changeState[(int)PlayerState.Dash, (int)PlayerState.DashLand] = false;
 
         changeState[(int)PlayerState.Jump, (int)PlayerState.Idle] = false;
         changeState[(int)PlayerState.Jump, (int)PlayerState.Run] = false;
         changeState[(int)PlayerState.Jump, (int)PlayerState.Dash] = false;
         changeState[(int)PlayerState.Jump, (int)PlayerState.Jump] = false;
+        changeState[(int)PlayerState.Jump, (int)PlayerState.DashJump] = false;
         changeState[(int)PlayerState.Jump, (int)PlayerState.Land] = true;
+        changeState[(int)PlayerState.Jump, (int)PlayerState.DashLand] = false;
+
+        changeState[(int)PlayerState.DashJump, (int)PlayerState.Idle] = false;
+        changeState[(int)PlayerState.DashJump, (int)PlayerState.Run] = false;
+        changeState[(int)PlayerState.DashJump, (int)PlayerState.Dash] = false;
+        changeState[(int)PlayerState.DashJump, (int)PlayerState.Jump] = false;
+        changeState[(int)PlayerState.DashJump, (int)PlayerState.DashJump] = false;
+        changeState[(int)PlayerState.DashJump, (int)PlayerState.Land] = false;
+        changeState[(int)PlayerState.DashJump, (int)PlayerState.DashLand] = true;
 
         changeState[(int)PlayerState.Land, (int)PlayerState.Idle] = false;
         changeState[(int)PlayerState.Land, (int)PlayerState.Run] = false;
         changeState[(int)PlayerState.Land, (int)PlayerState.Dash] = false;
         changeState[(int)PlayerState.Land, (int)PlayerState.Jump] = true;
+        changeState[(int)PlayerState.Land, (int)PlayerState.DashJump] = false;
         changeState[(int)PlayerState.Land, (int)PlayerState.Land] = false;
+        changeState[(int)PlayerState.Land, (int)PlayerState.DashLand] = false;
+
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.Idle] = false;
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.Run] = false;
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.Dash] = false;
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.Jump] = true;
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.DashJump] = false;
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.Land] = false;
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.DashLand] = false;
 
         weapon.parent = weaponholder;
         weapon.localPosition = Vector3.zero;
@@ -197,11 +225,23 @@ public class PlayerCtrl : MonoBehaviour
 
     public void Jump()
     {
-        if (CheckState(state, PlayerState.Jump) && characterController.isGrounded)
+        if (dash)
         {
-            state = PlayerState.Jump;
-            currentVelocityY = jumpVelocity;
-            jumpTime = Time.realtimeSinceStartup;
+            if (CheckState(state, PlayerState.DashJump) && characterController.isGrounded)
+            {
+                state = PlayerState.DashJump;
+                currentVelocityY = jumpVelocity;
+                jumpTime = Time.realtimeSinceStartup;
+            }
+        }
+        else
+        {
+            if (CheckState(state, PlayerState.Jump) && characterController.isGrounded)
+            {
+                state = PlayerState.Jump;
+                currentVelocityY = jumpVelocity;
+                jumpTime = Time.realtimeSinceStartup;
+            }
         }
     }
 
@@ -384,7 +424,40 @@ public class PlayerCtrl : MonoBehaviour
 
                     jump = false;
                 state = PlayerState.Land;
-                Debug.Log("Land");
+
+                hairAnime.SetBool("Jump", false);
+                faceAnime.SetBool("Jump", false);
+                bodyAnime.SetBool("Jump", false);
+                pantsAnime.SetBool("Jump", false);
+                handsAnime.SetBool("Jump", false);
+                footAnime.SetBool("Jump", false);
+            }
+        }
+    }
+
+    private void Ani_DashJump()
+    {
+        if (!jump)
+        {
+            jump = true;
+            hairAnime.SetBool("Jump", true);
+            faceAnime.SetBool("Jump", true);
+            bodyAnime.SetBool("Jump", true);
+            pantsAnime.SetBool("Jump", true);
+            handsAnime.SetBool("Jump", true);
+            footAnime.SetBool("Jump", true);
+        }
+        else
+        {
+            // 착지
+            if (characterController.isGrounded)
+            {
+                // 점프 한지 얼마 안됬으면 무시
+                if (Time.realtimeSinceStartup - jumpTime <= 0.5f)
+                    return;
+
+                jump = false;
+                state = PlayerState.DashLand;
 
                 hairAnime.SetBool("Jump", false);
                 faceAnime.SetBool("Jump", false);
@@ -401,7 +474,15 @@ public class PlayerCtrl : MonoBehaviour
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.B_Jump_Land_C") &&
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            Debug.Log(hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            state = PlayerState.Idle;
+        }
+    }
+
+    private void Ani_DashLand()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.B_Dash_Jump_End") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
             state = PlayerState.Idle;
         }
     }
