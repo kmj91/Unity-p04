@@ -37,9 +37,11 @@ public partial class PlayerCtrl : MonoBehaviour
     private Transform playerTransform;
     private PlayerState state = PlayerState.Idle;
     private Vector2 moveInput = Vector2.zero;
-    private Vector3 playerDir = Vector3.forward;
+    private Vector3 moveAnimeDir = Vector3.zero;
+    private Vector3 turnDir = Vector3.forward;
 
     private bool[,] changeState;
+    private Action[] moveUpdate;
     private Action[] animeUpdate;
     private float speedSmoothVelocity;
     private float currentVelocityY;
@@ -54,6 +56,15 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         playerTransform = GetComponent<Transform>();
         characterController = GetComponent<CharacterController>();
+
+        moveUpdate = new Action[(int)PlayerState.End];
+        moveUpdate[(int)PlayerState.Idle] = Move_Idle;
+        moveUpdate[(int)PlayerState.Run] = Move_Run;
+        moveUpdate[(int)PlayerState.Dash] = Move_Dash;
+        moveUpdate[(int)PlayerState.Jump] = Move_Jump;
+        moveUpdate[(int)PlayerState.DashJump] = Move_DashJump;
+        moveUpdate[(int)PlayerState.Land] = Move_Land;
+        moveUpdate[(int)PlayerState.DashLand] = Move_DashLand;
 
         animeUpdate = new Action[(int)PlayerState.End];
         animeUpdate[(int)PlayerState.Idle] = Ani_Idle;
@@ -106,8 +117,8 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)PlayerState.DashJump, (int)PlayerState.DashLand] = true;
 
         changeState[(int)PlayerState.Land, (int)PlayerState.Idle] = false;
-        changeState[(int)PlayerState.Land, (int)PlayerState.Run] = false;
-        changeState[(int)PlayerState.Land, (int)PlayerState.Dash] = false;
+        changeState[(int)PlayerState.Land, (int)PlayerState.Run] = true;
+        changeState[(int)PlayerState.Land, (int)PlayerState.Dash] = true;
         changeState[(int)PlayerState.Land, (int)PlayerState.Jump] = true;
         changeState[(int)PlayerState.Land, (int)PlayerState.DashJump] = false;
         changeState[(int)PlayerState.Land, (int)PlayerState.Land] = false;
@@ -129,14 +140,16 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        // 이동 업데이트
+        moveUpdate[(int)state]();
         PlayerRotation();
         AimRotation();
     }
 
     private void Update()
     {
-        UpdateAnimation();
+        // 애니메이션 업데이트
+        animeUpdate[(int)state]();
     }
 
 
@@ -149,9 +162,11 @@ public partial class PlayerCtrl : MonoBehaviour
     // 이동
     private void Move()
     {
+        // 착지
         if (state == PlayerState.Land)
             return;
 
+        // 방향키 입력이 없음
         if (moveInput == Vector2.zero && !jump)
         {
             characterController.Move(Vector3.down);
@@ -165,14 +180,14 @@ public partial class PlayerCtrl : MonoBehaviour
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
         Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
         characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
         if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            playerDir = moveDir;
+            turnDir = moveDir;
 
         // 땅에 닿으면 초기화
         if (characterController.isGrounded)
@@ -184,9 +199,9 @@ public partial class PlayerCtrl : MonoBehaviour
     private void PlayerRotation()
     {
         // 방향이 같지 않음
-        if (modelTransform.forward != playerDir)
+        if (modelTransform.forward != turnDir)
         {
-            Quaternion rotation = Quaternion.LookRotation(playerDir);
+            Quaternion rotation = Quaternion.LookRotation(turnDir);
             modelTransform.rotation = Quaternion.Lerp(modelTransform.rotation, rotation, rotationSpeed * Time.deltaTime);
         }
     }
@@ -213,11 +228,5 @@ public partial class PlayerCtrl : MonoBehaviour
 
         // Y축 자전
         aimTransform.RotateAround(playerTransform.position, Vector3.up, yRotation * mouseSpeed * Time.deltaTime);
-    }
-
-    // 애니메이션
-    private void UpdateAnimation()
-    {
-        animeUpdate[(int)state]();
     }
 }

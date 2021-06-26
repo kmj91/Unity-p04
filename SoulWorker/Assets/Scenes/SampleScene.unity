@@ -462,7 +462,7 @@ MonoBehaviour:
   moveSpeed: 5
   mouseSpeed: 100
   rotationSpeed: 10
-  jumpVelocity: 7
+  jumpVelocity: 12
   airControlPercent: 0.1
   speedSmoothTime: 0.1
   modelTransform: {fileID: 751078148}

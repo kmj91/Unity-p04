@@ -96,14 +96,19 @@ public partial class PlayerCtrl: MonoBehaviour
             if (CheckState(state, PlayerState.DashJump) && characterController.isGrounded)
             {
                 state = PlayerState.DashJump;
-                currentVelocityY = jumpVelocity;
+                currentVelocityY = jumpVelocity * 0.6f;
                 jumpTime = Time.realtimeSinceStartup;
+                moveAnimeDir = modelTransform.forward;
             }
         }
         else
         {
             if (CheckState(state, PlayerState.Jump) && characterController.isGrounded)
             {
+                // 착지 한지 얼마 안됬으면 무시
+                if (Time.realtimeSinceStartup - jumpTime <= 0.2f)
+                    return;
+
                 state = PlayerState.Jump;
                 currentVelocityY = jumpVelocity;
                 jumpTime = Time.realtimeSinceStartup;

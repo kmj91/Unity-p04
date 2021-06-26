@@ -73,6 +73,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
                 jump = false;
                 state = PlayerState.Land;
+                jumpTime = Time.realtimeSinceStartup;
 
                 hairAnime.SetBool("Jump", false);
                 faceAnime.SetBool("Jump", false);
@@ -80,6 +81,13 @@ public partial class PlayerCtrl : MonoBehaviour
                 pantsAnime.SetBool("Jump", false);
                 handsAnime.SetBool("Jump", false);
                 footAnime.SetBool("Jump", false);
+
+                hairAnime.SetFloat("Speed", 0);
+                faceAnime.SetFloat("Speed", 0);
+                bodyAnime.SetFloat("Speed", 0);
+                pantsAnime.SetFloat("Speed", 0);
+                handsAnime.SetFloat("Speed", 0);
+                footAnime.SetFloat("Speed", 0);
             }
         }
     }
@@ -107,6 +115,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
                 jump = false;
                 state = PlayerState.DashLand;
+                moveAnimeDir = modelTransform.forward;
 
                 hairAnime.SetBool("Jump", false);
                 faceAnime.SetBool("Jump", false);
@@ -114,6 +123,13 @@ public partial class PlayerCtrl : MonoBehaviour
                 pantsAnime.SetBool("Jump", false);
                 handsAnime.SetBool("Jump", false);
                 footAnime.SetBool("Jump", false);
+
+                hairAnime.SetFloat("Speed", 0);
+                faceAnime.SetFloat("Speed", 0);
+                bodyAnime.SetFloat("Speed", 0);
+                pantsAnime.SetFloat("Speed", 0);
+                handsAnime.SetFloat("Speed", 0);
+                footAnime.SetFloat("Speed", 0);
             }
         }
     }
@@ -129,10 +145,19 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_DashLand()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.B_Dash_Jump_End") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.B_Dash_Jump_End"))
         {
-            state = PlayerState.Idle;
+            // 정지
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.35f)
+            {
+                moveAnimeDir = Vector3.zero;
+            }
+
+            // 종료
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = PlayerState.Idle;
+            }
         }
     }
 }
