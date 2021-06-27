@@ -130,6 +130,13 @@ public partial class PlayerCtrl : MonoBehaviour
                 pantsAnime.SetFloat("Speed", 0);
                 handsAnime.SetFloat("Speed", 0);
                 footAnime.SetFloat("Speed", 0);
+
+                hairAnime.SetBool("Dash", false);
+                faceAnime.SetBool("Dash", false);
+                bodyAnime.SetBool("Dash", false);
+                pantsAnime.SetBool("Dash", false);
+                handsAnime.SetBool("Dash", false);
+                footAnime.SetBool("Dash", false);
             }
         }
     }

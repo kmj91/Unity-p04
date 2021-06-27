@@ -8,10 +8,14 @@ public partial class PlayerCtrl: MonoBehaviour
 {
     public void MoveNone()
     {
-        moveInput = new Vector2(0, 0);
+        moveInput = Vector2.zero;
 
         if (CheckState(state, PlayerState.Idle))
             state = PlayerState.Idle;
+
+        // 대쉬 착지중이면
+        if (state == PlayerState.DashLand)
+            dash = false;
     }
 
     public void MoveFF()
@@ -20,7 +24,24 @@ public partial class PlayerCtrl: MonoBehaviour
 
         if (CheckState(state, PlayerState.Run))
         {
-            state = PlayerState.Run;
+            // 대쉬 착지중이면
+            // 입력키 상태에따라 Dash or Run 으로 변경됨
+            if (state == PlayerState.DashLand)
+            {
+                if (moveInput == oldInput && dash)
+                {
+                    state = PlayerState.Dash;
+                }
+                else
+                {
+                    state = PlayerState.Run;
+                    dash = false;
+                }
+            }
+            else 
+            {
+                state = PlayerState.Run;
+            }
         }
     }
 
@@ -29,7 +50,26 @@ public partial class PlayerCtrl: MonoBehaviour
         moveInput = new Vector2(-1.0f, 1.0f);
 
         if (CheckState(state, PlayerState.Run))
-            state = PlayerState.Run;
+        {
+            // 대쉬 착지중이면
+            // 입력키 상태에따라 Dash or Run 으로 변경됨
+            if (state == PlayerState.DashLand)
+            {
+                if (moveInput == oldInput && dash)
+                {
+                    state = PlayerState.Dash;
+                }
+                else
+                {
+                    state = PlayerState.Run;
+                    dash = false;
+                }
+            }
+            else
+            {
+                state = PlayerState.Run;
+            }
+        }
     }
 
     public void MoveFR()
@@ -37,7 +77,26 @@ public partial class PlayerCtrl: MonoBehaviour
         moveInput = new Vector2(1.0f, 1.0f);
 
         if (CheckState(state, PlayerState.Run))
-            state = PlayerState.Run;
+        {
+            // 대쉬 착지중이면
+            // 입력키 상태에따라 Dash or Run 으로 변경됨
+            if (state == PlayerState.DashLand)
+            {
+                if (moveInput == oldInput && dash)
+                {
+                    state = PlayerState.Dash;
+                }
+                else
+                {
+                    state = PlayerState.Run;
+                    dash = false;
+                }
+            }
+            else
+            {
+                state = PlayerState.Run;
+            }
+        }
     }
 
     public void MoveBB()
@@ -45,7 +104,26 @@ public partial class PlayerCtrl: MonoBehaviour
         moveInput = new Vector2(0, -1.0f);
 
         if (CheckState(state, PlayerState.Run))
-            state = PlayerState.Run;
+        {
+            // 대쉬 착지중이면
+            // 입력키 상태에따라 Dash or Run 으로 변경됨
+            if (state == PlayerState.DashLand)
+            {
+                if (moveInput == oldInput && dash)
+                {
+                    state = PlayerState.Dash;
+                }
+                else
+                {
+                    state = PlayerState.Run;
+                    dash = false;
+                }
+            }
+            else
+            {
+                state = PlayerState.Run;
+            }
+        }
     }
 
     public void MoveBL()
@@ -53,7 +131,26 @@ public partial class PlayerCtrl: MonoBehaviour
         moveInput = new Vector2(-1.0f, -1.0f);
 
         if (CheckState(state, PlayerState.Run))
-            state = PlayerState.Run;
+        {
+            // 대쉬 착지중이면
+            // 입력키 상태에따라 Dash or Run 으로 변경됨
+            if (state == PlayerState.DashLand)
+            {
+                if (moveInput == oldInput && dash)
+                {
+                    state = PlayerState.Dash;
+                }
+                else
+                {
+                    state = PlayerState.Run;
+                    dash = false;
+                }
+            }
+            else
+            {
+                state = PlayerState.Run;
+            }
+        }
     }
 
     public void MoveBR()
@@ -61,7 +158,26 @@ public partial class PlayerCtrl: MonoBehaviour
         moveInput = new Vector2(1.0f, -1.0f);
 
         if (CheckState(state, PlayerState.Run))
-            state = PlayerState.Run;
+        {
+            // 대쉬 착지중이면
+            // 입력키 상태에따라 Dash or Run 으로 변경됨
+            if (state == PlayerState.DashLand)
+            {
+                if (moveInput == oldInput && dash)
+                {
+                    state = PlayerState.Dash;
+                }
+                else
+                {
+                    state = PlayerState.Run;
+                    dash = false;
+                }
+            }
+            else
+            {
+                state = PlayerState.Run;
+            }
+        }
     }
 
     public void MoveLL()
@@ -69,7 +185,26 @@ public partial class PlayerCtrl: MonoBehaviour
         moveInput = new Vector2(-1.0f, 0);
 
         if (CheckState(state, PlayerState.Run))
-            state = PlayerState.Run;
+        {
+            // 대쉬 착지중이면
+            // 입력키 상태에따라 Dash or Run 으로 변경됨
+            if (state == PlayerState.DashLand)
+            {
+                if (moveInput == oldInput && dash)
+                {
+                    state = PlayerState.Dash;
+                }
+                else
+                {
+                    state = PlayerState.Run;
+                    dash = false;
+                }
+            }
+            else
+            {
+                state = PlayerState.Run;
+            }
+        }
     }
 
     public void MoveRR()
@@ -77,7 +212,26 @@ public partial class PlayerCtrl: MonoBehaviour
         moveInput = new Vector2(1.0f, 0);
 
         if (CheckState(state, PlayerState.Run))
-            state = PlayerState.Run;
+        {
+            // 대쉬 착지중이면
+            // 입력키 상태에따라 Dash or Run 으로 변경됨
+            if (state == PlayerState.DashLand)
+            {
+                if (moveInput == oldInput && dash)
+                {
+                    state = PlayerState.Dash;
+                }
+                else
+                {
+                    state = PlayerState.Run;
+                    dash = false;
+                }
+            }
+            else
+            {
+                state = PlayerState.Run;
+            }
+        }
     }
 
     public void Dash()
@@ -99,6 +253,7 @@ public partial class PlayerCtrl: MonoBehaviour
                 currentVelocityY = jumpVelocity * 0.6f;
                 jumpTime = Time.realtimeSinceStartup;
                 moveAnimeDir = modelTransform.forward;
+                oldInput = moveInput;
             }
         }
         else
@@ -112,6 +267,7 @@ public partial class PlayerCtrl: MonoBehaviour
                 state = PlayerState.Jump;
                 currentVelocityY = jumpVelocity;
                 jumpTime = Time.realtimeSinceStartup;
+                moveInput = new Vector2(0, 0);
             }
         }
     }

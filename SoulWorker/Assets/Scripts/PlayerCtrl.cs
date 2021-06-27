@@ -37,6 +37,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private Transform playerTransform;
     private PlayerState state = PlayerState.Idle;
     private Vector2 moveInput = Vector2.zero;
+    private Vector2 oldInput = Vector2.zero;        // 대쉬 점프할 때 입력 값 저장
     private Vector3 moveAnimeDir = Vector3.zero;
     private Vector3 turnDir = Vector3.forward;
 
@@ -125,9 +126,9 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)PlayerState.Land, (int)PlayerState.DashLand] = false;
 
         changeState[(int)PlayerState.DashLand, (int)PlayerState.Idle] = false;
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.Run] = false;
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.Run] = true;
         changeState[(int)PlayerState.DashLand, (int)PlayerState.Dash] = false;
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.Jump] = true;
+        changeState[(int)PlayerState.DashLand, (int)PlayerState.Jump] = false;
         changeState[(int)PlayerState.DashLand, (int)PlayerState.DashJump] = false;
         changeState[(int)PlayerState.DashLand, (int)PlayerState.Land] = false;
         changeState[(int)PlayerState.DashLand, (int)PlayerState.DashLand] = false;
