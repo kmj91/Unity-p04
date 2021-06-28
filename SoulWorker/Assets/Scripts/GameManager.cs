@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
             { KeyCode.S, KeyDown_Back },        // 뒤로 이동
             { KeyCode.A, KeyDown_Left },        // 왼쪽으로 이동
             { KeyCode.D, KeyDown_Right },       // 오른쪽으로 이동
+            { KeyCode.Mouse0, KeyDown_Mouse0 }, // 마우스 왼쪽
+            { KeyCode.Mouse1, KeyDown_Mouse1 }, // 마우스 오른쪽
             { KeyCode.Space, KeyDown_Jump },    // 점프
             { KeyCode.LeftShift, KeyDown_Dvade },   // 회피
             { KeyCode.Alpha1 , KeyDown_Alpha1 },    // 스킬 슬롯 1
@@ -55,6 +57,8 @@ public class GameManager : MonoBehaviour
             { KeyCode.S, KeyUp_Back },          // 뒤로 이동
             { KeyCode.A, KeyUp_Left },          // 왼쪽으로 이동
             { KeyCode.D, KeyUp_Right },         // 오른쪽으로 이동
+            { KeyCode.Mouse0, KeyUp_Mouse0 },   // 마우스 왼쪽
+            { KeyCode.Mouse1, KeyUp_Mouse1 },   // 마우스 오른쪽
             { KeyCode.Space, KeyUp_Jump },      // 점프
             { KeyCode.LeftShift, KeyUp_Dvade }, // 회피
             { KeyCode.Alpha1 , KeyUp_Alpha1 },  // 스킬 슬롯 1
@@ -95,6 +99,7 @@ public class GameManager : MonoBehaviour
 
         SkillCheck();
         JumpCheck();
+        MouseCheck();
         MoveCheck();
     }
 
@@ -168,6 +173,35 @@ public class GameManager : MonoBehaviour
             if (queue[iRear].key == KeyCode.Space)
             {
                 playerCtrl.Jump();
+            }
+        }
+    }
+
+    // 마우스
+    private void MouseCheck()
+    {
+        var queue = keyQueue.GetQueue();
+        int iSize = keyQueue.GetQueueSize();
+        int iRear = keyQueue.GetRear();
+        int iFront = keyQueue.GetFront();
+
+        while (iRear != iFront)
+        {
+            --iRear;
+            if (iRear < 0)
+            {
+                iRear = iSize - 1;
+            }
+
+            // 마우스 왼쪽
+            if (queue[iRear].key == KeyCode.Mouse0)
+            {
+                playerCtrl.MouseLeft();
+            }
+            // 마우스 오른쪽
+            else if (queue[iRear].key == KeyCode.Mouse1)
+            {
+                playerCtrl.MouseRight();
             }
         }
     }
@@ -419,6 +453,20 @@ public class GameManager : MonoBehaviour
         keyQueue.Enqueue(in key);
     }
 
+    // 마우스 왼쪽
+    private void KeyDown_Mouse0()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.Mouse0, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
+    // 마우스 오른쪽
+    private void KeyDown_Mouse1()
+    {
+        KeyInfo key = new KeyInfo(KeyCode.Mouse1, Time.realtimeSinceStartup);
+        keyQueue.Enqueue(in key);
+    }
+
     // 점프
     private void KeyDown_Jump()
     {
@@ -499,6 +547,18 @@ public class GameManager : MonoBehaviour
     private void KeyUp_Right()
     {
         EraseKey(KeyCode.D);
+    }
+
+    // 마우스 왼쪽
+    private void KeyUp_Mouse0()
+    {
+        EraseKey(KeyCode.Mouse0);
+    }
+
+    // 마우스 오른쪽
+    private void KeyUp_Mouse1()
+    {
+        EraseKey(KeyCode.Mouse1);
     }
 
     // 점프

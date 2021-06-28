@@ -131,4 +131,14 @@ public partial class PlayerCtrl : MonoBehaviour
             currentVelocityY = 0.0f;
         }
     }
+
+    private void Move_NormalAttack1()
+    {
+
+    }
+
+    private void Move_NormalAttack2()
+    {
+
+    }
 }

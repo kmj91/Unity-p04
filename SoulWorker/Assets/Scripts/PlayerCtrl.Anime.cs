@@ -167,4 +167,68 @@ public partial class PlayerCtrl : MonoBehaviour
             }
         }
     }
+
+    // 일반 공격 1
+    private void Ani_NormalAttack1()
+    {
+        hairAnime.SetInteger("NormalAttack", 1);
+        faceAnime.SetInteger("NormalAttack", 1);
+        bodyAnime.SetInteger("NormalAttack", 1);
+        pantsAnime.SetInteger("NormalAttack", 1);
+        handsAnime.SetInteger("NormalAttack", 1);
+        footAnime.SetInteger("NormalAttack", 1);
+
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_01"))
+        {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            {
+                lockInput = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = PlayerState.Idle;
+                normalAttack = 0;
+
+                hairAnime.SetInteger("NormalAttack", 0);
+                faceAnime.SetInteger("NormalAttack", 0);
+                bodyAnime.SetInteger("NormalAttack", 0);
+                pantsAnime.SetInteger("NormalAttack", 0);
+                handsAnime.SetInteger("NormalAttack", 0);
+                footAnime.SetInteger("NormalAttack", 0);
+            }
+        }
+    }
+
+    // 일반 공격 2
+    private void Ani_NormalAttack2()
+    {
+        hairAnime.SetInteger("NormalAttack", 2);
+        faceAnime.SetInteger("NormalAttack", 2);
+        bodyAnime.SetInteger("NormalAttack", 2);
+        pantsAnime.SetInteger("NormalAttack", 2);
+        handsAnime.SetInteger("NormalAttack", 2);
+        footAnime.SetInteger("NormalAttack", 2);
+
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_02"))
+        {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.35f)
+            {
+                lockInput = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = PlayerState.Idle;
+                normalAttack = 0;
+
+                hairAnime.SetInteger("NormalAttack", 0);
+                faceAnime.SetInteger("NormalAttack", 0);
+                bodyAnime.SetInteger("NormalAttack", 0);
+                pantsAnime.SetInteger("NormalAttack", 0);
+                handsAnime.SetInteger("NormalAttack", 0);
+                footAnime.SetInteger("NormalAttack", 0);
+            }
+        }
+    }
 }

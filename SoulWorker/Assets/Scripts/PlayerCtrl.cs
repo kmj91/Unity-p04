@@ -48,8 +48,10 @@ public partial class PlayerCtrl : MonoBehaviour
     private float currentVelocityY;
     private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
     private float jumpTime;
-    private bool jump = false;
-    private bool dash = false;
+    private int normalAttack;
+    private bool jump;
+    private bool dash;
+    private bool lockInput;
 
 
     // Start is called before the first frame update
@@ -66,6 +68,8 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate[(int)PlayerState.DashJump] = Move_DashJump;
         moveUpdate[(int)PlayerState.Land] = Move_Land;
         moveUpdate[(int)PlayerState.DashLand] = Move_DashLand;
+        moveUpdate[(int)PlayerState.NormalAttack1] = Move_NormalAttack1;
+        moveUpdate[(int)PlayerState.NormalAttack2] = Move_NormalAttack2;
 
         animeUpdate = new Action[(int)PlayerState.End];
         animeUpdate[(int)PlayerState.Idle] = Ani_Idle;
@@ -75,63 +79,35 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)PlayerState.DashJump] = Ani_DashJump;
         animeUpdate[(int)PlayerState.Land] = Ani_Land;
         animeUpdate[(int)PlayerState.DashLand] = Ani_DashLand;
+        animeUpdate[(int)PlayerState.NormalAttack1] = Ani_NormalAttack1;
+        animeUpdate[(int)PlayerState.NormalAttack2] = Ani_NormalAttack2;
 
         changeState = new bool[(int)PlayerState.End, (int)PlayerState.End];
-        changeState[(int)PlayerState.Idle, (int)PlayerState.Idle] = false;
+
         changeState[(int)PlayerState.Idle, (int)PlayerState.Run] = true;
         changeState[(int)PlayerState.Idle, (int)PlayerState.Dash] = true;
         changeState[(int)PlayerState.Idle, (int)PlayerState.Jump] = true;
-        changeState[(int)PlayerState.Idle, (int)PlayerState.DashJump] = false;
-        changeState[(int)PlayerState.Idle, (int)PlayerState.Land] = false;
-        changeState[(int)PlayerState.Idle, (int)PlayerState.DashLand] = false;
+        changeState[(int)PlayerState.Idle, (int)PlayerState.NormalAttack1] = true;
 
         changeState[(int)PlayerState.Run, (int)PlayerState.Idle] = true;
-        changeState[(int)PlayerState.Run, (int)PlayerState.Run] = false;
         changeState[(int)PlayerState.Run, (int)PlayerState.Dash] = true;
         changeState[(int)PlayerState.Run, (int)PlayerState.Jump] = true;
-        changeState[(int)PlayerState.Run, (int)PlayerState.DashJump] = false;
-        changeState[(int)PlayerState.Run, (int)PlayerState.Land] = false;
-        changeState[(int)PlayerState.Run, (int)PlayerState.DashLand] = false;
+        changeState[(int)PlayerState.Run, (int)PlayerState.NormalAttack1] = true;
 
         changeState[(int)PlayerState.Dash, (int)PlayerState.Idle] = true;
-        changeState[(int)PlayerState.Dash, (int)PlayerState.Run] = false;
-        changeState[(int)PlayerState.Dash, (int)PlayerState.Dash] = false;
-        changeState[(int)PlayerState.Dash, (int)PlayerState.Jump] = false;
         changeState[(int)PlayerState.Dash, (int)PlayerState.DashJump] = true;
-        changeState[(int)PlayerState.Dash, (int)PlayerState.Land] = false;
-        changeState[(int)PlayerState.Dash, (int)PlayerState.DashLand] = false;
 
-        changeState[(int)PlayerState.Jump, (int)PlayerState.Idle] = false;
-        changeState[(int)PlayerState.Jump, (int)PlayerState.Run] = false;
-        changeState[(int)PlayerState.Jump, (int)PlayerState.Dash] = false;
-        changeState[(int)PlayerState.Jump, (int)PlayerState.Jump] = false;
-        changeState[(int)PlayerState.Jump, (int)PlayerState.DashJump] = false;
         changeState[(int)PlayerState.Jump, (int)PlayerState.Land] = true;
-        changeState[(int)PlayerState.Jump, (int)PlayerState.DashLand] = false;
 
-        changeState[(int)PlayerState.DashJump, (int)PlayerState.Idle] = false;
-        changeState[(int)PlayerState.DashJump, (int)PlayerState.Run] = false;
-        changeState[(int)PlayerState.DashJump, (int)PlayerState.Dash] = false;
-        changeState[(int)PlayerState.DashJump, (int)PlayerState.Jump] = false;
-        changeState[(int)PlayerState.DashJump, (int)PlayerState.DashJump] = false;
-        changeState[(int)PlayerState.DashJump, (int)PlayerState.Land] = false;
         changeState[(int)PlayerState.DashJump, (int)PlayerState.DashLand] = true;
 
-        changeState[(int)PlayerState.Land, (int)PlayerState.Idle] = false;
         changeState[(int)PlayerState.Land, (int)PlayerState.Run] = true;
         changeState[(int)PlayerState.Land, (int)PlayerState.Dash] = true;
         changeState[(int)PlayerState.Land, (int)PlayerState.Jump] = true;
-        changeState[(int)PlayerState.Land, (int)PlayerState.DashJump] = false;
-        changeState[(int)PlayerState.Land, (int)PlayerState.Land] = false;
-        changeState[(int)PlayerState.Land, (int)PlayerState.DashLand] = false;
 
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.Idle] = false;
         changeState[(int)PlayerState.DashLand, (int)PlayerState.Run] = true;
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.Dash] = false;
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.Jump] = false;
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.DashJump] = false;
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.Land] = false;
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.DashLand] = false;
+
+        changeState[(int)PlayerState.NormalAttack1, (int)PlayerState.NormalAttack2] = true;
 
         weapon.parent = weaponholder;
         weapon.localPosition = Vector3.zero;
