@@ -183,6 +183,12 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
             {
                 lockInput = false;
+                moveAttack = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
+            {
+                moveStand = true;
             }
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
@@ -212,9 +218,19 @@ public partial class PlayerCtrl : MonoBehaviour
 
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_02"))
         {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
+            {
+                moveAttack = false;
+            }
+
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.35f)
             {
                 lockInput = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
+            {
+                moveStand = true;
             }
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
@@ -244,9 +260,19 @@ public partial class PlayerCtrl : MonoBehaviour
 
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_03"))
         {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            {
+                moveAttack = false;
+            }
+
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
             {
                 lockInput = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.75f)
+            {
+                moveStand = true;
             }
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
@@ -276,9 +302,19 @@ public partial class PlayerCtrl : MonoBehaviour
 
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_04"))
         {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.28f)
+            {
+                moveAttack = false;
+            }
+
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
             {
                 lockInput = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.75f)
+            {
+                moveStand = true;
             }
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
@@ -311,6 +347,12 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
             {
                 lockInput = false;
+                moveAttack = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
+            {
+                moveStand = true;
             }
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)

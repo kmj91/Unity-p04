@@ -251,7 +251,10 @@ public partial class PlayerCtrl: MonoBehaviour
             {
                 state = PlayerState.NormalAttack1;
                 lockInput = true;
+                moveAttack = true;
+                moveStand = false;
                 ++normalAttack;
+                moveAnimeDir = modelTransform.forward;
             }
         }
         else if (normalAttack == 1)
@@ -260,6 +263,8 @@ public partial class PlayerCtrl: MonoBehaviour
             {
                 state = PlayerState.NormalAttack2;
                 lockInput = true;
+                moveAttack = true;
+                moveStand = false;
                 ++normalAttack;
             }
         }
@@ -269,6 +274,8 @@ public partial class PlayerCtrl: MonoBehaviour
             {
                 state = PlayerState.NormalAttack3;
                 lockInput = true;
+                moveAttack = true;
+                moveStand = false;
                 ++normalAttack;
             }
         }
@@ -278,6 +285,8 @@ public partial class PlayerCtrl: MonoBehaviour
             {
                 state = PlayerState.NormalAttack4;
                 lockInput = true;
+                moveAttack = true;
+                moveStand = false;
                 ++normalAttack;
             }
         }
@@ -287,6 +296,8 @@ public partial class PlayerCtrl: MonoBehaviour
             {
                 state = PlayerState.NormalAttack5;
                 lockInput = true;
+                moveAttack = true;
+                moveStand = false;
                 ++normalAttack;
             }
         }

@@ -52,6 +52,8 @@ public partial class PlayerCtrl : MonoBehaviour
     private bool jump;
     private bool dash;
     private bool lockInput;
+    private bool moveAttack;            // 공격시 전진 플래그
+    private bool moveStand;             // 공격후 제자리 플래그
 
 
     // Start is called before the first frame update
