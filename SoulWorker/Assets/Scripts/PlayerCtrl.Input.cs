@@ -263,6 +263,33 @@ public partial class PlayerCtrl: MonoBehaviour
                 ++normalAttack;
             }
         }
+        else if (normalAttack == 2)
+        {
+            if (CheckState(state, PlayerState.NormalAttack3) && !lockInput)
+            {
+                state = PlayerState.NormalAttack3;
+                lockInput = true;
+                ++normalAttack;
+            }
+        }
+        else if (normalAttack == 3)
+        {
+            if (CheckState(state, PlayerState.NormalAttack4) && !lockInput)
+            {
+                state = PlayerState.NormalAttack4;
+                lockInput = true;
+                ++normalAttack;
+            }
+        }
+        else if (normalAttack == 4)
+        {
+            if (CheckState(state, PlayerState.NormalAttack5) && !lockInput)
+            {
+                state = PlayerState.NormalAttack5;
+                lockInput = true;
+                ++normalAttack;
+            }
+        }
     }
 
     public void MouseRight()

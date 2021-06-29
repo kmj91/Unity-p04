@@ -70,6 +70,9 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate[(int)PlayerState.DashLand] = Move_DashLand;
         moveUpdate[(int)PlayerState.NormalAttack1] = Move_NormalAttack1;
         moveUpdate[(int)PlayerState.NormalAttack2] = Move_NormalAttack2;
+        moveUpdate[(int)PlayerState.NormalAttack3] = Move_NormalAttack3;
+        moveUpdate[(int)PlayerState.NormalAttack4] = Move_NormalAttack4;
+        moveUpdate[(int)PlayerState.NormalAttack5] = Move_NormalAttack5;
 
         animeUpdate = new Action[(int)PlayerState.End];
         animeUpdate[(int)PlayerState.Idle] = Ani_Idle;
@@ -81,6 +84,9 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)PlayerState.DashLand] = Ani_DashLand;
         animeUpdate[(int)PlayerState.NormalAttack1] = Ani_NormalAttack1;
         animeUpdate[(int)PlayerState.NormalAttack2] = Ani_NormalAttack2;
+        animeUpdate[(int)PlayerState.NormalAttack3] = Ani_NormalAttack3;
+        animeUpdate[(int)PlayerState.NormalAttack4] = Ani_NormalAttack4;
+        animeUpdate[(int)PlayerState.NormalAttack5] = Ani_NormalAttack5;
 
         changeState = new bool[(int)PlayerState.End, (int)PlayerState.End];
 
@@ -108,6 +114,12 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)PlayerState.DashLand, (int)PlayerState.Run] = true;
 
         changeState[(int)PlayerState.NormalAttack1, (int)PlayerState.NormalAttack2] = true;
+
+        changeState[(int)PlayerState.NormalAttack2, (int)PlayerState.NormalAttack3] = true;
+
+        changeState[(int)PlayerState.NormalAttack3, (int)PlayerState.NormalAttack4] = true;
+
+        changeState[(int)PlayerState.NormalAttack4, (int)PlayerState.NormalAttack5] = true;
 
         weapon.parent = weaponholder;
         weapon.localPosition = Vector3.zero;

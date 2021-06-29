@@ -141,4 +141,19 @@ public partial class PlayerCtrl : MonoBehaviour
     {
 
     }
+
+    private void Move_NormalAttack3()
+    {
+
+    }
+
+    private void Move_NormalAttack4()
+    {
+
+    }
+
+    private void Move_NormalAttack5()
+    {
+
+    }
 }

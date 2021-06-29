@@ -231,4 +231,100 @@ public partial class PlayerCtrl : MonoBehaviour
             }
         }
     }
+
+    // 일반 공격 3
+    private void Ani_NormalAttack3()
+    {
+        hairAnime.SetInteger("NormalAttack", 3);
+        faceAnime.SetInteger("NormalAttack", 3);
+        bodyAnime.SetInteger("NormalAttack", 3);
+        pantsAnime.SetInteger("NormalAttack", 3);
+        handsAnime.SetInteger("NormalAttack", 3);
+        footAnime.SetInteger("NormalAttack", 3);
+
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_03"))
+        {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            {
+                lockInput = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = PlayerState.Idle;
+                normalAttack = 0;
+
+                hairAnime.SetInteger("NormalAttack", 0);
+                faceAnime.SetInteger("NormalAttack", 0);
+                bodyAnime.SetInteger("NormalAttack", 0);
+                pantsAnime.SetInteger("NormalAttack", 0);
+                handsAnime.SetInteger("NormalAttack", 0);
+                footAnime.SetInteger("NormalAttack", 0);
+            }
+        }
+    }
+
+    // 일반 공격 4
+    private void Ani_NormalAttack4()
+    {
+        hairAnime.SetInteger("NormalAttack", 4);
+        faceAnime.SetInteger("NormalAttack", 4);
+        bodyAnime.SetInteger("NormalAttack", 4);
+        pantsAnime.SetInteger("NormalAttack", 4);
+        handsAnime.SetInteger("NormalAttack", 4);
+        footAnime.SetInteger("NormalAttack", 4);
+
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_04"))
+        {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            {
+                lockInput = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = PlayerState.Idle;
+                normalAttack = 0;
+
+                hairAnime.SetInteger("NormalAttack", 0);
+                faceAnime.SetInteger("NormalAttack", 0);
+                bodyAnime.SetInteger("NormalAttack", 0);
+                pantsAnime.SetInteger("NormalAttack", 0);
+                handsAnime.SetInteger("NormalAttack", 0);
+                footAnime.SetInteger("NormalAttack", 0);
+            }
+        }
+    }
+
+    // 일반 공격 5
+    private void Ani_NormalAttack5()
+    {
+        hairAnime.SetInteger("NormalAttack", 5);
+        faceAnime.SetInteger("NormalAttack", 5);
+        bodyAnime.SetInteger("NormalAttack", 5);
+        pantsAnime.SetInteger("NormalAttack", 5);
+        handsAnime.SetInteger("NormalAttack", 5);
+        footAnime.SetInteger("NormalAttack", 5);
+
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_05"))
+        {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            {
+                lockInput = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = PlayerState.Idle;
+                normalAttack = 0;
+
+                hairAnime.SetInteger("NormalAttack", 0);
+                faceAnime.SetInteger("NormalAttack", 0);
+                bodyAnime.SetInteger("NormalAttack", 0);
+                pantsAnime.SetInteger("NormalAttack", 0);
+                handsAnime.SetInteger("NormalAttack", 0);
+                footAnime.SetInteger("NormalAttack", 0);
+            }
+        }
+    }
 }
