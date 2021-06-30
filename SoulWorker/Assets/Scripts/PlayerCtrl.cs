@@ -54,6 +54,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private bool lockInput;
     private bool moveAttack;            // 공격시 전진 플래그
     private bool moveStand;             // 공격후 제자리 플래그
+    private bool cameraDirAtk = true;          // 카메라 방향으로 공격 플래그
 
 
     // Start is called before the first frame update
