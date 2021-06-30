@@ -22,26 +22,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = new Vector2(0, 1.0f);
 
-        if (CheckState(state, PlayerState.Run))
+        if (CheckState(state, PlayerState.Run) && !lockInput)
         {
-            // 대쉬 착지중이면
-            // 입력키 상태에따라 Dash or Run 으로 변경됨
-            if (state == PlayerState.DashLand)
-            {
-                if (moveInput == oldInput && dash)
-                {
-                    state = PlayerState.Dash;
-                }
-                else
-                {
-                    state = PlayerState.Run;
-                    dash = false;
-                }
-            }
-            else 
-            {
-                state = PlayerState.Run;
-            }
+            MoveBranch();
         }
     }
 
@@ -49,26 +32,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = new Vector2(-1.0f, 1.0f);
 
-        if (CheckState(state, PlayerState.Run))
+        if (CheckState(state, PlayerState.Run) && !lockInput)
         {
-            // 대쉬 착지중이면
-            // 입력키 상태에따라 Dash or Run 으로 변경됨
-            if (state == PlayerState.DashLand)
-            {
-                if (moveInput == oldInput && dash)
-                {
-                    state = PlayerState.Dash;
-                }
-                else
-                {
-                    state = PlayerState.Run;
-                    dash = false;
-                }
-            }
-            else
-            {
-                state = PlayerState.Run;
-            }
+            MoveBranch();
         }
     }
 
@@ -76,26 +42,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = new Vector2(1.0f, 1.0f);
 
-        if (CheckState(state, PlayerState.Run))
+        if (CheckState(state, PlayerState.Run) && !lockInput)
         {
-            // 대쉬 착지중이면
-            // 입력키 상태에따라 Dash or Run 으로 변경됨
-            if (state == PlayerState.DashLand)
-            {
-                if (moveInput == oldInput && dash)
-                {
-                    state = PlayerState.Dash;
-                }
-                else
-                {
-                    state = PlayerState.Run;
-                    dash = false;
-                }
-            }
-            else
-            {
-                state = PlayerState.Run;
-            }
+            MoveBranch();
         }
     }
 
@@ -103,26 +52,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = new Vector2(0, -1.0f);
 
-        if (CheckState(state, PlayerState.Run))
+        if (CheckState(state, PlayerState.Run) && !lockInput)
         {
-            // 대쉬 착지중이면
-            // 입력키 상태에따라 Dash or Run 으로 변경됨
-            if (state == PlayerState.DashLand)
-            {
-                if (moveInput == oldInput && dash)
-                {
-                    state = PlayerState.Dash;
-                }
-                else
-                {
-                    state = PlayerState.Run;
-                    dash = false;
-                }
-            }
-            else
-            {
-                state = PlayerState.Run;
-            }
+            MoveBranch();
         }
     }
 
@@ -130,26 +62,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = new Vector2(-1.0f, -1.0f);
 
-        if (CheckState(state, PlayerState.Run))
+        if (CheckState(state, PlayerState.Run) && !lockInput)
         {
-            // 대쉬 착지중이면
-            // 입력키 상태에따라 Dash or Run 으로 변경됨
-            if (state == PlayerState.DashLand)
-            {
-                if (moveInput == oldInput && dash)
-                {
-                    state = PlayerState.Dash;
-                }
-                else
-                {
-                    state = PlayerState.Run;
-                    dash = false;
-                }
-            }
-            else
-            {
-                state = PlayerState.Run;
-            }
+            MoveBranch();
         }
     }
 
@@ -157,26 +72,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = new Vector2(1.0f, -1.0f);
 
-        if (CheckState(state, PlayerState.Run))
+        if (CheckState(state, PlayerState.Run) && !lockInput)
         {
-            // 대쉬 착지중이면
-            // 입력키 상태에따라 Dash or Run 으로 변경됨
-            if (state == PlayerState.DashLand)
-            {
-                if (moveInput == oldInput && dash)
-                {
-                    state = PlayerState.Dash;
-                }
-                else
-                {
-                    state = PlayerState.Run;
-                    dash = false;
-                }
-            }
-            else
-            {
-                state = PlayerState.Run;
-            }
+            MoveBranch();
         }
     }
 
@@ -184,26 +82,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = new Vector2(-1.0f, 0);
 
-        if (CheckState(state, PlayerState.Run))
+        if (CheckState(state, PlayerState.Run) && !lockInput)
         {
-            // 대쉬 착지중이면
-            // 입력키 상태에따라 Dash or Run 으로 변경됨
-            if (state == PlayerState.DashLand)
-            {
-                if (moveInput == oldInput && dash)
-                {
-                    state = PlayerState.Dash;
-                }
-                else
-                {
-                    state = PlayerState.Run;
-                    dash = false;
-                }
-            }
-            else
-            {
-                state = PlayerState.Run;
-            }
+            MoveBranch();
         }
     }
 
@@ -211,26 +92,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = new Vector2(1.0f, 0);
 
-        if (CheckState(state, PlayerState.Run))
+        if (CheckState(state, PlayerState.Run) && !lockInput)
         {
-            // 대쉬 착지중이면
-            // 입력키 상태에따라 Dash or Run 으로 변경됨
-            if (state == PlayerState.DashLand)
-            {
-                if (moveInput == oldInput && dash)
-                {
-                    state = PlayerState.Dash;
-                }
-                else
-                {
-                    state = PlayerState.Run;
-                    dash = false;
-                }
-            }
-            else
-            {
-                state = PlayerState.Run;
-            }
+            MoveBranch();
         }
     }
 
@@ -245,61 +109,48 @@ public partial class PlayerCtrl: MonoBehaviour
 
     public void MouseLeft()
     {
-        if (normalAttack == 0)
+        if (CheckState(state, PlayerState.NormalAttack1) && !lockInput)
         {
-            if (CheckState(state, PlayerState.NormalAttack1) && !lockInput)
-            {
-                state = PlayerState.NormalAttack1;
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                ++normalAttack;
-                moveAnimeDir = modelTransform.forward;
-            }
+            state = PlayerState.NormalAttack1;
+            lockInput = true;
+            moveAttack = true;
+            moveStand = false;
+            normalAtk = true;
+            SetNormalAttackTrue();
+            SetNormalAttackCnt(1);
+            moveAnimeDir = modelTransform.forward;
         }
-        else if (normalAttack == 1)
+        else if (CheckState(state, PlayerState.NormalAttack2) && !lockInput && normalAtk)
         {
-            if (CheckState(state, PlayerState.NormalAttack2) && !lockInput)
-            {
-                state = PlayerState.NormalAttack2;
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                ++normalAttack;
-            }
+            state = PlayerState.NormalAttack2;
+            lockInput = true;
+            moveAttack = true;
+            moveStand = false;
+            SetNormalAttackCnt(2);
         }
-        else if (normalAttack == 2)
+        else if (CheckState(state, PlayerState.NormalAttack3) && !lockInput && normalAtk)
         {
-            if (CheckState(state, PlayerState.NormalAttack3) && !lockInput)
-            {
-                state = PlayerState.NormalAttack3;
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                ++normalAttack;
-            }
+            state = PlayerState.NormalAttack3;
+            lockInput = true;
+            moveAttack = true;
+            moveStand = false;
+            SetNormalAttackCnt(3);
         }
-        else if (normalAttack == 3)
+        else if (CheckState(state, PlayerState.NormalAttack4) && !lockInput && normalAtk)
         {
-            if (CheckState(state, PlayerState.NormalAttack4) && !lockInput)
-            {
-                state = PlayerState.NormalAttack4;
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                ++normalAttack;
-            }
+            state = PlayerState.NormalAttack4;
+            lockInput = true;
+            moveAttack = true;
+            moveStand = false;
+            SetNormalAttackCnt(4);
         }
-        else if (normalAttack == 4)
+        else if (CheckState(state, PlayerState.NormalAttack5) && !lockInput && normalAtk)
         {
-            if (CheckState(state, PlayerState.NormalAttack5) && !lockInput)
-            {
-                state = PlayerState.NormalAttack5;
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                ++normalAttack;
-            }
+            state = PlayerState.NormalAttack5;
+            lockInput = true;
+            moveAttack = true;
+            moveStand = false;
+            SetNormalAttackCnt(5);
         }
     }
 
@@ -365,5 +216,39 @@ public partial class PlayerCtrl: MonoBehaviour
     public void SkillSlot6()
     {
 
+    }
+
+
+
+
+
+    private void MoveBranch()
+    {
+        // 대쉬 착지중이면
+        // 입력키 상태에따라 Dash or Run 으로 변경됨
+        if (state == PlayerState.DashLand)
+        {
+            if (moveInput == oldInput && dash)
+            {
+                state = PlayerState.Dash;
+            }
+            else
+            {
+                state = PlayerState.Run;
+                dash = false;
+            }
+        }
+        else
+        {
+            state = PlayerState.Run;
+        }
+
+        // 공격 종료
+        if (normalAtk)
+        {
+            normalAtk = false;
+            SetNormalAttackFalse();
+            SetNormalAttackCnt(-1);
+        }
     }
 }

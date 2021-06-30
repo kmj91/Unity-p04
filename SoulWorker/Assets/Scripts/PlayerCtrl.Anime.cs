@@ -6,7 +6,7 @@ using MyEnum;
 
 public partial class PlayerCtrl : MonoBehaviour
 {
-    private void Ani_Idle()
+    private void SetSpeedZero()
     {
         hairAnime.SetFloat("Speed", 0);
         faceAnime.SetFloat("Speed", 0);
@@ -14,17 +14,88 @@ public partial class PlayerCtrl : MonoBehaviour
         pantsAnime.SetFloat("Speed", 0);
         handsAnime.SetFloat("Speed", 0);
         footAnime.SetFloat("Speed", 0);
+    }
+
+    private void SetDashTrue()
+    {
+        hairAnime.SetBool("Dash", true);
+        faceAnime.SetBool("Dash", true);
+        bodyAnime.SetBool("Dash", true);
+        pantsAnime.SetBool("Dash", true);
+        handsAnime.SetBool("Dash", true);
+        footAnime.SetBool("Dash", true);
+    }
+
+    private void SetDashFalse()
+    {
+        hairAnime.SetBool("Dash", false);
+        faceAnime.SetBool("Dash", false);
+        bodyAnime.SetBool("Dash", false);
+        pantsAnime.SetBool("Dash", false);
+        handsAnime.SetBool("Dash", false);
+        footAnime.SetBool("Dash", false);
+    }
+
+    private void SetJumpTrue()
+    {
+        hairAnime.SetBool("Jump", true);
+        faceAnime.SetBool("Jump", true);
+        bodyAnime.SetBool("Jump", true);
+        pantsAnime.SetBool("Jump", true);
+        handsAnime.SetBool("Jump", true);
+        footAnime.SetBool("Jump", true);
+    }
+
+    private void SetJumpFalse()
+    {
+        hairAnime.SetBool("Jump", false);
+        faceAnime.SetBool("Jump", false);
+        bodyAnime.SetBool("Jump", false);
+        pantsAnime.SetBool("Jump", false);
+        handsAnime.SetBool("Jump", false);
+        footAnime.SetBool("Jump", false);
+    }
+
+    private void SetNormalAttackTrue()
+    {
+        hairAnime.SetBool("NormalAttack", true);
+        faceAnime.SetBool("NormalAttack", true);
+        bodyAnime.SetBool("NormalAttack", true);
+        pantsAnime.SetBool("NormalAttack", true);
+        handsAnime.SetBool("NormalAttack", true);
+        footAnime.SetBool("NormalAttack", true);
+    }
+
+    private void SetNormalAttackFalse()
+    {
+        hairAnime.SetBool("NormalAttack", false);
+        faceAnime.SetBool("NormalAttack", false);
+        bodyAnime.SetBool("NormalAttack", false);
+        pantsAnime.SetBool("NormalAttack", false);
+        handsAnime.SetBool("NormalAttack", false);
+        footAnime.SetBool("NormalAttack", false);
+    }
+
+    private void SetNormalAttackCnt(int cnt)
+    {
+        hairAnime.SetInteger("NormalAttackCnt", cnt);
+        faceAnime.SetInteger("NormalAttackCnt", cnt);
+        bodyAnime.SetInteger("NormalAttackCnt", cnt);
+        pantsAnime.SetInteger("NormalAttackCnt", cnt);
+        handsAnime.SetInteger("NormalAttackCnt", cnt);
+        footAnime.SetInteger("NormalAttackCnt", cnt);
+    }
+
+
+
+    private void Ani_Idle()
+    {
+        SetSpeedZero();
 
         if (dash)
         {
             dash = false;
-
-            hairAnime.SetBool("Dash", false);
-            faceAnime.SetBool("Dash", false);
-            bodyAnime.SetBool("Dash", false);
-            pantsAnime.SetBool("Dash", false);
-            handsAnime.SetBool("Dash", false);
-            footAnime.SetBool("Dash", false);
+            SetDashFalse();
         }
     }
 
@@ -42,12 +113,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Dash()
     {
-        hairAnime.SetBool("Dash", true);
-        faceAnime.SetBool("Dash", true);
-        bodyAnime.SetBool("Dash", true);
-        pantsAnime.SetBool("Dash", true);
-        handsAnime.SetBool("Dash", true);
-        footAnime.SetBool("Dash", true);
+        SetDashTrue();
     }
 
     private void Ani_Jump()
@@ -55,12 +121,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (!jump)
         {
             jump = true;
-            hairAnime.SetBool("Jump", true);
-            faceAnime.SetBool("Jump", true);
-            bodyAnime.SetBool("Jump", true);
-            pantsAnime.SetBool("Jump", true);
-            handsAnime.SetBool("Jump", true);
-            footAnime.SetBool("Jump", true);
+            SetJumpTrue();
         }
         else
         {
@@ -75,19 +136,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 state = PlayerState.Land;
                 jumpTime = Time.realtimeSinceStartup;
 
-                hairAnime.SetBool("Jump", false);
-                faceAnime.SetBool("Jump", false);
-                bodyAnime.SetBool("Jump", false);
-                pantsAnime.SetBool("Jump", false);
-                handsAnime.SetBool("Jump", false);
-                footAnime.SetBool("Jump", false);
-
-                hairAnime.SetFloat("Speed", 0);
-                faceAnime.SetFloat("Speed", 0);
-                bodyAnime.SetFloat("Speed", 0);
-                pantsAnime.SetFloat("Speed", 0);
-                handsAnime.SetFloat("Speed", 0);
-                footAnime.SetFloat("Speed", 0);
+                SetJumpFalse();
+                SetSpeedZero();
             }
         }
     }
@@ -97,12 +147,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (!jump)
         {
             jump = true;
-            hairAnime.SetBool("Jump", true);
-            faceAnime.SetBool("Jump", true);
-            bodyAnime.SetBool("Jump", true);
-            pantsAnime.SetBool("Jump", true);
-            handsAnime.SetBool("Jump", true);
-            footAnime.SetBool("Jump", true);
+            SetJumpTrue();
         }
         else
         {
@@ -117,26 +162,9 @@ public partial class PlayerCtrl : MonoBehaviour
                 state = PlayerState.DashLand;
                 moveAnimeDir = modelTransform.forward;
 
-                hairAnime.SetBool("Jump", false);
-                faceAnime.SetBool("Jump", false);
-                bodyAnime.SetBool("Jump", false);
-                pantsAnime.SetBool("Jump", false);
-                handsAnime.SetBool("Jump", false);
-                footAnime.SetBool("Jump", false);
-
-                hairAnime.SetFloat("Speed", 0);
-                faceAnime.SetFloat("Speed", 0);
-                bodyAnime.SetFloat("Speed", 0);
-                pantsAnime.SetFloat("Speed", 0);
-                handsAnime.SetFloat("Speed", 0);
-                footAnime.SetFloat("Speed", 0);
-
-                hairAnime.SetBool("Dash", false);
-                faceAnime.SetBool("Dash", false);
-                bodyAnime.SetBool("Dash", false);
-                pantsAnime.SetBool("Dash", false);
-                handsAnime.SetBool("Dash", false);
-                footAnime.SetBool("Dash", false);
+                SetJumpFalse();
+                SetSpeedZero();
+                SetDashFalse();
             }
         }
     }
@@ -171,19 +199,16 @@ public partial class PlayerCtrl : MonoBehaviour
     // 일반 공격 1
     private void Ani_NormalAttack1()
     {
-        hairAnime.SetInteger("NormalAttack", 1);
-        faceAnime.SetInteger("NormalAttack", 1);
-        bodyAnime.SetInteger("NormalAttack", 1);
-        pantsAnime.SetInteger("NormalAttack", 1);
-        handsAnime.SetInteger("NormalAttack", 1);
-        footAnime.SetInteger("NormalAttack", 1);
-
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_01"))
         {
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
             {
-                lockInput = false;
                 moveAttack = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            {
+                lockInput = false;
             }
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
@@ -194,14 +219,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 state = PlayerState.Idle;
-                normalAttack = 0;
-
-                hairAnime.SetInteger("NormalAttack", 0);
-                faceAnime.SetInteger("NormalAttack", 0);
-                bodyAnime.SetInteger("NormalAttack", 0);
-                pantsAnime.SetInteger("NormalAttack", 0);
-                handsAnime.SetInteger("NormalAttack", 0);
-                footAnime.SetInteger("NormalAttack", 0);
+                normalAtk = false;
+                SetNormalAttackFalse();
+                SetNormalAttackCnt(0);
             }
         }
     }
@@ -209,13 +229,6 @@ public partial class PlayerCtrl : MonoBehaviour
     // 일반 공격 2
     private void Ani_NormalAttack2()
     {
-        hairAnime.SetInteger("NormalAttack", 2);
-        faceAnime.SetInteger("NormalAttack", 2);
-        bodyAnime.SetInteger("NormalAttack", 2);
-        pantsAnime.SetInteger("NormalAttack", 2);
-        handsAnime.SetInteger("NormalAttack", 2);
-        footAnime.SetInteger("NormalAttack", 2);
-
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_02"))
         {
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
@@ -223,7 +236,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 moveAttack = false;
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.35f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
             {
                 lockInput = false;
             }
@@ -236,14 +249,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 state = PlayerState.Idle;
-                normalAttack = 0;
-
-                hairAnime.SetInteger("NormalAttack", 0);
-                faceAnime.SetInteger("NormalAttack", 0);
-                bodyAnime.SetInteger("NormalAttack", 0);
-                pantsAnime.SetInteger("NormalAttack", 0);
-                handsAnime.SetInteger("NormalAttack", 0);
-                footAnime.SetInteger("NormalAttack", 0);
+                normalAtk = false;
+                SetNormalAttackFalse();
+                SetNormalAttackCnt(0);
             }
         }
     }
@@ -251,13 +259,6 @@ public partial class PlayerCtrl : MonoBehaviour
     // 일반 공격 3
     private void Ani_NormalAttack3()
     {
-        hairAnime.SetInteger("NormalAttack", 3);
-        faceAnime.SetInteger("NormalAttack", 3);
-        bodyAnime.SetInteger("NormalAttack", 3);
-        pantsAnime.SetInteger("NormalAttack", 3);
-        handsAnime.SetInteger("NormalAttack", 3);
-        footAnime.SetInteger("NormalAttack", 3);
-
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_03"))
         {
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
@@ -278,14 +279,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 state = PlayerState.Idle;
-                normalAttack = 0;
-
-                hairAnime.SetInteger("NormalAttack", 0);
-                faceAnime.SetInteger("NormalAttack", 0);
-                bodyAnime.SetInteger("NormalAttack", 0);
-                pantsAnime.SetInteger("NormalAttack", 0);
-                handsAnime.SetInteger("NormalAttack", 0);
-                footAnime.SetInteger("NormalAttack", 0);
+                normalAtk = false;
+                SetNormalAttackFalse();
+                SetNormalAttackCnt(0);
             }
         }
     }
@@ -293,13 +289,6 @@ public partial class PlayerCtrl : MonoBehaviour
     // 일반 공격 4
     private void Ani_NormalAttack4()
     {
-        hairAnime.SetInteger("NormalAttack", 4);
-        faceAnime.SetInteger("NormalAttack", 4);
-        bodyAnime.SetInteger("NormalAttack", 4);
-        pantsAnime.SetInteger("NormalAttack", 4);
-        handsAnime.SetInteger("NormalAttack", 4);
-        footAnime.SetInteger("NormalAttack", 4);
-
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_04"))
         {
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.28f)
@@ -307,7 +296,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 moveAttack = false;
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.47f)
             {
                 lockInput = false;
             }
@@ -320,14 +309,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 state = PlayerState.Idle;
-                normalAttack = 0;
-
-                hairAnime.SetInteger("NormalAttack", 0);
-                faceAnime.SetInteger("NormalAttack", 0);
-                bodyAnime.SetInteger("NormalAttack", 0);
-                pantsAnime.SetInteger("NormalAttack", 0);
-                handsAnime.SetInteger("NormalAttack", 0);
-                footAnime.SetInteger("NormalAttack", 0);
+                normalAtk = false;
+                SetNormalAttackFalse();
+                SetNormalAttackCnt(0);
             }
         }
     }
@@ -335,19 +319,16 @@ public partial class PlayerCtrl : MonoBehaviour
     // 일반 공격 5
     private void Ani_NormalAttack5()
     {
-        hairAnime.SetInteger("NormalAttack", 5);
-        faceAnime.SetInteger("NormalAttack", 5);
-        bodyAnime.SetInteger("NormalAttack", 5);
-        pantsAnime.SetInteger("NormalAttack", 5);
-        handsAnime.SetInteger("NormalAttack", 5);
-        footAnime.SetInteger("NormalAttack", 5);
-
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_05"))
         {
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
             {
-                lockInput = false;
                 moveAttack = false;
+            }
+
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.52f)
+            {
+                lockInput = false;
             }
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
@@ -358,14 +339,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
                 state = PlayerState.Idle;
-                normalAttack = 0;
-
-                hairAnime.SetInteger("NormalAttack", 0);
-                faceAnime.SetInteger("NormalAttack", 0);
-                bodyAnime.SetInteger("NormalAttack", 0);
-                pantsAnime.SetInteger("NormalAttack", 0);
-                handsAnime.SetInteger("NormalAttack", 0);
-                footAnime.SetInteger("NormalAttack", 0);
+                normalAtk = false;
+                SetNormalAttackFalse();
+                SetNormalAttackCnt(0);
             }
         }
     }

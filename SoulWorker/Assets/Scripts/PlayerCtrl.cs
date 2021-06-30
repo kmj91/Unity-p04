@@ -14,7 +14,7 @@ public partial class PlayerCtrl : MonoBehaviour
     public float moveSpeed = 5.0f;          // 이동 속도
     public float mouseSpeed = 100.0f;       // 마우스 속도
     public float rotationSpeed = 10.0f;     // 회전 속도
-    public float jumpVelocity = 5.0f;      // 점프력
+    public float jumpVelocity = 5.0f;       // 점프력
     [Range(0.01f, 1.0f)] public float airControlPercent;
     public float speedSmoothTime = 0.1f;
     // 캐릭터 컬라이더가 실제 움직인 거리
@@ -48,9 +48,9 @@ public partial class PlayerCtrl : MonoBehaviour
     private float currentVelocityY;
     private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
     private float jumpTime;
-    private int normalAttack;
     private bool jump;
     private bool dash;
+    private bool normalAtk;
     private bool lockInput;
     private bool moveAttack;            // 공격시 전진 플래그
     private bool moveStand;             // 공격후 제자리 플래그
@@ -117,12 +117,18 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)PlayerState.DashLand, (int)PlayerState.Run] = true;
 
         changeState[(int)PlayerState.NormalAttack1, (int)PlayerState.NormalAttack2] = true;
+        changeState[(int)PlayerState.NormalAttack1, (int)PlayerState.Run] = true;
 
         changeState[(int)PlayerState.NormalAttack2, (int)PlayerState.NormalAttack3] = true;
+        changeState[(int)PlayerState.NormalAttack2, (int)PlayerState.Run] = true;
 
         changeState[(int)PlayerState.NormalAttack3, (int)PlayerState.NormalAttack4] = true;
+        changeState[(int)PlayerState.NormalAttack3, (int)PlayerState.Run] = true;
 
         changeState[(int)PlayerState.NormalAttack4, (int)PlayerState.NormalAttack5] = true;
+        changeState[(int)PlayerState.NormalAttack4, (int)PlayerState.Run] = true;
+
+        changeState[(int)PlayerState.NormalAttack5, (int)PlayerState.Run] = true;
 
         weapon.parent = weaponholder;
         weapon.localPosition = Vector3.zero;
