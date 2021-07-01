@@ -171,7 +171,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Land()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.B_Jump_Land_C") &&
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Jump_Land_C") &&
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             state = PlayerState.Idle;
@@ -180,7 +180,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_DashLand()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.B_Dash_Jump_End"))
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Dash_Jump_End"))
         {
             // 정지
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.35f)
