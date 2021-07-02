@@ -26,6 +26,35 @@ public class GameManager : MonoBehaviour
         KeyProcess();
     }
 
+
+    // (현재시간 - time) 사이에 키값을 입력 받았으면 true
+    public bool KeyInputCheck(KeyCode key, float time)
+    {
+        var queue = keyQueue.GetQueue();
+        int iSize = keyQueue.GetQueueSize();
+        int iRear = keyQueue.GetRear();
+        int iFront = keyQueue.GetFront();
+
+        while (iRear != iFront)
+        {
+            --iRear;
+            if (iRear < 0)
+            {
+                iRear = iSize - 1;
+            }
+
+            // 찾음
+            if (queue[iRear].backupKey == key &&
+                queue[iRear].time >= Time.realtimeSinceStartup - time)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
     // 키 초기화
     private void KeyInit()
     {

@@ -201,17 +201,28 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_01"))
         {
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f && moveAttack)
             {
                 moveAttack = false;
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && lockInput)
             {
                 lockInput = false;
+                // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
+                if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
+                {
+                    state = PlayerState.NormalAttack2;
+                    lockInput = true;
+                    moveAttack = true;
+                    moveStand = false;
+                    SetNormalAttackCnt(2);
+                    return;
+                }
+
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f && !moveStand)
             {
                 moveStand = true;
             }
@@ -231,17 +242,27 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_02"))
         {
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f && moveAttack)
             {
                 moveAttack = false;
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && lockInput)
             {
                 lockInput = false;
+                // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
+                if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
+                {
+                    state = PlayerState.NormalAttack3;
+                    lockInput = true;
+                    moveAttack = true;
+                    moveStand = false;
+                    SetNormalAttackCnt(3);
+                    return;
+                }
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.7f && !moveStand)
             {
                 moveStand = true;
             }
@@ -261,17 +282,27 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_03"))
         {
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f && moveAttack)
             {
                 moveAttack = false;
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && lockInput)
             {
                 lockInput = false;
+                // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
+                if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
+                {
+                    state = PlayerState.NormalAttack4;
+                    lockInput = true;
+                    moveAttack = true;
+                    moveStand = false;
+                    SetNormalAttackCnt(4);
+                    return;
+                }
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.75f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.75f && !moveStand)
             {
                 moveStand = true;
             }
@@ -291,17 +322,27 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_04"))
         {
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.28f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.28f && moveAttack)
             {
                 moveAttack = false;
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.47f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.47f && lockInput)
             {
                 lockInput = false;
+                // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
+                if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
+                {
+                    state = PlayerState.NormalAttack5;
+                    lockInput = true;
+                    moveAttack = true;
+                    moveStand = false;
+                    SetNormalAttackCnt(5);
+                    return;
+                }
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.75f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.75f && !moveStand)
             {
                 moveStand = true;
             }
@@ -321,17 +362,17 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_05"))
         {
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && moveAttack)
             {
                 moveAttack = false;
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.52f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.52f && lockInput)
             {
                 lockInput = false;
             }
 
-            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f)
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && !moveStand)
             {
                 moveStand = true;
             }

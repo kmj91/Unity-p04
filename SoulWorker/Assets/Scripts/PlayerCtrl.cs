@@ -11,6 +11,7 @@ using MyEnum;
 
 public partial class PlayerCtrl : MonoBehaviour
 {
+    public GameManager gameManager;
     public float moveSpeed = 5.0f;          // 이동 속도
     public float mouseSpeed = 100.0f;       // 마우스 속도
     public float rotationSpeed = 10.0f;     // 회전 속도
