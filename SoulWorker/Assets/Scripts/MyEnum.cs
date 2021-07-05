@@ -23,4 +23,11 @@
         NormalAttack5,
         End
     }
+
+    public enum AsphaltGolemState
+    {
+        Idle,
+        Run,
+        End
+    }
 }
