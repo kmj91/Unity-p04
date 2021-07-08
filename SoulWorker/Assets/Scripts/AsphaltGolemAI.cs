@@ -128,6 +128,7 @@ public class AsphaltGolemAI : LivingEntity
                 {
                     var patrolTargetPosition = Utility.GetRandomPointOnNavMesh(mTransform.position, 20.0f, NavMesh.AllAreas);
                     agent.SetDestination(patrolTargetPosition);
+                    Debug.Log("이동");
                 }
             }
 
