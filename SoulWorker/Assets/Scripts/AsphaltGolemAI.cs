@@ -23,7 +23,7 @@ public partial class AsphaltGolemAI : LivingEntity
 
     public Transform attackRoot;
     public Transform eyeTrasform;
-    public float attackRadius = 2.0f;
+    public float attackRadius = 1.3f;
     public float attackDistance;
     public float fieldOfView = 50.0f;
     public float viewDistance = 10.0f;
@@ -45,7 +45,7 @@ public partial class AsphaltGolemAI : LivingEntity
         if (attackRoot != null)
         {
             Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-            Gizmos.DrawSphere(attackRoot.position, 2.0f);
+            Gizmos.DrawSphere(attackRoot.position, attackRadius);
         }
 
         if (eyeTrasform != null)
