@@ -175,26 +175,25 @@ public partial class AsphaltGolemAI : LivingEntity
                     var patrolTargetPosition = Utility.GetRandomPointOnNavMesh(mTransform.position, 20.0f, NavMesh.AllAreas);
                     agent.SetDestination(patrolTargetPosition);
                 }
-            }
 
-            // 시야 내 콜라이더들을 가져옴
-            var colliders = Physics.OverlapSphere(eyeTrasform.position, viewDistance, whatIsTarget);
-            
-            foreach (var collider in colliders)
-            {
-                // 시야에 존재하는지 확인
-                if(!IsTargetOnSight(collider.transform))
+                // 시야 내 콜라이더들을 가져옴
+                var colliders = Physics.OverlapSphere(eyeTrasform.position, viewDistance, whatIsTarget);
+
+                foreach (var collider in colliders)
                 {
-                    continue;
-                }
-                Debug.Log(collider);
+                    // 시야에 존재하는지 확인
+                    if (!IsTargetOnSight(collider.transform))
+                    {
+                        continue;
+                    }
 
-                var livingEntity = collider.GetComponent<LivingEntity>();
+                    var livingEntity = collider.GetComponent<LivingEntity>();
 
-                if (livingEntity != null && !livingEntity.dead)
-                {
-                    targetEntity = livingEntity;
-                    break;
+                    if (livingEntity != null && !livingEntity.dead)
+                    {
+                        targetEntity = livingEntity;
+                        break;
+                    }
                 }
             }
 
@@ -207,22 +206,22 @@ public partial class AsphaltGolemAI : LivingEntity
 
     private bool IsTargetOnSight(Transform target)
     {
-        RaycastHit hit;
-
         var direction = target.position - eyeTrasform.position;
         direction.y = eyeTrasform.forward.y;
 
         if (Vector3.Angle(direction, eyeTrasform.forward) > fieldOfView * 0.5f)
             return false;
 
-        direction = target.position - eyeTrasform.position;
+        //direction = target.position - eyeTrasform.position;
+
+        RaycastHit hit;
 
         if (Physics.Raycast(eyeTrasform.position, direction, out hit, viewDistance, whatIsTarget))
         {
             if (hit.transform == target)
                 return true;
         }
-
+        
         return false;
     }
 }
