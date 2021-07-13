@@ -39,7 +39,7 @@ public class PlayerHealth : LivingEntity
     {
         base.OnEnable();
         // UI 갱신
-        UpdateUI();
+        //UpdateUI();
     }
 
     private void Awake()
@@ -47,8 +47,14 @@ public class PlayerHealth : LivingEntity
         
     }
 
+    private void Update()
+    {
+        UpdateUI();
+    }
+
     private void UpdateUI()
     {
         // UI 갱신
+        UIManager.Instance.UpdateHpTxt(health, startingHealth);
     }
 }

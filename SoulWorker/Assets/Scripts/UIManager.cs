@@ -17,6 +17,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private Image hpBar;
-    [SerializeField] private Text hpText;
+    [SerializeField] private Image hpBar;   // 체력바
+    [SerializeField] private Text hpText;   // 체력 텍스트
+
+
+    public void UpdateHpTxt(float currentHp, float maxHp)
+    {
+        hpText.text = currentHp + "/" + maxHp;
+        hpBar.fillAmount = currentHp / maxHp;
+    }
 }

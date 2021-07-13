@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using MyStruct;
 using MyEnum;
 using System.Xml.Serialization;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +17,12 @@ public class GameManager : MonoBehaviour
     private KeyInputQueue<KeyInfo> keyQueue;        // 키 입력 큐
     private Dictionary<KeyCode, Action> keyDown;    // 키 누름
     private Dictionary<KeyCode, Action> keyUp;      // 키 뗌
+
+    private void Awake()
+    {
+        // UI 불러오기
+        SceneManager.LoadScene("UI", LoadSceneMode.Additive);
+    }
 
     private void Start()
     {
