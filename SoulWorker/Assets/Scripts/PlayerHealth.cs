@@ -55,6 +55,6 @@ public class PlayerHealth : LivingEntity
     private void UpdateUI()
     {
         // UI 갱신
-        UIManager.Instance.UpdateHpTxt(health, startingHealth);
+        UIManager.Instance.UpdatePlayerHp(health, startingHealth);
     }
 }

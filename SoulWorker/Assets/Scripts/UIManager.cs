@@ -17,13 +17,64 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private Image hpBar;   // 체력바
-    [SerializeField] private Text hpText;   // 체력 텍스트
+    [SerializeField] private Image playerHpBar;     // 플레이어 체력바
+    [SerializeField] private Text playerName;       // 플레이어 이름
+    [SerializeField] private Text playerHpText;     // 플레이어 체력 텍스트
+
+    [SerializeField] private Image bossHpBarBack;   // 보스 체력바 뒤쪽
+    [SerializeField] private Image bossHpBarFront;  // 보스 체력바 앞쪽
+    [SerializeField] private Image bossHpLostBar;   // 보스 잃은 체력바
+    [SerializeField] private Text bossNameText;     // 보스 이름 텍스트
+    [SerializeField] private GameObject bossSuperArmor;         // 보스 슈퍼 아머 상태일 때 아이콘과 텍스트 이미지
+    [SerializeField] private Image bossSuperArmorBar;           // 보스 슈퍼 아머 바
+    [SerializeField] private Image bossSuperArmorBreakGuard;    // 보스 슈퍼 아머 브레이크 가드
+    [SerializeField] private Image bossSuperArmorBreakEffect;   // 보스 슈퍼 아머 브레이크 이펙트
+    [SerializeField] private Image bossSuperArmorBreak;         // 보스 슈퍼 아머 브레이크 텍스트 이미지
+
+    [SerializeField] private Sprite bossHpBarSprite0;   // 보스 체력바 스프라이트
+    [SerializeField] private Sprite bossHpBarSprite1;   // 보스 체력바 스프라이트
+    [SerializeField] private Sprite bossHpBarSprite2;   // 보스 체력바 스프라이트
+    [SerializeField] private Sprite bossHpBarSprite3;   // 보스 체력바 스프라이트
+    [SerializeField] private Sprite bossHpBarSprite4;   // 보스 체력바 스프라이트
+    [SerializeField] private Sprite bossHpBarSprite5;   // 보스 체력바 스프라이트
+    [SerializeField] private Sprite bossHpBarSprite6;   // 보스 체력바 스프라이트
 
 
-    public void UpdateHpTxt(float currentHp, float maxHp)
+    // 플레이어 체력
+    public void UpdatePlayerHp(float currentHp, float maxHp)
     {
-        hpText.text = currentHp + "/" + maxHp;
-        hpBar.fillAmount = currentHp / maxHp;
+        playerHpText.text = currentHp + "/" + maxHp;
+        playerHpBar.fillAmount = currentHp / maxHp;
+    }
+
+    // 플레이어 이름
+    public void UpdatePlayerName(string name)
+    {
+        playerName.text = name;
+    }
+
+    // 플레이어 SG
+    public void UpdatePlayerSG(float sg)
+    {
+
+    }
+
+
+    // 보스 체력
+    public void UpdateBossHp(float currentHp, float maxHp)
+    {
+
+    }
+
+    // 보스 이름
+    public void UpdateBossName(string name)
+    {
+        bossNameText.text = name;
+    }
+
+    // 보스 슈퍼 아머
+    public void UpdateBossSuperArmor(float currentSA, float maxSA)
+    {
+        bossSuperArmorBar.fillAmount = currentSA / maxSA;
     }
 }
