@@ -18,8 +18,9 @@ public class UIManager : MonoBehaviour
     }
 
     [SerializeField] private Image playerHpBar;     // 플레이어 체력바
-    [SerializeField] private Text playerName;       // 플레이어 이름
+    [SerializeField] private Image playerHpSignal;  // 플레이어 체력 신호 애니메이션
     [SerializeField] private Text playerHpText;     // 플레이어 체력 텍스트
+    [SerializeField] private Text playerName;       // 플레이어 이름
 
     [SerializeField] private Image bossHpBarBack;   // 보스 체력바 뒤쪽
     [SerializeField] private Image bossHpBarFront;  // 보스 체력바 앞쪽
@@ -44,7 +45,9 @@ public class UIManager : MonoBehaviour
     public void UpdatePlayerHp(float currentHp, float maxHp)
     {
         playerHpText.text = currentHp + "/" + maxHp;
-        playerHpBar.fillAmount = currentHp / maxHp;
+        float amount = currentHp / maxHp;
+        playerHpBar.fillAmount = amount;
+        playerHpSignal.fillAmount = amount;
     }
 
     // 플레이어 이름

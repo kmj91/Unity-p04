@@ -1,12 +1,192 @@
 fileFormatVersion: 2
 guid: 8e9d40146bc6cbd44aff7688227fb118
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6335238970589956862
+    second: HpState_Signal_0
+  - first:
+      213: -8718049653466845400
+    second: HpState_Signal_1
+  - first:
+      213: -6104839978566230637
+    second: HpState_Signal_2
+  - first:
+      213: -8883196435201279179
+    second: HpState_Signal_3
+  - first:
+      213: -8340825944532378869
+    second: HpState_Signal_4
+  - first:
+      213: 6034131710361581107
+    second: HpState_Signal_5
+  - first:
+      213: -2203301712093424218
+    second: HpState_Signal_6
+  - first:
+      213: 2367495501683003886
+    second: HpState_Signal_7
+  - first:
+      213: 6844250945747765475
+    second: HpState_Signal_8
+  - first:
+      213: -1628740866540510986
+    second: HpState_Signal_9
+  - first:
+      213: -8630511056613720288
+    second: HpState_Signal_10
+  - first:
+      213: -1430258940570270305
+    second: HpState_Signal_11
+  - first:
+      213: 1730067145374929203
+    second: HpState_Signal_12
+  - first:
+      213: -6350497352360492802
+    second: HpState_Signal_13
+  - first:
+      213: -1161144298686866434
+    second: HpState_Signal_14
+  - first:
+      213: 8818653104119176930
+    second: HpState_Signal_15
+  - first:
+      213: -8297778319384545899
+    second: HpState_Signal_16
+  - first:
+      213: 8059990536641885779
+    second: HpState_Signal_17
+  - first:
+      213: 5263517610890625156
+    second: HpState_Signal_18
+  - first:
+      213: -8165271591471385987
+    second: HpState_Signal_19
+  - first:
+      213: -4619841107124498619
+    second: HpState_Signal_20
+  - first:
+      213: -2035770891739712449
+    second: HpState_Signal_21
+  - first:
+      213: -2013093587929975289
+    second: HpState_Signal_22
+  - first:
+      213: -1957653512187448793
+    second: HpState_Signal_23
+  - first:
+      213: 475048846320175150
+    second: HpState_Signal_24
+  - first:
+      213: 5872480781519835212
+    second: HpState_Signal_25
+  - first:
+      213: -2725300989525423587
+    second: HpState_Signal_26
+  - first:
+      213: -9049322272804308469
+    second: HpState_Signal_27
+  - first:
+      213: 3636577716557863760
+    second: HpState_Signal_28
+  - first:
+      213: -4530728742207583359
+    second: HpState_Signal_29
+  - first:
+      213: -3560318685749696551
+    second: HpState_Signal_30
+  - first:
+      213: 2036107595707735187
+    second: HpState_Signal_31
+  - first:
+      213: -372506449821729956
+    second: HpState_Signal_32
+  - first:
+      213: -2689173003949948378
+    second: HpState_Signal_33
+  - first:
+      213: 3739922751390895786
+    second: HpState_Signal_34
+  - first:
+      213: -7891047136519964949
+    second: HpState_Signal_35
+  - first:
+      213: 889412372411156196
+    second: HpState_Signal_36
+  - first:
+      213: -7697471134796191836
+    second: HpState_Signal_37
+  - first:
+      213: 9145904884058390450
+    second: HpState_Signal_38
+  - first:
+      213: 7414933793114405172
+    second: HpState_Signal_39
+  - first:
+      213: -7636807939004801037
+    second: HpState_Signal_40
+  - first:
+      213: 8818207750603337574
+    second: HpState_Signal_41
+  - first:
+      213: -2644338385495711659
+    second: HpState_Signal_42
+  - first:
+      213: 13891259443967215
+    second: HpState_Signal_43
+  - first:
+      213: 7710974034335408922
+    second: HpState_Signal_44
+  - first:
+      213: -4682490449994399385
+    second: HpState_Signal_45
+  - first:
+      213: -4033182292291231331
+    second: HpState_Signal_46
+  - first:
+      213: -2440017423581125647
+    second: HpState_Signal_47
+  - first:
+      213: -3722904226518230460
+    second: HpState_Signal_48
+  - first:
+      213: 7640056915082328105
+    second: HpState_Signal_49
+  - first:
+      213: -5727541902960111112
+    second: HpState_Signal_50
+  - first:
+      213: 8019947341336397209
+    second: HpState_Signal_51
+  - first:
+      213: -5003884192747222851
+    second: HpState_Signal_52
+  - first:
+      213: 3778465057173297617
+    second: HpState_Signal_53
+  - first:
+      213: -5165993313619835540
+    second: HpState_Signal_54
+  - first:
+      213: -8779012370484711308
+    second: HpState_Signal_55
+  - first:
+      213: -1845668142768930662
+    second: HpState_Signal_56
+  - first:
+      213: -1655278019379330423
+    second: HpState_Signal_57
+  - first:
+      213: 7509878663479465286
+    second: HpState_Signal_58
+  - first:
+      213: -4207585490414920736
+    second: HpState_Signal_59
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,13 +214,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,9 +229,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -71,13 +251,1285 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HpState_Signal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1298
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efac939374a4be750800000000000000
+      internalID: 6335238970589956862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1276
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82f24e6c704430780800000000000000
+      internalID: -8718049653466845400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1254
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39dd4f26260474ba0800000000000000
+      internalID: -6104839978566230637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1232
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53bbfc948eb88b480800000000000000
+      internalID: -8883196435201279179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1210
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b19cabefe6f3c80800000000000000
+      internalID: -8340825944532378869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1188
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 336b50402da8db350800000000000000
+      internalID: 6034131710361581107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1166
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a559a534cc4c61e0800000000000000
+      internalID: -2203301712093424218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1144
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee196218d980bd020800000000000000
+      internalID: 2367495501683003886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1122
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e84de609f9abfe50800000000000000
+      internalID: 6844250945747765475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0e0b2bfcc8569e0800000000000000
+      internalID: -1628740866540510986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1078
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02f3570abe34a3880800000000000000
+      internalID: -8630511056613720288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1056
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f958b764213b62ce0800000000000000
+      internalID: -1430258940570270305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1034
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33195a507ee620810800000000000000
+      internalID: 1730067145374929203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1012
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef08e7ded408ed7a0800000000000000
+      internalID: -6350497352360492802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 990
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb9ccf8969c2efe0800000000000000
+      internalID: -1161144298686866434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 968
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee5b646646226a70800000000000000
+      internalID: 8818653104119176930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 946
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5957520059e58dc80800000000000000
+      internalID: -8297778319384545899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 924
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 356bc8d70b6dadf60800000000000000
+      internalID: 8059990536641885779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 902
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 480062a3165cb0940800000000000000
+      internalID: 5263517610890625156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 880
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7272cfbfb02fae80800000000000000
+      internalID: -8165271591471385987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 858
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54fc8137df603efb0800000000000000
+      internalID: -4619841107124498619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 836
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3436c1f82d7fb3e0800000000000000
+      internalID: -2035770891739712449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 814
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70631df2c0e0014e0800000000000000
+      internalID: -2013093587929975289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 792
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72275c4b08405d4e0800000000000000
+      internalID: -1957653512187448793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 770
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e288fd7a866b79600800000000000000
+      internalID: 475048846320175150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 748
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c405cc4382e3f7150800000000000000
+      internalID: 5872480781519835212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 726
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1a01557039cd2ad0800000000000000
+      internalID: -2725300989525423587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 704
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0af77796595a6280800000000000000
+      internalID: -9049322272804308469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 682
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05b58817a28b77230800000000000000
+      internalID: 3636577716557863760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 660
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b801bb63e9f11c0800000000000000
+      internalID: -4530728742207583359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 638
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d724b8c405379ec0800000000000000
+      internalID: -3560318685749696551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 616
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c52ae0215b14c10800000000000000
+      internalID: 2036107595707735187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 594
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5b75d58b5794daf0800000000000000
+      internalID: -372506449821729956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 572
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6224ef796632eaad0800000000000000
+      internalID: -2689173003949948378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 550
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae4e0c6defd6e330800000000000000
+      internalID: 3739922751390895786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be63dd9107e5d7290800000000000000
+      internalID: -7891047136519964949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 506
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6876427d3d75c00800000000000000
+      internalID: 889412372411156196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 484
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a766ad29c61d2590800000000000000
+      internalID: -7697471134796191836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 462
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bf7fc3f808ccee70800000000000000
+      internalID: 9145904884058390450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 440
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439bf93bff227e660800000000000000
+      internalID: 7414933793114405172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 418
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ff5cb914ab940690800000000000000
+      internalID: -7636807939004801037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_41
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 396
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66fee427a31906a70800000000000000
+      internalID: 8818207750603337574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 374
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 550299aaf3c6d4bd0800000000000000
+      internalID: -2644338385495711659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 352
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe4f3a0e60a513000800000000000000
+      internalID: 13891259443967215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 330
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13a2dc9702e20b60800000000000000
+      internalID: 7710974034335408922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 308
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761ccef9eb3740fb0800000000000000
+      internalID: -4682490449994399385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 286
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91e599e2124708c0800000000000000
+      internalID: -4033182292291231331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f3eeadb411532ed0800000000000000
+      internalID: -2440017423581125647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 242
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a949da456955cc0800000000000000
+      internalID: -3722904226518230460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 220
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928bf37194fe60a60800000000000000
+      internalID: 7640056915082328105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 198
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f1d5ed2cfea380b0800000000000000
+      internalID: -5727541902960111112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 995c1bd8d939c4f60800000000000000
+      internalID: 8019947341336397209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 154
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db80c12a6d1ae8ab0800000000000000
+      internalID: -5003884192747222851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 132
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d95a0943fdcf6430800000000000000
+      internalID: 3778465057173297617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 110
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6585ada374be48b0800000000000000
+      internalID: -5165993313619835540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 470bf7223ceaa2680800000000000000
+      internalID: -8779012370484711308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 66
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a90c0095a9ed266e0800000000000000
+      internalID: -1845668142768930662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 44
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 982026259654709e0800000000000000
+      internalID: -1655278019379330423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_58
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 22
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6459afafad2783860800000000000000
+      internalID: 7509878663479465286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HpState_Signal_59
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 268
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb1bb90a47ab95c0800000000000000
+      internalID: -4207585490414920736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b04b230cb80c8494ba9a4d52168f5605
     internalID: 0
     vertices: []
     indices: 
