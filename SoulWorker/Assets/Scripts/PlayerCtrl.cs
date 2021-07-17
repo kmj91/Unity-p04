@@ -12,6 +12,7 @@ using MyEnum;
 public partial class PlayerCtrl : MonoBehaviour
 {
     public GameManager gameManager;
+    public HaruWeapon weapon;
     public float moveSpeed = 5.0f;          // 이동 속도
     public float mouseSpeed = 100.0f;       // 마우스 속도
     public float rotationSpeed = 10.0f;     // 회전 속도
@@ -25,7 +26,6 @@ public partial class PlayerCtrl : MonoBehaviour
     public Transform modelTransform;
     public Transform cameraTransform;
     public Transform weaponholder;
-    public Transform weapon;
     public Transform aimTransform;
     public Animator hairAnime;
     public Animator faceAnime;
@@ -55,7 +55,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private bool lockInput;
     private bool moveAttack;            // 공격시 전진 플래그
     private bool moveStand;             // 공격후 제자리 플래그
-    private bool cameraDirAtk = true;          // 카메라 방향으로 공격 플래그
+    private bool cameraDirAtk = false;          // 카메라 방향으로 공격 플래그
 
 
     // Start is called before the first frame update
@@ -131,10 +131,10 @@ public partial class PlayerCtrl : MonoBehaviour
 
         changeState[(int)PlayerState.NormalAttack5, (int)PlayerState.Run] = true;
 
-        weapon.parent = weaponholder;
-        weapon.localPosition = Vector3.zero;
-        weapon.localRotation = Quaternion.Euler(Vector3.zero);
-        weapon.localScale = Vector3.one;
+        weapon.transform.parent = weaponholder;
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        weapon.transform.localScale = Vector3.one;
     }
 
     private void FixedUpdate()

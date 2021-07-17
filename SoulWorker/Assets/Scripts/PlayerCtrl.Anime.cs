@@ -217,6 +217,7 @@ public partial class PlayerCtrl : MonoBehaviour
                     moveAttack = true;
                     moveStand = false;
                     SetNormalAttackCnt(2);
+                    SetAttackDir();
                     return;
                 }
 
@@ -258,6 +259,7 @@ public partial class PlayerCtrl : MonoBehaviour
                     moveAttack = true;
                     moveStand = false;
                     SetNormalAttackCnt(3);
+                    SetAttackDir();
                     return;
                 }
             }
@@ -298,6 +300,7 @@ public partial class PlayerCtrl : MonoBehaviour
                     moveAttack = true;
                     moveStand = false;
                     SetNormalAttackCnt(4);
+                    SetAttackDir();
                     return;
                 }
             }
@@ -338,6 +341,7 @@ public partial class PlayerCtrl : MonoBehaviour
                     moveAttack = true;
                     moveStand = false;
                     SetNormalAttackCnt(5);
+                    SetAttackDir();
                     return;
                 }
             }

@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 931562893}
   - component: {fileID: 931562891}
   - component: {fileID: 931562892}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AsphaltGolem
   m_TagString: Untagged
   m_Icon: {fileID: 0}

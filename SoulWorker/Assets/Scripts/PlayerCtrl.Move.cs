@@ -149,7 +149,7 @@ public partial class PlayerCtrl : MonoBehaviour
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = cameraDirAtk ? cameraTransform.forward : moveAnimeDir;
+        Vector3 moveDir = moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
@@ -186,7 +186,7 @@ public partial class PlayerCtrl : MonoBehaviour
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = cameraDirAtk ? cameraTransform.forward : moveAnimeDir;
+        Vector3 moveDir = moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
@@ -223,7 +223,7 @@ public partial class PlayerCtrl : MonoBehaviour
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = cameraDirAtk ? cameraTransform.forward : moveAnimeDir;
+        Vector3 moveDir = moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
@@ -260,7 +260,7 @@ public partial class PlayerCtrl : MonoBehaviour
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = cameraDirAtk ? cameraTransform.forward : moveAnimeDir;
+        Vector3 moveDir = moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
@@ -297,7 +297,7 @@ public partial class PlayerCtrl : MonoBehaviour
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = cameraDirAtk ? cameraTransform.forward : moveAnimeDir;
+        Vector3 moveDir = moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 

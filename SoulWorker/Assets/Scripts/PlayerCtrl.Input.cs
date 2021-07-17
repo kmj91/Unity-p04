@@ -118,7 +118,7 @@ public partial class PlayerCtrl: MonoBehaviour
             normalAtk = true;
             SetNormalAttackTrue();
             SetNormalAttackCnt(1);
-            moveAnimeDir = modelTransform.forward;
+            SetAttackDir();
         }
         else if (CheckState(state, PlayerState.NormalAttack2) && !lockInput && normalAtk)
         {
@@ -127,6 +127,7 @@ public partial class PlayerCtrl: MonoBehaviour
             moveAttack = true;
             moveStand = false;
             SetNormalAttackCnt(2);
+            SetAttackDir();
         }
         else if (CheckState(state, PlayerState.NormalAttack3) && !lockInput && normalAtk)
         {
@@ -135,6 +136,7 @@ public partial class PlayerCtrl: MonoBehaviour
             moveAttack = true;
             moveStand = false;
             SetNormalAttackCnt(3);
+            SetAttackDir();
         }
         else if (CheckState(state, PlayerState.NormalAttack4) && !lockInput && normalAtk)
         {
@@ -143,6 +145,7 @@ public partial class PlayerCtrl: MonoBehaviour
             moveAttack = true;
             moveStand = false;
             SetNormalAttackCnt(4);
+            SetAttackDir();
         }
         else if (CheckState(state, PlayerState.NormalAttack5) && !lockInput && normalAtk)
         {
@@ -151,6 +154,7 @@ public partial class PlayerCtrl: MonoBehaviour
             moveAttack = true;
             moveStand = false;
             SetNormalAttackCnt(5);
+            SetAttackDir();
         }
     }
 
@@ -250,5 +254,22 @@ public partial class PlayerCtrl: MonoBehaviour
             SetNormalAttackFalse();
             SetNormalAttackCnt(-1);
         }
+    }
+
+    // 공격 방향
+    private void SetAttackDir()
+    {
+        if (cameraDirAtk)
+        {
+            // 카메라 방향
+            moveAnimeDir = cameraTransform.forward;
+            return;
+        }
+
+        // cameraDirAtk가 false일 경우 공격 방향
+        if (moveInput == Vector2.zero)
+            moveAnimeDir = modelTransform.forward;
+        else
+            moveAnimeDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
     }
 }
