@@ -128,6 +128,9 @@ public partial class AsphaltGolemAI : LivingEntity
             CCImmunity = false
         };
         monsterInfo.SetUp(ref data);
+
+        DelStartingHp = monsterInfo.GetOriginHp;
+        DelCurrentHp = monsterInfo.GetCurrentHp;
     }
 
     private void Start()

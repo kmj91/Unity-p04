@@ -6,12 +6,22 @@ using MyStruct;
 
 public class MonsterInfo : MonoBehaviour
 {
-    public MonsterData originMonsterInfo;
-    public MonsterData monsterInfo;
+    public MonsterData originMonsterData;
+    public MonsterData currentMonsterData;
 
-    public void SetUp(ref MonsterData info)
+    public void SetUp(ref MonsterData data)
     {
-        originMonsterInfo = info;
-        monsterInfo = info;
+        originMonsterData = data;
+        currentMonsterData = data;
+    }
+
+    public float GetOriginHp()
+    {
+        return originMonsterData.hp;
+    }
+
+    public float GetCurrentHp()
+    {
+        return currentMonsterData.hp;
     }
 }
