@@ -1310,7 +1310,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949891797}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 120, y: 20, z: 10}
@@ -1575,6 +1575,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PC_A_WP_000
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffaecc112233a2c4da19a30ecdafadbc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffaecc112233a2c4da19a30ecdafadbc, type: 3}
 --- !u!1001 &4595676945078733568
@@ -1694,6 +1699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4595676944768531902, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4595676944768531903, guid: 77d8fd9b0b290f0468996a0df2aa250b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1788,6 +1798,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 931562891, guid: 94da0f010c0a0d74c8e712883f5cd0fa, type: 3}
+      propertyPath: monsterInfo
+      value: 
+      objectReference: {fileID: 5824356814942818075}
     - target: {fileID: 931562893, guid: 94da0f010c0a0d74c8e712883f5cd0fa, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1854,3 +1868,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94da0f010c0a0d74c8e712883f5cd0fa, type: 3}
+--- !u!114 &5824356814942818075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5000010527411806635, guid: 94da0f010c0a0d74c8e712883f5cd0fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 5824356814942818074}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465002085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa8b164dca6a7146814457d2b82b6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MyStruct;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
@@ -30,7 +31,12 @@ public class HaruWeapon : MonoBehaviour
     {
         if (other.gameObject.layer == mask.value) return;
 
-        Debug.Log("충돌");
-        Debug.Log(other);
+        var hit = other.GetComponent<LivingEntity>();
+        DamageMessage msg = new DamageMessage
+        {
+            damager = gameObject,
+            amount = 10f
+        };
+        hit.ApplyDamage(msg);
     }
 }

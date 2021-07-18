@@ -13,6 +13,7 @@ using UnityEditor;
 
 public partial class AsphaltGolemAI : LivingEntity
 {
+    public MonsterInfo monsterInfo; // 몬스터 정보
     public Animator bodyAnime;      // 몸 애니메이터
     public Animator armsAnime;      // 팔 애니메이터
     public float moveSpeed = 3.0f;  // 이동 속도
@@ -57,6 +58,11 @@ public partial class AsphaltGolemAI : LivingEntity
         }
     }
 #endif
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
 
     public override bool ApplyDamage(DamageMessage damageMessage)
     {
@@ -106,6 +112,22 @@ public partial class AsphaltGolemAI : LivingEntity
 
         agent.stoppingDistance = attackDistance;
         agent.speed = patrolSpeed;
+
+        // 몬스터 정보 초기화
+        MonsterData data = new MonsterData
+        {
+            hp = 1500f,
+            minAtk = 100f,
+            maxAtk = 200f,
+            criticalPer = 30f,
+            moveSpeed = 3f,
+            jumpPower = 20f,
+            jumpVelocity = 0f,
+            rotationSpeed = 10f,
+            superArmor = 0f,
+            CCImmunity = false
+        };
+        monsterInfo.SetUp(ref data);
     }
 
     private void Start()

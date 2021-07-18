@@ -213,11 +213,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
                     state = PlayerState.NormalAttack2;
-                    lockInput = true;
-                    moveAttack = true;
-                    moveStand = false;
-                    SetNormalAttackCnt(2);
-                    SetAttackDir();
+                    StartNormalAttack(2);
                     return;
                 }
 
@@ -230,10 +226,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
-                state = PlayerState.Idle;
-                normalAtk = false;
-                SetNormalAttackFalse();
-                SetNormalAttackCnt(0);
+                EndNormalAttack();
             }
         }
     }
@@ -255,11 +248,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
                     state = PlayerState.NormalAttack3;
-                    lockInput = true;
-                    moveAttack = true;
-                    moveStand = false;
-                    SetNormalAttackCnt(3);
-                    SetAttackDir();
+                    StartNormalAttack(3);
                     return;
                 }
             }
@@ -271,10 +260,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
-                state = PlayerState.Idle;
-                normalAtk = false;
-                SetNormalAttackFalse();
-                SetNormalAttackCnt(0);
+                EndNormalAttack();
             }
         }
     }
@@ -296,11 +282,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
                     state = PlayerState.NormalAttack4;
-                    lockInput = true;
-                    moveAttack = true;
-                    moveStand = false;
-                    SetNormalAttackCnt(4);
-                    SetAttackDir();
+                    StartNormalAttack(4);
                     return;
                 }
             }
@@ -312,10 +294,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
-                state = PlayerState.Idle;
-                normalAtk = false;
-                SetNormalAttackFalse();
-                SetNormalAttackCnt(0);
+                EndNormalAttack();
             }
         }
     }
@@ -337,11 +316,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
                     state = PlayerState.NormalAttack5;
-                    lockInput = true;
-                    moveAttack = true;
-                    moveStand = false;
-                    SetNormalAttackCnt(5);
-                    SetAttackDir();
+                    StartNormalAttack(5);
                     return;
                 }
             }
@@ -353,10 +328,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
-                state = PlayerState.Idle;
-                normalAtk = false;
-                SetNormalAttackFalse();
-                SetNormalAttackCnt(0);
+                EndNormalAttack();
             }
         }
     }
@@ -383,10 +355,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
-                state = PlayerState.Idle;
-                normalAtk = false;
-                SetNormalAttackFalse();
-                SetNormalAttackCnt(0);
+                EndNormalAttack();
             }
         }
     }

@@ -112,49 +112,28 @@ public partial class PlayerCtrl: MonoBehaviour
         if (CheckState(state, PlayerState.NormalAttack1) && !lockInput)
         {
             state = PlayerState.NormalAttack1;
-            lockInput = true;
-            moveAttack = true;
-            moveStand = false;
-            normalAtk = true;
             SetNormalAttackTrue();
-            SetNormalAttackCnt(1);
-            SetAttackDir();
+            StartNormalAttack(1);
         }
         else if (CheckState(state, PlayerState.NormalAttack2) && !lockInput && normalAtk)
         {
             state = PlayerState.NormalAttack2;
-            lockInput = true;
-            moveAttack = true;
-            moveStand = false;
-            SetNormalAttackCnt(2);
-            SetAttackDir();
+            StartNormalAttack(2);
         }
         else if (CheckState(state, PlayerState.NormalAttack3) && !lockInput && normalAtk)
         {
             state = PlayerState.NormalAttack3;
-            lockInput = true;
-            moveAttack = true;
-            moveStand = false;
-            SetNormalAttackCnt(3);
-            SetAttackDir();
+            StartNormalAttack(3);
         }
         else if (CheckState(state, PlayerState.NormalAttack4) && !lockInput && normalAtk)
         {
             state = PlayerState.NormalAttack4;
-            lockInput = true;
-            moveAttack = true;
-            moveStand = false;
-            SetNormalAttackCnt(4);
-            SetAttackDir();
+            StartNormalAttack(4);
         }
         else if (CheckState(state, PlayerState.NormalAttack5) && !lockInput && normalAtk)
         {
             state = PlayerState.NormalAttack5;
-            lockInput = true;
-            moveAttack = true;
-            moveStand = false;
-            SetNormalAttackCnt(5);
-            SetAttackDir();
+            StartNormalAttack(5);
         }
     }
 
@@ -255,6 +234,29 @@ public partial class PlayerCtrl: MonoBehaviour
             SetNormalAttackCnt(-1);
         }
     }
+
+    private void StartNormalAttack(int attackCnt)
+    {
+        lockInput = true;
+        moveAttack = true;
+        moveStand = false;
+        normalAtk = true;
+        SetNormalAttackCnt(attackCnt);
+        SetAttackDir();
+        // 무기 충돌 트리거 ON
+        weapon.OnTrigger();
+    }
+
+    private void EndNormalAttack()
+    {
+        state = PlayerState.Idle;
+        normalAtk = false;
+        SetNormalAttackFalse();
+        SetNormalAttackCnt(0);
+        // 무기 충돌 트리거 OFF
+        weapon.OffTrigger();
+    }
+
 
     // 공격 방향
     private void SetAttackDir()

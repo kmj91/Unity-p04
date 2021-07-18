@@ -69,8 +69,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5824356815085521553}
-  - component: {fileID: 931562893}
   - component: {fileID: 931562891}
+  - component: {fileID: 5000010527411806635}
+  - component: {fileID: 931562893}
   - component: {fileID: 931562892}
   m_Layer: 9
   m_Name: AsphaltGolem
@@ -97,20 +98,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!136 &931562893
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5824356815085521552}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.8, z: 0}
 --- !u!114 &931562891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +127,32 @@ MonoBehaviour:
   fieldOfView: 50
   viewDistance: 10
   patrolSpeed: 2
+--- !u!114 &5000010527411806635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5824356815085521552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa8b164dca6a7146814457d2b82b6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &931562893
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5824356815085521552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.8, z: 0}
 --- !u!195 &931562892
 NavMeshAgent:
   m_ObjectHideFlags: 0
