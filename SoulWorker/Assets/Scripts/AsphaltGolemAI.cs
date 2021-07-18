@@ -129,7 +129,6 @@ public partial class AsphaltGolemAI : LivingEntity
         };
         monsterInfo.SetUp(ref data);
 
-        DelStartingHp = monsterInfo.GetOriginHp;
         DelCurrentHp = monsterInfo.GetCurrentHp;
     }
 

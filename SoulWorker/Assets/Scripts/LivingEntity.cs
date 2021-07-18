@@ -8,7 +8,6 @@ using MyDelegate;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
-    public DelRetfloat DelStartingHp;
     public DelRetfloat DelCurrentHp;
 
     public float startingHealth = 100.0f;
@@ -34,7 +33,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected virtual void OnEnable()
     {
         dead = false;
-        startingHealth = DelStartingHp();
+        startingHealth = DelCurrentHp();
         health = startingHealth;
     }
 
