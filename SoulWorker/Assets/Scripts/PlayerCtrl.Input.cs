@@ -253,8 +253,6 @@ public partial class PlayerCtrl: MonoBehaviour
         normalAtk = false;
         SetNormalAttackFalse();
         SetNormalAttackCnt(0);
-        // 무기 충돌 트리거 OFF
-        weapon.OffTrigger();
     }
 
 

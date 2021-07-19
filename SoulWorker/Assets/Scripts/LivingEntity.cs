@@ -8,9 +8,19 @@ using MyDelegate;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
+    // 체력 호출 함수
     public DelRetfloat DelCurrentHp;
+    public float currentHp
+    {
+        get
+        {
+            if (DelCurrentHp == null) return 100f;
 
-    public float startingHealth = 100.0f;
+            return DelCurrentHp();
+        }
+    }
+
+    public float startingHealth;
     public float health { get; protected set; }
     public bool dead { get; protected set; }
     public event Action OnDeath;    // 사망할 때 호출할 콜백 함수
@@ -33,7 +43,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected virtual void OnEnable()
     {
         dead = false;
-        startingHealth = DelCurrentHp();
+        startingHealth = currentHp;
         health = startingHealth;
     }
 

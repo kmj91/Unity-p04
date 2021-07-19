@@ -209,6 +209,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && lockInput)
             {
                 lockInput = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
@@ -244,6 +247,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && lockInput)
             {
                 lockInput = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
@@ -278,6 +284,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && lockInput)
             {
                 lockInput = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
@@ -312,6 +321,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.47f && lockInput)
             {
                 lockInput = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
@@ -346,6 +358,8 @@ public partial class PlayerCtrl : MonoBehaviour
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.52f && lockInput)
             {
                 lockInput = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
             }
 
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && !moveStand)
