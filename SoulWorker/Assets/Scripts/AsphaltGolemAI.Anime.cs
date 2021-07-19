@@ -10,6 +10,12 @@ public partial class AsphaltGolemAI : LivingEntity
         armsAnime.SetFloat("Speed", 0);
     }
 
+    private void SetTrigerDMGL()
+    {
+        bodyAnime.SetTrigger("B_DMG_L");
+        armsAnime.SetTrigger("B_DMG_L");
+    }
+
 
 
     private void Ani_Idle()

@@ -73,6 +73,8 @@ public partial class AsphaltGolemAI : LivingEntity
             targetEntity = damageMessage.damager.GetComponent<LivingEntity>();
         }
 
+        SetTrigerDMGL();
+
         return true;
     }
 
