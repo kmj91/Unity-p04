@@ -24,6 +24,8 @@ public class HaruWeapon : MonoBehaviour
 
     private void Awake()
     {
+        boxCollider = GetComponent<BoxCollider>();
+
         mask = LayerMask.NameToLayer("Player");
     }
 
