@@ -32,6 +32,7 @@ namespace MyStruct
     [Serializable]
     public struct MonsterData
     {
+        public float level;             // 레벨
         public float hp;                // 체력
 
         public float moveSpeed;         // 이동 속도

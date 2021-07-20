@@ -24,4 +24,14 @@ public class MonsterInfo : MonoBehaviour
     {
         return currentMonsterData.hp;
     }
+
+    public float GetCurrentLevel()
+    {
+        return currentMonsterData.level;
+    }
+
+    public float GetCurrentDefense()
+    {
+        return currentMonsterData.defense;
+    }
 }

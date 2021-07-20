@@ -73,6 +73,7 @@ public partial class AsphaltGolemAI : LivingEntity
             targetEntity = damageMessage.damager.GetComponent<LivingEntity>();
         }
 
+        // 애니메이션 트리거
         SetTrigerDMGL();
 
         return true;
@@ -142,6 +143,7 @@ public partial class AsphaltGolemAI : LivingEntity
         // 몬스터 정보 초기화
         MonsterData data = new MonsterData
         {
+            level = 5f,
             hp = 1500f,
 
             moveSpeed = 3f,
@@ -167,7 +169,9 @@ public partial class AsphaltGolemAI : LivingEntity
         };
         monsterInfo.SetUp(ref data);
 
+        DelCurrentLevel = monsterInfo.GetCurrentLevel;
         DelCurrentHp = monsterInfo.GetCurrentHp;
+        DelCurrentDefense = monsterInfo.GetCurrentDefense;
     }
 
     private void Start()

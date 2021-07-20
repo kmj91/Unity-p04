@@ -8,6 +8,20 @@ using MyDelegate;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
+    // 레벨 호출 함수
+    public DelRetfloat DelCurrentLevel;
+    
+    public float currentLevel
+    {
+        get
+        {
+            if (DelCurrentLevel == null) return 1f;
+
+            return DelCurrentLevel();
+        }
+        private set { }
+    }
+
     // 체력 호출 함수
     public DelRetfloat DelCurrentHp;
     public float currentHp
@@ -18,6 +32,20 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
             return DelCurrentHp();
         }
+        private set { }
+    }
+
+    // 방어도 호출 함수
+    public DelRetfloat DelCurrentDefense;
+    public float currentDefense
+    {
+        get
+        {
+            if (DelCurrentDefense == null) return 0f;
+
+            return DelCurrentDefense();
+        }
+        private set { }
     }
 
     public float startingHealth;
@@ -52,7 +80,11 @@ public class LivingEntity : MonoBehaviour, IDamageable
         if (IsInvulnerable || damageMessage.damager == gameObject || dead) return false;
 
         lastDamagedTime = Time.time;
-        health -= damageMessage.amount;
+
+        // 대미지 감소율 공식
+        // 방어도 / (방어도 + (캐릭터 레벨 * 50))
+        float defenseRate = currentDefense / (currentDefense + (currentLevel * 50f));
+        health -= damageMessage.amount * (1f - defenseRate);
 
         if (health <= 0) Die();
 
