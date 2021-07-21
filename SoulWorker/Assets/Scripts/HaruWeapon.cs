@@ -1,8 +1,7 @@
-﻿using MyStruct;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UI;
-using UnityEngine;
+﻿using UnityEngine;
+
+using MyStruct;
+using System.IO;
 
 public class HaruWeapon : MonoBehaviour
 {
@@ -25,8 +24,15 @@ public class HaruWeapon : MonoBehaviour
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
-
+        // 무기를 휘두르는 플레이어와 충돌 X
         mask = LayerMask.NameToLayer("Player");
+        
+        // 무기 정보 텍스트 읽어옴
+        string filePath = Path.Combine(Application.streamingAssetsPath, "WeaponInfo.txt");
+        string info = Utility.ReadText(filePath);
+        // 무기 오브젝트 이름으로
+        Debug.Log(gameObject.name);
+        // 읽어들인 텍스트 파서
     }
 
     private void OnTriggerEnter(Collider other)

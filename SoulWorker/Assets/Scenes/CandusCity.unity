@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 54ec3873e9e856b4ba2b058960dffb18, type: 2}
+--- !u!114 &7779505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5984899699974879838, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4595676945078733568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf077aaf10299544397aab6c33b7f8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &57194103 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4013695095941602943, guid: c49c4ec44b670e141a666dcb51f62a44,
@@ -1642,6 +1654,16 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 4595676945078733570, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: playerInfo
+      value: 
+      objectReference: {fileID: 7779505}
+    - target: {fileID: 4595676945078733570, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: monsterInfo
+      value: 
+      objectReference: {fileID: 7779505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d8fd9b0b290f0468996a0df2aa250b, type: 3}
 --- !u!1001 &5824356814942818074
@@ -1711,5 +1733,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7288352433240105627, guid: 94da0f010c0a0d74c8e712883f5cd0fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 94da0f010c0a0d74c8e712883f5cd0fa, type: 3}

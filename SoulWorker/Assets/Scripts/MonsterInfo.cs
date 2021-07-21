@@ -15,10 +15,7 @@ public class MonsterInfo : MonoBehaviour
         currentMonsterData = data;
     }
 
-    public float GetOriginHp()
-    {
-        return originMonsterData.hp;
-    }
+
 
     public float GetCurrentHp()
     {
