@@ -2,6 +2,7 @@
 
 using MyStruct;
 using System.IO;
+using UnityEditorInternal;
 
 public class HaruWeapon : MonoBehaviour
 {
@@ -27,12 +28,20 @@ public class HaruWeapon : MonoBehaviour
         // 무기를 휘두르는 플레이어와 충돌 X
         mask = LayerMask.NameToLayer("Player");
         
-        // 무기 정보 텍스트 읽어옴
+        // 무기 정보 파일 읽기
         string filePath = Path.Combine(Application.streamingAssetsPath, "WeaponInfo.txt");
-        string info = Utility.ReadText(filePath);
-        // 무기 오브젝트 이름으로
-        Debug.Log(gameObject.name);
-        // 읽어들인 텍스트 파서
+        string fileText = Utility.ReadText(filePath);
+        string weponInfo = "";
+        // 무기 정보
+        if (!Utility.Parser_GetArea(fileText, gameObject.name, out weponInfo))
+            return;
+
+        float atk;
+        // 무기 스텟
+        if (!Utility.Parser_GetValue_Float(weponInfo, "atk", out atk))
+            return;
+
+        Debug.Log(atk);
     }
 
     private void OnTriggerEnter(Collider other)
