@@ -4,10 +4,8 @@ using MyStruct;
 using System.IO;
 using UnityEditorInternal;
 
-public class HaruWeapon : MonoBehaviour
+public class HaruWeapon : Item
 {
-    public string weaponName;
-    public float useLevel;
     public float attack;
 
     [SerializeField] private BoxCollider boxCollider;
@@ -40,7 +38,7 @@ public class HaruWeapon : MonoBehaviour
             return;
 
         // 무기 스텟
-        if (!Utility.Parser_GetValue_String(weponInfo, "name", out weaponName))
+        if (!Utility.Parser_GetValue_String(weponInfo, "name", out itemName))
             return;
         if (!Utility.Parser_GetValue_Float(weponInfo, "level", out useLevel))
             return;
