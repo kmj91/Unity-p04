@@ -6,6 +6,10 @@ using UnityEditorInternal;
 
 public class HaruWeapon : MonoBehaviour
 {
+    public string weaponName;
+    public float useLevel;
+    public float attack;
+
     [SerializeField] private BoxCollider boxCollider;
 
     private LayerMask mask;
@@ -32,16 +36,16 @@ public class HaruWeapon : MonoBehaviour
         string filePath = Path.Combine(Application.streamingAssetsPath, "WeaponInfo.txt");
         string fileText = Utility.ReadText(filePath);
         string weponInfo = "";
-        // 무기 정보
         if (!Utility.Parser_GetArea(fileText, gameObject.name, out weponInfo))
             return;
 
-        float atk;
         // 무기 스텟
-        if (!Utility.Parser_GetValue_Float(weponInfo, "atk", out atk))
+        if (!Utility.Parser_GetValue_String(weponInfo, "name", out weaponName))
             return;
-
-        Debug.Log(atk);
+        if (!Utility.Parser_GetValue_Float(weponInfo, "level", out useLevel))
+            return;
+        if (!Utility.Parser_GetValue_Float(weponInfo, "atk", out attack))
+            return;
     }
 
     private void OnTriggerEnter(Collider other)

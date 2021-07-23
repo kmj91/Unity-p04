@@ -60,7 +60,7 @@ public static class Utility
 
     public static bool Parser_GetArea(string fileText, string areaName, out string data)
     {
-        int length = fileText.Length;
+        int length = fileText.Length - 1;
         int begin = 0;
         int end = 0;
 
@@ -80,7 +80,7 @@ public static class Utility
 
     public static bool Parser_GetValue_Float(string text, string name, out float value)
     {
-        int length = text.Length;
+        int length = text.Length - 1;
         int begin = 0;
         int end = 0;
         string data = "";
@@ -117,16 +117,55 @@ public static class Utility
         return false;
     }
 
+    public static bool Parser_GetValue_String(string text, string name, out string value)
+    {
+        int length = text.Length - 1;
+        int begin = 0;
+        int end = 0;
+
+        value = "";
+
+        while (end < length)
+        {
+            if (!NextWord(text, ref begin, ref end))
+                return false;
+
+            if (!NameCompare(text, name, ref begin, ref end))
+            {
+                if (!NextLine(text, ref begin, ref end))
+                    return false;
+
+                continue;
+            }
+
+            if (GetValue(text, ref value, ref begin, ref end))
+            {
+                return true;
+            }
+            else
+            {
+                if (!NextLine(text, ref begin, ref end))
+                    return false;
+
+                continue;
+            }
+        }
+
+        return false;
+    }
+
 
 
     private static bool NextWord(string text, ref int begin, ref int end)
     {
+        int length = text.Length - 1;
+
         // 다음 문자로
         while (text[end] == 0x20 || text[end] == 0x09 || text[end] == 0x0a || text[end] == 0x0d
-            || text[end] == '"' || text[end] == '{' || text[end] == '}')
+            || text[end] == '{' || text[end] == '}')
         {
             // 버퍼의 끝
-            if (end == text.Length)
+            if (end == length)
             {
                 begin = end;
                 return false;
@@ -142,10 +181,12 @@ public static class Utility
 
     private static bool NextLine(string text, ref int begin, ref int end)
     {
+        int length = text.Length - 1;
+
         while (text[end] != 0x0a && text[end] != 0x0d)
         {
             // 버퍼의 끝
-            if (end == text.Length)
+            if (end == length)
             {
                 begin = end;
                 return false;
@@ -159,13 +200,40 @@ public static class Utility
         return true;
     }
 
-    private static bool EndString(string text, int begin, ref int end)
+    private static bool EndString(string text, ref int begin, ref int end)
     {
-        while (text[end] != 0x20 && text[end] != 0x09 && text[end] != 0x0a && text[end] != 0x0d
-            && text[end] != '"')
+        int length = text.Length - 1;
+
+        // 처음이 문자열의 시작인 " 로 시작하면
+        if (text[begin] == '"')
+        {
+            ++begin;
+            end = begin;
+
+            // " 로 끝나는 걸 찾음
+            while (text[end] != '"')
+            {
+                // " 없음, 한줄의 끝
+                if (text[end] == 0x0a || text[end] == 0x0d)
+                    return false;
+
+                // 버퍼의 끝
+                if (end == length)
+                    return false;
+
+                // 다음 글자로
+                ++end;
+            }
+
+            return true;
+        }
+
+        
+
+        while (text[end] != 0x20 && text[end] != 0x09 && text[end] != 0x0a && text[end] != 0x0d)
         {
             // 버퍼의 끝
-            if (end == text.Length)
+            if (end == length)
                 return false;
 
             // 다음 글자로
@@ -177,7 +245,7 @@ public static class Utility
 
     private static bool NameCompare(string text, string name, ref int begin, ref int end)
     {
-        if (!EndString(text, begin, ref end))
+        if (!EndString(text, ref begin, ref end))
             return false;
 
         // 문자열 잘라냄
@@ -195,7 +263,7 @@ public static class Utility
         if (!NextWord(text, ref begin, ref end))
             return false;
 
-        if (!EndString(text, begin, ref end))
+        if (!EndString(text, ref begin, ref end))
             return false;
 
         // 문자열 잘라냄
@@ -209,7 +277,7 @@ public static class Utility
         if (!NextWord(text, ref begin, ref end))
             return false;
 
-        if (!EndString(text, begin, ref end))
+        if (!EndString(text, ref begin, ref end))
             return false;
 
         // 값 획득
@@ -225,11 +293,13 @@ public static class Utility
     // end : 구역 끝 인덱스
     private static bool ParsingArea(string fileText, string areaName, ref int begin, ref int end, ref string data)
     {
+        int length = fileText.Length - 1;
+
         while (fileText[end] != 0x0a && fileText[end] != 0x0d
             && fileText[end] != '"' && fileText[end] != '{' && fileText[end] != '}')
         {
             // 버퍼의 끝
-            if (end == fileText.Length)
+            if (end == length)
                 return false;
 
             // 다음 글자로
@@ -245,7 +315,7 @@ public static class Utility
             while (fileText[end] != '}')
             {
                 // 버퍼의 끝
-                if (end == fileText.Length)
+                if (end == length)
                     return false;
 
                 // 다음 글자로
@@ -263,7 +333,7 @@ public static class Utility
         while (fileText[begin] != '{')
         {
             // 버퍼의 끝
-            if (begin == fileText.Length)
+            if (begin == length)
             {
                 end = begin;
                 return false;
@@ -279,7 +349,7 @@ public static class Utility
         while (fileText[end] != '}')
         {
             // 버퍼의 끝
-            if (end == fileText.Length)
+            if (end == length)
                 return false;
 
             // 다음 글자로
