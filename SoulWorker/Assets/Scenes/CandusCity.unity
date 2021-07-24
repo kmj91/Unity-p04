@@ -1339,6 +1339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8177116d85ad564b87e6a266c325198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  itemName: 
+  useLevel: 0
+  playerInfo: {fileID: 7779505}
   boxCollider: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
@@ -1646,6 +1650,11 @@ PrefabInstance:
       objectReference: {fileID: 949891799}
     - target: {fileID: 4595676944768531904, guid: 77d8fd9b0b290f0468996a0df2aa250b,
         type: 3}
+      propertyPath: playerInfo
+      value: 
+      objectReference: {fileID: 7779505}
+    - target: {fileID: 4595676944768531904, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1364413204}
@@ -1664,6 +1673,11 @@ PrefabInstance:
       propertyPath: monsterInfo
       value: 
       objectReference: {fileID: 7779505}
+    - target: {fileID: 5984899699974879838, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 949891799}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d8fd9b0b290f0468996a0df2aa250b, type: 3}
 --- !u!1001 &5824356814942818074

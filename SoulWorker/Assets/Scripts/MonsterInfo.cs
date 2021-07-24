@@ -31,4 +31,14 @@ public class MonsterInfo : MonoBehaviour
     {
         return currentMonsterData.defense;
     }
+
+    public float GetCurrentEvade()
+    {
+        return currentMonsterData.evade;
+    }
+
+    public float GetCurrentCriticalResistance()
+    {
+        return currentMonsterData.criticalResistance;
+    }
 }

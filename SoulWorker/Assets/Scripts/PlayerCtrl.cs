@@ -12,6 +12,7 @@ using MyEnum;
 public partial class PlayerCtrl : MonoBehaviour
 {
     public GameManager gameManager;
+    public PlayerInfo playerInfo;           // 플레이어 정보
     public HaruWeapon weapon;
     public float moveSpeed = 5.0f;          // 이동 속도
     public float mouseSpeed = 100.0f;       // 마우스 속도
@@ -131,10 +132,13 @@ public partial class PlayerCtrl : MonoBehaviour
 
         changeState[(int)PlayerState.NormalAttack5, (int)PlayerState.Run] = true;
 
+        // 무기 장착
         weapon.transform.parent = weaponholder;
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
         weapon.transform.localScale = Vector3.one;
+
+        playerInfo.UpdateInfo();
     }
 
     private void FixedUpdate()

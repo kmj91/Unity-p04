@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using MyStruct;
 using MyDelegate;
+using Random = UnityEngine.Random;
 
 public class LivingEntity : MonoBehaviour, IDamageable
 {
@@ -48,6 +47,31 @@ public class LivingEntity : MonoBehaviour, IDamageable
         private set { }
     }
 
+    // 회피도 호출 함수
+    public DelRetfloat DelCurrentEvade;
+    public float currentEvade
+    {
+        get
+        {
+            if (DelCurrentEvade == null) return 0f;
+
+            return DelCurrentEvade();
+        }
+        private set { }
+    }
+
+    public DelRetfloat DelCurrentCriticalResistance;
+    public float currentCriticalResistance
+    {
+        get
+        {
+            if (DelCurrentCriticalResistance == null) return 0f;
+
+            return DelCurrentCriticalResistance();
+        }
+        private set { }
+    }
+
     public float startingHealth;
     public float health { get; protected set; }
     public bool dead { get; protected set; }
@@ -81,10 +105,34 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
         lastDamagedTime = Time.time;
 
+        // 적중도 공식
+        // (공격자의 적중도 - 방어자의 회피도)/1000 * 100%
+        float accuracy = (damageMessage.accuracy - currentEvade) / 1000f * 100f;
+        int rand = Random.Range(0, 100);
+        if (accuracy < rand)
+        {
+            // 빗맞힘
+            // 원래 피해량 * 빗맞힘 피해
+            damageMessage.damage *= (damageMessage.partialDamage / 100);
+        }
+        else
+        {
+            // 치명타 공식
+            // 실제 치확(%) = 공격자 치확 - 방어자 치저 + (공격자의 적중도 - 방어자의 회피도) / 50
+            float criticalRate = damageMessage.criticalRate - currentCriticalResistance + (damageMessage.accuracy - currentEvade) / 50;
+            rand = Random.Range(0, 100);
+            if (criticalRate >= rand)
+            {
+                // 치명타 공식
+                // 1.8AD + 치피옵션
+                damageMessage.damage = damageMessage.damage * 1.8f + damageMessage.criticalDamage;
+            }
+        }
+
         // 대미지 감소율 공식
         // 방어도 / (방어도 + (캐릭터 레벨 * 50))
         float defenseRate = currentDefense / (currentDefense + (currentLevel * 50f));
-        health -= damageMessage.amount * (1f - defenseRate);
+        health -= damageMessage.damage * (1f - defenseRate);
 
         if (health <= 0) Die();
 

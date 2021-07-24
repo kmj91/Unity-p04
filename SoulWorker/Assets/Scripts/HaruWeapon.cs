@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
+using MyEnum;
 using MyStruct;
 using System.IO;
-using UnityEditorInternal;
+using System.Collections.Generic;
 
 public class HaruWeapon : Item
 {
-    public float attack;
+    public PlayerInfo playerInfo;
 
     [SerializeField] private BoxCollider boxCollider;
 
@@ -29,7 +30,12 @@ public class HaruWeapon : Item
         boxCollider = GetComponent<BoxCollider>();
         // 무기를 휘두르는 플레이어와 충돌 X
         mask = LayerMask.NameToLayer("Player");
-        
+
+        abilityDatas = new List<AbilityData>();
+
+        // 타입
+        type = ItemType.HaruWeapon;
+
         // 무기 정보 파일 읽기
         string filePath = Path.Combine(Application.streamingAssetsPath, "WeaponInfo.txt");
         string fileText = Utility.ReadText(filePath);
@@ -42,19 +48,29 @@ public class HaruWeapon : Item
             return;
         if (!Utility.Parser_GetValue_Float(weponInfo, "level", out useLevel))
             return;
-        if (!Utility.Parser_GetValue_Float(weponInfo, "atk", out attack))
+
+        AbilityData data = new AbilityData();
+        if (!Utility.Parser_GetValue_Float(weponInfo, "atk", out data.amount))
             return;
+        data.type = AbilityType.Attack;
+        abilityDatas.Add(data);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == mask.value) return;
 
+
+
         var hit = other.GetComponent<LivingEntity>();
         DamageMessage msg = new DamageMessage
         {
             damager = gameObject,
-            amount = 10f
+            damage = playerInfo.currentPlayerData.maxAtk,
+            criticalRate = playerInfo.currentPlayerData.criticalRate,
+            criticalDamage = playerInfo.currentPlayerData.criticalDamage,
+            accuracy = playerInfo.currentPlayerData.accuracy,
+            partialDamage = playerInfo.currentPlayerData.partialDamage
         };
         hit.ApplyDamage(msg);
     }

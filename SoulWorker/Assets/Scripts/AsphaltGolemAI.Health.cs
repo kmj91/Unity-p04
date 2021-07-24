@@ -102,5 +102,7 @@ public partial class AsphaltGolemAI : LivingEntity
         DelCurrentLevel = monsterInfo.GetCurrentLevel;
         DelCurrentHp = monsterInfo.GetCurrentHp;
         DelCurrentDefense = monsterInfo.GetCurrentDefense;
+        DelCurrentEvade = monsterInfo.GetCurrentEvade;
+        DelCurrentCriticalResistance = monsterInfo.GetCurrentCriticalResistance;
     }
 }

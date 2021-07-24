@@ -7,6 +7,23 @@
         Hold
     }
 
+    public enum ItemType
+    {
+        HaruWeapon,
+        HeadGear,
+        ShoulderGear,
+        BodyGear,
+        LegGear,
+        End
+    }
+
+    public enum AbilityType
+    {
+        Attack,
+        Defense,
+        End
+    }
+
     public enum PlayerState
     {
         Idle,

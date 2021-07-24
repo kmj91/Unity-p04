@@ -23,7 +23,11 @@ namespace MyStruct
     public struct DamageMessage
     {
         public GameObject damager;
-        public float amount;
+        public float damage;
+        public float criticalRate;
+        public float criticalDamage;
+        public float accuracy;
+        public float partialDamage;
         public Vector3 hitPoint;
         public Vector3 hitNormal;
     }
@@ -82,5 +86,11 @@ namespace MyStruct
 
         public float partialDamage;     // 빗맞힘 시 피해[%] (기본 수치 50%)
         public float superArmourBreak;  // 슈퍼아머 파괴력[%]
+    }
+
+    public struct AbilityData
+    {
+        public AbilityType type;
+        public float amount;
     }
 }
