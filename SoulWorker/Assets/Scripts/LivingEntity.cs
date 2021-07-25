@@ -108,7 +108,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         // 적중도 공식
         // (공격자의 적중도 - 방어자의 회피도)/1000 * 100%
         float accuracy = (damageMessage.accuracy - currentEvade) / 1000f * 100f;
-        int rand = Random.Range(0, 100);
+        float rand = Random.Range(0f, 100f);
         if (accuracy < rand)
         {
             // 빗맞힘
@@ -120,7 +120,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
             // 치명타 공식
             // 실제 치확(%) = 공격자 치확 - 방어자 치저 + (공격자의 적중도 - 방어자의 회피도) / 50
             float criticalRate = damageMessage.criticalRate - currentCriticalResistance + (damageMessage.accuracy - currentEvade) / 50;
-            rand = Random.Range(0, 100);
+            rand = Random.Range(0f, 100f);
             if (criticalRate >= rand)
             {
                 // 치명타 공식

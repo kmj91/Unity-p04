@@ -33,6 +33,16 @@
         armsAnime.SetFloat("Speed", velocity);
     }
 
+    private void Ani_DMG_L()
+    {
+
+    }
+
+    private void Ani_DMG_R()
+    {
+
+    }
+
     private void Ani_A_Skill_01()
     {
 

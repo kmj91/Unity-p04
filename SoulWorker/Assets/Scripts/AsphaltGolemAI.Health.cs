@@ -22,22 +22,19 @@ public partial class AsphaltGolemAI : LivingEntity
         if (!superArmourBreak)
             return true;
 
-        //if (state == AsphaltGolemState.DMG_L)
-        //{
-        //    state = AsphaltGolemState.DMG_R;
-        //}
-        //else if (state == AsphaltGolemState.DMG_R)
-        //{
-        //    state = AsphaltGolemState.DMG_L;
-        //}
-        //else
-        //{
-
-        //}
-
-
-        // 애니메이션 트리거
-        SetTrigerDMGL();
+        int rand = Random.Range(0, 2);
+        if (rand == 0)
+        {
+            state = AsphaltGolemState.DMG_L;
+            // 애니메이션 트리거
+            SetTrigerDMGL();
+        }
+        else
+        {
+            state = AsphaltGolemState.DMG_R;
+            // 애니메이션 트리거
+            SetTrigerDMGR();
+        }
 
         return true;
     }
