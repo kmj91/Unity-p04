@@ -28,8 +28,8 @@ public class HaruWeapon : Item
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
-        // 무기를 휘두르는 플레이어와 충돌 X
-        mask = LayerMask.NameToLayer("Player");
+        // 몬스터와 충돌
+        mask = LayerMask.NameToLayer("Monster");
 
         abilityDatas = new List<AbilityData>();
 
@@ -58,7 +58,7 @@ public class HaruWeapon : Item
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == mask.value) return;
+        if (other.gameObject.layer != mask.value) return;
 
 
 

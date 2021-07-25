@@ -37,6 +37,7 @@ public partial class AsphaltGolemAI : LivingEntity
     private bool hasTarget => targetEntity != null && !targetEntity.dead;
 
     private Action[] animeUpdate;
+    private bool superArmourBreak = true;
 
 
 #if UNITY_EDITOR

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using MyStruct;
+using MyEnum;
 
 public partial class AsphaltGolemAI : LivingEntity
 {
@@ -17,6 +18,23 @@ public partial class AsphaltGolemAI : LivingEntity
         {
             targetEntity = damageMessage.damager.GetComponent<LivingEntity>();
         }
+
+        if (!superArmourBreak)
+            return true;
+
+        //if (state == AsphaltGolemState.DMG_L)
+        //{
+        //    state = AsphaltGolemState.DMG_R;
+        //}
+        //else if (state == AsphaltGolemState.DMG_R)
+        //{
+        //    state = AsphaltGolemState.DMG_L;
+        //}
+        //else
+        //{
+
+        //}
+
 
         // 애니메이션 트리거
         SetTrigerDMGL();
