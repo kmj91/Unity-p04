@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public partial class AsphaltGolemAI : LivingEntity
+﻿public partial class AsphaltGolemAI : LivingEntity
 {
     private void SetSpeedZero()
     {
@@ -14,6 +10,12 @@ public partial class AsphaltGolemAI : LivingEntity
     {
         bodyAnime.SetTrigger("B_DMG_L");
         armsAnime.SetTrigger("B_DMG_L");
+    }
+
+    private void SetTrigerDMGR()
+    {
+        bodyAnime.SetTrigger("B_DMG_R");
+        armsAnime.SetTrigger("B_DMG_R");
     }
 
 

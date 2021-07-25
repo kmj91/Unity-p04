@@ -45,6 +45,8 @@
     {
         Idle,
         Run,
+        DMG_L,
+        DMG_R,
         A_Skill_01,
         A_Skill_02,
         A_Skill_03,

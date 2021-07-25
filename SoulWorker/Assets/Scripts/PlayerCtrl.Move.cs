@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-using MyEnum;
+﻿using UnityEngine;
 
 public partial class PlayerCtrl : MonoBehaviour
 {

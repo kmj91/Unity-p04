@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using MyEnum;
-using MyStruct;
 
 #if UNITY_EDITOR
 using UnityEditor;

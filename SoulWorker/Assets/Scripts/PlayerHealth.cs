@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-using MyStruct;
+﻿using MyStruct;
 
 public class PlayerHealth : LivingEntity
 {
