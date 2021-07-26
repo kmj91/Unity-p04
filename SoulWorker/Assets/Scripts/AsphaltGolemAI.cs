@@ -83,6 +83,7 @@ public partial class AsphaltGolemAI : LivingEntity
         animeUpdate[(int)AsphaltGolemState.Run] = Ani_Run;
         animeUpdate[(int)AsphaltGolemState.DMG_L] = Ani_DMG_L;
         animeUpdate[(int)AsphaltGolemState.DMG_R] = Ani_DMG_R;
+        animeUpdate[(int)AsphaltGolemState.Death] = Ani_Death;
         animeUpdate[(int)AsphaltGolemState.A_Skill_01] = Ani_A_Skill_01;
         animeUpdate[(int)AsphaltGolemState.A_Skill_01] = Ani_A_Skill_01;
         animeUpdate[(int)AsphaltGolemState.A_Skill_02] = Ani_A_Skill_02;

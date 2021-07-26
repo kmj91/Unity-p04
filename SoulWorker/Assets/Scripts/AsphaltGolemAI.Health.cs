@@ -47,8 +47,10 @@ public partial class AsphaltGolemAI : LivingEntity
         GetComponent<Collider>().enabled = false;
         // 에이전트 비활성화
         agent.enabled = false;
-
-        // 애니메이션 처리...
+        // 상태
+        state = AsphaltGolemState.Death;
+        // 애니메이션 트리거
+        SetTrigerDeath();
     }
 
     public void SetUp(float health, float damage, float runSpeed, float patrolSpeed, Color skinColor)
@@ -117,5 +119,12 @@ public partial class AsphaltGolemAI : LivingEntity
         DelCurrentDefense = monsterInfo.GetCurrentDefense;
         DelCurrentEvade = monsterInfo.GetCurrentEvade;
         DelCurrentCriticalResistance = monsterInfo.GetCurrentCriticalResistance;
+    }
+
+    private void Death()
+    {
+        state = AsphaltGolemState.Death;
+        // 애니메이션 트리거
+        SetTrigerDeath();
     }
 }

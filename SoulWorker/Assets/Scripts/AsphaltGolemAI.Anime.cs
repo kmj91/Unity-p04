@@ -1,4 +1,6 @@
-﻿public partial class AsphaltGolemAI : LivingEntity
+﻿using MyEnum;
+
+public partial class AsphaltGolemAI : LivingEntity
 {
     private void SetSpeedZero()
     {
@@ -18,6 +20,12 @@
         armsAnime.SetTrigger("B_DMG_R");
     }
 
+    private void SetTrigerDeath()
+    {
+        bodyAnime.SetTrigger("Death");
+        armsAnime.SetTrigger("Death");
+    }
+
 
 
     private void Ani_Idle()
@@ -35,10 +43,18 @@
 
     private void Ani_DMG_L()
     {
+        if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            state = AsphaltGolemState.Idle;
 
     }
 
     private void Ani_DMG_R()
+    {
+        if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            state = AsphaltGolemState.Idle;
+    }
+
+    private void Ani_Death()
     {
 
     }

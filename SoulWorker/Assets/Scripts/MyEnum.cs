@@ -47,6 +47,7 @@
         Run,
         DMG_L,
         DMG_R,
+        Death,
         A_Skill_01,
         A_Skill_02,
         A_Skill_03,
