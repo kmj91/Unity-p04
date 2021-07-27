@@ -134,6 +134,7 @@ public partial class AsphaltGolemAI : LivingEntity
             }
             else
             {
+                /*
                 if (targetEntity != null) targetEntity = null;
 
                 // 정찰 상태가 아니면 정찰 상태로
@@ -167,6 +168,7 @@ public partial class AsphaltGolemAI : LivingEntity
                         break;
                     }
                 }
+                */
             }
 
             yield return wait;

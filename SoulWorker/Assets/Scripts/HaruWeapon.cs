@@ -65,7 +65,7 @@ public class HaruWeapon : Item
         var hit = other.GetComponent<LivingEntity>();
         DamageMessage msg = new DamageMessage
         {
-            damager = gameObject,
+            damager = playerInfo.gameObject,
             damage = playerInfo.currentPlayerData.maxAtk,
             criticalRate = playerInfo.currentPlayerData.criticalRate,
             criticalDamage = playerInfo.currentPlayerData.criticalDamage,
