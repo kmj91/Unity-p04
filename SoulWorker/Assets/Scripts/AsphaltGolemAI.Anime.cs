@@ -44,14 +44,20 @@ public partial class AsphaltGolemAI : LivingEntity
     private void Ani_DMG_L()
     {
         if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
             state = AsphaltGolemState.Idle;
+            actionEnd = false;
+        }
 
     }
 
     private void Ani_DMG_R()
     {
         if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
             state = AsphaltGolemState.Idle;
+            actionEnd = false;
+        }
     }
 
     private void Ani_Death()

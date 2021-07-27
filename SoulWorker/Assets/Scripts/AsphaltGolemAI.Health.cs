@@ -120,11 +120,4 @@ public partial class AsphaltGolemAI : LivingEntity
         DelCurrentEvade = monsterInfo.GetCurrentEvade;
         DelCurrentCriticalResistance = monsterInfo.GetCurrentCriticalResistance;
     }
-
-    private void Death()
-    {
-        state = AsphaltGolemState.Death;
-        // 애니메이션 트리거
-        SetTrigerDeath();
-    }
 }

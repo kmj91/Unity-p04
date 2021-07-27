@@ -37,7 +37,14 @@ public partial class AsphaltGolemAI : LivingEntity
     private bool hasTarget => targetEntity != null && !targetEntity.dead;
 
     private Action[] animeUpdate;
+    private Action[,] monsterAI;
+    private Target target = Target.End;
+    private Phase phase = Phase.End;
     private bool superArmourBreak = true;
+    private bool actionEnd = true;
+
+    private enum Target { No, Yes, End }            // 타겟 - 타겟이 있는가
+    private enum Phase { Phase_1, Phase_2, End }    // 페이즈 - 일정 체력을 잃으면 페이즈 전환
 
 
 #if UNITY_EDITOR
@@ -89,6 +96,12 @@ public partial class AsphaltGolemAI : LivingEntity
         animeUpdate[(int)AsphaltGolemState.A_Skill_02] = Ani_A_Skill_02;
         animeUpdate[(int)AsphaltGolemState.A_Skill_03] = Ani_A_Skill_03;
 
+        monsterAI = new Action[(int)Target.End, (int)Phase.End];
+        monsterAI[(int)Target.No, (int)Phase.Phase_1] = AI_NoTarget;
+        monsterAI[(int)Target.No, (int)Phase.Phase_2] = AI_NoTarget;
+        monsterAI[(int)Target.Yes, (int)Phase.Phase_1] = AI_Phase_1;
+        monsterAI[(int)Target.Yes, (int)Phase.Phase_2] = AI_Phase_2;
+
         // 코루틴
         StartCoroutine(UpdatePath());
     }
@@ -122,6 +135,13 @@ public partial class AsphaltGolemAI : LivingEntity
 
         while (!dead)
         {
+            // 시간 감소
+            // ...
+
+            // 하나의 행동이 끝나면 다음 행동을 받음
+            if (actionEnd)
+                UpdateAI();
+
             if (hasTarget)
             {
                 // 정찰 상태면 추적 상태로
@@ -197,5 +217,38 @@ public partial class AsphaltGolemAI : LivingEntity
         }
         
         return false;
+    }
+
+    private void UpdateAI()
+    {
+        // 타겟
+        if (hasTarget)
+            target = Target.Yes;
+        else
+            target = Target.No;
+
+        // 페이즈
+        if (startingHealth * 0.5 <= health)
+            phase = Phase.Phase_1;
+        else
+            phase = Phase.Phase_2;
+
+        // AI 처리
+        monsterAI[(int)target, (int)phase]();
+    }
+
+    private void AI_NoTarget()
+    {
+
+    }
+
+    private void AI_Phase_1()
+    {
+
+    }
+
+    private void AI_Phase_2()
+    {
+
     }
 }
