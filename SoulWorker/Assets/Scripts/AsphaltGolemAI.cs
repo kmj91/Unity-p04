@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using MyEnum;
+using Random = UnityEngine.Random;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -28,6 +29,7 @@ public partial class AsphaltGolemAI : LivingEntity
     public float fieldOfView = 50.0f;
     public float viewDistance = 10.0f;
     public float patrolSpeed = 2.0f;
+    public float meleeDistance = 3f;
 
     private Transform mTransform;
     private AsphaltGolemState state = AsphaltGolemState.Idle;   // 상태
@@ -58,10 +60,18 @@ public partial class AsphaltGolemAI : LivingEntity
 
         if (eyeTrasform != null)
         {
+
             var leftEyeRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
             var leftRayDirection = leftEyeRotation * transform.forward;
-            Handles.color = new Color(1f, 1f, 1f, 0.2f);
+            Handles.color = new Color(1f, 0f, 0f, 0.2f);
             Handles.DrawSolidArc(eyeTrasform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
+
+
+            Handles.color = new Color(1f, 0f, 0f, 0.2f);
+            Handles.DrawSolidDisc(eyeTrasform.position, Vector3.up, meleeDistance);
+
+            Handles.color = new Color(1f, 1f, 1f, 0.2f);
+            Handles.DrawSolidDisc(eyeTrasform.position, Vector3.up, viewDistance);
         }
     }
 #endif
@@ -141,6 +151,8 @@ public partial class AsphaltGolemAI : LivingEntity
             // 하나의 행동이 끝나면 다음 행동을 받음
             if (actionEnd)
                 UpdateAI();
+
+            SetTrigerASkill_01();
 
             if (hasTarget)
             {
@@ -239,12 +251,23 @@ public partial class AsphaltGolemAI : LivingEntity
 
     private void AI_NoTarget()
     {
-
+        
     }
 
     private void AI_Phase_1()
     {
+        // 범위 내 플레이어 콜라이더들을 가져옴
+        var colliders = Physics.OverlapSphere(eyeTrasform.position, viewDistance, whatIsTarget);
+        // 랜덤으로 한명만 가져옴
+        int rand = Random.Range(0, colliders.Length);
 
+        var collider = colliders[rand];
+
+        // 사거리 안에 존재하는지 확인
+        var direction = collider.transform.position - eyeTrasform.position;
+        direction.y = eyeTrasform.forward.y;
+
+        //if(direction.magnitude)
     }
 
     private void AI_Phase_2()

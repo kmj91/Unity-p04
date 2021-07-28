@@ -26,6 +26,24 @@ public partial class AsphaltGolemAI : LivingEntity
         armsAnime.SetTrigger("Death");
     }
 
+    private void SetTrigerASkill_01()
+    {
+        bodyAnime.SetTrigger("A_Skill_01");
+        armsAnime.SetTrigger("A_Skill_01");
+    }
+
+    private void SetTrigerASkill_02()
+    {
+        bodyAnime.SetTrigger("A_Skill_02");
+        armsAnime.SetTrigger("A_Skill_02");
+    }
+
+    private void SetTrigerASkill_03()
+    {
+        bodyAnime.SetTrigger("A_Skill_03");
+        armsAnime.SetTrigger("A_Skill_03");
+    }
+
 
 
     private void Ani_Idle()
