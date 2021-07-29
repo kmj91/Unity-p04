@@ -10,15 +10,31 @@ public partial class AsphaltGolemAI : LivingEntity
         base.OnEnable();
     }
 
-    public override bool ApplyDamage(DamageMessage damageMessage)
+    public override bool ApplyDamage(ref DamageMessage damageMessage)
     {
-        if (!base.ApplyDamage(damageMessage)) return false;
+        if (!base.ApplyDamage(ref damageMessage)) return false;
 
+        // 타겟이 없으면
         if (targetEntity == null)
         {
+            // 공격자를 타겟으로
             targetEntity = damageMessage.damager.GetComponent<LivingEntity>();
         }
+        // 타겟이 있으면
+        else
+        {
+            // 대미지 어그로 확률 1/10000
+            var damager = damageMessage.damager.GetComponent<LivingEntity>();
+            if (targetEntity != damager)
+            {
+                int aggro = Random.Range(0, 10000);
+                // 타겟 변경
+                if (aggro < 1)
+                    targetEntity = damager;
+            }
+        }
 
+        // 슈퍼아머 브레이크 상태
         if (!superArmourBreak)
             return true;
 

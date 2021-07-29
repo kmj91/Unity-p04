@@ -99,7 +99,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         health = startingHealth;
     }
 
-    public virtual bool ApplyDamage(DamageMessage damageMessage)
+    public virtual bool ApplyDamage(ref DamageMessage damageMessage)
     {
         if (IsInvulnerable || damageMessage.damager == gameObject || dead) return false;
 
@@ -133,7 +133,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         // 방어도 / (방어도 + (캐릭터 레벨 * 50))
         float defenseRate = currentDefense / (currentDefense + (currentLevel * 50f));
         health -= damageMessage.damage * (1f - defenseRate);
-
+        
         if (health <= 0) Die();
 
         return true;

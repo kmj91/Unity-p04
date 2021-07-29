@@ -141,12 +141,16 @@ public partial class AsphaltGolemAI : LivingEntity
 
     private IEnumerator UpdatePath() 
     {
-        WaitForSeconds wait = new WaitForSeconds(0.05f);
+        // 1초
+        WaitForSeconds wait = new WaitForSeconds(1f);
 
         while (!dead)
         {
             // 시간 감소
             // ...
+
+            // 타겟 검사
+            CheckTarget();
 
             // 하나의 행동이 끝나면 다음 행동을 받음
             if (actionEnd)
@@ -210,6 +214,26 @@ public partial class AsphaltGolemAI : LivingEntity
 
 
 
+    private void CheckTarget()
+    {
+        if (!hasTarget)
+            return;
+
+        // 범위 내 플레이어 콜라이더들을 가져옴
+        var colliders = Physics.OverlapSphere(eyeTrasform.position, viewDistance, whatIsTarget);
+
+        foreach (var collider in colliders)
+        {
+            var livingEntity = collider.GetComponent<LivingEntity>();
+
+            if (livingEntity != null && !livingEntity.dead)
+            {
+                targetEntity = livingEntity;
+                break;
+            }
+        }
+    }
+
     private bool IsTargetOnSight(Transform target)
     {
         var direction = target.position - eyeTrasform.position;
@@ -256,18 +280,19 @@ public partial class AsphaltGolemAI : LivingEntity
 
     private void AI_Phase_1()
     {
-        // 범위 내 플레이어 콜라이더들을 가져옴
-        var colliders = Physics.OverlapSphere(eyeTrasform.position, viewDistance, whatIsTarget);
-        // 랜덤으로 한명만 가져옴
-        int rand = Random.Range(0, colliders.Length);
-
-        var collider = colliders[rand];
-
         // 사거리 안에 존재하는지 확인
-        var direction = collider.transform.position - eyeTrasform.position;
+        var direction = targetEntity.transform.position - eyeTrasform.position;
         direction.y = eyeTrasform.forward.y;
 
-        //if(direction.magnitude)
+        // 근접 거리보다 멀면
+        if (direction.magnitude > meleeDistance)
+        {
+            // 이동 or 장거리 공격
+        }
+        else
+        {
+            // 근접 공격
+        }
     }
 
     private void AI_Phase_2()

@@ -72,6 +72,6 @@ public class HaruWeapon : Item
             accuracy = playerInfo.currentPlayerData.accuracy,
             partialDamage = playerInfo.currentPlayerData.partialDamage
         };
-        hit.ApplyDamage(msg);
+        hit.ApplyDamage(ref msg);
     }
 }

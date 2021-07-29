@@ -11,9 +11,9 @@ public class PlayerHealth : LivingEntity
         UpdateUI();
     }
 
-    public override bool ApplyDamage(DamageMessage damageMessage)
+    public override bool ApplyDamage(ref DamageMessage damageMessage)
     {
-        if (!base.ApplyDamage(damageMessage)) return false;
+        if (!base.ApplyDamage(ref damageMessage)) return false;
 
         // 공격 받음
 

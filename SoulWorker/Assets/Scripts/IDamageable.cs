@@ -2,5 +2,5 @@
 
 public interface IDamageable
 {
-    bool ApplyDamage(DamageMessage damageMessage);
+    bool ApplyDamage(ref DamageMessage damageMessage);
 }
