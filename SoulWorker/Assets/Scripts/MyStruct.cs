@@ -93,4 +93,18 @@ namespace MyStruct
         public AbilityType type;
         public float amount;
     }
+
+    public struct MonsterSkillInfo
+    {
+        public MonsterSkillInfo(int skillNum, float random, float cooltime)
+        {
+            this.skillNum = skillNum;
+            this.random = random;
+            this.cooltime = cooltime;
+        }
+
+        public int skillNum;        // 스킬 번호
+        public float random;        // 확률
+        public float cooltime;      // 스킬 쿨타임
+    }
 }

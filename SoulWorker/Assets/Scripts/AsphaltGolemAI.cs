@@ -4,6 +4,7 @@ using UnityEngine;
 
 using UnityEngine.AI;
 using System;
+using MyStruct;
 using MyEnum;
 using Random = UnityEngine.Random;
 
@@ -11,7 +12,7 @@ using Random = UnityEngine.Random;
 using UnityEditor;
 #endif
 
-public partial class AsphaltGolemAI : LivingEntity
+public partial class AsphaltGolemAI : MonsterAI
 {
     public MonsterInfo monsterInfo;         // 몬스터 정보
     public Animator bodyAnime;              // 몸 애니메이터
@@ -44,6 +45,10 @@ public partial class AsphaltGolemAI : LivingEntity
     private Phase phase = Phase.End;
     private bool superArmourBreak = true;
     private bool actionEnd = true;
+
+    private MonsterSkillInfo[,] skillGroup;
+
+
 
     private enum Target { No, Yes, End }            // 타겟 - 타겟이 있는가
     private enum Phase { Phase_1, Phase_2, End }    // 페이즈 - 일정 체력을 잃으면 페이즈 전환
@@ -112,6 +117,19 @@ public partial class AsphaltGolemAI : LivingEntity
         monsterAI[(int)Target.Yes, (int)Phase.Phase_1] = AI_Phase_1;
         monsterAI[(int)Target.Yes, (int)Phase.Phase_2] = AI_Phase_2;
 
+        // 스킬 그룹
+        skillGroup = new MonsterSkillInfo[3, 3];
+        // 근거리 잡기
+        skillGroup[0, 0] = new MonsterSkillInfo(4, 100f, 0f);
+        // 일반 1
+        skillGroup[1, 0] = new MonsterSkillInfo(3, 15f, 0f);
+        skillGroup[1, 1] = new MonsterSkillInfo(2, 25f, 0f);
+        skillGroup[1, 2] = new MonsterSkillInfo(1, 100f, 0f);
+        // 일반 2
+        skillGroup[2, 0] = new MonsterSkillInfo(2, 15f, 0f);
+        skillGroup[2, 1] = new MonsterSkillInfo(3, 25f, 0f);
+        skillGroup[2, 2] = new MonsterSkillInfo(1, 100f, 0f);
+
         // 코루틴
         StartCoroutine(UpdatePath());
     }
@@ -156,17 +174,15 @@ public partial class AsphaltGolemAI : LivingEntity
             if (actionEnd)
                 UpdateAI();
 
-            SetTrigerASkill_01();
-
             if (hasTarget)
             {
-                // 정찰 상태면 추적 상태로
-                if (state == AsphaltGolemState.Idle)
-                {
-                    state = AsphaltGolemState.Run;
-                }
+                //// 정찰 상태면 추적 상태로
+                //if (state == AsphaltGolemState.Idle)
+                //{
+                //    state = AsphaltGolemState.Run;
+                //}
 
-                agent.SetDestination(targetEntity.transform.position);
+                //agent.SetDestination(targetEntity.transform.position);
             }
             else
             {
@@ -280,23 +296,68 @@ public partial class AsphaltGolemAI : LivingEntity
 
     private void AI_Phase_1()
     {
-        // 사거리 안에 존재하는지 확인
+        int skill;
+
+        // 타겟과의 거리
         var direction = targetEntity.transform.position - eyeTrasform.position;
         direction.y = eyeTrasform.forward.y;
 
-        // 근접 거리보다 멀면
+        float rand = Random.Range(0f, 99f);
+
+        // 이동
         if (direction.magnitude > meleeDistance)
         {
-            // 이동 or 장거리 공격
+            state = AsphaltGolemState.Run;
+            actionEnd = false;
+            return;
         }
+        // 근거리 잡기
+        else if (direction.magnitude <= meleeDistance && rand < 30f)
+        {
+            SkillCondition(ref skillGroup, 0, out skill);
+        }
+        // 일반 2
+        else if (rand < 60f)
+        {
+            SkillCondition(ref skillGroup, 2, out skill);
+        }
+        // 일반 1
         else
         {
-            // 근접 공격
+            SkillCondition(ref skillGroup, 1, out skill);
         }
+
+        // 공격 상태로 전환
+        FSM_Skill(skill);
     }
 
     private void AI_Phase_2()
     {
 
+    }
+
+    void FSM_Skill(int skill)
+    {
+        switch (skill)
+        {
+            case 1: // 어퍼
+                state = AsphaltGolemState.A_Skill_01;
+                SetTrigerASkill_01();
+                return;
+            case 2: // 광역 내려찍기
+                state = AsphaltGolemState.A_Skill_02;
+                SetTrigerASkill_02();
+                return;
+            case 3: // 방패 기둥 꺼내서 전방 충격파, 찍뎀 + 충격파 스킬
+                state = AsphaltGolemState.A_Skill_03;
+                SetTrigerASkill_03();
+                return;
+            case 4: // 잡기
+                return;
+            default:
+                // 없음
+                return;
+
+        }
     }
 }

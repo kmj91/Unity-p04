@@ -3,7 +3,7 @@
 using MyStruct;
 using MyEnum;
 
-public partial class AsphaltGolemAI : LivingEntity
+public partial class AsphaltGolemAI : MonsterAI
 {
     protected override void OnEnable()
     {
