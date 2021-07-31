@@ -18,7 +18,7 @@ public partial class AsphaltGolemAI : MonsterAI
     public Animator bodyAnime;              // 몸 애니메이터
     public Animator armsAnime;              // 팔 애니메이터
     public float moveSpeed = 3.0f;          // 이동 속도
-    public float rotationSpeed = 10.0f;     // 회전 속도
+    public float rotationSpeed = 3.0f;      // 회전 속도
     public float damage = 100.0f;           // 공격력
     public LivingEntity targetEntity;       // 추적 대상
     public LayerMask whatIsTarget;
@@ -30,9 +30,9 @@ public partial class AsphaltGolemAI : MonsterAI
     public float fieldOfView = 50.0f;
     public float viewDistance = 10.0f;
     public float patrolSpeed = 2.0f;
-    public float meleeDistance = 3f;
+    public float meleeDistance = 4f;
 
-    private Transform mTransform;
+    private Transform monsterTransform;
     private AsphaltGolemState state = AsphaltGolemState.Idle;   // 상태
     private NavMeshAgent agent;
     private RaycastHit[] hits = new RaycastHit[10];
@@ -43,8 +43,9 @@ public partial class AsphaltGolemAI : MonsterAI
     private Action[,] monsterAI;
     private Target target = Target.End;
     private Phase phase = Phase.End;
-    private bool superArmourBreak = true;
-    private bool actionEnd = true;
+    private bool isSuperArmourBreak = true;
+    private bool isActionEnd = true;
+    private bool isTargetFollow = true;
 
     private MonsterSkillInfo[,] skillGroup;
 
@@ -84,14 +85,14 @@ public partial class AsphaltGolemAI : MonsterAI
 
     private void Awake()
     {
-        mTransform = transform;
+        monsterTransform = transform;
         agent = GetComponent<NavMeshAgent>();
 
-        var attackPivot = attackRoot.position;
-        attackPivot.y = mTransform.position.y;
-        attackDistance = Vector3.Distance(mTransform.position, attackPivot) + attackRadius;
+        //var attackPivot = attackRoot.position;
+        //attackPivot.y = monsterTransform.position.y;
+        //attackDistance = Vector3.Distance(monsterTransform.position, attackPivot) + attackRadius;
 
-        agent.stoppingDistance = attackDistance;
+        agent.stoppingDistance = meleeDistance - 1f;
         agent.speed = patrolSpeed;
 
         // 몬스터 정보 초기화
@@ -154,7 +155,8 @@ public partial class AsphaltGolemAI : MonsterAI
         if (dead)
             return;
 
-        //if(state == AsphaltGolemState.)
+        // 회전
+        Rotation();
     }
 
     private IEnumerator UpdatePath() 
@@ -171,7 +173,7 @@ public partial class AsphaltGolemAI : MonsterAI
             CheckTarget();
 
             // 하나의 행동이 끝나면 다음 행동을 받음
-            if (actionEnd)
+            if (isActionEnd)
                 UpdateAI();
 
             if (hasTarget)
@@ -228,7 +230,15 @@ public partial class AsphaltGolemAI : MonsterAI
     }
 
 
+    private void Rotation()
+    {
+        if (!hasTarget || !isTargetFollow)
+            return;
 
+        Vector3 targetDir = targetEntity.transform.position - monsterTransform.position;
+        Quaternion rotation = Quaternion.LookRotation(targetDir);
+        monsterTransform.rotation = Quaternion.Lerp(monsterTransform.rotation, rotation, rotationSpeed * Time.deltaTime);
+    }
 
     private void CheckTarget()
     {
@@ -308,7 +318,7 @@ public partial class AsphaltGolemAI : MonsterAI
         if (direction.magnitude > meleeDistance)
         {
             state = AsphaltGolemState.Run;
-            actionEnd = false;
+            isActionEnd = false;
             return;
         }
         // 근거리 잡기

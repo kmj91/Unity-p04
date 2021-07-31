@@ -35,7 +35,7 @@ public partial class AsphaltGolemAI : MonsterAI
         }
 
         // 슈퍼아머 브레이크 상태
-        if (!superArmourBreak)
+        if (!isSuperArmourBreak)
             return true;
 
         int rand = Random.Range(0, 2);

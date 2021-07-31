@@ -29,21 +29,21 @@ public partial class AsphaltGolemAI : MonsterAI
 
     private void SetTrigerASkill_01()
     {
-        actionEnd = false;
+        isActionEnd = false;
         bodyAnime.SetTrigger("A_Skill_01");
         armsAnime.SetTrigger("A_Skill_01");
     }
 
     private void SetTrigerASkill_02()
     {
-        actionEnd = false;
+        isActionEnd = false;
         bodyAnime.SetTrigger("A_Skill_02");
         armsAnime.SetTrigger("A_Skill_02");
     }
 
     private void SetTrigerASkill_03()
     {
-        actionEnd = false;
+        isActionEnd = false;
         bodyAnime.SetTrigger("A_Skill_03");
         armsAnime.SetTrigger("A_Skill_03");
     }
@@ -58,10 +58,10 @@ public partial class AsphaltGolemAI : MonsterAI
     private void Ani_Run()
     {
         // 타겟에서 근접하면
-        if (Vector3.Distance(targetEntity.transform.position, mTransform.position) <= meleeDistance)
+        if (Vector3.Distance(targetEntity.transform.position, monsterTransform.position) <= meleeDistance - 1f)
         {
             state = AsphaltGolemState.Idle;
-            actionEnd = true;
+            isActionEnd = true;
             return;
         }
 
@@ -78,6 +78,8 @@ public partial class AsphaltGolemAI : MonsterAI
         if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             state = AsphaltGolemState.Idle;
+            isActionEnd = true;
+            isTargetFollow = true;
         }
 
     }
@@ -87,6 +89,8 @@ public partial class AsphaltGolemAI : MonsterAI
         if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
             state = AsphaltGolemState.Idle;
+            isActionEnd = true;
+            isTargetFollow = true;
         }
     }
 
@@ -97,31 +101,49 @@ public partial class AsphaltGolemAI : MonsterAI
 
     private void Ani_A_Skill_01()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_01") &&
-            bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_01"))
         {
-            state = AsphaltGolemState.Idle;
-            actionEnd = true;
+            if (isTargetFollow && bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f)
+                isTargetFollow = false;
+
+            if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = AsphaltGolemState.Idle;
+                isActionEnd = true;
+                isTargetFollow = true;
+            }
         }
     }
 
     private void Ani_A_Skill_02()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_02") &&
-            bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_02"))
         {
-            state = AsphaltGolemState.Idle;
-            actionEnd = true;
+            if (isTargetFollow && bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f)
+                isTargetFollow = false;
+
+            if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = AsphaltGolemState.Idle;
+                isActionEnd = true;
+                isTargetFollow = true;
+            }
         }
     }
 
     private void Ani_A_Skill_03()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_03") &&
-            bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_03"))
         {
-            state = AsphaltGolemState.Idle;
-            actionEnd = true;
+            if (isTargetFollow && bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f)
+                isTargetFollow = false;
+
+            if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                state = AsphaltGolemState.Idle;
+                isActionEnd = true;
+                isTargetFollow = true;
+            }
         }
     }
 }

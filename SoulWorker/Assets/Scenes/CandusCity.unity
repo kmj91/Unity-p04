@@ -1721,6 +1721,10 @@ PrefabInstance:
       objectReference: {fileID: 990311853}
     - target: {fileID: 931562891, guid: 94da0f010c0a0d74c8e712883f5cd0fa, type: 3}
       propertyPath: meleeDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 931562891, guid: 94da0f010c0a0d74c8e712883f5cd0fa, type: 3}
+      propertyPath: rotationSpeed
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5824356815085521552, guid: 94da0f010c0a0d74c8e712883f5cd0fa,
