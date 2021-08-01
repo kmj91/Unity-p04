@@ -7,8 +7,7 @@ using System.Collections.Generic;
 
 public class HaruWeapon : Item
 {
-    public PlayerInfo playerInfo;
-
+    [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private BoxCollider boxCollider;
 
     private LayerMask mask;
