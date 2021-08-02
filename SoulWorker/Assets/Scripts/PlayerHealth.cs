@@ -103,6 +103,8 @@ public class PlayerHealth : LivingEntity
         DelCurrentLevel = playerInfo.GetCurrentLevel;
         DelCurrentHp = playerInfo.GetCurrentHp;
         DelCurrentDefense = playerInfo.GetCurrentDefense;
+        DelCurrentEvade = playerInfo.GetCurrentEvade;
+        DelCurrentCriticalResistance = playerInfo.GetCurrentCriticalResistance;
     }
 
     private void Update()

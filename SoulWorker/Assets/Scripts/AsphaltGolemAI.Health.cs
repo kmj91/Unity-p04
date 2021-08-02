@@ -115,7 +115,7 @@ public partial class AsphaltGolemAI : MonsterAI
             minAtk = 200f * 0.8f,
             criticalRate = 30f,
             criticalDamage = 0f,
-            accuracy = 0f,
+            accuracy = 800f,
             armourBreak = 0f,
 
             defense = 100f,

@@ -57,4 +57,14 @@ public class PlayerInfo : MonoBehaviour
     {
         return currentPlayerData.defense;
     }
+
+    public float GetCurrentEvade()
+    {
+        return currentPlayerData.evade;
+    }
+
+    public float GetCurrentCriticalResistance()
+    {
+        return currentPlayerData.criticalResistance;
+    }
 }

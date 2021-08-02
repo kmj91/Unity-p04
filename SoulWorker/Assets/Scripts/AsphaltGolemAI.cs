@@ -18,7 +18,8 @@ public partial class AsphaltGolemAI : MonsterAI
     [SerializeField] private MonsterInfo monsterInfo;       // 몬스터 정보
     [SerializeField] private Animator bodyAnime;            // 몸 애니메이터
     [SerializeField] private Animator armsAnime;            // 팔 애니메이터
-    [SerializeField] private MonsterCollision armsCollison; // 팔 충돌체
+    [SerializeField] private BoxCollider rightBoxCollider;  // 오른팔 충돌체
+    [SerializeField] private BoxCollider leftBoxCollider;   // 왼팔 충돌체
     public float moveSpeed = 3.0f;          // 이동 속도
     public float rotationSpeed = 3.0f;      // 회전 속도
     public float damage = 100.0f;           // 공격력
@@ -37,6 +38,7 @@ public partial class AsphaltGolemAI : MonsterAI
     private Transform monsterTransform;
     private AsphaltGolemState state = AsphaltGolemState.Idle;   // 상태
     private NavMeshAgent agent;
+    private LayerMask mask;
     private RaycastHit[] hits = new RaycastHit[10];
     private List<LivingEntity> lastAttackdTargts = new List<LivingEntity>();
     private bool hasTarget => targetEntity != null && !targetEntity.dead;
@@ -95,6 +97,9 @@ public partial class AsphaltGolemAI : MonsterAI
 
         agent.stoppingDistance = meleeDistance - 1f;
         agent.speed = patrolSpeed;
+
+        // 플레이어와 충돌
+        mask = LayerMask.NameToLayer("Player");
 
         // 몬스터 정보 초기화
         MonsterInfoInit();
@@ -354,20 +359,14 @@ public partial class AsphaltGolemAI : MonsterAI
             case 1: // 어퍼
                 state = AsphaltGolemState.A_Skill_01;
                 SetTrigerASkill_01();
-                // 충돌 트리거 ON
-                armsCollison.OnTrigger();
                 return;
             case 2: // 광역 내려찍기
                 state = AsphaltGolemState.A_Skill_02;
                 SetTrigerASkill_02();
-                // 충돌 트리거 ON
-                armsCollison.OnTrigger();
                 return;
             case 3: // 방패 기둥 꺼내서 전방 충격파, 찍뎀 + 충격파 스킬
                 state = AsphaltGolemState.A_Skill_03;
                 SetTrigerASkill_03();
-                // 충돌 트리거 ON
-                armsCollison.OnTrigger();
                 return;
             case 4: // 잡기
                 return;

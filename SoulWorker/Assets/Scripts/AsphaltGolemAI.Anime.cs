@@ -103,10 +103,23 @@ public partial class AsphaltGolemAI : MonsterAI
     {
         if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_01"))
         {
-            if (isTargetFollow && bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f)
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (isTargetFollow && 0.1f <= time)
                 isTargetFollow = false;
 
-            if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            if (0.4f <= time)
+            {
+                // 충돌 트리거 OFF
+                OffTriggerRight();
+            }
+            else if(0.3f <= time && time < 0.4f) 
+            {
+                // 충돌 트리거 ON
+                OnTriggerRight();
+            }
+
+            if (0.99f <= time)
             {
                 state = AsphaltGolemState.Idle;
                 isActionEnd = true;
@@ -119,10 +132,25 @@ public partial class AsphaltGolemAI : MonsterAI
     {
         if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_02"))
         {
-            if (isTargetFollow && bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f)
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (isTargetFollow &&  0.1f <= time)
                 isTargetFollow = false;
 
-            if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            if (0.6f <= time)
+            {
+                // 충돌 트리거 OFF
+                OffTriggerRight();
+                OffTriggerLeft();
+            }
+            else if (0.52f <= time && time < 0.6f)
+            {
+                // 충돌 트리거 ON
+                OnTriggerRight();
+                OnTriggerLeft();
+            }
+
+            if (0.99f <= time)
             {
                 state = AsphaltGolemState.Idle;
                 isActionEnd = true;
@@ -135,14 +163,28 @@ public partial class AsphaltGolemAI : MonsterAI
     {
         if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_03"))
         {
-            if (isTargetFollow && bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f)
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (0.11f <= time)
+            {
+                // 충돌 트리거 OFF
+                OffTriggerLeft();
+            }
+            else if (0.01f <= time && time < 0.11f)
+            {
+                // 충돌 트리거 ON
+                OnTriggerLeft();
+            }
+
+            if (isTargetFollow && 0.1f <= time)
                 isTargetFollow = false;
 
-            if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            if (0.99f <= time)
             {
                 state = AsphaltGolemState.Idle;
                 isActionEnd = true;
                 isTargetFollow = true;
+                OffTriggerLeft();
             }
         }
     }
