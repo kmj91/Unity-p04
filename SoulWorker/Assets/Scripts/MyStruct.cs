@@ -22,12 +22,13 @@ namespace MyStruct
     // 데미지 정보를 전달하는 메시지
     public struct DamageMessage
     {
-        public GameObject damager;
-        public float damage;
-        public float criticalRate;
-        public float criticalDamage;
-        public float accuracy;
-        public float partialDamage;
+        public GameObject damager;      // 공격자
+        public float damage;            // 데미지
+        public float criticalRate;      // 치명타 확률[%]
+        public float criticalDamage;    // 치명타 피해
+        public float accuracy;          // 적중도
+        public float partialDamage;     // 빗맞힘 시 피해[%]
+        public AttackType attackType;   // 공격 타입
         public Vector3 hitPoint;
         public Vector3 hitNormal;
     }

@@ -24,6 +24,17 @@
         End
     }
 
+    public enum AttackType
+    {
+        None,
+        Normal,
+        Upper,
+        Back,
+        Down,
+        Strike,
+        End
+    }
+
     public enum PlayerState
     {
         Idle,
