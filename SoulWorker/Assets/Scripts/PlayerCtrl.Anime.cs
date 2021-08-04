@@ -199,6 +199,13 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_01"))
         {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.2f && !isAttacking)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+            }
+
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f && moveAttack)
             {
                 moveAttack = false;
@@ -237,6 +244,13 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_02"))
         {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.2f && !isAttacking)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+            }
+
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.23f && moveAttack)
             {
                 moveAttack = false;
@@ -274,6 +288,13 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_03"))
         {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.1f && !isAttacking)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+            }
+
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.3f && moveAttack)
             {
                 moveAttack = false;
@@ -311,6 +332,13 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_04"))
         {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.2f && !isAttacking)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+            }
+
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.28f && moveAttack)
             {
                 moveAttack = false;
@@ -348,6 +376,13 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.NormalAttack.B_N_Attack_05"))
         {
+            if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.24f && !isAttacking)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+            }
+
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.4f && moveAttack)
             {
                 moveAttack = false;

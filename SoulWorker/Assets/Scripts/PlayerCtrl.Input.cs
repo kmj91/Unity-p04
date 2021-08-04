@@ -239,16 +239,16 @@ public partial class PlayerCtrl: MonoBehaviour
         moveAttack = true;
         moveStand = false;
         normalAtk = true;
+        isAttacking = false;
         SetNormalAttackCnt(attackCnt);
         SetAttackDir();
-        // 무기 충돌 트리거 ON
-        weapon.OnTrigger();
     }
 
     private void EndNormalAttack()
     {
         state = HaruState.Idle;
         normalAtk = false;
+        isAttacking = false;
         SetNormalAttackFalse();
         SetNormalAttackCnt(0);
     }
