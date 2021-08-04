@@ -203,7 +203,13 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (!isAttacking && 0.2f <= time)
+            if (isAttacking && time >= 0.3f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.3f > time && time >= 0.2f)
             {
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
@@ -218,8 +224,6 @@ public partial class PlayerCtrl : MonoBehaviour
             if (lockInput && 0.4f <= time)
             {
                 lockInput = false;
-                // 무기 충돌 트리거 OFF
-                weapon.OffTrigger();
 
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
@@ -250,7 +254,13 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (!isAttacking && 0.2f <= time)
+            if (isAttacking && time >= 0.27f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.27f > time && time >= 0.2f)
             {
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
@@ -265,8 +275,6 @@ public partial class PlayerCtrl : MonoBehaviour
             if (lockInput && 0.4f <= time)
             {
                 lockInput = false;
-                // 무기 충돌 트리거 OFF
-                weapon.OffTrigger();
 
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
@@ -296,7 +304,25 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (!isAttacking && 0.1f <= time)
+            if (isAttacking && time >= 0.3f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.3f > time && time >= 0.21f)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+            }
+            else if (isAttacking && 0.21f > time && time >= 0.17f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.17f > time && time >= 0.1f)
             {
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
@@ -311,8 +337,6 @@ public partial class PlayerCtrl : MonoBehaviour
             if (lockInput && 0.4f <= time)
             {
                 lockInput = false;
-                // 무기 충돌 트리거 OFF
-                weapon.OffTrigger();
 
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
@@ -342,7 +366,13 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (!isAttacking && 0.2f <= time)
+            if (isAttacking && time >= 0.3f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.3f > time && time >= 0.2f)
             {
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
@@ -357,8 +387,6 @@ public partial class PlayerCtrl : MonoBehaviour
             if (lockInput && 0.47f <= time)
             {
                 lockInput = false;
-                // 무기 충돌 트리거 OFF
-                weapon.OffTrigger();
 
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
@@ -388,7 +416,13 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (!isAttacking && 0.24f <= time)
+            if (isAttacking && time >= 0.33f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.33f > time && time >= 0.24f)
             {
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
@@ -403,8 +437,6 @@ public partial class PlayerCtrl : MonoBehaviour
             if (lockInput && 0.52f <= time)
             {
                 lockInput = false;
-                // 무기 충돌 트리거 OFF
-                weapon.OffTrigger();
             }
 
             if (!moveStand && 0.8f <= time)
