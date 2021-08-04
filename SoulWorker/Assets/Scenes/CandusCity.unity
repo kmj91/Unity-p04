@@ -1377,6 +1377,7 @@ MonoBehaviour:
   itemName: 
   useLevel: 0
   playerInfo: {fileID: 7779505}
+  playerCtrl: {fileID: 918533824}
   boxCollider: {fileID: 0}
 --- !u!54 &949891800
 Rigidbody:

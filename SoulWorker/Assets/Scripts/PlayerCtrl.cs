@@ -34,9 +34,9 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private CharacterController characterController;
     private Transform playerTransform;
-    private PlayerState state = PlayerState.Idle;
+    public HaruState state { get; protected set; }    // 상태
     private Vector2 moveInput = Vector2.zero;
-    private Vector2 oldInput = Vector2.zero;        // 대쉬 점프할 때 입력 값 저장
+    private Vector2 oldInput = Vector2.zero;            // 대쉬 점프할 때 입력 값 저장
     private Vector3 moveAnimeDir = Vector3.zero;
     private Vector3 turnDir = Vector3.forward;
 
@@ -61,73 +61,74 @@ public partial class PlayerCtrl : MonoBehaviour
     {
         playerTransform = GetComponent<Transform>();
         characterController = GetComponent<CharacterController>();
+        state = HaruState.Idle;
 
-        moveUpdate = new Action[(int)PlayerState.End];
-        moveUpdate[(int)PlayerState.Idle] = Move_Idle;
-        moveUpdate[(int)PlayerState.Run] = Move_Run;
-        moveUpdate[(int)PlayerState.Dash] = Move_Dash;
-        moveUpdate[(int)PlayerState.Jump] = Move_Jump;
-        moveUpdate[(int)PlayerState.DashJump] = Move_DashJump;
-        moveUpdate[(int)PlayerState.Land] = Move_Land;
-        moveUpdate[(int)PlayerState.DashLand] = Move_DashLand;
-        moveUpdate[(int)PlayerState.NormalAttack1] = Move_NormalAttack1;
-        moveUpdate[(int)PlayerState.NormalAttack2] = Move_NormalAttack2;
-        moveUpdate[(int)PlayerState.NormalAttack3] = Move_NormalAttack3;
-        moveUpdate[(int)PlayerState.NormalAttack4] = Move_NormalAttack4;
-        moveUpdate[(int)PlayerState.NormalAttack5] = Move_NormalAttack5;
+        moveUpdate = new Action[(int)HaruState.End];
+        moveUpdate[(int)HaruState.Idle] = Move_Idle;
+        moveUpdate[(int)HaruState.Run] = Move_Run;
+        moveUpdate[(int)HaruState.Dash] = Move_Dash;
+        moveUpdate[(int)HaruState.Jump] = Move_Jump;
+        moveUpdate[(int)HaruState.DashJump] = Move_DashJump;
+        moveUpdate[(int)HaruState.Land] = Move_Land;
+        moveUpdate[(int)HaruState.DashLand] = Move_DashLand;
+        moveUpdate[(int)HaruState.NormalAttack1] = Move_NormalAttack1;
+        moveUpdate[(int)HaruState.NormalAttack2] = Move_NormalAttack2;
+        moveUpdate[(int)HaruState.NormalAttack3] = Move_NormalAttack3;
+        moveUpdate[(int)HaruState.NormalAttack4] = Move_NormalAttack4;
+        moveUpdate[(int)HaruState.NormalAttack5] = Move_NormalAttack5;
 
-        animeUpdate = new Action[(int)PlayerState.End];
-        animeUpdate[(int)PlayerState.Idle] = Ani_Idle;
-        animeUpdate[(int)PlayerState.Run] = Ani_Run;
-        animeUpdate[(int)PlayerState.Dash] = Ani_Dash;
-        animeUpdate[(int)PlayerState.Jump] = Ani_Jump;
-        animeUpdate[(int)PlayerState.DashJump] = Ani_DashJump;
-        animeUpdate[(int)PlayerState.Land] = Ani_Land;
-        animeUpdate[(int)PlayerState.DashLand] = Ani_DashLand;
-        animeUpdate[(int)PlayerState.NormalAttack1] = Ani_NormalAttack1;
-        animeUpdate[(int)PlayerState.NormalAttack2] = Ani_NormalAttack2;
-        animeUpdate[(int)PlayerState.NormalAttack3] = Ani_NormalAttack3;
-        animeUpdate[(int)PlayerState.NormalAttack4] = Ani_NormalAttack4;
-        animeUpdate[(int)PlayerState.NormalAttack5] = Ani_NormalAttack5;
+        animeUpdate = new Action[(int)HaruState.End];
+        animeUpdate[(int)HaruState.Idle] = Ani_Idle;
+        animeUpdate[(int)HaruState.Run] = Ani_Run;
+        animeUpdate[(int)HaruState.Dash] = Ani_Dash;
+        animeUpdate[(int)HaruState.Jump] = Ani_Jump;
+        animeUpdate[(int)HaruState.DashJump] = Ani_DashJump;
+        animeUpdate[(int)HaruState.Land] = Ani_Land;
+        animeUpdate[(int)HaruState.DashLand] = Ani_DashLand;
+        animeUpdate[(int)HaruState.NormalAttack1] = Ani_NormalAttack1;
+        animeUpdate[(int)HaruState.NormalAttack2] = Ani_NormalAttack2;
+        animeUpdate[(int)HaruState.NormalAttack3] = Ani_NormalAttack3;
+        animeUpdate[(int)HaruState.NormalAttack4] = Ani_NormalAttack4;
+        animeUpdate[(int)HaruState.NormalAttack5] = Ani_NormalAttack5;
 
-        changeState = new bool[(int)PlayerState.End, (int)PlayerState.End];
+        changeState = new bool[(int)HaruState.End, (int)HaruState.End];
 
-        changeState[(int)PlayerState.Idle, (int)PlayerState.Run] = true;
-        changeState[(int)PlayerState.Idle, (int)PlayerState.Dash] = true;
-        changeState[(int)PlayerState.Idle, (int)PlayerState.Jump] = true;
-        changeState[(int)PlayerState.Idle, (int)PlayerState.NormalAttack1] = true;
+        changeState[(int)HaruState.Idle, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.Idle, (int)HaruState.Dash] = true;
+        changeState[(int)HaruState.Idle, (int)HaruState.Jump] = true;
+        changeState[(int)HaruState.Idle, (int)HaruState.NormalAttack1] = true;
 
-        changeState[(int)PlayerState.Run, (int)PlayerState.Idle] = true;
-        changeState[(int)PlayerState.Run, (int)PlayerState.Dash] = true;
-        changeState[(int)PlayerState.Run, (int)PlayerState.Jump] = true;
-        changeState[(int)PlayerState.Run, (int)PlayerState.NormalAttack1] = true;
+        changeState[(int)HaruState.Run, (int)HaruState.Idle] = true;
+        changeState[(int)HaruState.Run, (int)HaruState.Dash] = true;
+        changeState[(int)HaruState.Run, (int)HaruState.Jump] = true;
+        changeState[(int)HaruState.Run, (int)HaruState.NormalAttack1] = true;
 
-        changeState[(int)PlayerState.Dash, (int)PlayerState.Idle] = true;
-        changeState[(int)PlayerState.Dash, (int)PlayerState.DashJump] = true;
+        changeState[(int)HaruState.Dash, (int)HaruState.Idle] = true;
+        changeState[(int)HaruState.Dash, (int)HaruState.DashJump] = true;
 
-        changeState[(int)PlayerState.Jump, (int)PlayerState.Land] = true;
+        changeState[(int)HaruState.Jump, (int)HaruState.Land] = true;
 
-        changeState[(int)PlayerState.DashJump, (int)PlayerState.DashLand] = true;
+        changeState[(int)HaruState.DashJump, (int)HaruState.DashLand] = true;
 
-        changeState[(int)PlayerState.Land, (int)PlayerState.Run] = true;
-        changeState[(int)PlayerState.Land, (int)PlayerState.Dash] = true;
-        changeState[(int)PlayerState.Land, (int)PlayerState.Jump] = true;
+        changeState[(int)HaruState.Land, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.Land, (int)HaruState.Dash] = true;
+        changeState[(int)HaruState.Land, (int)HaruState.Jump] = true;
 
-        changeState[(int)PlayerState.DashLand, (int)PlayerState.Run] = true;
+        changeState[(int)HaruState.DashLand, (int)HaruState.Run] = true;
 
-        changeState[(int)PlayerState.NormalAttack1, (int)PlayerState.NormalAttack2] = true;
-        changeState[(int)PlayerState.NormalAttack1, (int)PlayerState.Run] = true;
+        changeState[(int)HaruState.NormalAttack1, (int)HaruState.NormalAttack2] = true;
+        changeState[(int)HaruState.NormalAttack1, (int)HaruState.Run] = true;
 
-        changeState[(int)PlayerState.NormalAttack2, (int)PlayerState.NormalAttack3] = true;
-        changeState[(int)PlayerState.NormalAttack2, (int)PlayerState.Run] = true;
+        changeState[(int)HaruState.NormalAttack2, (int)HaruState.NormalAttack3] = true;
+        changeState[(int)HaruState.NormalAttack2, (int)HaruState.Run] = true;
 
-        changeState[(int)PlayerState.NormalAttack3, (int)PlayerState.NormalAttack4] = true;
-        changeState[(int)PlayerState.NormalAttack3, (int)PlayerState.Run] = true;
+        changeState[(int)HaruState.NormalAttack3, (int)HaruState.NormalAttack4] = true;
+        changeState[(int)HaruState.NormalAttack3, (int)HaruState.Run] = true;
 
-        changeState[(int)PlayerState.NormalAttack4, (int)PlayerState.NormalAttack5] = true;
-        changeState[(int)PlayerState.NormalAttack4, (int)PlayerState.Run] = true;
+        changeState[(int)HaruState.NormalAttack4, (int)HaruState.NormalAttack5] = true;
+        changeState[(int)HaruState.NormalAttack4, (int)HaruState.Run] = true;
 
-        changeState[(int)PlayerState.NormalAttack5, (int)PlayerState.Run] = true;
+        changeState[(int)HaruState.NormalAttack5, (int)HaruState.Run] = true;
 
         // 무기 장착
         weapon.transform.parent = weaponholder;
@@ -154,7 +155,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
 
     // 상태 확인
-    private bool CheckState(PlayerState left, PlayerState right)
+    private bool CheckState(HaruState left, HaruState right)
     {
         return changeState[(int)left, (int)right];
     }
@@ -163,7 +164,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private void Move()
     {
         // 착지
-        if (state == PlayerState.Land)
+        if (state == HaruState.Land)
             return;
 
         // 방향키 입력이 없음

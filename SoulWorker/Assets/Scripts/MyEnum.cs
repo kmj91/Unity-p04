@@ -29,13 +29,13 @@
         None,
         Normal,
         Upper,
-        Back,
         Down,
+        Break,
         Strike,
         End
     }
 
-    public enum PlayerState
+    public enum HaruState
     {
         Idle,
         Run,
@@ -58,6 +58,10 @@
         Run,
         DMG_L,
         DMG_R,
+        KB,
+        KD_Ham,
+        KD_Str,
+        KD_Upp,
         Death,
         A_Skill_01,
         A_Skill_02,

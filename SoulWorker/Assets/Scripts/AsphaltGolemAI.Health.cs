@@ -38,19 +38,8 @@ public partial class AsphaltGolemAI : MonsterAI
         if (!isSuperArmourBreak)
             return true;
 
-        int rand = Random.Range(0, 2);
-        if (rand == 0)
-        {
-            state = AsphaltGolemState.DMG_L;
-            // 애니메이션 트리거
-            SetTrigerDMGL();
-        }
-        else
-        {
-            state = AsphaltGolemState.DMG_R;
-            // 애니메이션 트리거
-            SetTrigerDMGR();
-        }
+        // 공격 타입에 따른 상태 변환
+        FSM_Hit(damageMessage.attackType);
 
         return true;
     }
@@ -135,5 +124,47 @@ public partial class AsphaltGolemAI : MonsterAI
         DelCurrentDefense = monsterInfo.GetCurrentDefense;
         DelCurrentEvade = monsterInfo.GetCurrentEvade;
         DelCurrentCriticalResistance = monsterInfo.GetCurrentCriticalResistance;
+    }
+
+    private void FSM_Hit(AttackType type)
+    {
+        switch (type)
+        {
+            case AttackType.Normal:
+                int rand = Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    state = AsphaltGolemState.DMG_L;
+                    // 애니메이션 트리거
+                    SetTrigerDMGL();
+                }
+                else
+                {
+                    state = AsphaltGolemState.DMG_R;
+                    // 애니메이션 트리거
+                    SetTrigerDMGR();
+                }
+                break;
+            case AttackType.Upper:
+                state = AsphaltGolemState.KD_Upp;
+                SetTrigerKDUpp();
+                break;
+            case AttackType.Break:
+                state = AsphaltGolemState.KB;
+                SetTrigerKB();
+                break;
+            case AttackType.Down:
+                state = AsphaltGolemState.KD_Ham;
+                SetTrigerKDHam();
+                break;
+            case AttackType.Strike:
+                state = AsphaltGolemState.KD_Str;
+                SetTrigerKDStr();
+                break;
+            default:
+                break;
+        }
+
+        
     }
 }

@@ -112,6 +112,10 @@ public partial class AsphaltGolemAI : MonsterAI
         animeUpdate[(int)AsphaltGolemState.Run] = Ani_Run;
         animeUpdate[(int)AsphaltGolemState.DMG_L] = Ani_DMG_L;
         animeUpdate[(int)AsphaltGolemState.DMG_R] = Ani_DMG_R;
+        animeUpdate[(int)AsphaltGolemState.KB] = Ani_KB;
+        animeUpdate[(int)AsphaltGolemState.KD_Ham] = Ani_KD_Ham;
+        animeUpdate[(int)AsphaltGolemState.KD_Str] = Ani_KD_Str;
+        animeUpdate[(int)AsphaltGolemState.KD_Upp] = Ani_KD_Upp;
         animeUpdate[(int)AsphaltGolemState.Death] = Ani_Death;
         animeUpdate[(int)AsphaltGolemState.A_Skill_01] = Ani_A_Skill_01;
         animeUpdate[(int)AsphaltGolemState.A_Skill_01] = Ani_A_Skill_01;

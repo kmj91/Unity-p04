@@ -131,7 +131,7 @@ public partial class PlayerCtrl : MonoBehaviour
                     return;
 
                 jump = false;
-                state = PlayerState.Land;
+                state = HaruState.Land;
                 jumpTime = Time.realtimeSinceStartup;
 
                 SetJumpFalse();
@@ -157,7 +157,7 @@ public partial class PlayerCtrl : MonoBehaviour
                     return;
 
                 jump = false;
-                state = PlayerState.DashLand;
+                state = HaruState.DashLand;
                 moveAnimeDir = modelTransform.forward;
 
                 SetJumpFalse();
@@ -172,7 +172,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Jump_Land_C") &&
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            state = PlayerState.Idle;
+            state = HaruState.Idle;
         }
     }
 
@@ -189,7 +189,7 @@ public partial class PlayerCtrl : MonoBehaviour
             // 종료
             if (hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
             {
-                state = PlayerState.Idle;
+                state = HaruState.Idle;
             }
         }
     }
@@ -213,7 +213,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
-                    state = PlayerState.NormalAttack2;
+                    state = HaruState.NormalAttack2;
                     StartNormalAttack(2);
                     return;
                 }
@@ -251,7 +251,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
-                    state = PlayerState.NormalAttack3;
+                    state = HaruState.NormalAttack3;
                     StartNormalAttack(3);
                     return;
                 }
@@ -288,7 +288,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
-                    state = PlayerState.NormalAttack4;
+                    state = HaruState.NormalAttack4;
                     StartNormalAttack(4);
                     return;
                 }
@@ -325,7 +325,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
-                    state = PlayerState.NormalAttack5;
+                    state = HaruState.NormalAttack5;
                     StartNormalAttack(5);
                     return;
                 }
