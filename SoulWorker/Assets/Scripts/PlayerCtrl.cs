@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 
+using System;
+using MyEnum;
+
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
-using System;
-using MyEnum;
+using Random = UnityEngine.Random;
 
 public partial class PlayerCtrl : MonoBehaviour
 {
@@ -57,6 +59,34 @@ public partial class PlayerCtrl : MonoBehaviour
     private bool cameraDirAtk = false;          // 카메라 방향으로 공격 플래그
 
 
+    public void FSM_Hit(AttackType type)
+    {
+        switch (type)
+        {
+            case AttackType.Normal:
+                int rand = Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    state = HaruState.DMG_L;
+                    // 애니메이션 트리거
+                    SetTrigerDMGL();
+                }
+                else
+                {
+                    state = HaruState.DMG_R;
+                    // 애니메이션 트리거
+                    SetTrigerDMGR();
+                }
+                break;
+            case AttackType.Upper:
+                state = HaruState.KD_Upp;
+                SetTrigerKDUpp();
+                break;
+            default:
+                break;
+        }
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -72,6 +102,12 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate[(int)HaruState.DashJump] = Move_DashJump;
         moveUpdate[(int)HaruState.Land] = Move_Land;
         moveUpdate[(int)HaruState.DashLand] = Move_DashLand;
+        moveUpdate[(int)HaruState.DMG_L] = Move_Idle;
+        moveUpdate[(int)HaruState.DMG_R] = Move_Idle;
+        moveUpdate[(int)HaruState.KB] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Ham] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Str] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Upp] = Move_Idle;
         moveUpdate[(int)HaruState.NormalAttack1] = Move_NormalAttack1;
         moveUpdate[(int)HaruState.NormalAttack2] = Move_NormalAttack2;
         moveUpdate[(int)HaruState.NormalAttack3] = Move_NormalAttack3;
@@ -86,6 +122,12 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)HaruState.DashJump] = Ani_DashJump;
         animeUpdate[(int)HaruState.Land] = Ani_Land;
         animeUpdate[(int)HaruState.DashLand] = Ani_DashLand;
+        animeUpdate[(int)HaruState.DMG_L] = Ani_Idle;
+        animeUpdate[(int)HaruState.DMG_R] = Ani_Idle;
+        animeUpdate[(int)HaruState.KB] = Ani_Idle;
+        animeUpdate[(int)HaruState.KD_Ham] = Ani_Idle;
+        animeUpdate[(int)HaruState.KD_Str] = Ani_Idle;
+        animeUpdate[(int)HaruState.KD_Upp] = Ani_Idle;
         animeUpdate[(int)HaruState.NormalAttack1] = Ani_NormalAttack1;
         animeUpdate[(int)HaruState.NormalAttack2] = Ani_NormalAttack2;
         animeUpdate[(int)HaruState.NormalAttack3] = Ani_NormalAttack3;

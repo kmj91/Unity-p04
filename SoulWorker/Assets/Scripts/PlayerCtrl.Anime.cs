@@ -54,6 +54,96 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetBool("Jump", false);
     }
 
+    private void SetTrigerDMGL()
+    {
+        hairAnime.SetTrigger("B_DMG_L");
+        faceAnime.SetTrigger("B_DMG_L");
+        bodyAnime.SetTrigger("B_DMG_L");
+        pantsAnime.SetTrigger("B_DMG_L");
+        handsAnime.SetTrigger("B_DMG_L");
+        footAnime.SetTrigger("B_DMG_L");
+    }
+
+    private void SetTrigerDMGR()
+    {
+        hairAnime.SetTrigger("B_DMG_R");
+        faceAnime.SetTrigger("B_DMG_R");
+        bodyAnime.SetTrigger("B_DMG_R");
+        pantsAnime.SetTrigger("B_DMG_R");
+        handsAnime.SetTrigger("B_DMG_R");
+        footAnime.SetTrigger("B_DMG_R");
+    }
+
+    private void SetTrigerKB()
+    {
+        hairAnime.SetTrigger("B_KB");
+        faceAnime.SetTrigger("B_KB");
+        bodyAnime.SetTrigger("B_KB");
+        pantsAnime.SetTrigger("B_KB");
+        handsAnime.SetTrigger("B_KB");
+        footAnime.SetTrigger("B_KB");
+    }
+
+    private void SetTrigerKDHamF()
+    {
+        hairAnime.SetTrigger("B_KD_Ham_F");
+        faceAnime.SetTrigger("B_KD_Ham_F");
+        bodyAnime.SetTrigger("B_KD_Ham_F");
+        pantsAnime.SetTrigger("B_KD_Ham_F");
+        handsAnime.SetTrigger("B_KD_Ham_F");
+        footAnime.SetTrigger("B_KD_Ham_F");
+    }
+
+    private void SetTrigerKDHamB()
+    {
+        hairAnime.SetTrigger("B_KD_Ham_B");
+        faceAnime.SetTrigger("B_KD_Ham_B");
+        bodyAnime.SetTrigger("B_KD_Ham_B");
+        pantsAnime.SetTrigger("B_KD_Ham_B");
+        handsAnime.SetTrigger("B_KD_Ham_B");
+        footAnime.SetTrigger("B_KD_Ham_B");
+    }
+
+    private void SetTrigerKDStr()
+    {
+        hairAnime.SetTrigger("B_KD_Str");
+        faceAnime.SetTrigger("B_KD_Str");
+        bodyAnime.SetTrigger("B_KD_Str");
+        pantsAnime.SetTrigger("B_KD_Str");
+        handsAnime.SetTrigger("B_KD_Str");
+        footAnime.SetTrigger("B_KD_Str");
+    }
+
+    private void SetTrigerKDUpp()
+    {
+        hairAnime.SetTrigger("B_KD_Upp");
+        faceAnime.SetTrigger("B_KD_Upp");
+        bodyAnime.SetTrigger("B_KD_Upp");
+        pantsAnime.SetTrigger("B_KD_Upp");
+        handsAnime.SetTrigger("B_KD_Upp");
+        footAnime.SetTrigger("B_KD_Upp");
+    }
+
+    private void SetTrigerKDUppEnd()
+    {
+        hairAnime.SetTrigger("B_KD_Upp_End");
+        faceAnime.SetTrigger("B_KD_Upp_End");
+        bodyAnime.SetTrigger("B_KD_Upp_End");
+        pantsAnime.SetTrigger("B_KD_Upp_End");
+        handsAnime.SetTrigger("B_KD_Upp_End");
+        footAnime.SetTrigger("B_KD_Upp_End");
+    }
+
+    private void SetTrigerKDUppRaise()
+    {
+        hairAnime.SetTrigger("B_KD_Upp_Raise");
+        faceAnime.SetTrigger("B_KD_Upp_Raise");
+        bodyAnime.SetTrigger("B_KD_Upp_Raise");
+        pantsAnime.SetTrigger("B_KD_Upp_Raise");
+        handsAnime.SetTrigger("B_KD_Upp_Raise");
+        footAnime.SetTrigger("B_KD_Upp_Raise");
+    }
+
     private void SetNormalAttackTrue()
     {
         hairAnime.SetBool("NormalAttack", true);

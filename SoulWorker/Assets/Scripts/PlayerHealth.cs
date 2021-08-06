@@ -1,8 +1,11 @@
-﻿using MyStruct;
+﻿using UnityEngine;
+
+using MyStruct;
 
 public class PlayerHealth : LivingEntity
 {
-    public PlayerInfo playerInfo;         // 플레이어 정보
+    [SerializeField] private PlayerInfo playerInfo;     // 플레이어 정보
+    [SerializeField] private PlayerCtrl playerCtrl;     // 플레이어 상태 조작
 
     public override void RestoreHealth(float newHealth)
     {
@@ -15,10 +18,11 @@ public class PlayerHealth : LivingEntity
     {
         if (!base.ApplyDamage(ref damageMessage)) return false;
 
-        // 공격 받음
-
         // UI 갱신
         UpdateUI();
+
+        // 공격 타입에 따른 상태 변환
+        playerCtrl.FSM_Hit(damageMessage.attackType);
 
         return true;
     }
