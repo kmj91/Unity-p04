@@ -48,9 +48,10 @@ public partial class PlayerCtrl : MonoBehaviour
     private float speedSmoothVelocity;
     private float currentVelocityY;
     private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
-    private float jumpTime;
-    private bool jump;
-    private bool dash;
+    private float fsmChangeTime;        // 상태가 변경되는 순간의 시간
+    private bool jump;                  // 점프 상태 플래그
+    private bool dash;                  // 대쉬 상태 플래그
+    private bool upp;                   // 어퍼 상태 플래그
     private bool normalAtk;
     private bool lockInput;
     private bool moveAttack;            // 공격시 전진 플래그
@@ -80,7 +81,12 @@ public partial class PlayerCtrl : MonoBehaviour
                 break;
             case AttackType.Upper:
                 state = HaruState.KD_Upp;
-                SetTrigerKDUpp();
+                break;
+            case AttackType.Down:
+                break;
+            case AttackType.Break:
+                break;
+            case AttackType.Strike:
                 break;
             default:
                 break;
@@ -105,9 +111,12 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate[(int)HaruState.DMG_L] = Move_Idle;
         moveUpdate[(int)HaruState.DMG_R] = Move_Idle;
         moveUpdate[(int)HaruState.KB] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Ham] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Ham_F] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Ham_B] = Move_Idle;
         moveUpdate[(int)HaruState.KD_Str] = Move_Idle;
         moveUpdate[(int)HaruState.KD_Upp] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Upp_End] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Upp_Down] = Move_Idle;
         moveUpdate[(int)HaruState.NormalAttack1] = Move_NormalAttack1;
         moveUpdate[(int)HaruState.NormalAttack2] = Move_NormalAttack2;
         moveUpdate[(int)HaruState.NormalAttack3] = Move_NormalAttack3;
@@ -122,12 +131,15 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)HaruState.DashJump] = Ani_DashJump;
         animeUpdate[(int)HaruState.Land] = Ani_Land;
         animeUpdate[(int)HaruState.DashLand] = Ani_DashLand;
-        animeUpdate[(int)HaruState.DMG_L] = Ani_Idle;
-        animeUpdate[(int)HaruState.DMG_R] = Ani_Idle;
-        animeUpdate[(int)HaruState.KB] = Ani_Idle;
-        animeUpdate[(int)HaruState.KD_Ham] = Ani_Idle;
-        animeUpdate[(int)HaruState.KD_Str] = Ani_Idle;
-        animeUpdate[(int)HaruState.KD_Upp] = Ani_Idle;
+        animeUpdate[(int)HaruState.DMG_L] = Ani_DMG_L;
+        animeUpdate[(int)HaruState.DMG_R] = Ani_DMG_R;
+        animeUpdate[(int)HaruState.KB] = Ani_KB;
+        animeUpdate[(int)HaruState.KD_Ham_F] = Ani_KD_Ham_F;
+        animeUpdate[(int)HaruState.KD_Ham_B] = Ani_KD_Ham_B;
+        animeUpdate[(int)HaruState.KD_Str] = Ani_KD_Str;
+        animeUpdate[(int)HaruState.KD_Upp] = Ani_KD_Upp;
+        animeUpdate[(int)HaruState.KD_Upp_End] = Ani_KD_Upp_End;
+        animeUpdate[(int)HaruState.KD_Upp_Down] = Ani_KD_Upp_Down;
         animeUpdate[(int)HaruState.NormalAttack1] = Ani_NormalAttack1;
         animeUpdate[(int)HaruState.NormalAttack2] = Ani_NormalAttack2;
         animeUpdate[(int)HaruState.NormalAttack3] = Ani_NormalAttack3;

@@ -148,7 +148,7 @@ public partial class PlayerCtrl: MonoBehaviour
             {
                 state = HaruState.DashJump;
                 currentVelocityY = jumpVelocity * 0.6f;
-                jumpTime = Time.realtimeSinceStartup;
+                fsmChangeTime = Time.realtimeSinceStartup;
                 moveAnimeDir = modelTransform.forward;
                 oldInput = moveInput;
             }
@@ -158,12 +158,12 @@ public partial class PlayerCtrl: MonoBehaviour
             if (CheckState(state, HaruState.Jump) && characterController.isGrounded)
             {
                 // 착지 한지 얼마 안됬으면 무시
-                if (Time.realtimeSinceStartup - jumpTime <= 0.2f)
+                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.2f)
                     return;
 
                 state = HaruState.Jump;
                 currentVelocityY = jumpVelocity;
-                jumpTime = Time.realtimeSinceStartup;
+                fsmChangeTime = Time.realtimeSinceStartup;
                 moveInput = new Vector2(0, 0);
             }
         }
