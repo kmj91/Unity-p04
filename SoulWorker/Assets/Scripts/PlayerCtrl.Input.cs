@@ -148,7 +148,6 @@ public partial class PlayerCtrl: MonoBehaviour
             {
                 state = HaruState.DashJump;
                 currentVelocityY = jumpVelocity * 0.6f;
-                fsmChangeTime = Time.realtimeSinceStartup;
                 moveAnimeDir = modelTransform.forward;
                 oldInput = moveInput;
             }
@@ -163,7 +162,6 @@ public partial class PlayerCtrl: MonoBehaviour
 
                 state = HaruState.Jump;
                 currentVelocityY = jumpVelocity;
-                fsmChangeTime = Time.realtimeSinceStartup;
                 moveInput = new Vector2(0, 0);
             }
         }
@@ -205,6 +203,16 @@ public partial class PlayerCtrl: MonoBehaviour
 
     private void MoveBranch()
     {
+        // 다운 상태
+        if (state == HaruState.KD_Upp_Down)
+        {
+            state = HaruState.KD_Upp_Raise;
+            down = false;
+            SetTrigerKDUppRaise();
+            SetDownFalse();
+            return;
+        }
+
         // 대쉬 착지중이면
         // 입력키 상태에따라 Dash or Run 으로 변경됨
         if (state == HaruState.DashLand)

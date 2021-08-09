@@ -2,6 +2,7 @@
 
 using System;
 using MyEnum;
+using MyStruct;
 
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -52,6 +53,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private bool jump;                  // 점프 상태 플래그
     private bool dash;                  // 대쉬 상태 플래그
     private bool upp;                   // 어퍼 상태 플래그
+    private bool down;                  // 다운 상태 플래그
     private bool normalAtk;
     private bool lockInput;
     private bool moveAttack;            // 공격시 전진 플래그
@@ -60,9 +62,28 @@ public partial class PlayerCtrl : MonoBehaviour
     private bool cameraDirAtk = false;          // 카메라 방향으로 공격 플래그
 
 
-    public void FSM_Hit(AttackType type)
+    public void FSM_Hit(ref DamageMessage damageMessage)
     {
-        switch (type)
+        // 공중에 뜸
+        if (upp)
+        {
+            // 공중 피격
+            state = HaruState.KD_Upp_Air_Hit;
+            SetTrigerKDUppAirHit();
+            moveAnimeDir = damageMessage.hitDir;
+            turnDir = -moveAnimeDir;
+            return;
+        }
+        // 이미 다운된 상태
+        else if (down)
+        {
+            // 다운 피격
+            state = HaruState.KD_Upp_Down_Hit;
+            SetTrigerKDUppDownHit();
+            return;
+        }
+
+        switch (damageMessage.attackType)
         {
             case AttackType.Normal:
                 int rand = Random.Range(0, 2);
@@ -78,11 +99,29 @@ public partial class PlayerCtrl : MonoBehaviour
                     // 애니메이션 트리거
                     SetTrigerDMGR();
                 }
+                turnDir = -damageMessage.hitDir;
                 break;
             case AttackType.Upper:
                 state = HaruState.KD_Upp;
+                currentVelocityY = damageMessage.power;
+                moveAnimeDir = damageMessage.hitDir;
+                turnDir = -moveAnimeDir;
                 break;
             case AttackType.Down:
+                // 0 보다 크면 뒤쪽에서 맞음
+                if (0 < Vector3.Dot(modelTransform.forward, damageMessage.hitDir))
+                {
+                    state = HaruState.KD_Ham_B;
+                    turnDir = damageMessage.hitDir;
+                }
+                else
+                {
+                    state = HaruState.KD_Ham_F;
+                    turnDir = -damageMessage.hitDir;
+                }
+
+                currentVelocityY = damageMessage.power;
+                moveAnimeDir = damageMessage.hitDir;
                 break;
             case AttackType.Break:
                 break;
@@ -111,12 +150,15 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate[(int)HaruState.DMG_L] = Move_Idle;
         moveUpdate[(int)HaruState.DMG_R] = Move_Idle;
         moveUpdate[(int)HaruState.KB] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Ham_F] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Ham_B] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Str] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Upp] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Ham_F] = Move_KD_Ham_F;
+        moveUpdate[(int)HaruState.KD_Ham_B] = Move_KD_Ham_B;
+        moveUpdate[(int)HaruState.KD_Str] = Move_KD_Str;
+        moveUpdate[(int)HaruState.KD_Upp] = Move_KD_Upp;
         moveUpdate[(int)HaruState.KD_Upp_End] = Move_Idle;
         moveUpdate[(int)HaruState.KD_Upp_Down] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Upp_Air_Hit] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Upp_Down_Hit] = Move_Idle;
+        moveUpdate[(int)HaruState.KD_Upp_Raise] = Move_Idle;
         moveUpdate[(int)HaruState.NormalAttack1] = Move_NormalAttack1;
         moveUpdate[(int)HaruState.NormalAttack2] = Move_NormalAttack2;
         moveUpdate[(int)HaruState.NormalAttack3] = Move_NormalAttack3;
@@ -140,6 +182,9 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)HaruState.KD_Upp] = Ani_KD_Upp;
         animeUpdate[(int)HaruState.KD_Upp_End] = Ani_KD_Upp_End;
         animeUpdate[(int)HaruState.KD_Upp_Down] = Ani_KD_Upp_Down;
+        animeUpdate[(int)HaruState.KD_Upp_Air_Hit] = Ani_KD_Upp_Air_Hit;
+        animeUpdate[(int)HaruState.KD_Upp_Down_Hit] = Ani_KD_Upp_Down_Hit;
+        animeUpdate[(int)HaruState.KD_Upp_Raise] = Ani_KD_Upp_Raise;
         animeUpdate[(int)HaruState.NormalAttack1] = Ani_NormalAttack1;
         animeUpdate[(int)HaruState.NormalAttack2] = Ani_NormalAttack2;
         animeUpdate[(int)HaruState.NormalAttack3] = Ani_NormalAttack3;
@@ -170,6 +215,8 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)HaruState.Land, (int)HaruState.Jump] = true;
 
         changeState[(int)HaruState.DashLand, (int)HaruState.Run] = true;
+
+        changeState[(int)HaruState.KD_Upp_Down, (int)HaruState.Run] = true;
 
         changeState[(int)HaruState.NormalAttack1, (int)HaruState.NormalAttack2] = true;
         changeState[(int)HaruState.NormalAttack1, (int)HaruState.Run] = true;

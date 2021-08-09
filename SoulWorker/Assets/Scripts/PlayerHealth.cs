@@ -22,7 +22,7 @@ public class PlayerHealth : LivingEntity
         UpdateUI();
 
         // 공격 타입에 따른 상태 변환
-        playerCtrl.FSM_Hit(damageMessage.attackType);
+        playerCtrl.FSM_Hit(ref damageMessage);
 
         return true;
     }

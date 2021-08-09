@@ -28,9 +28,17 @@ namespace MyStruct
         public float criticalDamage;    // 치명타 피해
         public float accuracy;          // 적중도
         public float partialDamage;     // 빗맞힘 시 피해[%]
+        public float power;             // 충격력
         public AttackType attackType;   // 공격 타입
+        public Vector3 hitDir;          // 공격 방향
         public Vector3 hitPoint;
         public Vector3 hitNormal;
+    }
+
+    public struct AttackInfo
+    {
+        public float power;
+        public AttackType type;
     }
 
     // 몬스터 정보

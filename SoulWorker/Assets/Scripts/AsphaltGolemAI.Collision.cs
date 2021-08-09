@@ -39,8 +39,8 @@ public partial class AsphaltGolemAI : MonsterAI
             return;
 
         // 공격 타입
-        AttackType type;
-        if (!CurrentAttackType(out type))
+        AttackInfo atkInfo;
+        if (!CurrentAttackType(out atkInfo))
             return;
 
         DamageMessage msg = new DamageMessage
@@ -51,26 +51,32 @@ public partial class AsphaltGolemAI : MonsterAI
             criticalDamage = monsterInfo.currentMonsterData.criticalDamage,
             accuracy = monsterInfo.currentMonsterData.accuracy,
             partialDamage = monsterInfo.currentMonsterData.partialDamage,
-            attackType = type
-        };
+            power = atkInfo.power,
+            attackType = atkInfo.type,
+            hitDir = targetEntity.transform.position - monsterTransform.position
+    };
         hit.ApplyDamage(ref msg);
     }
 
-    private bool CurrentAttackType(out AttackType type)
+    private bool CurrentAttackType(out AttackInfo atkInfo)
     {
         switch (state)
         {
             case AsphaltGolemState.A_Skill_01:
-                type = AttackType.Upper;
+                atkInfo.type = AttackType.Upper;
+                atkInfo.power = 5f;
                 break;
             case AsphaltGolemState.A_Skill_02:
-                type = AttackType.Down;
+                atkInfo.type = AttackType.Down;
+                atkInfo.power = 3f;
                 break;
             case AsphaltGolemState.A_Skill_03:
-                type = AttackType.Normal;
+                atkInfo.type = AttackType.Normal;
+                atkInfo.power = 5f;
                 break;
             default:
-                type = AttackType.None;
+                atkInfo.type = AttackType.None;
+                atkInfo.power = 5f;
                 return false;
         }
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using MyEnum;
+using System.Resources;
 
 public partial class PlayerCtrl : MonoBehaviour
 {
@@ -52,6 +53,46 @@ public partial class PlayerCtrl : MonoBehaviour
         pantsAnime.SetBool("Jump", false);
         handsAnime.SetBool("Jump", false);
         footAnime.SetBool("Jump", false);
+    }
+
+    private void SetUppTrue()
+    {
+        hairAnime.SetBool("Upp", true);
+        faceAnime.SetBool("Upp", true);
+        bodyAnime.SetBool("Upp", true);
+        pantsAnime.SetBool("Upp", true);
+        handsAnime.SetBool("Upp", true);
+        footAnime.SetBool("Upp", true);
+    }
+
+    private void SetUppFalse()
+    {
+        hairAnime.SetBool("Upp", false);
+        faceAnime.SetBool("Upp", false);
+        bodyAnime.SetBool("Upp", false);
+        pantsAnime.SetBool("Upp", false);
+        handsAnime.SetBool("Upp", false);
+        footAnime.SetBool("Upp", false);
+    }
+
+    private void SetDownTrue()
+    {
+        hairAnime.SetBool("Down", true);
+        faceAnime.SetBool("Down", true);
+        bodyAnime.SetBool("Down", true);
+        pantsAnime.SetBool("Down", true);
+        handsAnime.SetBool("Down", true);
+        footAnime.SetBool("Down", true);
+    }
+
+    private void SetDownFalse()
+    {
+        hairAnime.SetBool("Down", false);
+        faceAnime.SetBool("Down", false);
+        bodyAnime.SetBool("Down", false);
+        pantsAnime.SetBool("Down", false);
+        handsAnime.SetBool("Down", false);
+        footAnime.SetBool("Down", false);
     }
 
     private void SetTrigerDMGL()
@@ -144,6 +185,26 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetTrigger("B_KD_Upp_Raise");
     }
 
+    private void SetTrigerKDUppAirHit()
+    {
+        hairAnime.SetTrigger("B_KD_Upp_Air_Hit");
+        faceAnime.SetTrigger("B_KD_Upp_Air_Hit");
+        bodyAnime.SetTrigger("B_KD_Upp_Air_Hit");
+        pantsAnime.SetTrigger("B_KD_Upp_Air_Hit");
+        handsAnime.SetTrigger("B_KD_Upp_Air_Hit");
+        footAnime.SetTrigger("B_KD_Upp_Air_Hit");
+    }
+
+    private void SetTrigerKDUppDownHit()
+    {
+        hairAnime.SetTrigger("B_KD_Upp_Down_Hit");
+        faceAnime.SetTrigger("B_KD_Upp_Down_Hit");
+        bodyAnime.SetTrigger("B_KD_Upp_Down_Hit");
+        pantsAnime.SetTrigger("B_KD_Upp_Down_Hit");
+        handsAnime.SetTrigger("B_KD_Upp_Down_Hit");
+        footAnime.SetTrigger("B_KD_Upp_Down_Hit");
+    }
+
     private void SetNormalAttackTrue()
     {
         hairAnime.SetBool("NormalAttack", true);
@@ -209,6 +270,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (!jump)
         {
             jump = true;
+            fsmChangeTime = Time.realtimeSinceStartup;
             SetJumpTrue();
         }
         else
@@ -235,6 +297,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (!jump)
         {
             jump = true;
+            fsmChangeTime = Time.realtimeSinceStartup;
             SetJumpTrue();
         }
         else
@@ -260,7 +323,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private void Ani_Land()
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Jump_Land_C") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
             state = HaruState.Idle;
         }
@@ -279,7 +342,7 @@ public partial class PlayerCtrl : MonoBehaviour
             }
 
             // 종료
-            if (0.99f <= time)
+            if (0.9f <= time)
             {
                 state = HaruState.Idle;
             }
@@ -289,7 +352,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private void Ani_DMG_L()
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_DMG_L") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
             state = HaruState.Idle;
         }
@@ -298,7 +361,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private void Ani_DMG_R()
     {
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_DMG_R") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
             state = HaruState.Idle;
         }
@@ -311,12 +374,60 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_KD_Ham_F()
     {
+        if (!upp)
+        {
+            upp = true;
+            fsmChangeTime = Time.realtimeSinceStartup;
+            SetTrigerKDHamF();
+            SetUppTrue();
+        }
+        else
+        {
+            // 착지
+            if (characterController.isGrounded)
+            {
+                // 점프 한지 얼마 안됬으면 무시
+                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+                    return;
 
+                upp = false;
+                down = true;
+                state = HaruState.KD_Upp_End;
+
+                SetTrigerKDUppEnd();
+                SetUppFalse();
+                SetDownTrue();
+            }
+        }
     }
 
     private void Ani_KD_Ham_B()
     {
+        if (!upp)
+        {
+            upp = true;
+            fsmChangeTime = Time.realtimeSinceStartup;
+            SetTrigerKDHamB();
+            SetUppTrue();
+        }
+        else
+        {
+            // 착지
+            if (characterController.isGrounded)
+            {
+                // 점프 한지 얼마 안됬으면 무시
+                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+                    return;
 
+                upp = false;
+                down = true;
+                state = HaruState.KD_Upp_End;
+
+                SetTrigerKDUppEnd();
+                SetUppFalse();
+                SetDownTrue();
+            }
+        }
     }
 
     private void Ani_KD_Str()
@@ -329,7 +440,9 @@ public partial class PlayerCtrl : MonoBehaviour
         if (!upp)
         {
             upp = true;
+            fsmChangeTime = Time.realtimeSinceStartup;
             SetTrigerKDUpp();
+            SetUppTrue();
         }
         else
         {
@@ -339,40 +452,70 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 점프 한지 얼마 안됬으면 무시
                 if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
                     return;
-
+                
                 upp = false;
+                down = true;
                 state = HaruState.KD_Upp_End;
 
                 SetTrigerKDUppEnd();
+                SetUppFalse();
+                SetDownTrue();
             }
         }
     }
 
     private void Ani_KD_Upp_End()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_End"))
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_End") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
-            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
-
-            // 종료
-            if (0.99f <= time)
-            {
-                state = HaruState.KD_Upp_Down;
-            }
+            state = HaruState.KD_Upp_Down;
         }
     }
 
     private void Ani_KD_Upp_Down()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_Down"))
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_Down") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
-            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            
+        }
+    }
 
-            // 종료
-            if (0.99f <= time)
-            {
-                //state = HaruState.KD_Upp_Down;
-            }
+    private void Ani_KD_Upp_Air_Hit()
+    {
+        // 착지
+        if (characterController.isGrounded)
+        {
+            // 점프 한지 얼마 안됬으면 무시
+            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+                return;
+
+            upp = false;
+            down = true;
+            state = HaruState.KD_Upp_End;
+
+            SetTrigerKDUppEnd();
+            SetUppFalse();
+            SetDownTrue();
+        }
+    }
+
+    private void Ani_KD_Upp_Down_Hit()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_Down_Hit") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            state = HaruState.KD_Upp_Down;
+        }
+    }
+
+    private void Ani_KD_Upp_Raise()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_Raise") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            state = HaruState.Idle;
         }
     }
 

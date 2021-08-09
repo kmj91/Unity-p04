@@ -128,6 +128,71 @@ public partial class PlayerCtrl : MonoBehaviour
         }
     }
 
+    private void Move_KD_Ham_F()
+    {
+        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);
+
+        // 대쉬 점프는 방향 변경 불가
+        Vector3 moveDir = moveAnimeDir;
+        moveDir.y = 0.0f;
+        moveDir = moveDir.normalized;
+
+        currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
+        characterController.Move(velocity * Time.deltaTime);
+
+        // 땅에 닿으면 초기화
+        if (characterController.isGrounded)
+        {
+            currentVelocityY = 0.0f;
+        }
+    }
+
+    private void Move_KD_Ham_B()
+    {
+        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);
+
+        // 대쉬 점프는 방향 변경 불가
+        Vector3 moveDir = moveAnimeDir;
+        moveDir.y = 0.0f;
+        moveDir = moveDir.normalized;
+
+        currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
+        characterController.Move(velocity * Time.deltaTime);
+
+        // 땅에 닿으면 초기화
+        if (characterController.isGrounded)
+        {
+            currentVelocityY = 0.0f;
+        }
+    }
+
+    private void Move_KD_Str()
+    {
+
+    }
+
+    private void Move_KD_Upp()
+    {
+        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);
+
+        // 대쉬 점프는 방향 변경 불가
+        Vector3 moveDir = moveAnimeDir;
+        moveDir.y = 0.0f;
+        moveDir = moveDir.normalized;
+
+        currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
+        characterController.Move(velocity * Time.deltaTime);
+
+        // 땅에 닿으면 초기화
+        if (characterController.isGrounded)
+        {
+            currentVelocityY = 0.0f;
+        }
+    }
+
     private void Move_NormalAttack1()
     {
         if (moveAttack)
