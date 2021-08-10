@@ -38,6 +38,7 @@ namespace MyStruct
     public struct AttackInfo
     {
         public float power;
+        public float damage;
         public AttackType type;
     }
 

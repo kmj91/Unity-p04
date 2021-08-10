@@ -2,7 +2,6 @@
 
 using MyStruct;
 using MyEnum;
-using UnityEditor;
 
 public partial class AsphaltGolemAI : MonsterAI
 {
@@ -46,7 +45,7 @@ public partial class AsphaltGolemAI : MonsterAI
         DamageMessage msg = new DamageMessage
         {
             damager = monsterInfo.gameObject,
-            damage = monsterInfo.currentMonsterData.maxAtk,
+            damage = atkInfo.damage,
             criticalRate = monsterInfo.currentMonsterData.criticalRate,
             criticalDamage = monsterInfo.currentMonsterData.criticalDamage,
             accuracy = monsterInfo.currentMonsterData.accuracy,
@@ -54,7 +53,7 @@ public partial class AsphaltGolemAI : MonsterAI
             power = atkInfo.power,
             attackType = atkInfo.type,
             hitDir = targetEntity.transform.position - monsterTransform.position
-    };
+        };
         hit.ApplyDamage(ref msg);
     }
 
@@ -62,21 +61,25 @@ public partial class AsphaltGolemAI : MonsterAI
     {
         switch (state)
         {
-            case AsphaltGolemState.A_Skill_01:
+            case AsphaltGolemState.A_Skill_01:  // 어퍼
                 atkInfo.type = AttackType.Upper;
                 atkInfo.power = 5f;
+                atkInfo.damage = Random.Range(monsterInfo.currentMonsterData.minAtk, monsterInfo.currentMonsterData.maxAtk);
                 break;
-            case AsphaltGolemState.A_Skill_02:
+            case AsphaltGolemState.A_Skill_02:  // 광역 내려찍기
                 atkInfo.type = AttackType.Down;
                 atkInfo.power = 3f;
+                atkInfo.damage = Random.Range(monsterInfo.currentMonsterData.minAtk, monsterInfo.currentMonsterData.maxAtk) * 1.5f;
                 break;
-            case AsphaltGolemState.A_Skill_03:
+            case AsphaltGolemState.A_Skill_03:  // 방패 기둥 꺼내서 전방 충격파, 찍뎀 + 충격파 스킬
                 atkInfo.type = AttackType.Normal;
                 atkInfo.power = 5f;
+                atkInfo.damage = Random.Range(monsterInfo.currentMonsterData.minAtk, monsterInfo.currentMonsterData.maxAtk) * 0.5f;
                 break;
             default:
                 atkInfo.type = AttackType.None;
                 atkInfo.power = 5f;
+                atkInfo.damage = 0f;
                 return false;
         }
 

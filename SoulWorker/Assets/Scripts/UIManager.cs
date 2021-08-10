@@ -64,7 +64,15 @@ public class UIManager : MonoBehaviour
     // 보스 체력
     public void UpdateBossHp(float currentHp, float maxHp)
     {
+        float oneLine = maxHp / 9f;
+        var log = currentHp / oneLine % 5;
 
+        Debug.Log(log);
+
+        //bossHpBarFront.sprite = 
+
+        float amount = currentHp / maxHp;
+        bossHpBarFront.fillAmount = amount;
     }
 
     // 보스 이름

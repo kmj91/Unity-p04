@@ -14,6 +14,9 @@ public partial class AsphaltGolemAI : MonsterAI
     {
         if (!base.ApplyDamage(ref damageMessage)) return false;
 
+        // UI 갱신
+        UpdateUI();
+
         // 타겟이 없으면
         if (targetEntity == null)
         {
@@ -166,5 +169,11 @@ public partial class AsphaltGolemAI : MonsterAI
         }
 
         
+    }
+
+    private void UpdateUI()
+    {
+        // UI 갱신
+        UIManager.Instance.UpdateBossHp(health, startingHealth);
     }
 }
