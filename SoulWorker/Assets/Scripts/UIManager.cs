@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Sprite[] bossHpBarSprite;  // 보스 체력바 스프라이트
 
-    private int boosHpBarNum;
+    private int boosHpBarNum = -1;
 
 
     // 플레이어 체력
@@ -60,13 +60,37 @@ public class UIManager : MonoBehaviour
     // 보스 체력
     public void UpdateBossHp(float currentHp, float maxHp)
     {
-        float oneLine = maxHp / 9f;
-        float log = currentHp / oneLine % 6;
+        // 9줄로 나눴을 때의 현제 체력 줄
+        float num = currentHp / (maxHp / 9f);
+        // 소수점 버림
+        int hpBarNum = (int)num;
 
-        Debug.Log(log);
-        bossHpBarFront.sprite = bossHpBarSprite[(int)log];
+        // 보스 체력줄이 다름
+        if (boosHpBarNum != hpBarNum)
+        {
+            // 앞쪽 체력바
+            bossHpBarFront.sprite = bossHpBarSprite[hpBarNum % 6];
 
-        float amount = currentHp / maxHp;
+            // 체력바가 한줄 남았으면 뒤쪽 체력바는 비활성화
+            if (hpBarNum != 0)
+            {
+                // 비활성화 되어있으면 활성화
+                if (!bossHpBarBack.enabled)
+                    bossHpBarBack.enabled = true;
+                bossHpBarBack.sprite = bossHpBarSprite[(hpBarNum - 1) % 6];
+            }
+            else
+            {
+                // 비활성화
+                bossHpBarBack.enabled = false;
+            }
+
+            boosHpBarNum = hpBarNum;
+        }
+
+        
+
+        float amount = num - hpBarNum;
         bossHpBarFront.fillAmount = amount;
     }
 
@@ -80,5 +104,10 @@ public class UIManager : MonoBehaviour
     public void UpdateBossSuperArmor(float currentSA, float maxSA)
     {
         bossSuperArmorBar.fillAmount = currentSA / maxSA;
+    }
+
+    private void Update()
+    {
+        
     }
 }
