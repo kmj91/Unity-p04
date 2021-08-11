@@ -1555,20 +1555,14 @@ MonoBehaviour:
   bossSuperArmorBreakGuard: {fileID: 1123168472}
   bossSuperArmorBreakEffect: {fileID: 2079517638}
   bossSuperArmorBreak: {fileID: 469560975}
-  bossHpBarSprite0: {fileID: 8484030793908474369, guid: 58870c72d530a0f4085016e5eaa43fbf,
-    type: 3}
-  bossHpBarSprite1: {fileID: -7868393053494390922, guid: 58870c72d530a0f4085016e5eaa43fbf,
-    type: 3}
-  bossHpBarSprite2: {fileID: 3912503313807001267, guid: 58870c72d530a0f4085016e5eaa43fbf,
-    type: 3}
-  bossHpBarSprite3: {fileID: 7918502477841467764, guid: 58870c72d530a0f4085016e5eaa43fbf,
-    type: 3}
-  bossHpBarSprite4: {fileID: 12121534870464039, guid: 58870c72d530a0f4085016e5eaa43fbf,
-    type: 3}
-  bossHpBarSprite5: {fileID: -753926199851564581, guid: 58870c72d530a0f4085016e5eaa43fbf,
-    type: 3}
-  bossHpBarSprite6: {fileID: 8795594432789449632, guid: 58870c72d530a0f4085016e5eaa43fbf,
-    type: 3}
+  bossHpBarSprite:
+  - {fileID: 8484030793908474369, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: -7868393053494390922, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: 3912503313807001267, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: 7918502477841467764, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: 12121534870464039, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: -753926199851564581, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: 8795594432789449632, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
 --- !u!1 &1763390559
 GameObject:
   m_ObjectHideFlags: 0

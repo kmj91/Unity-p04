@@ -101,7 +101,7 @@ public partial class AsphaltGolemAI : MonsterAI
         MonsterData data = new MonsterData
         {
             level = 5f,
-            hp = 1500f,
+            hp = 15000f,
 
             maxAtk = 200f,
             minAtk = 200f * 0.8f,

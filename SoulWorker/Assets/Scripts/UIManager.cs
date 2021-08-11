@@ -30,13 +30,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image bossSuperArmorBreakEffect;   // 보스 슈퍼 아머 브레이크 이펙트
     [SerializeField] private Image bossSuperArmorBreak;         // 보스 슈퍼 아머 브레이크 텍스트 이미지
 
-    [SerializeField] private Sprite bossHpBarSprite0;   // 보스 체력바 스프라이트
-    [SerializeField] private Sprite bossHpBarSprite1;   // 보스 체력바 스프라이트
-    [SerializeField] private Sprite bossHpBarSprite2;   // 보스 체력바 스프라이트
-    [SerializeField] private Sprite bossHpBarSprite3;   // 보스 체력바 스프라이트
-    [SerializeField] private Sprite bossHpBarSprite4;   // 보스 체력바 스프라이트
-    [SerializeField] private Sprite bossHpBarSprite5;   // 보스 체력바 스프라이트
-    [SerializeField] private Sprite bossHpBarSprite6;   // 보스 체력바 스프라이트
+    [SerializeField] private Sprite[] bossHpBarSprite;  // 보스 체력바 스프라이트
+
+    private int boosHpBarNum;
 
 
     // 플레이어 체력
@@ -65,11 +61,10 @@ public class UIManager : MonoBehaviour
     public void UpdateBossHp(float currentHp, float maxHp)
     {
         float oneLine = maxHp / 9f;
-        var log = currentHp / oneLine % 5;
+        float log = currentHp / oneLine % 6;
 
         Debug.Log(log);
-
-        //bossHpBarFront.sprite = 
+        bossHpBarFront.sprite = bossHpBarSprite[(int)log];
 
         float amount = currentHp / maxHp;
         bossHpBarFront.fillAmount = amount;
