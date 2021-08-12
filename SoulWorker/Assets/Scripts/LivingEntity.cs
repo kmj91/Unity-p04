@@ -132,8 +132,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
         // 대미지 감소율 공식
         // 방어도 / (방어도 + (캐릭터 레벨 * 50))
         float defenseRate = currentDefense / (currentDefense + (currentLevel * 50f));
-        health -= damageMessage.damage * (1f - defenseRate);
-        
+        //health -= damageMessage.damage * (1f - defenseRate);
+        health -= 50f;
         if (health <= 0) Die();
 
         return true;

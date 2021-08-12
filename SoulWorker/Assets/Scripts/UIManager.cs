@@ -85,7 +85,9 @@ public class UIManager : MonoBehaviour
                 bossHpBarBack.enabled = false;
             }
 
+            // 체력줄이 바뀜
             boosHpBarNum = hpBarNum;
+            bossHpLostBar.fillAmount = 1f;
         }
 
         
@@ -108,6 +110,15 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        
+        LostBarUpdate();
+    }
+
+    private void LostBarUpdate()
+    {
+        if (bossHpBarFront.fillAmount >= bossHpLostBar.fillAmount)
+            return;
+
+        // 잃은 체력을 따라감
+        bossHpLostBar.fillAmount -= 0.0003f;
     }
 }
