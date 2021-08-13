@@ -256,6 +256,7 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         state = HaruState.Idle;
         normalAtk = false;
+        moveStand = false;
         isAttacking = false;
         SetNormalAttackFalse();
         SetNormalAttackCnt(0);

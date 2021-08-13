@@ -64,6 +64,23 @@ public partial class PlayerCtrl : MonoBehaviour
 
     public void FSM_Hit(ref DamageMessage damageMessage)
     {
+        // 조작 플래그 초기화
+        if (normalAtk)
+        {
+            normalAtk = false;
+            lockInput = false;
+            moveAttack = false;
+            moveStand = false;
+            SetNormalAttackFalse();
+            SetNormalAttackCnt(0);
+            if (isAttacking)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+        }
+
         // 공중에 뜸
         if (upp)
         {
