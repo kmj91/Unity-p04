@@ -134,9 +134,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // 2. 스킬 슬롯
         SkillCheck();
+        // 3. 회피
+        EvadeCheck();
+        // 4. 점프
         JumpCheck();
+        // 5. 마우스
         MouseCheck();
+        // 6. 방향키
         MoveCheck();
     }
 
@@ -186,6 +192,30 @@ public class GameManager : MonoBehaviour
             else if (queue[iRear].key == KeyCode.Alpha6)
             {
                 playerCtrl.SkillSlot6();
+            }
+        }
+    }
+
+    // 회피
+    private void EvadeCheck()
+    {
+        var queue = keyQueue.GetQueue();
+        int iSize = keyQueue.GetQueueSize();
+        int iRear = keyQueue.GetRear();
+        int iFront = keyQueue.GetFront();
+
+        while (iRear != iFront)
+        {
+            --iRear;
+            if (iRear < 0)
+            {
+                iRear = iSize - 1;
+            }
+
+            // 회피
+            if (queue[iRear].key == KeyCode.LeftShift)
+            {
+                playerCtrl.Evade();
             }
         }
     }

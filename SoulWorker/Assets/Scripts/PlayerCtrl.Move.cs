@@ -128,6 +128,11 @@ public partial class PlayerCtrl : MonoBehaviour
         }
     }
 
+    private void Move_Evade()
+    {
+
+    }
+
     private void Move_KD_Ham_F()
     {
         targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);

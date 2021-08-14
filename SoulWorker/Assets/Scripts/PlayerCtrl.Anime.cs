@@ -283,6 +283,8 @@ public partial class PlayerCtrl : MonoBehaviour
                     return;
 
                 jump = false;
+                // 착지하고 바로 움직임 제한
+                lockInput = true;
                 state = HaruState.Land;
                 fsmChangeTime = Time.realtimeSinceStartup;
 
@@ -322,10 +324,19 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Land()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Jump_Land_C") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Jump_Land_C"))
         {
-            state = HaruState.Idle;
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (lockInput && 0.3f <= time)
+            {
+                lockInput = false;
+            }
+
+            if (0.9f <= time)
+            {
+                state = HaruState.Idle;
+            }
         }
     }
 
@@ -347,6 +358,11 @@ public partial class PlayerCtrl : MonoBehaviour
                 state = HaruState.Idle;
             }
         }
+    }
+
+    private void Ani_Evade()
+    {
+
     }
 
     private void Ani_DMG_L()

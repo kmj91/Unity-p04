@@ -65,7 +65,7 @@ public partial class PlayerCtrl : MonoBehaviour
     public void FSM_Hit(ref DamageMessage damageMessage)
     {
         // 조작 플래그 초기화
-        if (normalAtk)
+        if (normalAtk || lockInput)
         {
             normalAtk = false;
             lockInput = false;
@@ -164,6 +164,7 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate[(int)HaruState.DashJump] = Move_DashJump;
         moveUpdate[(int)HaruState.Land] = Move_Land;
         moveUpdate[(int)HaruState.DashLand] = Move_DashLand;
+        moveUpdate[(int)HaruState.Evade] = Move_Evade;
         moveUpdate[(int)HaruState.DMG_L] = Move_Idle;
         moveUpdate[(int)HaruState.DMG_R] = Move_Idle;
         moveUpdate[(int)HaruState.KB] = Move_Idle;
@@ -190,6 +191,7 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)HaruState.DashJump] = Ani_DashJump;
         animeUpdate[(int)HaruState.Land] = Ani_Land;
         animeUpdate[(int)HaruState.DashLand] = Ani_DashLand;
+        animeUpdate[(int)HaruState.Evade] = Ani_Evade;
         animeUpdate[(int)HaruState.DMG_L] = Ani_DMG_L;
         animeUpdate[(int)HaruState.DMG_R] = Ani_DMG_R;
         animeUpdate[(int)HaruState.KB] = Ani_KB;
@@ -237,17 +239,22 @@ public partial class PlayerCtrl : MonoBehaviour
 
         changeState[(int)HaruState.NormalAttack1, (int)HaruState.NormalAttack2] = true;
         changeState[(int)HaruState.NormalAttack1, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.NormalAttack1, (int)HaruState.Evade] = true;
 
         changeState[(int)HaruState.NormalAttack2, (int)HaruState.NormalAttack3] = true;
         changeState[(int)HaruState.NormalAttack2, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.NormalAttack2, (int)HaruState.Evade] = true;
 
         changeState[(int)HaruState.NormalAttack3, (int)HaruState.NormalAttack4] = true;
         changeState[(int)HaruState.NormalAttack3, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.NormalAttack3, (int)HaruState.Evade] = true;
 
         changeState[(int)HaruState.NormalAttack4, (int)HaruState.NormalAttack5] = true;
         changeState[(int)HaruState.NormalAttack4, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.NormalAttack4, (int)HaruState.Evade] = true;
 
         changeState[(int)HaruState.NormalAttack5, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.NormalAttack5, (int)HaruState.Evade] = true;
 
         // 무기 장착
         weapon.transform.parent = weaponholder;

@@ -44,6 +44,7 @@
         DashJump,
         Land,
         DashLand,
+        Evade,
         DMG_L,
         DMG_R,
         KB,

@@ -167,6 +167,15 @@ public partial class PlayerCtrl: MonoBehaviour
         }
     }
 
+    public void Evade()
+    {
+        if (CheckState(state, HaruState.Evade))
+        {
+            state = HaruState.Evade;
+            dash = true;
+        }
+    }
+
     public void SkillSlot1()
     {
 
