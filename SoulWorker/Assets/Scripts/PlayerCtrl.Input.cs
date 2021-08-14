@@ -142,6 +142,9 @@ public partial class PlayerCtrl: MonoBehaviour
 
     public void Jump()
     {
+        if (lockInput)
+            return;
+
         if (dash)
         {
             if (CheckState(state, HaruState.DashJump) && characterController.isGrounded)
@@ -156,10 +159,6 @@ public partial class PlayerCtrl: MonoBehaviour
         {
             if (CheckState(state, HaruState.Jump) && characterController.isGrounded)
             {
-                // 착지 한지 얼마 안됬으면 무시
-                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.2f)
-                    return;
-
                 state = HaruState.Jump;
                 currentVelocityY = jumpVelocity;
                 moveInput = new Vector2(0, 0);

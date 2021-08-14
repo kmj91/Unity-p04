@@ -286,7 +286,6 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 착지하고 바로 움직임 제한
                 lockInput = true;
                 state = HaruState.Land;
-                fsmChangeTime = Time.realtimeSinceStartup;
 
                 SetJumpFalse();
                 SetSpeedZero();
