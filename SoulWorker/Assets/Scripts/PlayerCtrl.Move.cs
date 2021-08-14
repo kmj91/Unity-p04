@@ -33,7 +33,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Move_Dash()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed * 2.0f, ref speedSmoothVelocity, speedSmoothTime);
+        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed * dashSpeedGob, ref speedSmoothVelocity, speedSmoothTime);
 
         Vector3 moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
         moveDir.y = 0.0f;
@@ -57,7 +57,8 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Move_Jump()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);
+        // SmoothDamp 사용 안 함
+        targetSpeed = moveSpeed;
 
         Vector3 moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
         moveDir.y = 0.0f;

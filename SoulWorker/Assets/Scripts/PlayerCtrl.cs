@@ -15,6 +15,7 @@ public partial class PlayerCtrl : MonoBehaviour
     public PlayerInfo playerInfo;           // 플레이어 정보
     public HaruWeapon weapon;
     public float moveSpeed = 5.0f;          // 이동 속도
+    public float dashSpeedGob = 2.0f;       // 대쉬 속도 = moveSpeed * dashSpeedGob
     public float mouseSpeed = 100.0f;       // 마우스 속도
     public float rotationSpeed = 10.0f;     // 회전 속도
     public float jumpVelocity = 5.0f;       // 점프력

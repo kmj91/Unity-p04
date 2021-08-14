@@ -153,6 +153,11 @@ public partial class PlayerCtrl: MonoBehaviour
                 currentVelocityY = jumpVelocity * 0.6f;
                 moveAnimeDir = modelTransform.forward;
                 oldInput = moveInput;
+                // 대쉬 점프 속도가 높지 않으면 강제로 맞춰줌
+                if (targetSpeed != moveSpeed * dashSpeedGob)
+                {
+                    targetSpeed = moveSpeed * dashSpeedGob;
+                }
             }
         }
         else
