@@ -312,6 +312,8 @@ public partial class PlayerCtrl : MonoBehaviour
                     return;
 
                 jump = false;
+                // 착지하고 바로 움직임 제한
+                lockInput = true;
                 state = HaruState.DashLand;
                 moveAnimeDir = modelTransform.forward;
 
@@ -345,6 +347,11 @@ public partial class PlayerCtrl : MonoBehaviour
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Dash_Jump_End"))
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (lockInput && 0.1f <= time)
+            {
+                lockInput = false;
+            }
 
             // 정지
             if (0.35f <= time)
