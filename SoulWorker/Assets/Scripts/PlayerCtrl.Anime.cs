@@ -272,7 +272,11 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Dash()
     {
-        SetDashTrue();
+        if (!dash)
+        {
+            dash = true;
+            SetDashTrue();
+        }
     }
 
     private void Ani_Jump()

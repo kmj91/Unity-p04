@@ -31,7 +31,6 @@ public partial class PlayerCtrl: MonoBehaviour
         if (CheckState(state, HaruState.Dash))
         {
             state = HaruState.Dash;
-            dash = true;
         }
     }
 
