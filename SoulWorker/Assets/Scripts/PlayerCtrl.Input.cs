@@ -16,79 +16,9 @@ public partial class PlayerCtrl: MonoBehaviour
             dash = false;
     }
 
-    public void MoveFF()
+    public void Move(Vector2 dir)
     {
-        moveInput = new Vector2(0, 1.0f);
-
-        if (CheckState(state, HaruState.Run) && !lockInput)
-        {
-            MoveBranch();
-        }
-    }
-
-    public void MoveFL()
-    {
-        moveInput = new Vector2(-1.0f, 1.0f);
-
-        if (CheckState(state, HaruState.Run) && !lockInput)
-        {
-            MoveBranch();
-        }
-    }
-
-    public void MoveFR()
-    {
-        moveInput = new Vector2(1.0f, 1.0f);
-
-        if (CheckState(state, HaruState.Run) && !lockInput)
-        {
-            MoveBranch();
-        }
-    }
-
-    public void MoveBB()
-    {
-        moveInput = new Vector2(0, -1.0f);
-
-        if (CheckState(state, HaruState.Run) && !lockInput)
-        {
-            MoveBranch();
-        }
-    }
-
-    public void MoveBL()
-    {
-        moveInput = new Vector2(-1.0f, -1.0f);
-
-        if (CheckState(state, HaruState.Run) && !lockInput)
-        {
-            MoveBranch();
-        }
-    }
-
-    public void MoveBR()
-    {
-        moveInput = new Vector2(1.0f, -1.0f);
-
-        if (CheckState(state, HaruState.Run) && !lockInput)
-        {
-            MoveBranch();
-        }
-    }
-
-    public void MoveLL()
-    {
-        moveInput = new Vector2(-1.0f, 0);
-
-        if (CheckState(state, HaruState.Run) && !lockInput)
-        {
-            MoveBranch();
-        }
-    }
-
-    public void MoveRR()
-    {
-        moveInput = new Vector2(1.0f, 0);
+        moveInput = dir;
 
         if (CheckState(state, HaruState.Run) && !lockInput)
         {

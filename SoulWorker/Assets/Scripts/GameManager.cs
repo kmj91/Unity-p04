@@ -309,19 +309,19 @@ public class GameManager : MonoBehaviour
                     // 앞 왼쪽으로 이동
                     if (queue[iRear].key == KeyCode.A)
                     {
-                        playerCtrl.MoveFL();
+                        playerCtrl.Move(new Vector2(-1f, 1f));
                         return;
                     }
                     // 앞 오른쪽으로 이동
                     else if(queue[iRear].key == KeyCode.D)
                     {
-                        playerCtrl.MoveFR();
+                        playerCtrl.Move(new Vector2(1f, 1f));
                         return;
                     }
                 }
 
                 // 앞으로 이동
-                playerCtrl.MoveFF();
+                playerCtrl.Move(new Vector2(0f, 1f));
                 return;
             }
             // 뒤로 이동
@@ -344,19 +344,19 @@ public class GameManager : MonoBehaviour
                     // 뒤 왼쪽으로 이동
                     if (queue[iRear].key == KeyCode.A)
                     {
-                        playerCtrl.MoveBL();
+                        playerCtrl.Move(new Vector2(-1f, -1f));
                         return;
                     }
                     // 뒤 오른쪽으로 이동
                     else if (queue[iRear].key == KeyCode.D)
                     {
-                        playerCtrl.MoveBR();
+                        playerCtrl.Move(new Vector2(1f, -1f));
                         return;
                     }
                 }
 
                 // 뒤로 이동
-                playerCtrl.MoveBB();
+                playerCtrl.Move(new Vector2(0f, -1f));
                 return;
             }
             // 왼쪽으로 이동
@@ -379,19 +379,19 @@ public class GameManager : MonoBehaviour
                     // 앞 왼쪽으로 이동
                     if (queue[iRear].key == KeyCode.W)
                     {
-                        playerCtrl.MoveFL();
+                        playerCtrl.Move(new Vector2(-1f, 1f));
                         return;
                     }
                     // 뒤 왼쪽으로 이동
                     else if (queue[iRear].key == KeyCode.S)
                     {
-                        playerCtrl.MoveBL();
+                        playerCtrl.Move(new Vector2(-1f, -1f));
                         return;
                     }
                 }
 
                 // 왼쪽으로 이동
-                playerCtrl.MoveLL();
+                playerCtrl.Move(new Vector2(-1f, 0f));
                 return;
             }
             // 오른쪽으로 이동
@@ -414,19 +414,19 @@ public class GameManager : MonoBehaviour
                     // 앞 오른쪽으로 이동
                     if (queue[iRear].key == KeyCode.W)
                     {
-                        playerCtrl.MoveFR();
+                        playerCtrl.Move(new Vector2(1f, 1f));
                         return;
                     }
                     // 뒤 오른쪽으로 이동
                     else if (queue[iRear].key == KeyCode.S)
                     {
-                        playerCtrl.MoveBR();
+                        playerCtrl.Move(new Vector2(1f, -1f));
                         return;
                     }
                 }
 
-                // 왼쪽으로 이동
-                playerCtrl.MoveRR();
+                // 오른쪽으로 이동
+                playerCtrl.Move(new Vector2(1f, 0f));
                 return;
             }
         }
