@@ -215,9 +215,136 @@ public class GameManager : MonoBehaviour
             // 회피
             if (queue[iRear].key == KeyCode.LeftShift)
             {
-                playerCtrl.Evade();
-            }
-        }
+                iRear = keyQueue.GetRear();
+                iFront = keyQueue.GetFront();
+
+                while (iRear != iFront)
+                {
+                    --iRear;
+                    if (iRear < 0)
+                    {
+                        iRear = iSize - 1;
+                    }
+
+                    // 앞으로 이동
+                    if (queue[iRear].key == KeyCode.W)
+                    {
+                        while (iRear != iFront)
+                        {
+                            --iRear;
+                            if (iRear < 0)
+                            {
+                                iRear = iSize - 1;
+                            }
+
+                            // 앞 왼쪽으로 회피
+                            if (queue[iRear].key == KeyCode.A)
+                            {
+                                playerCtrl.Evade(new Vector2(-1f, 1f));
+                                return;
+                            }
+                            // 앞 오른쪽으로 회피
+                            else if (queue[iRear].key == KeyCode.D)
+                            {
+                                playerCtrl.Evade(new Vector2(1f, 1f));
+                                return;
+                            }
+                        }
+
+                        // 앞으로 회피
+                        playerCtrl.Evade(new Vector2(0f, 1f));
+                        return;
+                    }
+                    // 뒤로 이동
+                    else if (queue[iRear].key == KeyCode.S)
+                    {
+                        while (iRear != iFront)
+                        {
+                            --iRear;
+                            if (iRear < 0)
+                            {
+                                iRear = iSize - 1;
+                            }
+
+                            // 뒤 왼쪽으로 회피
+                            if (queue[iRear].key == KeyCode.A)
+                            {
+                                playerCtrl.Evade(new Vector2(-1f, -1f));
+                                return;
+                            }
+                            // 뒤 오른쪽으로 회피
+                            else if (queue[iRear].key == KeyCode.D)
+                            {
+                                playerCtrl.Evade(new Vector2(1f, -1f));
+                                return;
+                            }
+                        }
+
+                        // 뒤로 회피
+                        playerCtrl.Evade(new Vector2(0f, -1f));
+                        return;
+                    }
+                    // 왼쪽으로 이동
+                    else if (queue[iRear].key == KeyCode.A)
+                    {
+                        while (iRear != iFront)
+                        {
+                            --iRear;
+                            if (iRear < 0)
+                            {
+                                iRear = iSize - 1;
+                            }
+
+                            // 앞 왼쪽으로 회피
+                            if (queue[iRear].key == KeyCode.W)
+                            {
+                                playerCtrl.Evade(new Vector2(-1f, 1f));
+                                return;
+                            }
+                            // 뒤 왼쪽으로 회피
+                            else if (queue[iRear].key == KeyCode.S)
+                            {
+                                playerCtrl.Evade(new Vector2(-1f, -1f));
+                                return;
+                            }
+                        }
+
+                        // 왼쪽으로 회피
+                        playerCtrl.Evade(new Vector2(-1f, 0f));
+                        return;
+                    }
+                    // 오른쪽으로 이동
+                    else if (queue[iRear].key == KeyCode.D)
+                    {
+                        while (iRear != iFront)
+                        {
+                            --iRear;
+                            if (iRear < 0)
+                            {
+                                iRear = iSize - 1;
+                            }
+
+                            // 앞 오른쪽으로 회피
+                            if (queue[iRear].key == KeyCode.W)
+                            {
+                                playerCtrl.Evade(new Vector2(1f, 1f));
+                                return;
+                            }
+                            // 뒤 오른쪽으로 회피
+                            else if (queue[iRear].key == KeyCode.S)
+                            {
+                                playerCtrl.Evade(new Vector2(1f, -1f));
+                                return;
+                            }
+                        }
+
+                        // 오른쪽으로 회피
+                        playerCtrl.Evade(new Vector2(1f, 0f));
+                        return;
+                    }
+                }
+            }// if (queue[iRear].key == KeyCode.LeftShift)
+        }// while (iRear != iFront)
     }
 
     // 점프

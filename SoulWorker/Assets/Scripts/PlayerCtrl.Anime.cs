@@ -394,7 +394,7 @@ public partial class PlayerCtrl : MonoBehaviour
             }
 
             // 종료
-            if (0.9f <= time)
+            if (0.95f <= time)
             {
                 state = HaruState.Idle;
             }

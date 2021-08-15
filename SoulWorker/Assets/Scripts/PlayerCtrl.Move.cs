@@ -131,7 +131,26 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Move_Evade()
     {
+        targetSpeed = Mathf.SmoothDamp(currentSpeed, 20f, ref speedSmoothVelocity, speedSmoothTime);
 
+        Vector3 moveDir = (cameraTransform.forward * moveAnimeDir.y) + (cameraTransform.right * moveAnimeDir.x);
+        moveDir.y = 0.0f;
+        moveDir = moveDir.normalized;
+
+        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
+        characterController.Move(velocity * Time.deltaTime);
+
+        // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
+        // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
+        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            turnDir = moveDir;
+
+        // 땅에 닿으면 초기화
+        if (characterController.isGrounded)
+        {
+            currentVelocityY = 0.0f;
+        }
     }
 
     private void Move_KD_Ham_F()

@@ -101,12 +101,12 @@ public partial class PlayerCtrl: MonoBehaviour
         }
     }
 
-    public void Evade()
+    public void Evade(Vector2 dir)
     {
         if (CheckState(state, HaruState.Evade))
         {
             state = HaruState.Evade;
-            moveAnimeDir = moveInput;
+            moveAnimeDir = dir;
             //lockInput = true;
             SetTrigerEvade();
         }
