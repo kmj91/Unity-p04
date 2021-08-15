@@ -176,7 +176,9 @@ public partial class PlayerCtrl: MonoBehaviour
         if (CheckState(state, HaruState.Evade))
         {
             state = HaruState.Evade;
-            dash = true;
+            moveAnimeDir = moveInput;
+            //lockInput = true;
+            SetTrigerEvade();
         }
     }
 

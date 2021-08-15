@@ -55,6 +55,16 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetBool("Jump", false);
     }
 
+    private void SetTrigerEvade()
+    {
+        hairAnime.SetTrigger("B_Evade");
+        faceAnime.SetTrigger("B_Evade");
+        bodyAnime.SetTrigger("B_Evade");
+        pantsAnime.SetTrigger("B_Evade");
+        handsAnime.SetTrigger("B_Evade");
+        footAnime.SetTrigger("B_Evade");
+    }
+
     private void SetUppTrue()
     {
         hairAnime.SetBool("Upp", true);
@@ -368,7 +378,27 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Evade()
     {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Evade_F"))
+        {
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
+            if (lockInput && 0.1f <= time)
+            {
+                lockInput = false;
+            }
+
+            // 정지
+            if (0.35f <= time)
+            {
+                moveAnimeDir = Vector3.zero;
+            }
+
+            // 종료
+            if (0.9f <= time)
+            {
+                state = HaruState.Idle;
+            }
+        }
     }
 
     private void Ani_DMG_L()

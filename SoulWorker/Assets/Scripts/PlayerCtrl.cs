@@ -216,11 +216,13 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)HaruState.Idle, (int)HaruState.Run] = true;
         changeState[(int)HaruState.Idle, (int)HaruState.Dash] = true;
         changeState[(int)HaruState.Idle, (int)HaruState.Jump] = true;
+        changeState[(int)HaruState.Idle, (int)HaruState.Evade] = true;
         changeState[(int)HaruState.Idle, (int)HaruState.NormalAttack1] = true;
 
         changeState[(int)HaruState.Run, (int)HaruState.Idle] = true;
         changeState[(int)HaruState.Run, (int)HaruState.Dash] = true;
         changeState[(int)HaruState.Run, (int)HaruState.Jump] = true;
+        changeState[(int)HaruState.Run, (int)HaruState.Evade] = true;
         changeState[(int)HaruState.Run, (int)HaruState.NormalAttack1] = true;
 
         changeState[(int)HaruState.Dash, (int)HaruState.Idle] = true;
