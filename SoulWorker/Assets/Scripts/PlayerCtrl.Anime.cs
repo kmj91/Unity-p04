@@ -344,7 +344,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 lockInput = false;
             }
 
-            if (0.9f <= time)
+            if (0.95f <= time)
             {
                 state = HaruState.Idle;
             }
