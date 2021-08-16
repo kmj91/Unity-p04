@@ -55,6 +55,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private bool dash;                  // 대쉬 상태 플래그
     private bool upp;                   // 어퍼 상태 플래그
     private bool down;                  // 다운 상태 플래그
+    public bool evade { get; protected set; }   // 회피 상태 플래그
     private bool normalAtk;
     private bool lockInput;
     private bool moveAttack;            // 공격시 전진 플래그

@@ -131,7 +131,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Move_Evade()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, 20f, ref speedSmoothVelocity, speedSmoothTime);
+        targetSpeed = Mathf.SmoothDamp(currentSpeed, 15f, ref speedSmoothVelocity, speedSmoothTime);
 
         Vector3 moveDir = (cameraTransform.forward * moveAnimeDir.y) + (cameraTransform.right * moveAnimeDir.x);
         moveDir.y = 0.0f;

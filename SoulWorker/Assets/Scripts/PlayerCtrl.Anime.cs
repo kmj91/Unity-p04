@@ -386,21 +386,22 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (lockInput && 0.1f <= time)
-            {
-                lockInput = false;
-            }
-
             // 정지
-            if (0.35f <= time)
+            if (0.5f <= time)
             {
                 moveAnimeDir = Vector3.zero;
+            }
+
+            if (lockInput && 0.9f <= time)
+            {
+                lockInput = false;
             }
 
             // 종료
             if (0.95f <= time)
             {
                 state = HaruState.Idle;
+                evade = false;
             }
         }
     }

@@ -106,7 +106,9 @@ public partial class PlayerCtrl: MonoBehaviour
         {
             state = HaruState.Evade;
             moveAnimeDir = dir;
-            //lockInput = true;
+            lockInput = true;
+            // 무적
+            evade = true;
             SetTrigerEvade();
         }
     }

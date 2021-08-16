@@ -16,6 +16,10 @@ public class PlayerHealth : LivingEntity
 
     public override bool ApplyDamage(ref DamageMessage damageMessage)
     {
+        // 회피
+        if (playerCtrl.evade)
+            return false;
+
         if (!base.ApplyDamage(ref damageMessage)) return false;
 
         // UI 갱신
