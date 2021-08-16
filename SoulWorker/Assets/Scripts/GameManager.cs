@@ -367,6 +367,7 @@ public class GameManager : MonoBehaviour
             if (queue[iRear].key == KeyCode.Space)
             {
                 playerCtrl.Jump();
+                return;
             }
         }
     }
@@ -391,11 +392,13 @@ public class GameManager : MonoBehaviour
             if (queue[iRear].key == KeyCode.Mouse0)
             {
                 playerCtrl.MouseLeft();
+                return;
             }
             // 마우스 오른쪽
             else if (queue[iRear].key == KeyCode.Mouse1)
             {
                 playerCtrl.MouseRight();
+                return;
             }
         }
     }
@@ -610,6 +613,7 @@ public class GameManager : MonoBehaviour
             if (queue[iRear].key == key)
             {
                 queue[iRear].key = KeyCode.None;
+                return;
             }
         }
     }
