@@ -66,29 +66,13 @@ public partial class PlayerCtrl : MonoBehaviour
 
     public void FSM_Hit(ref DamageMessage damageMessage)
     {
-        // 조작 플래그 초기화
-        if (normalAtk || lockInput)
-        {
-            normalAtk = false;
-            lockInput = false;
-            moveAttack = false;
-            moveStand = false;
-            SetNormalAttackFalse();
-            SetNormalAttackCnt(0);
-            if (isAttacking)
-            {
-                isAttacking = false;
-                // 무기 충돌 트리거 OFF
-                weapon.OffTrigger();
-            }
-        }
-
         // 공중에 뜸
         if (upp)
         {
             // 공중 피격
+            ChangeFlagFalse();
             state = HaruState.KD_Upp_Air_Hit;
-            SetTrigerKDUppAirHit();
+            ChangeFlagTrue();
             moveAnimeDir = damageMessage.hitDir;
             turnDir = -moveAnimeDir;
             return;
@@ -97,8 +81,9 @@ public partial class PlayerCtrl : MonoBehaviour
         else if (down)
         {
             // 다운 피격
+            ChangeFlagFalse();
             state = HaruState.KD_Upp_Down_Hit;
-            SetTrigerKDUppDownHit();
+            ChangeFlagTrue();
             return;
         }
 
@@ -108,20 +93,24 @@ public partial class PlayerCtrl : MonoBehaviour
                 int rand = Random.Range(0, 2);
                 if (rand == 0)
                 {
+                    ChangeFlagFalse();
                     state = HaruState.DMG_L;
-                    // 애니메이션 트리거
-                    SetTrigerDMGL();
+                    ChangeFlagTrue();
                 }
                 else
                 {
+                    ChangeFlagFalse();
                     state = HaruState.DMG_R;
-                    // 애니메이션 트리거
-                    SetTrigerDMGR();
+                    ChangeFlagTrue();
                 }
                 turnDir = -damageMessage.hitDir;
                 break;
             case AttackType.Upper:
+                ChangeFlagFalse();
                 state = HaruState.KD_Upp;
+                ChangeFlagTrue();
+
+                fsmChangeTime = Time.realtimeSinceStartup;
                 currentVelocityY = damageMessage.power;
                 moveAnimeDir = damageMessage.hitDir;
                 turnDir = -moveAnimeDir;
@@ -130,12 +119,20 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 0 보다 크면 뒤쪽에서 맞음
                 if (0 < Vector3.Dot(modelTransform.forward, damageMessage.hitDir))
                 {
+                    ChangeFlagFalse();
                     state = HaruState.KD_Ham_B;
+                    ChangeFlagTrue();
+
+                    fsmChangeTime = Time.realtimeSinceStartup;
                     turnDir = damageMessage.hitDir;
                 }
                 else
                 {
+                    ChangeFlagFalse();
                     state = HaruState.KD_Ham_F;
+                    ChangeFlagTrue();
+
+                    fsmChangeTime = Time.realtimeSinceStartup;
                     turnDir = -damageMessage.hitDir;
                 }
 
@@ -238,6 +235,8 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)HaruState.Land, (int)HaruState.Jump] = true;
 
         changeState[(int)HaruState.DashLand, (int)HaruState.Run] = true;
+
+        changeState[(int)HaruState.Evade, (int)HaruState.NormalAttack1] = true;
 
         changeState[(int)HaruState.KD_Upp_Down, (int)HaruState.Run] = true;
 
@@ -359,5 +358,214 @@ public partial class PlayerCtrl : MonoBehaviour
 
         // Y축 자전
         aimTransform.RotateAround(playerTransform.position, Vector3.up, yRotation * mouseSpeed * Time.deltaTime);
+    }
+
+    // 현재 상태가 바뀌기 때문에
+    // 이전 상태의 플래그들 false로 변경
+    private void ChangeFlagFalse()
+    {
+        Debug.Log(state);
+        switch (state)
+        {
+            case HaruState.Idle:
+                break;
+            case HaruState.Run:
+                break;
+            case HaruState.Dash:
+                dash = false;
+                SetDashFalse();
+                break;
+            case HaruState.Jump:
+                jump = false;
+                SetJumpFalse();
+                break;
+            case HaruState.DashJump:
+                dash = false;
+                jump = false;
+                SetDashFalse();
+                SetJumpFalse();
+                break;
+            case HaruState.Land:
+                lockInput = false;
+                break;
+            case HaruState.DashLand:
+                lockInput = false;
+                break;
+            case HaruState.Evade:
+                evade = false;
+                lockInput = false;
+                break;
+            case HaruState.DMG_L:
+                break;
+            case HaruState.DMG_R:
+                break;
+            case HaruState.KB:
+                break;
+            case HaruState.KD_Ham_F:
+                upp = false;
+                SetUppFalse();
+                break;
+            case HaruState.KD_Ham_B:
+                upp = false;
+                SetUppFalse();
+                break;
+            case HaruState.KD_Str:
+                break;
+            case HaruState.KD_Upp:
+                upp = false;
+                SetUppFalse();
+                break;
+            case HaruState.KD_Upp_End:
+                down = false;
+                SetDownFalse();
+                break;
+            case HaruState.KD_Upp_Down:
+                down = false;
+                SetDownFalse();
+                break;
+            case HaruState.KD_Upp_Air_Hit:
+                upp = false;
+                SetUppFalse();
+                break;
+            case HaruState.KD_Upp_Down_Hit:
+                down = false;
+                SetDownFalse();
+                break;
+            case HaruState.KD_Upp_Raise:
+                down = false;
+                SetDownFalse();
+                break;
+            case HaruState.NormalAttack1:
+            case HaruState.NormalAttack2:
+            case HaruState.NormalAttack3:
+            case HaruState.NormalAttack4:
+            case HaruState.NormalAttack5:
+                normalAtk = false;
+                lockInput = false;
+                moveAttack = false;
+                moveStand = false;
+                SetNormalAttackFalse();
+                SetNormalAttackCnt(0);
+                if (isAttacking)
+                {
+                    isAttacking = false;
+                    // 무기 충돌 트리거 OFF
+                    weapon.OffTrigger();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    // 현재 상태가 바뀌기 때문에
+    // 이전 상태의 플래그들 true로 변경
+    private void ChangeFlagTrue()
+    {
+        Debug.Log(state);
+        switch (state)
+        {
+            case HaruState.Idle:
+                SetSpeedZero();
+                break;
+            case HaruState.Run:
+                break;
+            case HaruState.Dash:
+                dash = true;
+                SetDashTrue();
+                break;
+            case HaruState.Jump:
+                jump = true;
+                SetJumpTrue();
+                break;
+            case HaruState.DashJump:
+                dash = true;
+                jump = true;
+                SetDashTrue();
+                SetJumpTrue();
+                break;
+            case HaruState.Land:
+                lockInput = true;
+                SetSpeedZero();
+                break;
+            case HaruState.DashLand:
+                lockInput = true;
+                SetSpeedZero();
+                break;
+            case HaruState.Evade:
+                evade = true;
+                lockInput = true;
+                SetTrigerEvade();
+                break;
+            case HaruState.DMG_L:
+                SetTrigerDMGL();
+                break;
+            case HaruState.DMG_R:
+                SetTrigerDMGR();
+                break;
+            case HaruState.KB:
+                break;
+            case HaruState.KD_Ham_F:
+                upp = true;
+                SetUppTrue();
+                SetTrigerKDHamF();
+                break;
+            case HaruState.KD_Ham_B:
+                upp = true;
+                SetUppTrue();
+                SetTrigerKDHamB();
+                break;
+            case HaruState.KD_Str:
+                break;
+            case HaruState.KD_Upp:
+                upp = true;
+                SetUppTrue();
+                SetTrigerKDUpp();
+                break;
+            case HaruState.KD_Upp_End:
+                down = true;
+                SetDownTrue();
+                SetTrigerKDUppEnd();
+                break;
+            case HaruState.KD_Upp_Down:
+                down = true;
+                SetDownTrue();
+                break;
+            case HaruState.KD_Upp_Air_Hit:
+                upp = true;
+                SetUppTrue();
+                SetTrigerKDUppAirHit();
+                break;
+            case HaruState.KD_Upp_Down_Hit:
+                down = true;
+                SetDownTrue();
+                SetTrigerKDUppDownHit();
+                break;
+            case HaruState.KD_Upp_Raise:
+                SetTrigerKDUppRaise();
+                break;
+            case HaruState.NormalAttack1:
+                SetNormalAttackTrue();
+                StartNormalAttack(1);
+                break;
+            case HaruState.NormalAttack2:
+                SetNormalAttackTrue();
+                StartNormalAttack(2);
+                break;
+            case HaruState.NormalAttack3:
+                SetNormalAttackTrue();
+                StartNormalAttack(3);
+                break;
+            case HaruState.NormalAttack4:
+                SetNormalAttackTrue();
+                StartNormalAttack(4);
+                break;
+            case HaruState.NormalAttack5:
+                SetNormalAttackTrue();
+                StartNormalAttack(5);
+                break;
+            default:
+                break;
+        }
     }
 }

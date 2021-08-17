@@ -9,19 +9,22 @@ public partial class PlayerCtrl: MonoBehaviour
         moveInput = Vector2.zero;
 
         if (CheckState(state, HaruState.Idle))
+        {
+            ChangeFlagFalse();
             state = HaruState.Idle;
-
-        // 대쉬 착지중이면
-        if (state == HaruState.DashLand)
-            dash = false;
+            ChangeFlagTrue();
+        }
     }
 
     public void Move(Vector2 dir)
     {
         moveInput = dir;
 
+        Debug.Log("움직 : " + state);
+
         if (CheckState(state, HaruState.Run) && !lockInput)
         {
+            Debug.Log("통과");
             MoveBranch();
         }
     }
@@ -30,7 +33,9 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         if (CheckState(state, HaruState.Dash))
         {
+            ChangeFlagFalse();
             state = HaruState.Dash;
+            ChangeFlagTrue();
         }
     }
 
@@ -38,29 +43,29 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         if (CheckState(state, HaruState.NormalAttack1) && !lockInput)
         {
+            ChangeFlagFalse();
             state = HaruState.NormalAttack1;
-            SetNormalAttackTrue();
-            StartNormalAttack(1);
+            ChangeFlagTrue();
         }
         else if (CheckState(state, HaruState.NormalAttack2) && !lockInput && normalAtk)
         {
             state = HaruState.NormalAttack2;
-            StartNormalAttack(2);
+            ChangeFlagTrue();
         }
         else if (CheckState(state, HaruState.NormalAttack3) && !lockInput && normalAtk)
         {
             state = HaruState.NormalAttack3;
-            StartNormalAttack(3);
+            ChangeFlagTrue();
         }
         else if (CheckState(state, HaruState.NormalAttack4) && !lockInput && normalAtk)
         {
             state = HaruState.NormalAttack4;
-            StartNormalAttack(4);
+            ChangeFlagTrue();
         }
         else if (CheckState(state, HaruState.NormalAttack5) && !lockInput && normalAtk)
         {
             state = HaruState.NormalAttack5;
-            StartNormalAttack(5);
+            ChangeFlagTrue();
         }
     }
 
@@ -78,7 +83,11 @@ public partial class PlayerCtrl: MonoBehaviour
         {
             if (CheckState(state, HaruState.DashJump) && characterController.isGrounded)
             {
+                ChangeFlagFalse();
                 state = HaruState.DashJump;
+                ChangeFlagTrue();
+
+                fsmChangeTime = Time.realtimeSinceStartup;
                 currentVelocityY = jumpVelocity * 0.6f;
                 moveAnimeDir = modelTransform.forward;
                 oldInput = moveInput;
@@ -93,7 +102,11 @@ public partial class PlayerCtrl: MonoBehaviour
         {
             if (CheckState(state, HaruState.Jump) && characterController.isGrounded)
             {
+                ChangeFlagFalse();
                 state = HaruState.Jump;
+                ChangeFlagTrue();
+
+                fsmChangeTime = Time.realtimeSinceStartup;
                 currentVelocityY = jumpVelocity;
                 moveInput = new Vector2(0, 0);
             }
@@ -102,14 +115,14 @@ public partial class PlayerCtrl: MonoBehaviour
 
     public void Evade(Vector2 dir)
     {
+        return;
+
         if (CheckState(state, HaruState.Evade))
         {
+            ChangeFlagFalse();
             state = HaruState.Evade;
+            ChangeFlagTrue();
             moveAnimeDir = dir;
-            lockInput = true;
-            // 무적
-            evade = true;
-            SetTrigerEvade();
         }
     }
 
@@ -152,10 +165,9 @@ public partial class PlayerCtrl: MonoBehaviour
         // 다운 상태
         if (state == HaruState.KD_Upp_Down)
         {
+            ChangeFlagFalse();
             state = HaruState.KD_Upp_Raise;
-            down = false;
-            SetTrigerKDUppRaise();
-            SetDownFalse();
+            ChangeFlagTrue();
             return;
         }
 
@@ -165,25 +177,24 @@ public partial class PlayerCtrl: MonoBehaviour
         {
             if (moveInput == oldInput && dash)
             {
+                ChangeFlagFalse();
                 state = HaruState.Dash;
+                ChangeFlagTrue();
             }
             else
             {
+                ChangeFlagFalse();
                 state = HaruState.Run;
-                dash = false;
+                ChangeFlagTrue();
             }
         }
+        // 그외 상태
         else
         {
+            Debug.Log("이거라고?");
+            ChangeFlagFalse();
             state = HaruState.Run;
-        }
-
-        // 공격 종료
-        if (normalAtk)
-        {
-            normalAtk = false;
-            SetNormalAttackFalse();
-            SetNormalAttackCnt(-1);
+            ChangeFlagTrue();
         }
     }
 
@@ -200,12 +211,9 @@ public partial class PlayerCtrl: MonoBehaviour
 
     private void EndNormalAttack()
     {
+        ChangeFlagFalse();
         state = HaruState.Idle;
-        normalAtk = false;
-        moveStand = false;
-        isAttacking = false;
-        SetNormalAttackFalse();
-        SetNormalAttackCnt(0);
+        ChangeFlagTrue();
     }
 
 

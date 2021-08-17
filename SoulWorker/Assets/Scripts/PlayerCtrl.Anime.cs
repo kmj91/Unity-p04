@@ -249,13 +249,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Idle()
     {
-        SetSpeedZero();
 
-        if (dash)
-        {
-            dash = false;
-            SetDashFalse();
-        }
     }
 
     private void Ani_Run()
@@ -272,68 +266,38 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Dash()
     {
-        if (!dash)
-        {
-            dash = true;
-            SetDashTrue();
-        }
+
     }
 
     private void Ani_Jump()
     {
-        if (!jump)
+        // 착지
+        if (characterController.isGrounded)
         {
-            jump = true;
-            fsmChangeTime = Time.realtimeSinceStartup;
-            SetJumpTrue();
-        }
-        else
-        {
-            // 착지
-            if (characterController.isGrounded)
-            {
-                // 점프 한지 얼마 안됬으면 무시
-                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
-                    return;
+            // 점프 한지 얼마 안됬으면 무시
+            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+                return;
 
-                jump = false;
-                // 착지하고 바로 움직임 제한
-                lockInput = true;
-                state = HaruState.Land;
-
-                SetJumpFalse();
-                SetSpeedZero();
-            }
+            ChangeFlagFalse();
+            state = HaruState.Land;
+            ChangeFlagTrue();
         }
     }
 
     private void Ani_DashJump()
     {
-        if (!jump)
+        // 착지
+        if (characterController.isGrounded)
         {
-            jump = true;
-            fsmChangeTime = Time.realtimeSinceStartup;
-            SetJumpTrue();
-        }
-        else
-        {
-            // 착지
-            if (characterController.isGrounded)
-            {
-                // 점프 한지 얼마 안됬으면 무시
-                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
-                    return;
+            // 점프 한지 얼마 안됬으면 무시
+            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+                return;
 
-                jump = false;
-                // 착지하고 바로 움직임 제한
-                lockInput = true;
-                state = HaruState.DashLand;
-                moveAnimeDir = modelTransform.forward;
+            ChangeFlagFalse();
+            state = HaruState.DashLand;
+            ChangeFlagTrue();
 
-                SetJumpFalse();
-                SetSpeedZero();
-                SetDashFalse();
-            }
+            moveAnimeDir = modelTransform.forward;
         }
     }
 
@@ -350,7 +314,9 @@ public partial class PlayerCtrl : MonoBehaviour
 
             if (0.95f <= time)
             {
+                ChangeFlagFalse();
                 state = HaruState.Idle;
+                ChangeFlagTrue();
             }
         }
     }
@@ -375,7 +341,9 @@ public partial class PlayerCtrl : MonoBehaviour
             // 종료
             if (0.9f <= time)
             {
+                ChangeFlagFalse();
                 state = HaruState.Idle;
+                ChangeFlagTrue();
             }
         }
     }
@@ -400,8 +368,9 @@ public partial class PlayerCtrl : MonoBehaviour
             // 종료
             if (0.95f <= time)
             {
+                ChangeFlagFalse();
                 state = HaruState.Idle;
-                evade = false;
+                ChangeFlagTrue();
             }
         }
     }
@@ -411,7 +380,9 @@ public partial class PlayerCtrl : MonoBehaviour
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_DMG_L") &&
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
+            ChangeFlagFalse();
             state = HaruState.Idle;
+            ChangeFlagTrue();
         }
     }
 
@@ -420,7 +391,9 @@ public partial class PlayerCtrl : MonoBehaviour
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_DMG_R") &&
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
+            ChangeFlagFalse();
             state = HaruState.Idle;
+            ChangeFlagTrue();
         }
     }
 
@@ -431,59 +404,31 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_KD_Ham_F()
     {
-        if (!upp)
+        // 착지
+        if (characterController.isGrounded)
         {
-            upp = true;
-            fsmChangeTime = Time.realtimeSinceStartup;
-            SetTrigerKDHamF();
-            SetUppTrue();
-        }
-        else
-        {
-            // 착지
-            if (characterController.isGrounded)
-            {
-                // 점프 한지 얼마 안됬으면 무시
-                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
-                    return;
+            // 점프 한지 얼마 안됬으면 무시
+            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+                return;
 
-                upp = false;
-                down = true;
-                state = HaruState.KD_Upp_End;
-
-                SetTrigerKDUppEnd();
-                SetUppFalse();
-                SetDownTrue();
-            }
+            ChangeFlagFalse();
+            state = HaruState.KD_Upp_End;
+            ChangeFlagTrue();
         }
     }
 
     private void Ani_KD_Ham_B()
     {
-        if (!upp)
+        // 착지
+        if (characterController.isGrounded)
         {
-            upp = true;
-            fsmChangeTime = Time.realtimeSinceStartup;
-            SetTrigerKDHamB();
-            SetUppTrue();
-        }
-        else
-        {
-            // 착지
-            if (characterController.isGrounded)
-            {
-                // 점프 한지 얼마 안됬으면 무시
-                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
-                    return;
+            // 점프 한지 얼마 안됬으면 무시
+            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+                return;
 
-                upp = false;
-                down = true;
-                state = HaruState.KD_Upp_End;
-
-                SetTrigerKDUppEnd();
-                SetUppFalse();
-                SetDownTrue();
-            }
+            ChangeFlagFalse();
+            state = HaruState.KD_Upp_End;
+            ChangeFlagTrue();
         }
     }
 
@@ -494,30 +439,16 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_KD_Upp()
     {
-        if (!upp)
+        // 착지
+        if (characterController.isGrounded)
         {
-            upp = true;
-            fsmChangeTime = Time.realtimeSinceStartup;
-            SetTrigerKDUpp();
-            SetUppTrue();
-        }
-        else
-        {
-            // 착지
-            if (characterController.isGrounded)
-            {
-                // 점프 한지 얼마 안됬으면 무시
-                if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
-                    return;
-                
-                upp = false;
-                down = true;
-                state = HaruState.KD_Upp_End;
+            // 점프 한지 얼마 안됬으면 무시
+            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+                return;
 
-                SetTrigerKDUppEnd();
-                SetUppFalse();
-                SetDownTrue();
-            }
+            ChangeFlagFalse();
+            state = HaruState.KD_Upp_End;
+            ChangeFlagTrue();
         }
     }
 
@@ -526,17 +457,15 @@ public partial class PlayerCtrl : MonoBehaviour
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_End") &&
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
+            ChangeFlagFalse();
             state = HaruState.KD_Upp_Down;
+            ChangeFlagTrue();
         }
     }
 
     private void Ani_KD_Upp_Down()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_Down") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
-        {
-            
-        }
+
     }
 
     private void Ani_KD_Upp_Air_Hit()
@@ -548,13 +477,9 @@ public partial class PlayerCtrl : MonoBehaviour
             if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
                 return;
 
-            upp = false;
-            down = true;
+            ChangeFlagFalse();
             state = HaruState.KD_Upp_End;
-
-            SetTrigerKDUppEnd();
-            SetUppFalse();
-            SetDownTrue();
+            ChangeFlagTrue();
         }
     }
 
@@ -563,7 +488,9 @@ public partial class PlayerCtrl : MonoBehaviour
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_Down_Hit") &&
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
+            ChangeFlagFalse();
             state = HaruState.KD_Upp_Down;
+            ChangeFlagTrue();
         }
     }
 
@@ -572,7 +499,9 @@ public partial class PlayerCtrl : MonoBehaviour
         if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Hit.B_KD_Upp_Raise") &&
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
+            ChangeFlagFalse();
             state = HaruState.Idle;
+            ChangeFlagTrue();
         }
     }
 
@@ -609,7 +538,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
                     state = HaruState.NormalAttack2;
-                    StartNormalAttack(2);
+                    ChangeFlagTrue();
                     return;
                 }
 
@@ -622,6 +551,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
             if (0.99f <= time)
             {
+                Debug.Log("이건가");
                 EndNormalAttack();
             }
         }
@@ -660,7 +590,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
                     state = HaruState.NormalAttack3;
-                    StartNormalAttack(3);
+                    ChangeFlagTrue();
                     return;
                 }
             }
@@ -722,7 +652,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
                     state = HaruState.NormalAttack4;
-                    StartNormalAttack(4);
+                    ChangeFlagTrue();
                     return;
                 }
             }
@@ -772,7 +702,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (gameManager.KeyInputCheck(KeyCode.Mouse0, 0.5f))
                 {
                     state = HaruState.NormalAttack5;
-                    StartNormalAttack(5);
+                    ChangeFlagTrue();
                     return;
                 }
             }
