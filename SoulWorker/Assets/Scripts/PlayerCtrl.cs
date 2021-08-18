@@ -364,7 +364,6 @@ public partial class PlayerCtrl : MonoBehaviour
     // 이전 상태의 플래그들 false로 변경
     private void ChangeFlagFalse()
     {
-        Debug.Log(state);
         switch (state)
         {
             case HaruState.Idle:
@@ -444,7 +443,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 lockInput = false;
                 moveAttack = false;
                 moveStand = false;
-                SetNormalAttackFalse();
+                SetTrigerNormalAttackEnd();
                 SetNormalAttackCnt(0);
                 if (isAttacking)
                 {
@@ -462,7 +461,6 @@ public partial class PlayerCtrl : MonoBehaviour
     // 이전 상태의 플래그들 true로 변경
     private void ChangeFlagTrue()
     {
-        Debug.Log(state);
         switch (state)
         {
             case HaruState.Idle:
@@ -545,23 +543,23 @@ public partial class PlayerCtrl : MonoBehaviour
                 SetTrigerKDUppRaise();
                 break;
             case HaruState.NormalAttack1:
-                SetNormalAttackTrue();
+                SetTrigerNormalAttackStart();
                 StartNormalAttack(1);
                 break;
             case HaruState.NormalAttack2:
-                SetNormalAttackTrue();
+                SetTrigerNormalAttackStart();
                 StartNormalAttack(2);
                 break;
             case HaruState.NormalAttack3:
-                SetNormalAttackTrue();
+                SetTrigerNormalAttackStart();
                 StartNormalAttack(3);
                 break;
             case HaruState.NormalAttack4:
-                SetNormalAttackTrue();
+                SetTrigerNormalAttackStart();
                 StartNormalAttack(4);
                 break;
             case HaruState.NormalAttack5:
-                SetNormalAttackTrue();
+                SetTrigerNormalAttackStart();
                 StartNormalAttack(5);
                 break;
             default:

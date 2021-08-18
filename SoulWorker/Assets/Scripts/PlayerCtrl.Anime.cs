@@ -55,16 +55,6 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetBool("Jump", false);
     }
 
-    private void SetTrigerEvade()
-    {
-        hairAnime.SetTrigger("B_Evade");
-        faceAnime.SetTrigger("B_Evade");
-        bodyAnime.SetTrigger("B_Evade");
-        pantsAnime.SetTrigger("B_Evade");
-        handsAnime.SetTrigger("B_Evade");
-        footAnime.SetTrigger("B_Evade");
-    }
-
     private void SetUppTrue()
     {
         hairAnime.SetBool("Upp", true);
@@ -103,6 +93,46 @@ public partial class PlayerCtrl : MonoBehaviour
         pantsAnime.SetBool("Down", false);
         handsAnime.SetBool("Down", false);
         footAnime.SetBool("Down", false);
+    }
+
+    private void SetNormalAttackCnt(int cnt)
+    {
+        hairAnime.SetInteger("NormalAttackCnt", cnt);
+        faceAnime.SetInteger("NormalAttackCnt", cnt);
+        bodyAnime.SetInteger("NormalAttackCnt", cnt);
+        pantsAnime.SetInteger("NormalAttackCnt", cnt);
+        handsAnime.SetInteger("NormalAttackCnt", cnt);
+        footAnime.SetInteger("NormalAttackCnt", cnt);
+    }
+
+    private void SetTrigerNormalAttackStart()
+    {
+        hairAnime.SetTrigger("NormalAttackStart");
+        faceAnime.SetTrigger("NormalAttackStart");
+        bodyAnime.SetTrigger("NormalAttackStart");
+        pantsAnime.SetTrigger("NormalAttackStart");
+        handsAnime.SetTrigger("NormalAttackStart");
+        footAnime.SetTrigger("NormalAttackStart");
+    }
+
+    private void SetTrigerNormalAttackEnd()
+    {
+        hairAnime.SetTrigger("NormalAttackEnd");
+        faceAnime.SetTrigger("NormalAttackEnd");
+        bodyAnime.SetTrigger("NormalAttackEnd");
+        pantsAnime.SetTrigger("NormalAttackEnd");
+        handsAnime.SetTrigger("NormalAttackEnd");
+        footAnime.SetTrigger("NormalAttackEnd");
+    }
+
+    private void SetTrigerEvade()
+    {
+        hairAnime.SetTrigger("B_Evade");
+        faceAnime.SetTrigger("B_Evade");
+        bodyAnime.SetTrigger("B_Evade");
+        pantsAnime.SetTrigger("B_Evade");
+        handsAnime.SetTrigger("B_Evade");
+        footAnime.SetTrigger("B_Evade");
     }
 
     private void SetTrigerDMGL()
@@ -213,36 +243,6 @@ public partial class PlayerCtrl : MonoBehaviour
         pantsAnime.SetTrigger("B_KD_Upp_Down_Hit");
         handsAnime.SetTrigger("B_KD_Upp_Down_Hit");
         footAnime.SetTrigger("B_KD_Upp_Down_Hit");
-    }
-
-    private void SetNormalAttackTrue()
-    {
-        hairAnime.SetBool("NormalAttack", true);
-        faceAnime.SetBool("NormalAttack", true);
-        bodyAnime.SetBool("NormalAttack", true);
-        pantsAnime.SetBool("NormalAttack", true);
-        handsAnime.SetBool("NormalAttack", true);
-        footAnime.SetBool("NormalAttack", true);
-    }
-
-    private void SetNormalAttackFalse()
-    {
-        hairAnime.SetBool("NormalAttack", false);
-        faceAnime.SetBool("NormalAttack", false);
-        bodyAnime.SetBool("NormalAttack", false);
-        pantsAnime.SetBool("NormalAttack", false);
-        handsAnime.SetBool("NormalAttack", false);
-        footAnime.SetBool("NormalAttack", false);
-    }
-
-    private void SetNormalAttackCnt(int cnt)
-    {
-        hairAnime.SetInteger("NormalAttackCnt", cnt);
-        faceAnime.SetInteger("NormalAttackCnt", cnt);
-        bodyAnime.SetInteger("NormalAttackCnt", cnt);
-        pantsAnime.SetInteger("NormalAttackCnt", cnt);
-        handsAnime.SetInteger("NormalAttackCnt", cnt);
-        footAnime.SetInteger("NormalAttackCnt", cnt);
     }
 
 
@@ -551,7 +551,6 @@ public partial class PlayerCtrl : MonoBehaviour
 
             if (0.99f <= time)
             {
-                Debug.Log("이건가");
                 EndNormalAttack();
             }
         }

@@ -20,11 +20,8 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         moveInput = dir;
 
-        Debug.Log("움직 : " + state);
-
         if (CheckState(state, HaruState.Run) && !lockInput)
         {
-            Debug.Log("통과");
             MoveBranch();
         }
     }
@@ -188,10 +185,14 @@ public partial class PlayerCtrl: MonoBehaviour
                 ChangeFlagTrue();
             }
         }
+        // 일반 공격중
+        else if (normalAtk && !moveStand)
+        {
+            return;
+        }
         // 그외 상태
         else
         {
-            Debug.Log("이거라고?");
             ChangeFlagFalse();
             state = HaruState.Run;
             ChangeFlagTrue();
