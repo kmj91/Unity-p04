@@ -402,4 +402,22 @@ public partial class PlayerCtrl : MonoBehaviour
             currentVelocityY = 0.0f;
         }
     }
+
+    // 퍼스트 블레이드
+    private void Move_FirstBlade()
+    {
+
+    }
+
+    // 피어스 스탭
+    private void Move_PierceStep()
+    {
+
+    }
+
+    // 스핀 커터
+    private void Move_SpinCutter()
+    {
+
+    }
 }

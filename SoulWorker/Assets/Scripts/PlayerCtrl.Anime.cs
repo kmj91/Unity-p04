@@ -245,6 +245,36 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetTrigger("B_KD_Upp_Down_Hit");
     }
 
+    private void SetTrigerSkillFirstBlade()
+    {
+        hairAnime.SetTrigger("B_Skill_First_Blade");
+        faceAnime.SetTrigger("B_Skill_First_Blade");
+        bodyAnime.SetTrigger("B_Skill_First_Blade");
+        pantsAnime.SetTrigger("B_Skill_First_Blade");
+        handsAnime.SetTrigger("B_Skill_First_Blade");
+        footAnime.SetTrigger("B_Skill_First_Blade");
+    }
+
+    private void SetTrigerSkillPierceStep()
+    {
+        hairAnime.SetTrigger("B_Skill_Pierce_Step");
+        faceAnime.SetTrigger("B_Skill_Pierce_Step");
+        bodyAnime.SetTrigger("B_Skill_Pierce_Step");
+        pantsAnime.SetTrigger("B_Skill_Pierce_Step");
+        handsAnime.SetTrigger("B_Skill_Pierce_Step");
+        footAnime.SetTrigger("B_Skill_Pierce_Step");
+    }
+
+    private void SetTrigerSkillSpinCutter()
+    {
+        hairAnime.SetTrigger("B_Skill_Spin_Cutter");
+        faceAnime.SetTrigger("B_Skill_Spin_Cutter");
+        bodyAnime.SetTrigger("B_Skill_Spin_Cutter");
+        pantsAnime.SetTrigger("B_Skill_Spin_Cutter");
+        handsAnime.SetTrigger("B_Skill_Spin_Cutter");
+        footAnime.SetTrigger("B_Skill_Spin_Cutter");
+    }
+
 
 
     private void Ani_Idle()
@@ -757,6 +787,42 @@ public partial class PlayerCtrl : MonoBehaviour
             {
                 EndNormalAttack();
             }
+        }
+    }
+
+    // 퍼스트 블레이드
+    private void Ani_FirstBlade()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_First_Blade") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            ChangeFlagFalse();
+            state = HaruState.Idle;
+            ChangeFlagTrue();
+        }
+    }
+
+    // 피어스 스탭
+    private void Ani_PierceStep()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Pierce_Step") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            ChangeFlagFalse();
+            state = HaruState.Idle;
+            ChangeFlagTrue();
+        }
+    }
+
+    // 스핀 커터
+    private void Ani_SpinCutter()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Spin_Cutter") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            ChangeFlagFalse();
+            state = HaruState.Idle;
+            ChangeFlagTrue();
         }
     }
 }
