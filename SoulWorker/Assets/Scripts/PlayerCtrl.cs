@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 public partial class PlayerCtrl : MonoBehaviour
 {
     public GameManager gameManager;
-    public PlayerInfo playerInfo;           // 플레이어 정보
+    public HaruInfo playerInfo;             // 플레이어 정보
     public HaruWeapon weapon;
     public float moveSpeed = 5.0f;          // 이동 속도
     public float dashSpeedGob = 2.0f;       // 대쉬 속도 = moveSpeed * dashSpeedGob
@@ -565,5 +565,12 @@ public partial class PlayerCtrl : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private bool GetStateOfSkillSlot(int index, out HaruState state)
+    {
+        state = HaruState.End;
+
+        return false;
     }
 }

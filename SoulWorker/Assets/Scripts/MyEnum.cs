@@ -65,6 +65,14 @@
         End
     }
 
+    public enum HaruSkill
+    {
+        FirstBlade,
+        PierceStep,
+        SpinCutter,
+        End
+    }
+
     public enum AsphaltGolemState
     {
         Idle,

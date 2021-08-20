@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 4595676944768531903}
   - component: {fileID: 4595676944768531904}
   - component: {fileID: 4595676945078733570}
-  - component: {fileID: 5984899699974879838}
+  - component: {fileID: 7781589610224360148}
   - component: {fileID: 4595676944768531905}
   m_Layer: 8
   m_Name: Player
@@ -85,8 +85,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  playerInfo: {fileID: 0}
   weapon: {fileID: 0}
   moveSpeed: 5
+  dashSpeedGob: 2
   mouseSpeed: 100
   rotationSpeed: 10
   jumpVelocity: 12
@@ -115,7 +117,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
---- !u!114 &5984899699974879838
+  playerInfo: {fileID: 0}
+  playerCtrl: {fileID: 0}
+--- !u!114 &7781589610224360148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,9 +128,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 4595676944768531902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf077aaf10299544397aab6c33b7f8b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c7acee36372c2848848691e35081f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originPlayerData:
+    level: 0
+    hp: 0
+    stamina: 0
+    staminaRegen: 0
+    sg: 0
+    moveSpeed: 0
+    maxAtk: 0
+    minAtk: 0
+    criticalRate: 0
+    criticalDamage: 0
+    atkSpeed: 0
+    accuracy: 0
+    armourBreak: 0
+    extraDmgToEnemy: 0
+    extraDmgToBossNamed: 0
+    defense: 0
+    evade: 0
+    damageReduction: 0
+    criticalResistance: 0
+    shorterCooldown: 0
+    partialDamage: 0
+    superArmourBreak: 0
+  currentPlayerData:
+    level: 0
+    hp: 0
+    stamina: 0
+    staminaRegen: 0
+    sg: 0
+    moveSpeed: 0
+    maxAtk: 0
+    minAtk: 0
+    criticalRate: 0
+    criticalDamage: 0
+    atkSpeed: 0
+    accuracy: 0
+    armourBreak: 0
+    extraDmgToEnemy: 0
+    extraDmgToBossNamed: 0
+    defense: 0
+    evade: 0
+    damageReduction: 0
+    criticalResistance: 0
+    shorterCooldown: 0
+    partialDamage: 0
+    superArmourBreak: 0
+  headGear: {fileID: 0}
+  shoulderGear: {fileID: 0}
+  bodyGear: {fileID: 0}
+  legGear: {fileID: 0}
+  weapon: {fileID: 0}
 --- !u!143 &4595676944768531905
 CharacterController:
   m_ObjectHideFlags: 0

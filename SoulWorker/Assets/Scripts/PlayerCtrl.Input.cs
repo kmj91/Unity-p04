@@ -125,7 +125,16 @@ public partial class PlayerCtrl: MonoBehaviour
 
     public void SkillSlot1()
     {
+        HaruState retState;
 
+        // 해당 스킬슬롯의 스킬 상태 얻어오기
+        if (!GetStateOfSkillSlot(0, out retState))
+            return;
+
+        if (CheckState(state, retState))
+        {
+
+        }
     }
 
     public void SkillSlot2()
