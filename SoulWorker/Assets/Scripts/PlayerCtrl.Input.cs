@@ -133,18 +133,42 @@ public partial class PlayerCtrl: MonoBehaviour
 
         if (CheckState(state, retState))
         {
-
+            ChangeFlagFalse();
+            state = retState;
+            ChangeFlagTrue();
         }
     }
 
     public void SkillSlot2()
     {
+        HaruState retState;
 
+        // 해당 스킬슬롯의 스킬 상태 얻어오기
+        if (!GetStateOfSkillSlot(1, out retState))
+            return;
+
+        if (CheckState(state, retState))
+        {
+            ChangeFlagFalse();
+            state = retState;
+            ChangeFlagTrue();
+        }
     }
 
     public void SkillSlot3()
     {
+        HaruState retState;
 
+        // 해당 스킬슬롯의 스킬 상태 얻어오기
+        if (!GetStateOfSkillSlot(2, out retState))
+            return;
+
+        if (CheckState(state, retState))
+        {
+            ChangeFlagFalse();
+            state = retState;
+            ChangeFlagTrue();
+        }
     }
 
     public void SkillSlot4()

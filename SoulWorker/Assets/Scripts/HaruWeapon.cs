@@ -101,6 +101,9 @@ public class HaruWeapon : Item
             case HaruState.NormalAttack5:
                 type = AttackType.Strike;
                 break;
+            case HaruState.FirstBlade:
+                type = AttackType.Normal;
+                break;
             default:
                 type = AttackType.None;
                 return false;

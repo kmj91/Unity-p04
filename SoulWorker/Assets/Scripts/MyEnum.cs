@@ -62,6 +62,9 @@
         NormalAttack3,
         NormalAttack4,
         NormalAttack5,
+        FirstBlade,
+        PierceStep,
+        SpinCutter,
         End
     }
 

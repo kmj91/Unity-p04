@@ -181,6 +181,9 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate[(int)HaruState.NormalAttack3] = Move_NormalAttack3;
         moveUpdate[(int)HaruState.NormalAttack4] = Move_NormalAttack4;
         moveUpdate[(int)HaruState.NormalAttack5] = Move_NormalAttack5;
+        moveUpdate[(int)HaruState.FirstBlade] = Move_FirstBlade;
+        moveUpdate[(int)HaruState.PierceStep] = Move_PierceStep;
+        moveUpdate[(int)HaruState.SpinCutter] = Move_SpinCutter;
 
         animeUpdate = new Action[(int)HaruState.End];
         animeUpdate[(int)HaruState.Idle] = Ani_Idle;
@@ -208,6 +211,9 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)HaruState.NormalAttack3] = Ani_NormalAttack3;
         animeUpdate[(int)HaruState.NormalAttack4] = Ani_NormalAttack4;
         animeUpdate[(int)HaruState.NormalAttack5] = Ani_NormalAttack5;
+        animeUpdate[(int)HaruState.FirstBlade] = Ani_FirstBlade;
+        animeUpdate[(int)HaruState.PierceStep] = Ani_PierceStep;
+        animeUpdate[(int)HaruState.SpinCutter] = Ani_SpinCutter;
 
         changeState = new bool[(int)HaruState.End, (int)HaruState.End];
 
@@ -216,12 +222,18 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)HaruState.Idle, (int)HaruState.Jump] = true;
         changeState[(int)HaruState.Idle, (int)HaruState.Evade] = true;
         changeState[(int)HaruState.Idle, (int)HaruState.NormalAttack1] = true;
+        changeState[(int)HaruState.Idle, (int)HaruState.FirstBlade] = true;
+        changeState[(int)HaruState.Idle, (int)HaruState.PierceStep] = true;
+        changeState[(int)HaruState.Idle, (int)HaruState.SpinCutter] = true;
 
         changeState[(int)HaruState.Run, (int)HaruState.Idle] = true;
         changeState[(int)HaruState.Run, (int)HaruState.Dash] = true;
         changeState[(int)HaruState.Run, (int)HaruState.Jump] = true;
         changeState[(int)HaruState.Run, (int)HaruState.Evade] = true;
         changeState[(int)HaruState.Run, (int)HaruState.NormalAttack1] = true;
+        changeState[(int)HaruState.Run, (int)HaruState.FirstBlade] = true;
+        changeState[(int)HaruState.Run, (int)HaruState.PierceStep] = true;
+        changeState[(int)HaruState.Run, (int)HaruState.SpinCutter] = true;
 
         changeState[(int)HaruState.Dash, (int)HaruState.Idle] = true;
         changeState[(int)HaruState.Dash, (int)HaruState.DashJump] = true;
@@ -415,6 +427,22 @@ public partial class PlayerCtrl : MonoBehaviour
                     weapon.OffTrigger();
                 }
                 break;
+            case HaruState.FirstBlade:
+                normalAtk = false;
+                lockInput = false;
+                moveAttack = false;
+                moveStand = false;
+                if (isAttacking)
+                {
+                    isAttacking = false;
+                    // 무기 충돌 트리거 OFF
+                    weapon.OffTrigger();
+                }
+                break;
+            case HaruState.PierceStep:
+                break;
+            case HaruState.SpinCutter:
+                break;
             default:
                 break;
         }
@@ -525,6 +553,23 @@ public partial class PlayerCtrl : MonoBehaviour
                 SetTrigerNormalAttackStart();
                 StartNormalAttack(5);
                 break;
+            case HaruState.FirstBlade:
+                lockInput = true;
+                moveAttack = true;
+                moveStand = false;
+                isAttacking = true;
+                weapon.OnTrigger();
+                SetTrigerSkillFirstBlade();
+                SetAttackDir();
+                break;
+            case HaruState.PierceStep:
+                SetTrigerSkillPierceStep();
+                SetAttackDir();
+                break;
+            case HaruState.SpinCutter:
+                SetTrigerSkillSpinCutter();
+                SetAttackDir();
+                break;
             default:
                 break;
         }
@@ -532,8 +577,22 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private bool GetStateOfSkillSlot(int index, out HaruState state)
     {
-        state = HaruState.End;
+        switch (playerInfo.skillSlot[index, 0])
+        {
+            case HaruSkill.FirstBlade:
+                state = HaruState.FirstBlade;
+                break;
+            case HaruSkill.PierceStep:
+                state = HaruState.PierceStep;
+                break;
+            case HaruSkill.SpinCutter:
+                state = HaruState.SpinCutter;
+                break;
+            default:
+                state = HaruState.End;
+                return false;
+        }
 
-        return false;
+        return true;
     }
 }

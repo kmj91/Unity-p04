@@ -2,7 +2,7 @@
 
 public class HaruInfo : PlayerInfo
 {
-    private HaruSkill[,] skillSlot;
+    public HaruSkill[,] skillSlot { get; private set; }
 
 
     private void Start()
@@ -11,7 +11,7 @@ public class HaruInfo : PlayerInfo
         skillSlot = new HaruSkill[3, 6];
 
         skillSlot[0, 0] = HaruSkill.FirstBlade;
-        skillSlot[0, 1] = HaruSkill.PierceStep;
-        skillSlot[0, 2] = HaruSkill.SpinCutter;
+        skillSlot[1, 0] = HaruSkill.PierceStep;
+        skillSlot[2, 0] = HaruSkill.SpinCutter;
     }
 }

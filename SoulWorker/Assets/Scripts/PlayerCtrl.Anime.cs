@@ -793,36 +793,94 @@ public partial class PlayerCtrl : MonoBehaviour
     // 퍼스트 블레이드
     private void Ani_FirstBlade()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_First_Blade") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_First_Blade"))
         {
-            ChangeFlagFalse();
-            state = HaruState.Idle;
-            ChangeFlagTrue();
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (isAttacking && time >= 0.67f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.67f > time && time >= 0.43f)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+            }
+            else if (isAttacking && 0.43f > time && time >= 0.3f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.3f > time && time >= 0.2f)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+            }
+            else if (isAttacking && 0.2f > time && time >= 0.17f)
+            {
+                isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                weapon.OffTrigger();
+            }
+
+            if (moveAttack && 0.5f <= time)
+            {
+                moveAttack = false;
+            }
+
+            if (lockInput && 0.7f <= time)
+            {
+                lockInput = false;
+            }
+
+            if (!moveStand && 0.8f <= time)
+            {
+                moveStand = true;
+            }
+
+            if (0.99f <= time)
+            {
+                ChangeFlagFalse();
+                state = HaruState.Idle;
+                ChangeFlagTrue();
+            }
         }
     }
 
     // 피어스 스탭
     private void Ani_PierceStep()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Pierce_Step") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Pierce_Step"))
         {
-            ChangeFlagFalse();
-            state = HaruState.Idle;
-            ChangeFlagTrue();
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (0.9f <= time)
+            {
+                ChangeFlagFalse();
+                state = HaruState.Idle;
+                ChangeFlagTrue();
+            }
         }
     }
 
     // 스핀 커터
     private void Ani_SpinCutter()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Spin_Cutter") &&
-            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Spin_Cutter"))
         {
-            ChangeFlagFalse();
-            state = HaruState.Idle;
-            ChangeFlagTrue();
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (0.9f <= time)
+            {
+                ChangeFlagFalse();
+                state = HaruState.Idle;
+                ChangeFlagTrue();
+            }
         }
     }
 }
