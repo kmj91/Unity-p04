@@ -68,6 +68,7 @@ public class UIManager : MonoBehaviour
         // 보스 체력줄이 다름
         if (boosHpBarNum != hpBarNum)
         {
+            Debug.Log(hpBarNum);
             // 앞쪽 체력바
             bossHpBarFront.sprite = bossHpBarSprite[hpBarNum % 6];
 

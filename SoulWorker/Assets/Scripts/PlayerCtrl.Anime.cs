@@ -553,6 +553,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
+                weapon.attackType = AttackType.Normal;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
 
             if (moveAttack && 0.3f <= time)
@@ -604,6 +606,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
+                weapon.attackType = AttackType.Normal;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
 
             if (moveAttack && 0.23f <= time)
@@ -654,6 +658,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
+                weapon.attackType = AttackType.Normal;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
             else if (isAttacking && 0.21f > time && time >= 0.17f)
             {
@@ -666,6 +672,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
+                weapon.attackType = AttackType.Normal;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
 
             if (moveAttack && 0.3f <= time)
@@ -716,6 +724,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
+                weapon.attackType = AttackType.Down;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
 
             if (moveAttack && 0.28f <= time)
@@ -766,6 +776,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
+                weapon.attackType = AttackType.Strike;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
 
             if (moveAttack && 0.4f <= time)
@@ -808,6 +820,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
+                weapon.attackType = AttackType.Strike;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
             else if (isAttacking && 0.43f > time && time >= 0.3f)
             {
@@ -820,12 +834,22 @@ public partial class PlayerCtrl : MonoBehaviour
                 isAttacking = true;
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
+                weapon.attackType = AttackType.Normal;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
             else if (isAttacking && 0.2f > time && time >= 0.17f)
             {
                 isAttacking = false;
                 // 무기 충돌 트리거 OFF
                 weapon.OffTrigger();
+            }
+            else if (!isAttacking && 0.17f > time && time >= 0.1f)
+            {
+                isAttacking = true;
+                // 무기 충돌 트리거 ON
+                weapon.OnTrigger();
+                weapon.attackType = AttackType.Normal;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
             }
 
             if (moveAttack && 0.5f <= time)

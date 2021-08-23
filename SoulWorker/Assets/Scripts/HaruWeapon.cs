@@ -11,6 +11,9 @@ public class HaruWeapon : Item
     [SerializeField] private PlayerCtrl playerCtrl;
     [SerializeField] private BoxCollider boxCollider;
 
+    public AttackType attackType;   // 공격 타입
+    public float attackDamage;      // 공격 대미지
+
     private LayerMask mask;
 
 
@@ -64,51 +67,16 @@ public class HaruWeapon : Item
         if (hit == null)
             return;
 
-        // 공격 타입
-        AttackType type;
-        if (!CurrentAttackType(out type))
-            return;
-
         DamageMessage msg = new DamageMessage
         {
             damager = playerInfo.gameObject,
-            damage = playerInfo.currentPlayerData.maxAtk,
+            damage = attackDamage,
             criticalRate = playerInfo.currentPlayerData.criticalRate,
             criticalDamage = playerInfo.currentPlayerData.criticalDamage,
             accuracy = playerInfo.currentPlayerData.accuracy,
             partialDamage = playerInfo.currentPlayerData.partialDamage,
-            attackType = type
+            attackType = attackType
         };
         hit.ApplyDamage(ref msg);
-    }
-
-    private bool CurrentAttackType(out AttackType type)
-    {
-        switch (playerCtrl.state)
-        {
-            case HaruState.NormalAttack1:
-                type = AttackType.Normal;
-                break;
-            case HaruState.NormalAttack2:
-                type = AttackType.Normal;
-                break;
-            case HaruState.NormalAttack3:
-                type = AttackType.Normal;
-                break;
-            case HaruState.NormalAttack4:
-                type = AttackType.Down;
-                break;
-            case HaruState.NormalAttack5:
-                type = AttackType.Strike;
-                break;
-            case HaruState.FirstBlade:
-                type = AttackType.Normal;
-                break;
-            default:
-                type = AttackType.None;
-                return false;
-        }
-
-        return true;
     }
 }

@@ -557,8 +557,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 lockInput = true;
                 moveAttack = true;
                 moveStand = false;
-                isAttacking = true;
-                weapon.OnTrigger();
+                isAttacking = false;
                 SetTrigerSkillFirstBlade();
                 SetAttackDir();
                 break;
