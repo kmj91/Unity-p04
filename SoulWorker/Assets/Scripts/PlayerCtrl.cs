@@ -182,6 +182,7 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate[(int)HaruState.NormalAttack4] = Move_NormalAttack4;
         moveUpdate[(int)HaruState.NormalAttack5] = Move_NormalAttack5;
         moveUpdate[(int)HaruState.FirstBlade] = Move_FirstBlade;
+        moveUpdate[(int)HaruState.FirstBlade02] = Move_FirstBlade02;
         moveUpdate[(int)HaruState.PierceStep] = Move_PierceStep;
         moveUpdate[(int)HaruState.SpinCutter] = Move_SpinCutter;
 
@@ -212,6 +213,7 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate[(int)HaruState.NormalAttack4] = Ani_NormalAttack4;
         animeUpdate[(int)HaruState.NormalAttack5] = Ani_NormalAttack5;
         animeUpdate[(int)HaruState.FirstBlade] = Ani_FirstBlade;
+        animeUpdate[(int)HaruState.FirstBlade02] = Ani_FirstBlade02;
         animeUpdate[(int)HaruState.PierceStep] = Ani_PierceStep;
         animeUpdate[(int)HaruState.SpinCutter] = Ani_SpinCutter;
 
@@ -270,6 +272,8 @@ public partial class PlayerCtrl : MonoBehaviour
 
         changeState[(int)HaruState.NormalAttack5, (int)HaruState.Run] = true;
         changeState[(int)HaruState.NormalAttack5, (int)HaruState.Evade] = true;
+
+        changeState[(int)HaruState.FirstBlade, (int)HaruState.FirstBlade02] = true;
 
         // 무기 장착
         weapon.transform.parent = weaponholder;
@@ -428,6 +432,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 }
                 break;
             case HaruState.FirstBlade:
+            case HaruState.FirstBlade02:
                 normalAtk = false;
                 lockInput = false;
                 moveAttack = false;
@@ -559,6 +564,14 @@ public partial class PlayerCtrl : MonoBehaviour
                 moveStand = false;
                 isAttacking = false;
                 SetTrigerSkillFirstBlade();
+                SetAttackDir();
+                break;
+            case HaruState.FirstBlade02:
+                lockInput = true;
+                moveAttack = true;
+                moveStand = false;
+                isAttacking = false;
+                SetTrigerSkillFirstBlade02();
                 SetAttackDir();
                 break;
             case HaruState.PierceStep:

@@ -63,6 +63,7 @@
         NormalAttack4,
         NormalAttack5,
         FirstBlade,
+        FirstBlade02,
         PierceStep,
         SpinCutter,
         End
@@ -70,6 +71,11 @@
 
     public enum HaruSkill
     {
+        NormalAttack1,
+        NormalAttack2,
+        NormalAttack3,
+        NormalAttack4,
+        NormalAttack5,
         FirstBlade,
         PierceStep,
         SpinCutter,

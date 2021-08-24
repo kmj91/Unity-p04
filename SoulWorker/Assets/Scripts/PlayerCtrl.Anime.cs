@@ -255,6 +255,16 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetTrigger("B_Skill_First_Blade");
     }
 
+    private void SetTrigerSkillFirstBlade02()
+    {
+        hairAnime.SetTrigger("B_Skill_First_Blade02");
+        faceAnime.SetTrigger("B_Skill_First_Blade02");
+        bodyAnime.SetTrigger("B_Skill_First_Blade02");
+        pantsAnime.SetTrigger("B_Skill_First_Blade02");
+        handsAnime.SetTrigger("B_Skill_First_Blade02");
+        footAnime.SetTrigger("B_Skill_First_Blade02");
+    }
+
     private void SetTrigerSkillPierceStep()
     {
         hairAnime.SetTrigger("B_Skill_Pierce_Step");
@@ -554,7 +564,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Normal;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.NormalAttack1, 0, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
 
             if (moveAttack && 0.3f <= time)
@@ -607,7 +620,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Normal;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.NormalAttack2, 0, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
 
             if (moveAttack && 0.23f <= time)
@@ -659,7 +675,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Normal;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.NormalAttack3, 1, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
             else if (isAttacking && 0.21f > time && time >= 0.17f)
             {
@@ -673,7 +692,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Normal;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.NormalAttack3, 0, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
 
             if (moveAttack && 0.3f <= time)
@@ -725,7 +747,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Down;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.NormalAttack4, 0, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
 
             if (moveAttack && 0.28f <= time)
@@ -777,7 +802,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Strike;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.NormalAttack5, 0, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
 
             if (moveAttack && 0.4f <= time)
@@ -821,7 +849,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Strike;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.FirstBlade, 2, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
             else if (isAttacking && 0.43f > time && time >= 0.3f)
             {
@@ -835,7 +866,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Normal;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.FirstBlade, 1, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
             else if (isAttacking && 0.2f > time && time >= 0.17f)
             {
@@ -849,10 +883,56 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 weapon.OnTrigger();
                 weapon.attackType = AttackType.Normal;
-                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk);
+                float damage = 0f;
+                if (!playerInfo.GetSkillDamage(HaruSkill.FirstBlade, 0, ref damage))
+                    return;
+                weapon.attackDamage = Random.Range(playerInfo.currentPlayerData.minAtk, playerInfo.currentPlayerData.maxAtk) * damage;
             }
 
             if (moveAttack && 0.5f <= time)
+            {
+                moveAttack = false;
+            }
+
+            if (0.43f > time && time >= 0.3f)
+            {
+                // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
+                if (gameManager.KeyInputCheck(KeyCode.Mouse1, 0.5f))
+                {
+                    ChangeFlagFalse();
+                    state = HaruState.FirstBlade02;
+                    ChangeFlagTrue();
+                    return;
+                }
+            }
+
+            if (lockInput && 0.7f <= time)
+            {
+                lockInput = false;
+            }
+
+            if (!moveStand && 0.8f <= time)
+            {
+                moveStand = true;
+            }
+
+            if (0.99f <= time)
+            {
+                ChangeFlagFalse();
+                state = HaruState.Idle;
+                ChangeFlagTrue();
+            }
+        }
+    }
+
+    // 퍼스트 블레이드 추가 공격
+    private void Ani_FirstBlade02()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_First_Blade02"))
+        {
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+            if (moveAttack && 0.4f <= time)
             {
                 moveAttack = false;
             }
@@ -862,7 +942,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 lockInput = false;
             }
 
-            if (!moveStand && 0.8f <= time)
+            if (!moveStand && 0.72f <= time)
             {
                 moveStand = true;
             }
