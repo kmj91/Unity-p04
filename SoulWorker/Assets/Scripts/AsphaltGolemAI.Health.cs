@@ -17,6 +17,10 @@ public partial class AsphaltGolemAI : MonsterAI
         // UI 갱신
         UpdateUI();
 
+        // 죽었으면 나감
+        if (dead)
+            return false;
+
         // 타겟이 없으면
         if (targetEntity == null)
         {
