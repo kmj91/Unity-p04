@@ -575,6 +575,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 SetAttackDir();
                 break;
             case HaruState.PierceStep:
+                lockInput = true;
+                moveAttack = true;
+                moveStand = false;
+                isAttacking = false;
                 SetTrigerSkillPierceStep();
                 SetAttackDir();
                 break;

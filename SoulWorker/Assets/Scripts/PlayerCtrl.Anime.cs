@@ -932,6 +932,37 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
+            if (moveAttack && 0.7f <= time)
+            {
+                moveAttack = false;
+            }
+
+            if (lockInput && 0.7f <= time)
+            {
+                lockInput = false;
+            }
+
+            if (!moveStand && 0.85f <= time)
+            {
+                moveStand = true;
+            }
+
+            if (0.99f <= time)
+            {
+                ChangeFlagFalse();
+                state = HaruState.Idle;
+                ChangeFlagTrue();
+            }
+        }
+    }
+
+    // 피어스 스탭
+    private void Ani_PierceStep()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Pierce_Step"))
+        {
+            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
             if (moveAttack && 0.4f <= time)
             {
                 moveAttack = false;
@@ -956,22 +987,6 @@ public partial class PlayerCtrl : MonoBehaviour
         }
     }
 
-    // 피어스 스탭
-    private void Ani_PierceStep()
-    {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Pierce_Step"))
-        {
-            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
-
-            if (0.9f <= time)
-            {
-                ChangeFlagFalse();
-                state = HaruState.Idle;
-                ChangeFlagTrue();
-            }
-        }
-    }
-
     // 스핀 커터
     private void Ani_SpinCutter()
     {
@@ -979,7 +994,7 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (0.9f <= time)
+            if (0.99f <= time)
             {
                 ChangeFlagFalse();
                 state = HaruState.Idle;
