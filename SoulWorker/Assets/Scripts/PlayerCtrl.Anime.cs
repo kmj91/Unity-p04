@@ -994,6 +994,21 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
+            if (moveAttack && 0.5f <= time)
+            {
+                moveAttack = false;
+            }
+
+            if (lockInput && 0.7f <= time)
+            {
+                lockInput = false;
+            }
+
+            if (!moveStand && 0.85f <= time)
+            {
+                moveStand = true;
+            }
+
             if (0.99f <= time)
             {
                 ChangeFlagFalse();

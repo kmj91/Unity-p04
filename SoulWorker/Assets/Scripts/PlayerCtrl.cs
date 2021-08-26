@@ -583,6 +583,10 @@ public partial class PlayerCtrl : MonoBehaviour
                 SetAttackDir();
                 break;
             case HaruState.SpinCutter:
+                lockInput = true;
+                moveAttack = true;
+                moveStand = false;
+                isAttacking = false;
                 SetTrigerSkillSpinCutter();
                 SetAttackDir();
                 break;

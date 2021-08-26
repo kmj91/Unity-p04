@@ -520,6 +520,38 @@ public partial class PlayerCtrl : MonoBehaviour
     // 스핀 커터
     private void Move_SpinCutter()
     {
+        if (moveAttack)
+        {
+            targetSpeed = Mathf.SmoothDamp(currentSpeed, 5.0f, ref speedSmoothVelocity, speedSmoothTime);
+        }
+        else if (moveStand)
+        {
+            targetSpeed = Mathf.SmoothDamp(currentSpeed, 1.0f, ref speedSmoothVelocity, speedSmoothTime);
+        }
+        else
+        {
+            characterController.Move(Vector3.down);
+            return;
+        }
 
+        // 카메라 방향 혹은 캐릭터 방향
+        Vector3 moveDir = moveAnimeDir;
+        moveDir.y = 0.0f;
+        moveDir = moveDir.normalized;
+
+        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
+        characterController.Move(velocity * Time.deltaTime);
+
+        // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
+        // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
+        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            turnDir = moveDir;
+
+        // 땅에 닿으면 초기화
+        if (characterController.isGrounded)
+        {
+            currentVelocityY = 0.0f;
+        }
     }
 }
