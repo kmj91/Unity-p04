@@ -3,16 +3,15 @@ using UnityEngine;
 
 public class HaruInfo : PlayerInfo
 {
-    public SkinnedMeshRenderer face;
+    public SkinnedMeshRenderer faceRenderer;
+    public Texture2D faceMask;
+    public Color faceColor;
     public HaruSkill[,] skillSlot { get; private set; }
 
     // 1 : 스킬 종류
     // 2 : 스킬 레벨
     // 3 : 타격 수
     private float[,,] skillDamage;
-
-    private Texture2D faceMask;
-
 
     public bool GetSkillDamage(HaruSkill skill, int cnt, ref float damage)
     {
@@ -29,18 +28,27 @@ public class HaruInfo : PlayerInfo
 
     private void Start()
     {
-        var faceTexture = (Texture2D)face.materials[0].mainTexture;
-        faceMask = faceTexture;
+        // 얼굴 텍스처 마스크 색 입히기
+        // 텍스처 생성
+        Texture2D faceTexture = new Texture2D(faceMask.width, faceMask.height);
 
-        //for (int y = 0; y < faceTexture.height; ++y)
-        //{
-        //    for (int x = 0; x < faceTexture.width; ++x)
-        //    {
-        //        faceTexture.SetPixel(x, y, new Color(255f, 255f, 255f));
-        //        var test = faceTexture.GetPixel(x, y);
-        //    }
-        //}
-        //faceTexture.Apply();
+        for (int y = 0; y < faceMask.height; ++y)
+        {
+            for (int x = 0; x < faceMask.width; ++x)
+            {
+                Color mask = faceMask.GetPixel(x, y);
+                // R 값 원본 얼굴 색상
+                float fPer = (1 - mask.r) * 1.5f + mask.r;
+                Color outColor = faceColor * fPer;
+                // G 값 하이라이트 
+                fPer = mask.g * 1.5f + (1 - mask.g);
+                outColor = outColor * fPer;
+                faceTexture.SetPixel(x, y, outColor);
+            }
+        }
+        faceTexture.Apply();
+
+        faceRenderer.materials[0].mainTexture = faceTexture;
 
 
         // 스킬 슬롯 생성

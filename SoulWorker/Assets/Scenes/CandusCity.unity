@@ -1237,7 +1237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &641340736
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6503,6 +6503,36 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 949891799}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: faceMask
+      value: 
+      objectReference: {fileID: 2800000, guid: 9d0e29ca752861640b741679698d466d, type: 3}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: faceColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: faceColor.b
+      value: 0.41960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: faceColor.g
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: faceColor.r
+      value: 0.7647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: faceRenderer
+      value: 
+      objectReference: {fileID: 910607258}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d8fd9b0b290f0468996a0df2aa250b, type: 3}
 --- !u!1001 &5824356814942818074
@@ -6544,6 +6574,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AsphaltGolem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824356815085521552, guid: 94da0f010c0a0d74c8e712883f5cd0fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5824356815085521553, guid: 94da0f010c0a0d74c8e712883f5cd0fa,
         type: 3}
