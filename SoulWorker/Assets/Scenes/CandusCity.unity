@@ -6083,12 +6083,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!137 &910607258 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2130866879410355859, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4595676945078733568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &918533824 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4595676944768531904, guid: 77d8fd9b0b290f0468996a0df2aa250b,
@@ -6363,31 +6357,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3676755908202434567, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3676755908716679382, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3676755908826867868, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595676944596090884, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595676944596090884, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4595676944768531902, guid: 77d8fd9b0b290f0468996a0df2aa250b,
         type: 3}
       propertyPath: m_Name
@@ -6455,11 +6424,6 @@ PrefabInstance:
       objectReference: {fileID: 949891799}
     - target: {fileID: 4595676944768531904, guid: 77d8fd9b0b290f0468996a0df2aa250b,
         type: 3}
-      propertyPath: playerInfo
-      value: 
-      objectReference: {fileID: 688076905}
-    - target: {fileID: 4595676944768531904, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1364413204}
@@ -6468,71 +6432,11 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 963194228}
-    - target: {fileID: 4595676944768531905, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595676945078733570, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: playerCtrl
-      value: 
-      objectReference: {fileID: 918533824}
-    - target: {fileID: 4595676945078733570, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: playerInfo
-      value: 
-      objectReference: {fileID: 688076905}
-    - target: {fileID: 4595676945078733570, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: monsterInfo
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5984899699974879838, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 949891799}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: face
-      value: 
-      objectReference: {fileID: 910607258}
     - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
         type: 3}
       propertyPath: weapon
       value: 
       objectReference: {fileID: 949891799}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: faceMask
-      value: 
-      objectReference: {fileID: 2800000, guid: 9d0e29ca752861640b741679698d466d, type: 3}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: faceColor.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: faceColor.b
-      value: 0.41960785
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: faceColor.g
-      value: 0.5803922
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: faceColor.r
-      value: 0.7647059
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: faceRenderer
-      value: 
-      objectReference: {fileID: 910607258}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d8fd9b0b290f0468996a0df2aa250b, type: 3}
 --- !u!1001 &5824356814942818074

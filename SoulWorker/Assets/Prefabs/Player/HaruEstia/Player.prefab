@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  playerInfo: {fileID: 0}
+  playerInfo: {fileID: 7781589610224360148}
   weapon: {fileID: 0}
   moveSpeed: 5
   dashSpeedGob: 2
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 100
-  playerInfo: {fileID: 0}
-  playerCtrl: {fileID: 0}
+  playerInfo: {fileID: 7781589610224360148}
+  playerCtrl: {fileID: 4595676944768531904}
 --- !u!114 &7781589610224360148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +182,11 @@ MonoBehaviour:
   bodyGear: {fileID: 0}
   legGear: {fileID: 0}
   weapon: {fileID: 0}
+  faceRenderer: {fileID: 2130866879410355859}
+  bodyRenderer: {fileID: 2130866879453447897}
+  faceMask: {fileID: 2800000, guid: 9d0e29ca752861640b741679698d466d, type: 3}
+  bodyMask: {fileID: 2800000, guid: 01398df5b79099e4b8ed8bf877e66134, type: 3}
+  skinColor: {r: 0.7647059, g: 0.5803922, b: 0.41960785, a: 0}
 --- !u!143 &4595676944768531905
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1356,6 +1361,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 6346454425509469075}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &2130866879410355859 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5008423416971437312, guid: 111beb28203cd3247a9be44f087e48d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6346454425509469075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9196482598465303407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1578,6 +1589,12 @@ Transform:
 --- !u!95 &4595676945097228556 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4640792186729591395, guid: a9012b12ca84610448b4a0a05ed6c999,
+    type: 3}
+  m_PrefabInstance: {fileID: 9196482598465303407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2130866879453447897 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7075757623573886390, guid: a9012b12ca84610448b4a0a05ed6c999,
     type: 3}
   m_PrefabInstance: {fileID: 9196482598465303407}
   m_PrefabAsset: {fileID: 0}
