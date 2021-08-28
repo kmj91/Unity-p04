@@ -5,10 +5,17 @@ public partial class HaruInfo : PlayerInfo
 {
     public SkinnedMeshRenderer faceRenderer;
     public SkinnedMeshRenderer bodyRenderer;
+    public SkinnedMeshRenderer handsRenderer;
+    public SkinnedMeshRenderer pantsRenderer;
+    public SkinnedMeshRenderer shoessRenderer;
+    public SkinnedMeshRenderer hairRenderer;
     public Texture2D faceMask;
     public Texture2D bodyMask;
+    public Texture2D sockMask;
+    public Texture2D hairMask;
 
     public Color skinColor;
+    public Color hiarColor;
     public HaruSkill[,] skillSlot { get; private set; }
 
     // 1 : 스킬 종류
