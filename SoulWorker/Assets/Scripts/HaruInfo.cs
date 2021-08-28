@@ -1,11 +1,14 @@
 ﻿using MyEnum;
 using UnityEngine;
 
-public class HaruInfo : PlayerInfo
+public partial class HaruInfo : PlayerInfo
 {
     public SkinnedMeshRenderer faceRenderer;
+    public SkinnedMeshRenderer bodyRenderer;
     public Texture2D faceMask;
-    public Color faceColor;
+    public Texture2D bodyMask;
+
+    public Color skinColor;
     public HaruSkill[,] skillSlot { get; private set; }
 
     // 1 : 스킬 종류
@@ -28,28 +31,8 @@ public class HaruInfo : PlayerInfo
 
     private void Start()
     {
-        // 얼굴 텍스처 마스크 색 입히기
-        // 텍스처 생성
-        Texture2D faceTexture = new Texture2D(faceMask.width, faceMask.height);
-
-        for (int y = 0; y < faceMask.height; ++y)
-        {
-            for (int x = 0; x < faceMask.width; ++x)
-            {
-                Color mask = faceMask.GetPixel(x, y);
-                // R 값 원본 얼굴 색상
-                float fPer = (1 - mask.r) * 1.5f + mask.r;
-                Color outColor = faceColor * fPer;
-                // G 값 하이라이트 
-                fPer = mask.g * 1.5f + (1 - mask.g);
-                outColor = outColor * fPer;
-                faceTexture.SetPixel(x, y, outColor);
-            }
-        }
-        faceTexture.Apply();
-
-        faceRenderer.materials[0].mainTexture = faceTexture;
-
+        // 텍스처 마스크 검사
+        CheckTextureMask();
 
         // 스킬 슬롯 생성
         skillSlot = new HaruSkill[3, 6];
