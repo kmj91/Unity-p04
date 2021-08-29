@@ -5,7 +5,7 @@ using MyStruct;
 using System.IO;
 using System.Collections.Generic;
 
-public class HaruWeapon : Item
+public class ItemHaruWeapon : Item
 {
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private PlayerCtrl playerCtrl;
