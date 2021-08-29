@@ -42,6 +42,28 @@
         End
     }
 
+    public enum FashionType
+    {
+        HairAccessory,      // 머리 장신구
+        Glasses,            // 안경
+        Mask,               // 마스크
+        Hat,                // 모자
+        Headgear,           // 모자 + 머리 장신구
+        Helmet,             // 모자 + 머리 장신구 + 안경 + 마스크
+        Top,                // 상의
+        Bottom,             // 하의
+        TopBottom,          // 상의 + 하의
+        Gloves,             // 장갑
+        Shoes,              // 신발
+        Socks,              // 양말
+        Underwear,          // 속옷
+        Tail,               // 꼬리
+        Back,               // 등
+        BackTail,           // 등 + 꼬리
+        Weapon,             // 무기
+        End,
+    }
+
     public enum HaruState
     {
         Idle,
