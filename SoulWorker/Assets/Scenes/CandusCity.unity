@@ -175,12 +175,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4595676945078733568}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &280254446 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2130866880976518722, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4595676945078733568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &626496898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6089,12 +6083,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!137 &892906979 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2130866881209378207, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4595676945078733568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &918533824 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4595676944768531904, guid: 77d8fd9b0b290f0468996a0df2aa250b,
@@ -6318,12 +6306,6 @@ Transform:
   m_Father: {fileID: 663277357}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &1770413994 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2130866881222327228, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4595676945078733568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1798309475
 GameObject:
   m_ObjectHideFlags: 0
@@ -6368,12 +6350,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 130, y: 200, z: 100}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!137 &2086335024 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2130866879705488555, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4595676945078733568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4595676945078733568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6381,26 +6357,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2130866879705488555, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 841c67148ab7c8b48a7a7a31d9680357, type: 2}
-    - target: {fileID: 2130866881209378207, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fc2ec891a2d5bbe488285f888d1afeaa, type: 2}
-    - target: {fileID: 2130866881222327228, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 841c67148ab7c8b48a7a7a31d9680357, type: 2}
-    - target: {fileID: 3676755908112733689, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: m_Name
-      value: C_A_EQ_Basic1_Shoess
-      objectReference: {fileID: 0}
     - target: {fileID: 4595676944768531902, guid: 77d8fd9b0b290f0468996a0df2aa250b,
         type: 3}
       propertyPath: m_Name
@@ -6481,61 +6437,6 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 949891799}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: hairMask
-      value: 
-      objectReference: {fileID: 2800000, guid: 848a7b714f5185743b739d4f1a91253c, type: 3}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: sockMask
-      value: 
-      objectReference: {fileID: 2800000, guid: e2e46092c7331f541928acb76c06bf45, type: 3}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: hiarColor.b
-      value: 0.36862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: hiarColor.g
-      value: 0.5254902
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: hiarColor.r
-      value: 0.627451
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: skinColor.b
-      value: 0.5019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: skinColor.r
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: hairRenderer
-      value: 
-      objectReference: {fileID: 280254446}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: handsRenderer
-      value: 
-      objectReference: {fileID: 892906979}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: pantsRenderer
-      value: 
-      objectReference: {fileID: 2086335024}
-    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
-        type: 3}
-      propertyPath: shoessRenderer
-      value: 
-      objectReference: {fileID: 1770413994}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d8fd9b0b290f0468996a0df2aa250b, type: 3}
 --- !u!1001 &5824356814942818074
@@ -6707,11 +6608,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8005546264254299181, guid: 80868c83c25e8f24aa3dda58aa226ea5,
-        type: 3}
-      propertyPath: playerCtrl
-      value: 
-      objectReference: {fileID: 918533824}
     - target: {fileID: 8005546264254299181, guid: 80868c83c25e8f24aa3dda58aa226ea5,
         type: 3}
       propertyPath: playerInfo

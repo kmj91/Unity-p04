@@ -8,7 +8,6 @@ using System.Collections.Generic;
 public class ItemHaruWeapon : Item
 {
     [SerializeField] private PlayerInfo playerInfo;
-    [SerializeField] private PlayerCtrl playerCtrl;
     [SerializeField] private BoxCollider boxCollider;
 
     public AttackType attackType;   // 공격 타입

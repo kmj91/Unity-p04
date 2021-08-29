@@ -257,7 +257,6 @@ MonoBehaviour:
   itemName: 
   useLevel: 0
   playerInfo: {fileID: 0}
-  playerCtrl: {fileID: 0}
   boxCollider: {fileID: 0}
   attackType: 0
   attackDamage: 0
