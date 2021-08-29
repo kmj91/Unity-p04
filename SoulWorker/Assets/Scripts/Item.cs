@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
 {
     // 기본 공통
     public ItemType type;
+    public UsePlayer usePlayer;
     public string itemName;
     public float useLevel;
 

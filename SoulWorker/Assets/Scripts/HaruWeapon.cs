@@ -49,6 +49,10 @@ public class HaruWeapon : Item
         // 무기 스텟
         if (!Utility.Parser_GetValue_String(weponInfo, "name", out itemName))
             return;
+        float outUsePlayer;
+        if (!Utility.Parser_GetValue_Float(weponInfo, "usePlayer", out outUsePlayer))
+            return;
+        usePlayer = (UsePlayer)outUsePlayer;
         if (!Utility.Parser_GetValue_Float(weponInfo, "level", out useLevel))
             return;
 

@@ -17,6 +17,13 @@
         End
     }
 
+    public enum UsePlayer
+    {
+        Public,
+        Haru,
+        End
+    }
+
     public enum AbilityType
     {
         Attack,
