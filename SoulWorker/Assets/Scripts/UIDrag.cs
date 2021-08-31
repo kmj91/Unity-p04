@@ -22,31 +22,15 @@ public class UIDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
+        SetDraggedPosition(eventData);
     }
 
     private void SetDraggedPosition(PointerEventData eventData)
     {
-        Debug.Log(m_DraggingWindow.anchoredPosition + ", " + eventData.position);
+        if (!eventData.IsPointerMoving())
+            return;
 
-        m_DraggingWindow.anchoredPosition -= m_DraggingPlane - eventData.position;
+        m_DraggingWindow.anchoredPosition += eventData.position - m_DraggingPlane;
         m_DraggingPlane = eventData.position;
-    }
-
-    static public T FindInParents<T>(GameObject go) where T : Component
-    {
-        if (go == null) return null;
-        var comp = go.GetComponent<T>();
-
-        if (comp != null)
-            return comp;
-
-        Transform t = go.transform.parent;
-        while (t != null && comp == null)
-        {
-            comp = t.gameObject.GetComponent<T>();
-            t = t.parent;
-        }
-        return comp;
     }
 }
