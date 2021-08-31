@@ -104,7 +104,8 @@ public class GameManager : MonoBehaviour
             { KeyCode.Alpha4 , KeyUp_Alpha4 },  // 스킬 슬롯 4
             { KeyCode.Alpha5 , KeyUp_Alpha5 },  // 스킬 슬롯 5
             { KeyCode.Alpha6 , KeyUp_Alpha6 },  // 스킬 슬롯 6
-            { KeyCode.I, KeyUp_Inventory }      // 인벤토리
+            { KeyCode.I, KeyUp_Inventory },     // 인벤토리
+            { KeyCode.P, KeyUp_Characterinfo }  // 캐릭터 상태창
         };
     }
 
@@ -813,5 +814,13 @@ public class GameManager : MonoBehaviour
         // 마우스 사용
         useMouse = true;
         // 조작키 큐? 배열 초기화 해야함
+    }
+
+    // 캐릭터 상태창
+    private void KeyUp_Characterinfo()
+    {
+        // 마우스 사용
+        useMouse = true;
+        UIManager.Instance.Characterinfo();
     }
 }

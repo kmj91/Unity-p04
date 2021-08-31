@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Sprite[] bossHpBarSprite;  // 보스 체력바 스프라이트
 
+    [SerializeField] private Image m_characterinfo;     // 캐릭터 정보 창
+
     private int boosHpBarNum = -1;
 
 
@@ -110,6 +112,12 @@ public class UIManager : MonoBehaviour
     public void UpdateBossSuperArmor(float currentSA, float maxSA)
     {
         bossSuperArmorBar.fillAmount = currentSA / maxSA;
+    }
+
+    // 캐릭터 정보 창
+    public void Characterinfo()
+    {
+        m_characterinfo.enabled = !m_characterinfo.enabled;
     }
 
     private void Update()
