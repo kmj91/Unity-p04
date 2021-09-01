@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+using MyEnum;
+
 public partial class UIManager : MonoBehaviour
 {
     private static UIManager instance;
@@ -34,7 +36,7 @@ public partial class UIManager : MonoBehaviour
 
     [SerializeField] private Image m_characterinfo;     // 캐릭터 정보 창
 
-    private int boosHpBarNum = -1;
+    private int boosHpBarNum = -1;      // 현재 보스 체력 줄
 
 
     // 플레이어 체력
@@ -117,7 +119,14 @@ public partial class UIManager : MonoBehaviour
     // 캐릭터 정보 창
     public void Characterinfo()
     {
-        m_characterinfo.enabled = !m_characterinfo.enabled;
+        if (m_characterinfo.IsActive())
+        {
+            m_characterinfo.gameObject.SetActive(false);
+        }
+        else
+        {
+            m_characterinfo.gameObject.SetActive(true);
+        }
     }
 
     private void Update()

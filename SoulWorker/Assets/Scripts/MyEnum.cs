@@ -61,7 +61,7 @@
         Back,               // 등
         BackTail,           // 등 + 꼬리
         Weapon,             // 무기
-        End,
+        End
     }
 
     public enum HaruState
