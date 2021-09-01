@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public partial class UIManager : MonoBehaviour
 {
     private static UIManager instance;
 
