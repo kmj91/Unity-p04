@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: a9943d7789e4e374cafc7cf427f8eecb
+guid: b12d3b4a0c8081b4ba9254c241ac90ff
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6412597434122072537
+    second: characterinfo_bg
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,13 +43,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 6, y: 6, z: 6, w: 100}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -85,11 +88,32 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: characterinfo_bg
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 491
+        width: 431
+        height: 533
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72e829beb90e107a0800000000000000
+      internalID: -6412597434122072537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 2d9ead23637c3414aa2ca0b478ac9ab7
     internalID: 0
     vertices: []
     indices: 
