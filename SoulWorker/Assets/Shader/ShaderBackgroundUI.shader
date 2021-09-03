@@ -1,4 +1,4 @@
-﻿Shader "Custom/NewImageEffectShader"
+﻿Shader "Custom/ShaderBackgroundUI"
 {
     Properties
     {
@@ -45,20 +45,31 @@
 
             fixed4 frag(v2f i) : SV_Target
             {
-                i.uv += float2(_U, _V);
-                fixed4 col = tex2D(_MainTex, i.uv);
-
-                float gob;
-                if (i.uv.y < 0)
+                //i.uv += float2(_U, _V);
+                fixed4 col = tex2D(_MainTex, i.uv - float2(_U, _V));
+                
+                // 경계선 위치 계산
+                float lineY;
+                if (_V < 0)
                 {
-                    gob = (1.0f + i.uv.y) * 0.9f;
-                    col = (col * (1 - gob)) + float4(0, 0, 0, 0);
+                    lineY = 1 - ((_V * -1.0f) % 1);
                 }
                 else
                 {
-                    gob = 1.0f + i.uv.y;
-                    col = (col * (1 - gob)) + float4(0, 0, 0, 0);
+                    lineY = _V % 1;
                 }
+                
+                // y축으로 갈수록 어둡게
+                float gob;
+                if (i.uv.y < lineY)
+                {
+                    gob = (1.0f - i.uv.y) - 0.3f;
+                }
+                else
+                {
+                    gob = 1.0f - i.uv.y;
+                }
+                col = (col * gob);
 
                 return col;
             }
