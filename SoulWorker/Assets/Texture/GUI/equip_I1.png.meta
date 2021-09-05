@@ -8,6 +8,27 @@ TextureImporter:
   - first:
       213: -3656179687815517358
     second: word
+  - first:
+      213: -7110711525081356688
+    second: icon_equip_headGear
+  - first:
+      213: 5604467828596771352
+    second: icon_equip_shoulderGear
+  - first:
+      213: -1738711850349009984
+    second: icon_equip_bodyGear
+  - first:
+      213: 1540654091404905299
+    second: icon_equip_legGear
+  - first:
+      213: 7678324241598646011
+    second: icon_equip_earring
+  - first:
+      213: 1931794511305634317
+    second: icon_equip_pendant
+  - first:
+      213: -7178582453356726497
+    second: icon_equip_ring
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -122,7 +143,7 @@ TextureImporter:
         width: 26
         height: 30
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -130,6 +151,153 @@ TextureImporter:
       bones: []
       spriteID: 25be1c8f1f3a24dc0800000000000000
       internalID: -3656179687815517358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_equip_headGear
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 557
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076ef37ca8da15d90800000000000000
+      internalID: -7110711525081356688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_equip_shoulderGear
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 615
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81a8d9edbc117cd40800000000000000
+      internalID: 5604467828596771352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_equip_bodyGear
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 505
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c36f21c8caded7e0800000000000000
+      internalID: -1738711850349009984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_equip_legGear
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 615
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b01ffbbb0816510800000000000000
+      internalID: 1540654091404905299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_equip_earring
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 557
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf602ca5733ee8a60800000000000000
+      internalID: 7678324241598646011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_equip_pendant
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 557
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d02fb697fdc1fca10800000000000000
+      internalID: 1931794511305634317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icon_equip_ring
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 557
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17f1dcda4d806c90800000000000000
+      internalID: -7178582453356726497
       vertices: []
       indices: 
       edges: []
