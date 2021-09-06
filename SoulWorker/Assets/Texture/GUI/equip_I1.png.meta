@@ -4,31 +4,34 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -9024230061371181031
-    second: word
+    second: image_profile
   - first:
       213: -3656179687815517358
-    second: word
+    second: image_profile
   - first:
       213: -7110711525081356688
-    second: icon_equip_headGear
+    second: slot_head
   - first:
       213: 5604467828596771352
-    second: icon_equip_shoulderGear
+    second: slot_shoulder
   - first:
       213: -1738711850349009984
-    second: icon_equip_bodyGear
+    second: slot_body
   - first:
       213: 1540654091404905299
-    second: icon_equip_legGear
+    second: slot_leg
   - first:
       213: 7678324241598646011
-    second: icon_equip_earring
+    second: slot_earring
   - first:
       213: 1931794511305634317
-    second: icon_equip_pendant
+    second: slot_pendant
   - first:
       213: -7178582453356726497
-    second: icon_equip_ring
+    second: slot_ring
+  - first:
+      213: 4242253996141517007
+    second: bg_status
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: word
+      name: image_profile
       rect:
         serializedVersion: 2
         x: 565
@@ -135,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: characterLog
+      name: image_characterLog
       rect:
         serializedVersion: 2
         x: 611
@@ -156,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icon_equip_headGear
+      name: slot_head
       rect:
         serializedVersion: 2
         x: 851
@@ -177,7 +180,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icon_equip_shoulderGear
+      name: slot_shoulder
       rect:
         serializedVersion: 2
         x: 865
@@ -198,7 +201,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icon_equip_bodyGear
+      name: slot_body
       rect:
         serializedVersion: 2
         x: 227
@@ -219,7 +222,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icon_equip_legGear
+      name: slot_leg
       rect:
         serializedVersion: 2
         x: 917
@@ -240,7 +243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icon_equip_earring
+      name: slot_earring
       rect:
         serializedVersion: 2
         x: 799
@@ -261,7 +264,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icon_equip_pendant
+      name: slot_pendant
       rect:
         serializedVersion: 2
         x: 747
@@ -282,7 +285,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: icon_equip_ring
+      name: slot_ring
       rect:
         serializedVersion: 2
         x: 487
@@ -298,6 +301,27 @@ TextureImporter:
       bones: []
       spriteID: f17f1dcda4d806c90800000000000000
       internalID: -7178582453356726497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_status
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 455
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc81ff678838fda30800000000000000
+      internalID: 4242253996141517007
       vertices: []
       indices: 
       edges: []
