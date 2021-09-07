@@ -298,22 +298,13 @@ GameObject:
   m_Component:
   - component: {fileID: 124618876}
   - component: {fileID: 124618875}
-  - component: {fileID: 124618874}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: UI Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!81 &124618874
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124618873}
-  m_Enabled: 1
+  m_IsActive: 1
 --- !u!20 &124618875
 Camera:
   m_ObjectHideFlags: 0
@@ -323,7 +314,7 @@ Camera:
   m_GameObject: {fileID: 124618873}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -340,9 +331,9 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -365,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124618873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 500, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5747,8 +5738,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_Camera: {fileID: 124618875}
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -5792,6 +5783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42d684819e1e284eb13e60ce699f4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasBG: {fileID: 1716731203}
+  canvasFG: {fileID: 0}
   playerHpBar: {fileID: 130728635}
   playerHpSignal: {fileID: 660839104}
   playerHpText: {fileID: 901977723}
