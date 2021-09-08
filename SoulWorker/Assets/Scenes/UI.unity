@@ -5805,6 +5805,7 @@ MonoBehaviour:
   - {fileID: -753926199851564581, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: 8795594432789449632, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   m_characterinfo: {fileID: 1401884273}
+  m_equipmentTransform: {fileID: 15481547}
 --- !u!1 &1734086452
 GameObject:
   m_ObjectHideFlags: 0
