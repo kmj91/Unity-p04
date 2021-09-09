@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 
 using MyEnum;
+using System.Dynamic;
 
 public partial class UIManager : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public partial class UIManager : MonoBehaviour
     [SerializeField] private Sprite[] bossHpBarSprite;  // 보스 체력바 스프라이트
 
     [SerializeField] private Image m_characterinfo;     // 캐릭터 정보 창
-    [SerializeField] private RectTransform m_equipmentTransform;    // 장비 창 위치
+    public RectTransform m_equipmentTransform;          // 장비 창 위치
 
     private int boosHpBarNum = -1;      // 현재 보스 체력 줄
 

@@ -26,6 +26,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // UI 캐릭터 모습
+        var uiMgr = UIManager.Instance;
+        var uiPlayer = Instantiate(playerCtrl.gameObject);
+
+        // 부모 지정
+        uiPlayer.transform.parent = uiMgr.m_equipmentTransform;
+        uiPlayer.transform.localPosition = Vector3.zero;
+        uiPlayer.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        uiPlayer.transform.localScale = Vector3.one;
+        uiPlayer.layer = 5;
+
         KeyInit();
     }
 
