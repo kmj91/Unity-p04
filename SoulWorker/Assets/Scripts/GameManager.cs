@@ -34,8 +34,9 @@ public class GameManager : MonoBehaviour
         uiPlayer.transform.parent = uiMgr.m_equipmentTransform;
         uiPlayer.transform.localPosition = Vector3.zero;
         uiPlayer.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        uiPlayer.transform.localScale = Vector3.one;
+        uiPlayer.transform.localScale = new Vector3(100, 100, 100);
         uiPlayer.layer = 5;
+        uiPlayer.GetComponent<PlayerCtrl>().SetUIObject(true);
 
         KeyInit();
     }

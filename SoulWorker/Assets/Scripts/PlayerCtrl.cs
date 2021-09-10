@@ -62,6 +62,7 @@ public partial class PlayerCtrl : MonoBehaviour
     private bool moveStand;             // 공격후 제자리 플래그
     private bool isAttacking;           // 공격 트리거 on off 플래그
     private bool cameraDirAtk = false;          // 카메라 방향으로 공격 플래그
+    private bool isUIObject = false;
 
 
     public void FSM_Hit(ref DamageMessage damageMessage)
@@ -146,6 +147,11 @@ public partial class PlayerCtrl : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void SetUIObject(bool value)
+    {
+        isUIObject = value;
     }
 
     // Start is called before the first frame update
@@ -286,6 +292,9 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isUIObject)
+            return;
+
         // 이동 업데이트
         moveUpdate[(int)state]();
         PlayerRotation();
@@ -294,6 +303,9 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Update()
     {
+        if (isUIObject)
+            return;
+
         // 애니메이션 업데이트
         animeUpdate[(int)state]();
     }
