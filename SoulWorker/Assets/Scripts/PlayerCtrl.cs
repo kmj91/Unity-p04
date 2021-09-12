@@ -149,9 +149,26 @@ public partial class PlayerCtrl : MonoBehaviour
         }
     }
 
-    public void SetUIObject(bool value)
+    // 캐릭터 정보창에서 보여지는 경우
+    public void SetUIObject()
     {
-        isUIObject = value;
+        // Update 처리 X
+        isUIObject = true;
+        // N_Stand 상태
+        SetTrigerNormalStand();
+        // 무기 착용 X
+        weapon.gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        if (!isUIObject)
+            return;
+
+        // N_Stand 상태
+        SetTrigerNormalStand();
+        // 무기 착용 X
+        weapon.gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update

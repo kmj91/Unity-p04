@@ -32,11 +32,11 @@ public class GameManager : MonoBehaviour
 
         // 부모 지정
         uiPlayer.transform.parent = uiMgr.m_equipmentTransform;
-        uiPlayer.transform.localPosition = Vector3.zero;
-        uiPlayer.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        uiPlayer.transform.localScale = new Vector3(100, 100, 100);
+        uiPlayer.transform.localPosition = new Vector3(0f, -150f, -100f);
+        uiPlayer.transform.localRotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+        uiPlayer.transform.localScale = new Vector3(180f, 180f, 180f);
         uiPlayer.layer = 5;
-        uiPlayer.GetComponent<PlayerCtrl>().SetUIObject(true);
+        uiPlayer.GetComponent<PlayerCtrl>().SetUIObject();
 
         KeyInit();
     }

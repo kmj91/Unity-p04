@@ -285,6 +285,26 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetTrigger("B_Skill_Spin_Cutter");
     }
 
+    private void SetTrigerNormalStand()
+    {
+        hairAnime.SetTrigger("N_Stand");
+        faceAnime.SetTrigger("N_Stand");
+        bodyAnime.SetTrigger("N_Stand");
+        pantsAnime.SetTrigger("N_Stand");
+        handsAnime.SetTrigger("N_Stand");
+        footAnime.SetTrigger("N_Stand");
+    }
+
+    private void SetTrigerBattleStand()
+    {
+        hairAnime.SetTrigger("B_Stand");
+        faceAnime.SetTrigger("B_Stand");
+        bodyAnime.SetTrigger("B_Stand");
+        pantsAnime.SetTrigger("B_Stand");
+        handsAnime.SetTrigger("B_Stand");
+        footAnime.SetTrigger("B_Stand");
+    }
+
 
 
     private void Ani_Idle()
@@ -343,7 +363,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Land()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Jump_Land_C"))
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.BattleBase.B_Jump_Land_C"))
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
@@ -363,7 +383,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_DashLand()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Dash_Jump_End"))
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.BattleBase.B_Dash_Jump_End"))
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
@@ -390,7 +410,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Ani_Evade()
     {
-        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Base Action.B_Evade_F"))
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.BattleBase.B_Evade_F"))
         {
             float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
