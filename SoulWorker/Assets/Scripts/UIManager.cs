@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-using MyEnum;
-using System.Dynamic;
+using MyStruct;
 
 public partial class UIManager : MonoBehaviour
 {
@@ -37,6 +36,15 @@ public partial class UIManager : MonoBehaviour
 
     [SerializeField] private Image m_characterinfo;     // 캐릭터 정보 창
     public RectTransform m_equipmentTransform;          // 장비 창 위치
+    public Text m_equipmentHP;                  // 캐릭터 정보 HP
+    public Text m_equipmentAttack;              // 캐릭터 정보 공격력
+    public Text m_equipmentCritical;            // 캐릭터 정보 치명타
+    public Text m_equipmentAttackSpeed;         // 캐릭터 정보 공격 속도
+    public Text m_equipmentAccuracy;            // 캐릭터 정보 적중도
+    public Text m_equipmentArmourBreak;         // 캐릭터 정보 적 방어구 관통
+    public Text m_equipmentExtraDmgToEnemy;     // 캐릭터 정보 적 추가 피해 일반
+    public Text m_equipmentExtraDmgToBossNamed; // 캐릭터 정보 적 추가 피해 네임드/보스
+
 
     private int boosHpBarNum = -1;      // 현재 보스 체력 줄
 
@@ -129,6 +137,11 @@ public partial class UIManager : MonoBehaviour
         {
             m_characterinfo.gameObject.SetActive(true);
         }
+    }
+
+    public void UpdateEquipment(ref PlayerData data)
+    {
+        m_equipmentHP.text = data.hp.ToString();
     }
 
     private void Update()

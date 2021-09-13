@@ -103,6 +103,8 @@ public partial class HaruInfo : PlayerInfo
     {
         // 텍스처 마스크 검사
         CheckTextureMask();
+        // 장비창 갱신
+        UIManager.Instance.UpdateEquipment(ref currentPlayerData);
 
         // 스킬 슬롯 생성
         skillSlot = new HaruSkill[3, 6];

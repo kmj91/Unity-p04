@@ -5602,7 +5602,7 @@ GameObject:
   - component: {fileID: 1688344281}
   - component: {fileID: 1688344280}
   m_Layer: 5
-  m_Name: extraDmgToBossNamed
+  m_Name: ExtraDmgToBossNamed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5806,6 +5806,14 @@ MonoBehaviour:
   - {fileID: 8795594432789449632, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   m_characterinfo: {fileID: 1401884273}
   m_equipmentTransform: {fileID: 15481547}
+  m_equipmentHP: {fileID: 1586758294}
+  m_equipmentAttack: {fileID: 576624608}
+  m_equipmentCritical: {fileID: 783448114}
+  m_equipmentAttackSpeed: {fileID: 378720649}
+  m_equipmentAccuracy: {fileID: 638748758}
+  m_equipmentArmourBreak: {fileID: 999567234}
+  m_equipmentExtraDmgToEnemy: {fileID: 523537192}
+  m_equipmentExtraDmgToBossNamed: {fileID: 1751180743}
 --- !u!1 &1734086452
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,7 +5985,7 @@ GameObject:
   - component: {fileID: 1751180744}
   - component: {fileID: 1751180743}
   m_Layer: 5
-  m_Name: extraDmgToBossNamed
+  m_Name: ExtraDmgToBossNamed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
