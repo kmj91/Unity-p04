@@ -142,6 +142,13 @@ public partial class UIManager : MonoBehaviour
     public void UpdateEquipment(ref PlayerData data)
     {
         m_equipmentHP.text = data.hp.ToString();
+        m_equipmentAttack.text = data.minAtk + " - " + data.maxAtk;
+        m_equipmentCritical.text = data.criticalRate.ToString("F1") + "% (+" + data.criticalDamage + ")";
+        m_equipmentAttackSpeed.text = (data.atkSpeed * 100f).ToString("F1") + "%";
+        m_equipmentAccuracy.text = data.accuracy.ToString();
+        m_equipmentArmourBreak.text = data.armourBreak.ToString("F1") + "%";
+        m_equipmentExtraDmgToEnemy.text = data.extraDmgToEnemy.ToString("F1") + "%";
+        m_equipmentExtraDmgToBossNamed.text = data.extraDmgToBossNamed.ToString("F1") + "%";
     }
 
     private void Update()
