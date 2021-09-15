@@ -5814,6 +5814,13 @@ MonoBehaviour:
   m_equipmentArmourBreak: {fileID: 999567234}
   m_equipmentExtraDmgToEnemy: {fileID: 523537192}
   m_equipmentExtraDmgToBossNamed: {fileID: 1751180743}
+  m_equipmentStamina: {fileID: 333114643}
+  m_equipmentMoveSpeed: {fileID: 1558119063}
+  m_equipmentDefense: {fileID: 1861997368}
+  m_equipmentEvade: {fileID: 1407895109}
+  m_equipmentDamageReduction: {fileID: 1751377627}
+  m_equipmentCriticalResistance: {fileID: 17626068}
+  m_equipmentShorterCooldown: {fileID: 2050734020}
 --- !u!1 &1734086452
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,6 +44,13 @@ public partial class UIManager : MonoBehaviour
     public Text m_equipmentArmourBreak;         // 캐릭터 정보 적 방어구 관통
     public Text m_equipmentExtraDmgToEnemy;     // 캐릭터 정보 적 추가 피해 일반
     public Text m_equipmentExtraDmgToBossNamed; // 캐릭터 정보 적 추가 피해 네임드/보스
+    public Text m_equipmentStamina;             // 스태미나
+    public Text m_equipmentMoveSpeed;           // 이동속도
+    public Text m_equipmentDefense;             // 방어도
+    public Text m_equipmentEvade;               // 회피도
+    public Text m_equipmentDamageReduction;     // 피해 감소
+    public Text m_equipmentCriticalResistance;  // 치명타 저항
+    public Text m_equipmentShorterCooldown;     // 재사용 대기시간 감소
 
 
     private int boosHpBarNum = -1;      // 현재 보스 체력 줄
