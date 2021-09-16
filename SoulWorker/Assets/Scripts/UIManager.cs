@@ -156,6 +156,13 @@ public partial class UIManager : MonoBehaviour
         m_equipmentArmourBreak.text = data.armourBreak.ToString("F1") + "%";
         m_equipmentExtraDmgToEnemy.text = data.extraDmgToEnemy.ToString("F1") + "%";
         m_equipmentExtraDmgToBossNamed.text = data.extraDmgToBossNamed.ToString("F1") + "%";
+        m_equipmentStamina.text = data.stamina.ToString();
+        m_equipmentMoveSpeed.text = data.moveSpeed.ToString("F1") + "%";
+        m_equipmentDefense.text = data.defense.ToString();
+        m_equipmentEvade.text = data.evade.ToString();
+        m_equipmentDamageReduction.text = data.damageReduction.ToString("F1") + "%";
+        m_equipmentCriticalResistance.text = data.criticalResistance.ToString("F1") + "%";
+        m_equipmentShorterCooldown.text = data.shorterCooldown.ToString("F1") + "%";
     }
 
     private void Update()

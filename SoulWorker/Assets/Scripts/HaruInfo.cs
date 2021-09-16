@@ -89,7 +89,7 @@ public partial class HaruInfo : PlayerInfo
 
             defense = 7f,
             evade = 0f,
-            damageReduction = 50f,
+            damageReduction = 0f,
             criticalResistance = 0f,
             shorterCooldown = 0f,
 
