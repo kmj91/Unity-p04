@@ -1,7 +1,22 @@
 fileFormatVersion: 2
 guid: cf0711a92c96a1042b3672c94c26f35e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7930859384514586395
+    second: slot_hotkey1_on
+  - first:
+      213: 3603545575912139244
+    second: slot_hotkey2_off
+  - first:
+      213: 8096243213199412086
+    second: slot_hotkey2_on
+  - first:
+      213: 7173325555432314709
+    second: slot_hotkey2_off
+  - first:
+      213: 7752005268254635539
+    second: slot_hotkey3_on
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,11 +100,116 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: slot_hotkey1_on
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 584
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17a0993792101e60800000000000000
+      internalID: 7930859384514586395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slot_hotkey1_off
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 584
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce96c20eb9d520230800000000000000
+      internalID: 3603545575912139244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slot_hotkey2_on
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 513
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b0be18e42ab5070800000000000000
+      internalID: 8096243213199412086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slot_hotkey2_off
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 579
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55756c53695cc8360800000000000000
+      internalID: 7173325555432314709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slot_hotkey3_on
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 579
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 316364738b7a49b60800000000000000
+      internalID: 7752005268254635539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 628538686820ae649b7266f234aaebf9
     internalID: 0
     vertices: []
     indices: 
