@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 6357ffc7791fabe4aa85491f90d7f6e8
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8628314931101364987
+    second: slot_akashic
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,11 +88,32 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: slot_akashic
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 509
+        width: 70
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf2fe7e07beedb770800000000000000
+      internalID: 8628314931101364987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 38765a51de3e58b419e23595e98e0e20
     internalID: 0
     vertices: []
     indices: 
