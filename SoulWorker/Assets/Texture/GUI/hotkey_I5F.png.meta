@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: c49fff4c21535d24ca8583ce02a862db
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8630238208915832184
+    second: slot_hotkeyLabel1
+  - first:
+      213: -603205964077174357
+    second: slot_hotkeyLabel2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,11 +91,53 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: slot_hotkeyLabel1
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 925
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87d7e611de3c4c770800000000000000
+      internalID: 8630238208915832184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slot_hotkeyLabel2
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 901
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba178c02f5bf0a7f0800000000000000
+      internalID: -603205964077174357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b2075a6b8e1568e409fff25ebd9f91c9
     internalID: 0
     vertices: []
     indices: 
