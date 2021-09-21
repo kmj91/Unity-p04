@@ -1,0 +1,1448 @@
+fileFormatVersion: 2
+guid: 286d4ebb4332ed8499c82dbb61b56c0f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5985455139255193407
+    second: hotkey_soulVapoBar1r_0
+  - first:
+      213: 2419576716245522459
+    second: hotkey_soulVapoBar1r_1
+  - first:
+      213: -2807388162121283459
+    second: hotkey_soulVapoBar1r_2
+  - first:
+      213: 1639859375904863453
+    second: hotkey_soulVapoBar1r_3
+  - first:
+      213: 4441749947462899248
+    second: hotkey_soulVapoBar1r_4
+  - first:
+      213: 4593460176883143914
+    second: hotkey_soulVapoBar1r_5
+  - first:
+      213: -1058021263264950414
+    second: hotkey_soulVapoBar1r_6
+  - first:
+      213: -3905334602087568593
+    second: hotkey_soulVapoBar1r_7
+  - first:
+      213: -7854878605216189609
+    second: hotkey_soulVapoBar1r_8
+  - first:
+      213: -794418300437476523
+    second: hotkey_soulVapoBar1r_9
+  - first:
+      213: 8257032155063245307
+    second: hotkey_soulVapoBar1r_10
+  - first:
+      213: 8504524184946204257
+    second: hotkey_soulVapoBar1r_11
+  - first:
+      213: 8443171276213753576
+    second: hotkey_soulVapoBar1r_12
+  - first:
+      213: -1396288288849684622
+    second: hotkey_soulVapoBar1r_13
+  - first:
+      213: -2128258785994691092
+    second: hotkey_soulVapoBar1r_14
+  - first:
+      213: 194529621315746813
+    second: hotkey_soulVapoBar1r_15
+  - first:
+      213: 1564591467757632985
+    second: hotkey_soulVapoBar1r_16
+  - first:
+      213: -9155947409876060714
+    second: hotkey_soulVapoBar1r_17
+  - first:
+      213: -1639808714229484261
+    second: hotkey_soulVapoBar1r_18
+  - first:
+      213: -4381453245330422799
+    second: hotkey_soulVapoBar1r_19
+  - first:
+      213: 8682125164554081462
+    second: hotkey_soulVapoBar1r_20
+  - first:
+      213: -1370552448291829177
+    second: hotkey_soulVapoBar1r_21
+  - first:
+      213: -1205463675389441611
+    second: hotkey_soulVapoBar1r_22
+  - first:
+      213: 7950528523349313505
+    second: hotkey_soulVapoBar1r_23
+  - first:
+      213: -4414926888190502123
+    second: hotkey_soulVapoBar1r_24
+  - first:
+      213: 7968200776358274018
+    second: hotkey_soulVapoBar1r_25
+  - first:
+      213: -8748550517396722406
+    second: hotkey_soulVapoBar1r_26
+  - first:
+      213: -6375546132543110671
+    second: hotkey_soulVapoBar1r_27
+  - first:
+      213: 1500476972247767864
+    second: hotkey_soulVapoBar1r_28
+  - first:
+      213: -3785568475016092525
+    second: hotkey_soulVapoBar1r_29
+  - first:
+      213: 7586246874155010604
+    second: hotkey_soulVapoBar1r_30
+  - first:
+      213: -9175386984528528835
+    second: hotkey_soulVapoBar1r_31
+  - first:
+      213: 4307119102091665478
+    second: hotkey_soulVapoBar1r_32
+  - first:
+      213: -2594123586324183940
+    second: hotkey_soulVapoBar1r_33
+  - first:
+      213: -8917593610678066114
+    second: hotkey_soulVapoBar1r_34
+  - first:
+      213: -6189472448327581650
+    second: hotkey_soulVapoBar1r_35
+  - first:
+      213: -9095493797926758588
+    second: hotkey_soulVapoBar1r_36
+  - first:
+      213: -4998747887783102655
+    second: hotkey_soulVapoBar1r_37
+  - first:
+      213: -8630549021705265607
+    second: hotkey_soulVapoBar1r_38
+  - first:
+      213: 6108551189285157357
+    second: hotkey_soulVapoBar1r_39
+  - first:
+      213: 4735816255797825511
+    second: hotkey_soulVapoBar1r_40
+  - first:
+      213: 2058580535969846652
+    second: hotkey_soulVapoBar1r_41
+  - first:
+      213: -3922748444819696965
+    second: hotkey_soulVapoBar1r_42
+  - first:
+      213: -3426815108259736517
+    second: hotkey_soulVapoBar1r_43
+  - first:
+      213: -3319236556792830854
+    second: hotkey_soulVapoBar1r_44
+  - first:
+      213: -7449865411241260105
+    second: hotkey_soulVapoBar1r_45
+  - first:
+      213: -5374617960143885664
+    second: hotkey_soulVapoBar1r_46
+  - first:
+      213: 6120378572756682453
+    second: hotkey_soulVapoBar1r_47
+  - first:
+      213: -1057882321350150133
+    second: hotkey_soulVapoBar1r_48
+  - first:
+      213: -6553944170671895028
+    second: hotkey_soulVapoBar1r_49
+  - first:
+      213: 2209447065777326040
+    second: hotkey_soulVapoBar1r_50
+  - first:
+      213: 4241302034239180566
+    second: hotkey_soulVapoBar1r_51
+  - first:
+      213: 1702620380370715192
+    second: hotkey_soulVapoBar1r_52
+  - first:
+      213: 6454635052545092711
+    second: hotkey_soulVapoBar1r_53
+  - first:
+      213: -8229823199361059027
+    second: hotkey_soulVapoBar1r_54
+  - first:
+      213: -6791989164030222871
+    second: hotkey_soulVapoBar1r_55
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c078ad53446feca0800000000000000
+      internalID: -5985455139255193407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b18de963430149120800000000000000
+      internalID: 2419576716245522459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_2
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d78cf1a37572a09d0800000000000000
+      internalID: -2807388162121283459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_3
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd4376ef963f1c610800000000000000
+      internalID: 1639859375904863453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_4
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036d2a73b0444ad30800000000000000
+      internalID: 4441749947462899248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_5
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4d50591bf3fbf30800000000000000
+      internalID: 4593460176883143914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_6
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277584644472151f0800000000000000
+      internalID: -1058021263264950414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_7
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b6789eed67dc9c0800000000000000
+      internalID: -3905334602087568593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_8
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753f546868dddf290800000000000000
+      internalID: -7854878605216189609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_9
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 380
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55bca57c3c8a9f4f0800000000000000
+      internalID: -794418300437476523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9d5855ffed69270800000000000000
+      internalID: 8257032155063245307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_11
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16edf63ffa3260670800000000000000
+      internalID: 8504524184946204257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_12
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e69088ba8b2c2570800000000000000
+      internalID: 8443171276213753576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_13
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277931bf2336f9ce0800000000000000
+      internalID: -1396288288849684622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_14
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cedaeaef8e7e672e0800000000000000
+      internalID: -2128258785994691092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_15
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfbf0d0f8ab13b200800000000000000
+      internalID: 194529621315746813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_16
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ddfc4e76ab86b510800000000000000
+      internalID: 1564591467757632985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_17
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5fd2c475a8fe080800000000000000
+      internalID: -9155947409876060714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_18
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b15f2c899aa3e39e0800000000000000
+      internalID: -1639808714229484261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_19
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 304
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f30910cc73f133c0800000000000000
+      internalID: -4381453245330422799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b4d9b856da1d7870800000000000000
+      internalID: 8682125164554081462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_21
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a068d4fc1dafce0800000000000000
+      internalID: -1370552448291829177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_22
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b986ce8c25554fe0800000000000000
+      internalID: -1205463675389441611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_23
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e7c8da7193f55e60800000000000000
+      internalID: 7950528523349313505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_24
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b9510f2670bb2c0800000000000000
+      internalID: -4414926888190502123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_25
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e3a3d5836cb49e60800000000000000
+      internalID: 7968200776358274018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_26
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1d220ff7a7e69680800000000000000
+      internalID: -8748550517396722406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_27
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f107a052928587a0800000000000000
+      internalID: -6375546132543110671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_28
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83b5b7c3bd3c2d410800000000000000
+      internalID: 1500476972247767864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_29
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 228
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394afbd5785f67bc0800000000000000
+      internalID: -3785568475016092525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a4d60a653c74960800000000000000
+      internalID: 7586246874155010604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_31
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3a3f6e962a7aa080800000000000000
+      internalID: -9175386984528528835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_32
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6402975d006f5cb30800000000000000
+      internalID: 4307119102091665478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_33
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c744fada752dffbd0800000000000000
+      internalID: -2594123586324183940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_34
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e34ad38cbd75e3480800000000000000
+      internalID: -8917593610678066114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_35
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e200e5af9939a1aa0800000000000000
+      internalID: -6189472448327581650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_36
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4479ecda49056c180800000000000000
+      internalID: -9095493797926758588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_37
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14734f2d741e0aab0800000000000000
+      internalID: -4998747887783102655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_38
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e99a034612a3880800000000000000
+      internalID: -8630549021705265607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_39
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 152
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de9b1a131fee5c450800000000000000
+      internalID: 6108551189285157357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef89501bcff8b140800000000000000
+      internalID: 4735816255797825511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_41
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c751404371c819c10800000000000000
+      internalID: 2058580535969846652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_42
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb25e43b2199f89c0800000000000000
+      internalID: -3922748444819696965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_43
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b349c39a0d18170d0800000000000000
+      internalID: -3426815108259736517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_44
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a746fda00f3bfe1d0800000000000000
+      internalID: -3319236556792830854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_45
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bbce7a21e2cc9890800000000000000
+      internalID: -7449865411241260105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_46
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aa6032f0758965b0800000000000000
+      internalID: -5374617960143885664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_47
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d6031082e3ffe450800000000000000
+      internalID: 6120378572756682453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_48
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0832c532a5a151f0800000000000000
+      internalID: -1057882321350150133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_49
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 76
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0e0c554086bb05a0800000000000000
+      internalID: -6553944170671895028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d7cfa1766889ae10800000000000000
+      internalID: 2209447065777326040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_51
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 0
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61fc7ff8ab12cda30800000000000000
+      internalID: 4241302034239180566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_52
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 0
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 832465f073ce0a710800000000000000
+      internalID: 1702620380370715192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_53
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c2cb5d168739950800000000000000
+      internalID: 6454635052545092711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_54
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27b0d5576bc9cd80800000000000000
+      internalID: -8229823199361059027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVapoBar1r_55
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 0
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed1daf37d10eb1a0800000000000000
+      internalID: -6791989164030222871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e8daeceb6acf984409cd6d1fc04edc89
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
