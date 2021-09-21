@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: b2661e5e1eeb10848a5e28018e6eb075
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5293707817099746207
+    second: hotkey_skillCooldown
+  - first:
+      213: -7586744022604126847
+    second: hotkey_soulVaporGaugeBG
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,11 +91,53 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: hotkey_skillCooldown
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 835
+        width: 56
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 164af01a9c8f886b0800000000000000
+      internalID: -5293707817099746207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVaporGaugeBG
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 317
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 185ecdaf18876b690800000000000000
+      internalID: -7586744022604126847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c89fa9ad6c4bcf04bbbc885f3046ea2e
     internalID: 0
     vertices: []
     indices: 

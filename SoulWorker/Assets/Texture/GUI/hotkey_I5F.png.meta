@@ -4,10 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 8630238208915832184
-    second: slot_hotkeyLabel1
+    second: hotkey_label1
   - first:
       213: -603205964077174357
-    second: slot_hotkeyLabel2
+    second: hotkey_label2
+  - first:
+      213: -3726181860569428081
+    second: hotkey_soulVaporFrame
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,7 +96,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slot_hotkeyLabel1
+      name: hotkey_label1
       rect:
         serializedVersion: 2
         x: 989
@@ -114,7 +117,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_hotkeyLabel2
+      name: hotkey_label2
       rect:
         serializedVersion: 2
         x: 989
@@ -130,6 +133,27 @@ TextureImporter:
       bones: []
       spriteID: ba178c02f5bf0a7f0800000000000000
       internalID: -603205964077174357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVaporFrame
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 7
+        width: 115
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f41480751f94cc0800000000000000
+      internalID: -3726181860569428081
       vertices: []
       indices: 
       edges: []

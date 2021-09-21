@@ -4,37 +4,37 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -9024230061371181031
-    second: image_profile
+    second: equipment_icon_profile
   - first:
       213: -3656179687815517358
-    second: image_profile
+    second: equipment_icon_profile
   - first:
       213: -7110711525081356688
-    second: slot_head
+    second: equipment_slot_head
   - first:
       213: 5604467828596771352
-    second: slot_shoulder
+    second: equipment_slot_shoulder
   - first:
       213: -1738711850349009984
-    second: slot_body
+    second: equipment_slot_body
   - first:
       213: 1540654091404905299
-    second: slot_leg
+    second: equipment_slot_leg
   - first:
       213: 7678324241598646011
-    second: slot_earring
+    second: equipment_slot_earring
   - first:
       213: 1931794511305634317
-    second: slot_pendant
+    second: equipment_slot_pendant
   - first:
       213: -7178582453356726497
-    second: slot_ring
+    second: equipment_slot_ring
   - first:
       213: 4242253996141517007
     second: bg_status
   - first:
       213: 8512353754725531441
-    second: slot_weapon
+    second: equipment_slot_weapon
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image_profile
+      name: equipment_icon_profile
       rect:
         serializedVersion: 2
         x: 565
@@ -141,7 +141,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: image_characterLog
+      name: equipment_icon_characterLog
       rect:
         serializedVersion: 2
         x: 611
@@ -162,7 +162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_head
+      name: equipment_slot_head
       rect:
         serializedVersion: 2
         x: 851
@@ -183,7 +183,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_shoulder
+      name: equipment_slot_shoulder
       rect:
         serializedVersion: 2
         x: 865
@@ -204,7 +204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_body
+      name: equipment_slot_body
       rect:
         serializedVersion: 2
         x: 227
@@ -225,7 +225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_leg
+      name: equipment_slot_leg
       rect:
         serializedVersion: 2
         x: 917
@@ -246,7 +246,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_earring
+      name: equipment_slot_earring
       rect:
         serializedVersion: 2
         x: 799
@@ -267,7 +267,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_pendant
+      name: equipment_slot_pendant
       rect:
         serializedVersion: 2
         x: 747
@@ -288,7 +288,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_ring
+      name: equipment_slot_ring
       rect:
         serializedVersion: 2
         x: 487
@@ -330,7 +330,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_weapon
+      name: equipment_slot_weapon
       rect:
         serializedVersion: 2
         x: 123

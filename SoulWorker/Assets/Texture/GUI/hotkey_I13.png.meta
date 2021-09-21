@@ -4,19 +4,19 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 7930859384514586395
-    second: slot_hotkey1_on
+    second: hotkey_slot1_on
   - first:
       213: 3603545575912139244
-    second: slot_hotkey2_off
+    second: hotkey_slot2_off
   - first:
       213: 8096243213199412086
-    second: slot_hotkey2_on
+    second: hotkey_slot2_on
   - first:
       213: 7173325555432314709
-    second: slot_hotkey2_off
+    second: hotkey_slot2_off
   - first:
       213: 7752005268254635539
-    second: slot_hotkey3_on
+    second: hotkey_slot3_on
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -102,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slot_hotkey1_on
+      name: hotkey_slot1_on
       rect:
         serializedVersion: 2
         x: 500
@@ -123,7 +123,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_hotkey1_off
+      name: hotkey_slot1_off
       rect:
         serializedVersion: 2
         x: 442
@@ -132,7 +132,7 @@ TextureImporter:
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_hotkey2_on
+      name: hotkey_slot2_on
       rect:
         serializedVersion: 2
         x: 405
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_hotkey2_off
+      name: hotkey_slot2_off
       rect:
         serializedVersion: 2
         x: 379
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slot_hotkey3_on
+      name: hotkey_slot3_on
       rect:
         serializedVersion: 2
         x: 553
