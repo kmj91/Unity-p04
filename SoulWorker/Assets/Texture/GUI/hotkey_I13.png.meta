@@ -23,6 +23,12 @@ TextureImporter:
   - first:
       213: 3106685080166942531
     second: hotkey_soulVaporSide
+  - first:
+      213: 1536595818614860859
+    second: hotkey_cooldownBack
+  - first:
+      213: 4781581541771219741
+    second: hotkey_cooldownFront
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -242,7 +248,7 @@ TextureImporter:
         width: 68
         height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -250,6 +256,48 @@ TextureImporter:
       bones: []
       spriteID: 3474b58de992d1b20800000000000000
       internalID: 3106685080166942531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_cooldownBack
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 584
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3ca3eb71c5135510800000000000000
+      internalID: 1536595818614860859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_cooldownFront
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 584
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1396dd04179b5240800000000000000
+      internalID: 4781581541771219741
       vertices: []
       indices: 
       edges: []

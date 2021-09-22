@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: -7586744022604126847
     second: hotkey_soulVaporGaugeBG
+  - first:
+      213: 3887052450766312546
+    second: hotkey_soulVaporLabelBG
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,6 +133,27 @@ TextureImporter:
       bones: []
       spriteID: 185ecdaf18876b690800000000000000
       internalID: -7586744022604126847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVaporLabelBG
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 608
+        width: 95
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 264dc370c9591f530800000000000000
+      internalID: 3887052450766312546
       vertices: []
       indices: 
       edges: []
