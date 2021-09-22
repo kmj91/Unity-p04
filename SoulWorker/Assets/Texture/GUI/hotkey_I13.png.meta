@@ -17,6 +17,12 @@ TextureImporter:
   - first:
       213: 7752005268254635539
     second: hotkey_slot3_on
+  - first:
+      213: 2647304712242268247
+    second: hotkey_soulVaporBar1
+  - first:
+      213: 3106685080166942531
+    second: hotkey_soulVaporSide
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -202,6 +208,48 @@ TextureImporter:
       bones: []
       spriteID: 316364738b7a49b60800000000000000
       internalID: 7752005268254635539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVaporBar1
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 870
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7580b691c9d1db420800000000000000
+      internalID: 2647304712242268247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hotkey_soulVaporSide
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 645
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3474b58de992d1b20800000000000000
+      internalID: 3106685080166942531
       vertices: []
       indices: 
       edges: []
