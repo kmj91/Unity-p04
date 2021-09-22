@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         var uiPlayer = Instantiate(playerCtrl.gameObject);
 
         // 부모 지정
-        uiPlayer.transform.parent = uiMgr.m_equipmentTransform;
+        uiPlayer.transform.parent = uiMgr.GetEquipmentTransform();
         uiPlayer.transform.localPosition = new Vector3(0f, -150f, -100f);
         uiPlayer.transform.localRotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
         uiPlayer.transform.localScale = new Vector3(180f, 180f, 180f);

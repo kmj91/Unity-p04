@@ -32,25 +32,25 @@ public partial class UIManager : MonoBehaviour
     [SerializeField] private Image bossSuperArmorBreakEffect;   // 보스 슈퍼 아머 브레이크 이펙트
     [SerializeField] private Image bossSuperArmorBreak;         // 보스 슈퍼 아머 브레이크 텍스트 이미지
 
-    [SerializeField] private Sprite[] bossHpBarSprite;  // 보스 체력바 스프라이트
+    [SerializeField] private Sprite[] bossHpBarSprite;          // 보스 체력바 스프라이트
 
-    [SerializeField] private Image m_characterinfo;     // 캐릭터 정보 창
-    public RectTransform m_equipmentTransform;          // 장비 창 위치
-    public Text m_equipmentHP;                  // 캐릭터 정보 HP
-    public Text m_equipmentAttack;              // 캐릭터 정보 공격력
-    public Text m_equipmentCritical;            // 캐릭터 정보 치명타
-    public Text m_equipmentAttackSpeed;         // 캐릭터 정보 공격 속도
-    public Text m_equipmentAccuracy;            // 캐릭터 정보 적중도
-    public Text m_equipmentArmourBreak;         // 캐릭터 정보 적 방어구 관통
-    public Text m_equipmentExtraDmgToEnemy;     // 캐릭터 정보 적 추가 피해 일반
-    public Text m_equipmentExtraDmgToBossNamed; // 캐릭터 정보 적 추가 피해 네임드/보스
-    public Text m_equipmentStamina;             // 스태미나
-    public Text m_equipmentMoveSpeed;           // 이동속도
-    public Text m_equipmentDefense;             // 방어도
-    public Text m_equipmentEvade;               // 회피도
-    public Text m_equipmentDamageReduction;     // 피해 감소
-    public Text m_equipmentCriticalResistance;  // 치명타 저항
-    public Text m_equipmentShorterCooldown;     // 재사용 대기시간 감소
+    [SerializeField] private Image m_characterinfo;                 // 캐릭터 정보 창
+    [SerializeField] private RectTransform m_equipmentTransform;    // 장비 창 위치
+    [SerializeField] private Text m_equipmentHP;                    // 캐릭터 정보 HP
+    [SerializeField] private Text m_equipmentAttack;                // 캐릭터 정보 공격력
+    [SerializeField] private Text m_equipmentCritical;              // 캐릭터 정보 치명타
+    [SerializeField] private Text m_equipmentAttackSpeed;           // 캐릭터 정보 공격 속도
+    [SerializeField] private Text m_equipmentAccuracy;              // 캐릭터 정보 적중도
+    [SerializeField] private Text m_equipmentArmourBreak;           // 캐릭터 정보 적 방어구 관통
+    [SerializeField] private Text m_equipmentExtraDmgToEnemy;       // 캐릭터 정보 적 추가 피해 일반
+    [SerializeField] private Text m_equipmentExtraDmgToBossNamed;   // 캐릭터 정보 적 추가 피해 네임드/보스
+    [SerializeField] private Text m_equipmentStamina;               // 스태미나
+    [SerializeField] private Text m_equipmentMoveSpeed;             // 이동속도
+    [SerializeField] private Text m_equipmentDefense;               // 방어도
+    [SerializeField] private Text m_equipmentEvade;                 // 회피도
+    [SerializeField] private Text m_equipmentDamageReduction;       // 피해 감소
+    [SerializeField] private Text m_equipmentCriticalResistance;    // 치명타 저항
+    [SerializeField] private Text m_equipmentShorterCooldown;       // 재사용 대기시간 감소
 
 
     private int boosHpBarNum = -1;      // 현재 보스 체력 줄
@@ -133,6 +133,12 @@ public partial class UIManager : MonoBehaviour
         bossSuperArmorBar.fillAmount = currentSA / maxSA;
     }
 
+    // GET 장비창 트랜스폼
+    public Transform GetEquipmentTransform()
+    {
+        return m_equipmentTransform;
+    }
+
     // 캐릭터 정보 창
     public void Characterinfo()
     {
@@ -146,6 +152,7 @@ public partial class UIManager : MonoBehaviour
         }
     }
 
+    // 캐릭터 스텟 셋
     public void UpdateEquipment(ref PlayerData data)
     {
         m_equipmentHP.text = data.hp.ToString();
