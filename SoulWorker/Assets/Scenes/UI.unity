@@ -10936,6 +10936,30 @@ MonoBehaviour:
   m_equipmentDamageReduction: {fileID: 1751377627}
   m_equipmentCriticalResistance: {fileID: 17626068}
   m_equipmentShorterCooldown: {fileID: 2050734020}
+  m_hotkeySkillIcon1: {fileID: 341904683}
+  m_hotkeySkillIcon2: {fileID: 1107671268}
+  m_hotkeySkillIcon3: {fileID: 628958015}
+  m_hotkeySkillIcon4: {fileID: 599492695}
+  m_hotkeySkillIcon5: {fileID: 278920408}
+  m_hotkeySkillIcon6: {fileID: 1663116627}
+  m_hotkeySkillCooldownBack1: {fileID: 1948934418}
+  m_hotkeySkillCooldownBack2: {fileID: 1826014924}
+  m_hotkeySkillCooldownBack3: {fileID: 16414393}
+  m_hotkeySkillCooldownBack4: {fileID: 2008328502}
+  m_hotkeySkillCooldownBack5: {fileID: 1324754356}
+  m_hotkeySkillCooldownBack6: {fileID: 257912313}
+  m_hotkeySkillCooldownFront1: {fileID: 1829850408}
+  m_hotkeySkillCooldownFront2: {fileID: 676307698}
+  m_hotkeySkillCooldownFront3: {fileID: 1364887291}
+  m_hotkeySkillCooldownFront4: {fileID: 643999673}
+  m_hotkeySkillCooldownFront5: {fileID: 1646464391}
+  m_hotkeySkillCooldownFront6: {fileID: 592831924}
+  m_hotkeySkillCooldownCount1: {fileID: 1937254324}
+  m_hotkeySkillCooldownCount2: {fileID: 760873492}
+  m_hotkeySkillCooldownCount3: {fileID: 728085604}
+  m_hotkeySkillCooldownCount4: {fileID: 492719227}
+  m_hotkeySkillCooldownCount5: {fileID: 1862836245}
+  m_hotkeySkillCooldownCount6: {fileID: 761489994}
 --- !u!1 &1734086452
 GameObject:
   m_ObjectHideFlags: 0
