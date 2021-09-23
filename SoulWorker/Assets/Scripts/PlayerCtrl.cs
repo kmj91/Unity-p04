@@ -181,7 +181,9 @@ public partial class PlayerCtrl : MonoBehaviour
         moveUpdate = new Action[(int)HaruState.End];
         moveUpdate[(int)HaruState.Idle] = Move_Idle;
         moveUpdate[(int)HaruState.Run] = Move_Run;
+        moveUpdate[(int)HaruState.RunEnd] = Move_RunEnd;
         moveUpdate[(int)HaruState.Dash] = Move_Dash;
+        moveUpdate[(int)HaruState.DashEnd] = Move_DashEnd;
         moveUpdate[(int)HaruState.Jump] = Move_Jump;
         moveUpdate[(int)HaruState.DashJump] = Move_DashJump;
         moveUpdate[(int)HaruState.Land] = Move_Land;
@@ -212,7 +214,9 @@ public partial class PlayerCtrl : MonoBehaviour
         animeUpdate = new Action[(int)HaruState.End];
         animeUpdate[(int)HaruState.Idle] = Ani_Idle;
         animeUpdate[(int)HaruState.Run] = Ani_Run;
+        animeUpdate[(int)HaruState.RunEnd] = Ani_RunEnd;
         animeUpdate[(int)HaruState.Dash] = Ani_Dash;
+        animeUpdate[(int)HaruState.DashEnd] = Ani_DashEnd;
         animeUpdate[(int)HaruState.Jump] = Ani_Jump;
         animeUpdate[(int)HaruState.DashJump] = Ani_DashJump;
         animeUpdate[(int)HaruState.Land] = Ani_Land;
@@ -259,6 +263,14 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)HaruState.Run, (int)HaruState.FirstBlade] = true;
         changeState[(int)HaruState.Run, (int)HaruState.PierceStep] = true;
         changeState[(int)HaruState.Run, (int)HaruState.SpinCutter] = true;
+
+        changeState[(int)HaruState.RunEnd, (int)HaruState.Dash] = true;
+        changeState[(int)HaruState.RunEnd, (int)HaruState.Jump] = true;
+        changeState[(int)HaruState.RunEnd, (int)HaruState.Evade] = true;
+        changeState[(int)HaruState.RunEnd, (int)HaruState.NormalAttack1] = true;
+        changeState[(int)HaruState.RunEnd, (int)HaruState.FirstBlade] = true;
+        changeState[(int)HaruState.RunEnd, (int)HaruState.PierceStep] = true;
+        changeState[(int)HaruState.RunEnd, (int)HaruState.SpinCutter] = true;
 
         changeState[(int)HaruState.Dash, (int)HaruState.Idle] = true;
         changeState[(int)HaruState.Dash, (int)HaruState.DashJump] = true;
@@ -384,10 +396,15 @@ public partial class PlayerCtrl : MonoBehaviour
             case HaruState.Idle:
                 break;
             case HaruState.Run:
+                SetSpeedZero();
+                break;
+            case HaruState.RunEnd:
                 break;
             case HaruState.Dash:
                 dash = false;
                 SetDashFalse();
+                break;
+            case HaruState.DashEnd:
                 break;
             case HaruState.Jump:
                 jump = false;
@@ -497,22 +514,31 @@ public partial class PlayerCtrl : MonoBehaviour
         {
             case HaruState.Idle:
                 SetSpeedZero();
+                SetTrigerBattleStandDuration();
                 break;
             case HaruState.Run:
+                SetTrigerBattleRun();
+                break;
+            case HaruState.RunEnd:
                 break;
             case HaruState.Dash:
                 dash = true;
                 SetDashTrue();
+                SetTrigerBattleDash();
+                break;
+            case HaruState.DashEnd:
                 break;
             case HaruState.Jump:
                 jump = true;
                 SetJumpTrue();
+                SetTrigerBattleJump();
                 break;
             case HaruState.DashJump:
                 dash = true;
                 jump = true;
                 SetDashTrue();
                 SetJumpTrue();
+                SetTrigerBattleDashJump();
                 break;
             case HaruState.Land:
                 lockInput = true;

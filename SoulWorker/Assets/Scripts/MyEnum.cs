@@ -68,7 +68,9 @@
     {
         Idle,
         Run,
+        RunEnd,
         Dash,
+        DashEnd,
         Jump,
         DashJump,
         Land,

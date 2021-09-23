@@ -305,6 +305,56 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetTrigger("B_Stand");
     }
 
+    private void SetTrigerBattleStandDuration()
+    {
+        hairAnime.SetTrigger("B_Stand_Duration");
+        faceAnime.SetTrigger("B_Stand_Duration");
+        bodyAnime.SetTrigger("B_Stand_Duration");
+        pantsAnime.SetTrigger("B_Stand_Duration");
+        handsAnime.SetTrigger("B_Stand_Duration");
+        footAnime.SetTrigger("B_Stand_Duration");
+    }
+
+    private void SetTrigerBattleRun()
+    {
+        hairAnime.SetTrigger("B_Run");
+        faceAnime.SetTrigger("B_Run");
+        bodyAnime.SetTrigger("B_Run");
+        pantsAnime.SetTrigger("B_Run");
+        handsAnime.SetTrigger("B_Run");
+        footAnime.SetTrigger("B_Run");
+    }
+
+    private void SetTrigerBattleDash()
+    {
+        hairAnime.SetTrigger("B_Dash_Start");
+        faceAnime.SetTrigger("B_Dash_Start");
+        bodyAnime.SetTrigger("B_Dash_Start");
+        pantsAnime.SetTrigger("B_Dash_Start");
+        handsAnime.SetTrigger("B_Dash_Start");
+        footAnime.SetTrigger("B_Dash_Start");
+    }
+
+    private void SetTrigerBattleJump()
+    {
+        hairAnime.SetTrigger("B_Jump_Start_F");
+        faceAnime.SetTrigger("B_Jump_Start_F");
+        bodyAnime.SetTrigger("B_Jump_Start_F");
+        pantsAnime.SetTrigger("B_Jump_Start_F");
+        handsAnime.SetTrigger("B_Jump_Start_F");
+        footAnime.SetTrigger("B_Jump_Start_F");
+    }
+
+    private void SetTrigerBattleDashJump()
+    {
+        hairAnime.SetTrigger("B_Dash_Jump_Start");
+        faceAnime.SetTrigger("B_Dash_Jump_Start");
+        bodyAnime.SetTrigger("B_Dash_Jump_Start");
+        pantsAnime.SetTrigger("B_Dash_Jump_Start");
+        handsAnime.SetTrigger("B_Dash_Jump_Start");
+        footAnime.SetTrigger("B_Dash_Jump_Start");
+    }
+
 
 
     private void Ani_Idle()
@@ -324,9 +374,31 @@ public partial class PlayerCtrl : MonoBehaviour
         footAnime.SetFloat("Speed", speedPer);
     }
 
+    private void Ani_RunEnd()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.BattleBase.B_Run_F_End") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            ChangeFlagFalse();
+            state = HaruState.Idle;
+            ChangeFlagTrue();
+        }
+    }
+
     private void Ani_Dash()
     {
 
+    }
+
+    private void Ani_DashEnd()
+    {
+        if (hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.BattleBase.B_Dash_End") &&
+            hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            ChangeFlagFalse();
+            state = HaruState.Idle;
+            ChangeFlagTrue();
+        }
     }
 
     private void Ani_Jump()

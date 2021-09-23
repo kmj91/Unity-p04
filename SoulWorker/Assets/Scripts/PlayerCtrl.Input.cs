@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using MyEnum;
+using System.Diagnostics;
 
 public partial class PlayerCtrl: MonoBehaviour
 {
@@ -10,9 +11,7 @@ public partial class PlayerCtrl: MonoBehaviour
 
         if (CheckState(state, HaruState.Idle))
         {
-            ChangeFlagFalse();
-            state = HaruState.Idle;
-            ChangeFlagTrue();
+            IdleBranch();
         }
     }
 
@@ -189,6 +188,28 @@ public partial class PlayerCtrl: MonoBehaviour
 
 
 
+
+    private void IdleBranch()
+    {
+        switch (state)
+        {
+            case HaruState.Run:
+                ChangeFlagFalse();
+                state = HaruState.RunEnd;
+                ChangeFlagTrue();
+                return;
+            case HaruState.Dash:
+                ChangeFlagFalse();
+                state = HaruState.DashEnd;
+                ChangeFlagTrue();
+                return;
+            default:
+                ChangeFlagFalse();
+                state = HaruState.Idle;
+                ChangeFlagTrue();
+                return;
+        }
+    }
 
     private void MoveBranch()
     {
