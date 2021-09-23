@@ -297,6 +297,13 @@ public partial class PlayerCtrl : MonoBehaviour
         changeState[(int)HaruState.NormalAttack5, (int)HaruState.Evade] = true;
 
         changeState[(int)HaruState.FirstBlade, (int)HaruState.FirstBlade02] = true;
+        changeState[(int)HaruState.FirstBlade, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.FirstBlade, (int)HaruState.Evade] = true;
+        changeState[(int)HaruState.FirstBlade, (int)HaruState.NormalAttack1] = true;
+
+        changeState[(int)HaruState.FirstBlade02, (int)HaruState.Run] = true;
+        changeState[(int)HaruState.FirstBlade02, (int)HaruState.Evade] = true;
+        changeState[(int)HaruState.FirstBlade02, (int)HaruState.NormalAttack1] = true;
 
         // 무기 장착
         weapon.transform.parent = weaponholder;
