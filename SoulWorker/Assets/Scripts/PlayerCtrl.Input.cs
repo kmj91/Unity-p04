@@ -204,6 +204,7 @@ public partial class PlayerCtrl: MonoBehaviour
                 return;
             default:
                 ChangeFlagFalse();
+                lastIdleChangeTime = Time.time;
                 state = HaruState.Idle;
                 ChangeFlagTrue();
                 return;
@@ -266,6 +267,7 @@ public partial class PlayerCtrl: MonoBehaviour
     private void EndNormalAttack()
     {
         ChangeFlagFalse();
+        lastIdleChangeTime = Time.time;
         state = HaruState.Idle;
         ChangeFlagTrue();
     }

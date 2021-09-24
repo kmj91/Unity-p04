@@ -52,9 +52,8 @@ public partial class PlayerCtrl : MonoBehaviour
     private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
     private float lastJumpTime;         // 상태가 점프로 변경된 시간
 
-    private HaruState lastState = HaruState.End;
-    private const float minTimeFsmChange = 0.1f;
-    private float lastFsmChangeTime;
+    private const float idleChangeDelay = 0.1f;   // 0.1초 정도 대기후 변환
+    private float lastIdleChangeTime;   // 상태가 대기로 변경된 시간
     
     private bool jump;                  // 점프 상태 플래그
     private bool dash;                  // 대쉬 상태 플래그
@@ -355,7 +354,14 @@ public partial class PlayerCtrl : MonoBehaviour
     // 상태 확인
     private bool CheckState(HaruState left, HaruState right)
     {
-        return changeState[(int)left, (int)right];
+        if (!changeState[(int)left, (int)right])
+            return false;
+
+        // 너무 빠르게 상태를 변환하려고 함
+        if (Time.time <= lastIdleChangeTime + idleChangeDelay)
+            return false;
+
+        return true;
     }
 
     private void PlayerRotation()

@@ -380,6 +380,7 @@ public partial class PlayerCtrl : MonoBehaviour
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
             ChangeFlagFalse();
+            lastIdleChangeTime = Time.time;
             state = HaruState.Idle;
             ChangeFlagTrue();
         }
@@ -396,6 +397,7 @@ public partial class PlayerCtrl : MonoBehaviour
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
             ChangeFlagFalse();
+            lastIdleChangeTime = Time.time;
             state = HaruState.Idle;
             ChangeFlagTrue();
         }
@@ -447,6 +449,7 @@ public partial class PlayerCtrl : MonoBehaviour
             if (0.95f <= time)
             {
                 ChangeFlagFalse();
+                lastIdleChangeTime = Time.time;
                 state = HaruState.Idle;
                 ChangeFlagTrue();
             }
@@ -474,6 +477,7 @@ public partial class PlayerCtrl : MonoBehaviour
             if (0.9f <= time)
             {
                 ChangeFlagFalse();
+                lastIdleChangeTime = Time.time;
                 state = HaruState.Idle;
                 ChangeFlagTrue();
             }
@@ -513,6 +517,7 @@ public partial class PlayerCtrl : MonoBehaviour
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
             ChangeFlagFalse();
+            lastIdleChangeTime = Time.time;
             state = HaruState.Idle;
             ChangeFlagTrue();
         }
@@ -524,6 +529,7 @@ public partial class PlayerCtrl : MonoBehaviour
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
             ChangeFlagFalse();
+            lastIdleChangeTime = Time.time;
             state = HaruState.Idle;
             ChangeFlagTrue();
         }
@@ -632,6 +638,7 @@ public partial class PlayerCtrl : MonoBehaviour
             hairAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
         {
             ChangeFlagFalse();
+            lastIdleChangeTime = Time.time;
             state = HaruState.Idle;
             ChangeFlagTrue();
         }
@@ -1011,6 +1018,7 @@ public partial class PlayerCtrl : MonoBehaviour
             if (0.99f <= time)
             {
                 ChangeFlagFalse();
+                lastIdleChangeTime = Time.time;
                 state = HaruState.Idle;
                 ChangeFlagTrue();
             }
@@ -1042,6 +1050,7 @@ public partial class PlayerCtrl : MonoBehaviour
             if (0.99f <= time)
             {
                 ChangeFlagFalse();
+                lastIdleChangeTime = Time.time;
                 state = HaruState.Idle;
                 ChangeFlagTrue();
             }
@@ -1073,6 +1082,7 @@ public partial class PlayerCtrl : MonoBehaviour
             if (0.99f <= time)
             {
                 ChangeFlagFalse();
+                lastIdleChangeTime = Time.time;
                 state = HaruState.Idle;
                 ChangeFlagTrue();
             }
@@ -1104,6 +1114,7 @@ public partial class PlayerCtrl : MonoBehaviour
             if (0.99f <= time)
             {
                 ChangeFlagFalse();
+                lastIdleChangeTime = Time.time;
                 state = HaruState.Idle;
                 ChangeFlagTrue();
             }
