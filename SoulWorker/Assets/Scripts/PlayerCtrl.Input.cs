@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 using MyEnum;
-using System.Diagnostics;
 
 public partial class PlayerCtrl: MonoBehaviour
 {
@@ -83,7 +82,7 @@ public partial class PlayerCtrl: MonoBehaviour
                 state = HaruState.DashJump;
                 ChangeFlagTrue();
 
-                fsmChangeTime = Time.realtimeSinceStartup;
+                lastJumpTime = Time.time;
                 currentVelocityY = jumpVelocity * 0.6f;
                 moveAnimeDir = modelTransform.forward;
                 oldInput = moveInput;
@@ -102,7 +101,7 @@ public partial class PlayerCtrl: MonoBehaviour
                 state = HaruState.Jump;
                 ChangeFlagTrue();
 
-                fsmChangeTime = Time.realtimeSinceStartup;
+                lastJumpTime = Time.time;
                 currentVelocityY = jumpVelocity;
                 moveInput = new Vector2(0, 0);
             }

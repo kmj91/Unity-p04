@@ -407,7 +407,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             // 점프 한지 얼마 안됬으면 무시
-            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+            if (Time.time - lastJumpTime <= 0.5f)
                 return;
 
             ChangeFlagFalse();
@@ -422,7 +422,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             // 점프 한지 얼마 안됬으면 무시
-            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+            if (Time.time - lastJumpTime <= 0.5f)
                 return;
 
             ChangeFlagFalse();
@@ -540,7 +540,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             // 점프 한지 얼마 안됬으면 무시
-            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+            if (Time.time - lastJumpTime <= 0.5f)
                 return;
 
             ChangeFlagFalse();
@@ -555,7 +555,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             // 점프 한지 얼마 안됬으면 무시
-            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+            if (Time.time - lastJumpTime <= 0.5f)
                 return;
 
             ChangeFlagFalse();
@@ -575,7 +575,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             // 점프 한지 얼마 안됬으면 무시
-            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+            if (Time.time - lastJumpTime <= 0.5f)
                 return;
 
             ChangeFlagFalse();
@@ -606,7 +606,7 @@ public partial class PlayerCtrl : MonoBehaviour
         if (characterController.isGrounded)
         {
             // 점프 한지 얼마 안됬으면 무시
-            if (Time.realtimeSinceStartup - fsmChangeTime <= 0.5f)
+            if (Time.time - lastJumpTime <= 0.5f)
                 return;
 
             ChangeFlagFalse();

@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
             // 찾음
             if (queue[iRear].backupKey == key &&
-                queue[iRear].time >= Time.realtimeSinceStartup - time)
+                queue[iRear].time >= Time.time - time)
             {
                 return true;
             }
@@ -639,98 +639,98 @@ public class GameManager : MonoBehaviour
     // 앞으로 이동
     private void KeyDown_Forward()
     {
-        KeyInfo key = new KeyInfo(KeyCode.W, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.W, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 뒤로 이동
     private void KeyDown_Back()
     {
-        KeyInfo key = new KeyInfo(KeyCode.S, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.S, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 왼쪽으로 이동
     private void KeyDown_Left()
     {
-        KeyInfo key = new KeyInfo(KeyCode.A, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.A, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 오른쪽으로 이동
     private void KeyDown_Right()
     {
-        KeyInfo key = new KeyInfo(KeyCode.D, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.D, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 마우스 왼쪽
     private void KeyDown_Mouse0()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Mouse0, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Mouse0, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 마우스 오른쪽
     private void KeyDown_Mouse1()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Mouse1, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Mouse1, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 점프
     private void KeyDown_Jump()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Space, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Space, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 회피
     private void KeyDown_Dvade()
     {
-        KeyInfo key = new KeyInfo(KeyCode.LeftShift, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.LeftShift, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 1
     private void KeyDown_Alpha1()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Alpha1, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Alpha1, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 2
     private void KeyDown_Alpha2()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Alpha2, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Alpha2, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 3
     private void KeyDown_Alpha3()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Alpha3, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Alpha3, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 4
     private void KeyDown_Alpha4()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Alpha4, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Alpha4, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 5
     private void KeyDown_Alpha5()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Alpha5, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Alpha5, Time.time);
         keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 6
     private void KeyDown_Alpha6()
     {
-        KeyInfo key = new KeyInfo(KeyCode.Alpha6, Time.realtimeSinceStartup);
+        KeyInfo key = new KeyInfo(KeyCode.Alpha6, Time.time);
         keyQueue.Enqueue(in key);
     }
 

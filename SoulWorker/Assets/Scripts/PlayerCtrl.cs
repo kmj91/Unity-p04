@@ -50,7 +50,12 @@ public partial class PlayerCtrl : MonoBehaviour
     private float speedSmoothVelocity;
     private float currentVelocityY;
     private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
-    private float fsmChangeTime;        // 상태가 변경되는 순간의 시간
+    private float lastJumpTime;         // 상태가 점프로 변경된 시간
+
+    private HaruState lastState = HaruState.End;
+    private const float minTimeFsmChange = 0.1f;
+    private float lastFsmChangeTime;
+    
     private bool jump;                  // 점프 상태 플래그
     private bool dash;                  // 대쉬 상태 플래그
     private bool upp;                   // 어퍼 상태 플래그
@@ -111,7 +116,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 state = HaruState.KD_Upp;
                 ChangeFlagTrue();
 
-                fsmChangeTime = Time.realtimeSinceStartup;
+                lastJumpTime = Time.time;
                 currentVelocityY = damageMessage.power;
                 moveAnimeDir = damageMessage.hitDir;
                 turnDir = -moveAnimeDir;
@@ -124,7 +129,7 @@ public partial class PlayerCtrl : MonoBehaviour
                     state = HaruState.KD_Ham_B;
                     ChangeFlagTrue();
 
-                    fsmChangeTime = Time.realtimeSinceStartup;
+                    lastJumpTime = Time.time;
                     turnDir = damageMessage.hitDir;
                 }
                 else
@@ -133,7 +138,7 @@ public partial class PlayerCtrl : MonoBehaviour
                     state = HaruState.KD_Ham_F;
                     ChangeFlagTrue();
 
-                    fsmChangeTime = Time.realtimeSinceStartup;
+                    lastJumpTime = Time.time;
                     turnDir = -damageMessage.hitDir;
                 }
 
@@ -486,6 +491,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 break;
             case HaruState.FirstBlade:
             case HaruState.FirstBlade02:
+            case HaruState.PierceStep:
+            case HaruState.SpinCutter:
                 normalAtk = false;
                 lockInput = false;
                 moveAttack = false;
@@ -496,10 +503,6 @@ public partial class PlayerCtrl : MonoBehaviour
                     // 무기 충돌 트리거 OFF
                     weapon.OffTrigger();
                 }
-                break;
-            case HaruState.PierceStep:
-                break;
-            case HaruState.SpinCutter:
                 break;
             default:
                 break;
