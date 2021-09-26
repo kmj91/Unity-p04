@@ -665,25 +665,4 @@ public partial class PlayerCtrl : MonoBehaviour
                 break;
         }
     }
-
-    private bool GetStateOfSkillSlot(int index, out HaruState state)
-    {
-        switch (playerInfo.skillSlot[index, 0])
-        {
-            case HaruSkill.FirstBlade:
-                state = HaruState.FirstBlade;
-                break;
-            case HaruSkill.PierceStep:
-                state = HaruState.PierceStep;
-                break;
-            case HaruSkill.SpinCutter:
-                state = HaruState.SpinCutter;
-                break;
-            default:
-                state = HaruState.End;
-                return false;
-        }
-
-        return true;
-    }
 }

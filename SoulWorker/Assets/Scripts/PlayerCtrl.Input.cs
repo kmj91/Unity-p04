@@ -126,14 +126,17 @@ public partial class PlayerCtrl: MonoBehaviour
         HaruState retState;
 
         // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!GetStateOfSkillSlot(0, out retState))
+        if (!playerInfo.GetStateOfSkillSlot(0, out retState))
             return;
 
         if (CheckState(state, retState))
         {
-            ChangeFlagFalse();
-            state = retState;
-            ChangeFlagTrue();
+            if (playerInfo.CheckSkillCooldown(0))
+            {
+                ChangeFlagFalse();
+                state = retState;
+                ChangeFlagTrue();
+            }
         }
     }
 
@@ -142,7 +145,7 @@ public partial class PlayerCtrl: MonoBehaviour
         HaruState retState;
 
         // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!GetStateOfSkillSlot(1, out retState))
+        if (!playerInfo.GetStateOfSkillSlot(1, out retState))
             return;
 
         if (CheckState(state, retState))
@@ -158,7 +161,7 @@ public partial class PlayerCtrl: MonoBehaviour
         HaruState retState;
 
         // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!GetStateOfSkillSlot(2, out retState))
+        if (!playerInfo.GetStateOfSkillSlot(2, out retState))
             return;
 
         if (CheckState(state, retState))

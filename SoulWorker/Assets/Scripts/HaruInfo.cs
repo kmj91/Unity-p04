@@ -18,24 +18,72 @@ public partial class HaruInfo : PlayerInfo
 
     public Color skinColor;
     public Color hiarColor;
-    public HaruSkill[,] skillSlot { get; private set; }
 
+    private HaruSkill[,] skillSlot;
     // 1 : 스킬 종류
     // 2 : 스킬 레벨
     // 3 : 타격 수
     private float[,,] skillDamage;
+    private float[] skillCooldown;      // 스킬 재사용 대기시간
+    private bool[] readySkill;          // 스킬 사용 준비
 
+
+    // 스킬 슬롯 인덱스의 스킬 상태 얻기
+    public bool GetStateOfSkillSlot(int index, out HaruState state)
+    {
+        switch (skillSlot[index, 0])
+        {
+            case HaruSkill.FirstBlade:
+                state = HaruState.FirstBlade;
+                break;
+            case HaruSkill.PierceStep:
+                state = HaruState.PierceStep;
+                break;
+            case HaruSkill.SpinCutter:
+                state = HaruState.SpinCutter;
+                break;
+            default:
+                state = HaruState.End;
+                return false;
+        }
+
+        return true;
+    }
+
+    // 스킬 재사용 대기시간 확인
+    public bool CheckSkillCooldown(int index)
+    {
+        for (int iCnt = 0; iCnt < 3; ++iCnt)
+        {
+            HaruSkill skill = skillSlot[index, 0];
+            if (readySkill[(int)skill])
+            {
+                readySkill[(int)skill] = false;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // 스킬 데미지 정보 얻기
+    // skill : 스킬 이름
+    // cnt : 스킬 타격수
+    // damage : 스킬 데미지
     public bool GetSkillDamage(HaruSkill skill, int cnt, ref float damage)
     {
-        if (skill == HaruSkill.End)
-            return false;
-
         if (cnt < 0 && 5 <= cnt)
             return false;
 
         damage = skillDamage[(int)skill, 0, cnt];
 
         return true;
+    }
+
+    // 스킬 재사용 대기시간 얻기
+    public float GetSkillCooldown(HaruSkill skill)
+    {
+        return skillCooldown[(int)skill];
     }
 
     private void Awake()
@@ -167,5 +215,20 @@ public partial class HaruInfo : PlayerInfo
         skillDamage[(int)HaruSkill.FirstBlade, 4, 0] = 3.82f;
         skillDamage[(int)HaruSkill.FirstBlade, 4, 1] = 3.82f;
         skillDamage[(int)HaruSkill.FirstBlade, 4, 2] = 2.48f;
+
+
+        skillCooldown = new float[(int)HaruSkill.End];
+
+        skillCooldown[(int)HaruSkill.FirstBlade] = 10f;
+        skillCooldown[(int)HaruSkill.PierceStep] = 8f;
+        skillCooldown[(int)HaruSkill.SpinCutter] = 5f;
+
+
+        readySkill = new bool[(int)HaruSkill.End];
+
+        for (int iCnt = 0; iCnt < (int)HaruSkill.End; ++iCnt)
+        {
+            readySkill[iCnt] = true;
+        }
     }
 }
