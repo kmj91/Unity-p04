@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 
 using MyStruct;
+using MyEnum;
 
 public partial class UIManager : MonoBehaviour
 {
@@ -52,30 +53,11 @@ public partial class UIManager : MonoBehaviour
     [SerializeField] private Text m_equipmentCriticalResistance;    // 치명타 저항
     [SerializeField] private Text m_equipmentShorterCooldown;       // 재사용 대기시간 감소
 
-    [SerializeField] private Image m_hotkeySkillIcon1;       // 스킬 아이콘 1
-    [SerializeField] private Image m_hotkeySkillIcon2;       // 스킬 아이콘 2
-    [SerializeField] private Image m_hotkeySkillIcon3;       // 스킬 아이콘 3
-    [SerializeField] private Image m_hotkeySkillIcon4;       // 스킬 아이콘 4
-    [SerializeField] private Image m_hotkeySkillIcon5;       // 스킬 아이콘 5
-    [SerializeField] private Image m_hotkeySkillIcon6;       // 스킬 아이콘 6
-    [SerializeField] private Image m_hotkeySkillCooldownBack1;      // 재사용 대기시간 뒤쪽 이미지 1
-    [SerializeField] private Image m_hotkeySkillCooldownBack2;      // 재사용 대기시간 뒤쪽 이미지 2
-    [SerializeField] private Image m_hotkeySkillCooldownBack3;      // 재사용 대기시간 뒤쪽 이미지 3
-    [SerializeField] private Image m_hotkeySkillCooldownBack4;      // 재사용 대기시간 뒤쪽 이미지 4
-    [SerializeField] private Image m_hotkeySkillCooldownBack5;      // 재사용 대기시간 뒤쪽 이미지 5
-    [SerializeField] private Image m_hotkeySkillCooldownBack6;      // 재사용 대기시간 뒤쪽 이미지 6
-    [SerializeField] private Image m_hotkeySkillCooldownFront1;     // 재사용 대기시간 앞쪽 이미지 1
-    [SerializeField] private Image m_hotkeySkillCooldownFront2;     // 재사용 대기시간 앞쪽 이미지 2
-    [SerializeField] private Image m_hotkeySkillCooldownFront3;     // 재사용 대기시간 앞쪽 이미지 3
-    [SerializeField] private Image m_hotkeySkillCooldownFront4;     // 재사용 대기시간 앞쪽 이미지 4
-    [SerializeField] private Image m_hotkeySkillCooldownFront5;     // 재사용 대기시간 앞쪽 이미지 5
-    [SerializeField] private Image m_hotkeySkillCooldownFront6;     // 재사용 대기시간 앞쪽 이미지 6
-    [SerializeField] private Text m_hotkeySkillCooldownCount1;     // 재사용 대기시간 카운트 1
-    [SerializeField] private Text m_hotkeySkillCooldownCount2;     // 재사용 대기시간 카운트 2
-    [SerializeField] private Text m_hotkeySkillCooldownCount3;     // 재사용 대기시간 카운트 3
-    [SerializeField] private Text m_hotkeySkillCooldownCount4;     // 재사용 대기시간 카운트 4
-    [SerializeField] private Text m_hotkeySkillCooldownCount5;     // 재사용 대기시간 카운트 5
-    [SerializeField] private Text m_hotkeySkillCooldownCount6;     // 재사용 대기시간 카운트 6
+    [SerializeField] private Sprite[] m_haruSkillIcon;              // 하루 스킬 아이콘 스프라이트
+    [SerializeField] private Image[] m_hotkeySkillIcon;             // 스킬 아이콘
+    [SerializeField] private Image[] m_hotkeySkillCooldownBack;     // 재사용 대기시간 뒤쪽 이미지
+    [SerializeField] private Image[] m_hotkeySkillCooldownFront;    // 재사용 대기시간 앞쪽 이미지
+    [SerializeField] private Text[] m_hotkeySkillCooldownCount;     // 재사용 대기시간 카운트
 
     private int boosHpBarNum = -1;      // 현재 보스 체력 줄
 
@@ -194,6 +176,30 @@ public partial class UIManager : MonoBehaviour
         m_equipmentDamageReduction.text = data.damageReduction.ToString("F1") + "%";
         m_equipmentCriticalResistance.text = data.criticalResistance.ToString("F1") + "%";
         m_equipmentShorterCooldown.text = data.shorterCooldown.ToString("F1") + "%";
+    }
+
+    // 스킬 재사용 대기시간 갱신
+    public void UpdateSkillCooldown(int index, float originCooldown, float cooldown)
+    {
+        m_hotkeySkillCooldownBack[index].gameObject.SetActive(true);
+        m_hotkeySkillCooldownFront[index].gameObject.SetActive(true);
+        m_hotkeySkillCooldownCount[index].gameObject.SetActive(true);
+        m_hotkeySkillCooldownCount[index].text = cooldown.ToString();
+        m_hotkeySkillCooldownFront[index].fillAmount = cooldown / originCooldown;
+    }
+
+    // 스킬 슬롯 아이콘 변경
+    public void ChangeSkillSlotIcon(int index, HaruSkill skill)
+    {
+        m_hotkeySkillIcon[index].sprite = m_haruSkillIcon[(int)skill];
+    }
+
+    // 스킬 재사용 대기시간 비활성화
+    public void OffSkillSlotCooldown(int index)
+    {
+        m_hotkeySkillCooldownBack[index].gameObject.SetActive(false);
+        m_hotkeySkillCooldownFront[index].gameObject.SetActive(false);
+        m_hotkeySkillCooldownCount[index].gameObject.SetActive(false);
     }
 
     private void Update()

@@ -102,14 +102,14 @@
 
     public enum HaruSkill
     {
+        FirstBlade,
+        PierceStep,
+        SpinCutter,
         NormalAttack1,
         NormalAttack2,
         NormalAttack3,
         NormalAttack4,
         NormalAttack5,
-        FirstBlade,
-        PierceStep,
-        SpinCutter,
         End
     }
 

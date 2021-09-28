@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 using MyEnum;
 using MyStruct;
@@ -31,34 +32,43 @@ public partial class HaruInfo : PlayerInfo
     // 스킬 슬롯 인덱스의 스킬 상태 얻기
     public bool GetStateOfSkillSlot(int index, out HaruState state)
     {
-        switch (skillSlot[index, 0])
+        for (int iCnt = 0; iCnt < 3; ++iCnt)
         {
-            case HaruSkill.FirstBlade:
-                state = HaruState.FirstBlade;
-                break;
-            case HaruSkill.PierceStep:
-                state = HaruState.PierceStep;
-                break;
-            case HaruSkill.SpinCutter:
-                state = HaruState.SpinCutter;
-                break;
-            default:
-                state = HaruState.End;
-                return false;
+            // 스킬 사용 가능
+            if (readySkill[(int)skillSlot[index, iCnt]])
+            {
+                // skill -> state 변환
+                switch (skillSlot[index, iCnt])
+                {
+                    case HaruSkill.FirstBlade:
+                        state = HaruState.FirstBlade;
+                        return true;
+                    case HaruSkill.PierceStep:
+                        state = HaruState.PierceStep;
+                        return true;
+                    case HaruSkill.SpinCutter:
+                        state = HaruState.SpinCutter;
+                        return true;
+                    default:
+                        break;
+                }
+            }
         }
-
-        return true;
+        state = HaruState.End;
+        return false;
     }
 
-    // 스킬 재사용 대기시간 확인
-    public bool CheckSkillCooldown(int index)
+    // 스킬 사용
+    public bool UseSkillSlot(int index)
     {
         for (int iCnt = 0; iCnt < 3; ++iCnt)
         {
-            HaruSkill skill = skillSlot[index, 0];
+            HaruSkill skill = skillSlot[index, iCnt];
             if (readySkill[(int)skill])
             {
                 readySkill[(int)skill] = false;
+                // 코루틴
+                StartCoroutine(CountSkillCooldown(skill, index));
                 return true;
             }
         }
@@ -78,12 +88,6 @@ public partial class HaruInfo : PlayerInfo
         damage = skillDamage[(int)skill, 0, cnt];
 
         return true;
-    }
-
-    // 스킬 재사용 대기시간 얻기
-    public float GetSkillCooldown(HaruSkill skill)
-    {
-        return skillCooldown[(int)skill];
     }
 
     private void Awake()
@@ -155,9 +159,12 @@ public partial class HaruInfo : PlayerInfo
         UIManager.Instance.UpdateEquipment(ref currentPlayerData);
 
         // 스킬 슬롯 생성
-        skillSlot = new HaruSkill[3, 6];
+        skillSlot = new HaruSkill[6, 3];
 
         skillSlot[0, 0] = HaruSkill.FirstBlade;
+        skillSlot[0, 1] = HaruSkill.PierceStep;
+        skillSlot[0, 2] = HaruSkill.SpinCutter;
+
         skillSlot[1, 0] = HaruSkill.PierceStep;
         skillSlot[2, 0] = HaruSkill.SpinCutter;
 
@@ -230,5 +237,77 @@ public partial class HaruInfo : PlayerInfo
         {
             readySkill[iCnt] = true;
         }
+    }
+
+    private IEnumerator CountSkillCooldown(HaruSkill skill, int index)
+    {
+        float cooldown = skillCooldown[(int)skill];
+        float originCooldown = cooldown;
+        // 1초
+        WaitForSeconds wait = new WaitForSeconds(1f);
+
+        // UI 재사용 대기시간 처리
+        UISkillCooldown(skill, index, originCooldown, cooldown);
+
+        while (true)
+        {
+            yield return wait;
+
+            --cooldown;
+            if (cooldown == 0f)
+                break;
+
+            // UI 재사용 대기시간 처리
+            UISkillCooldown(skill, index, originCooldown, cooldown);
+        }
+
+        // 스킬 사용 가능
+        readySkill[(int)skill] = true;
+        // 스킬 재사용 대기시간 비활성화
+        UIManager.Instance.OffSkillSlotCooldown(index);
+        // UI 스킬 슬롯 아이콘 변경
+        UIManager.Instance.ChangeSkillSlotIcon(index, skill);
+    }
+
+    // UI 재사용 대기시간 처리
+    private void UISkillCooldown(HaruSkill skill, int index, float originCooldown, float cooldown)
+    {
+        // 다음 사용할 스킬
+        HaruSkill nextSkill;
+
+        // 현재 스킬 슬롯 상태
+        // true면 다음 사용할 스킬이 없음
+        if (CheckNextSkill(index, out nextSkill))
+        {
+            // UI 재사용 대기시간 갱신
+            UIManager.Instance.UpdateSkillCooldown(index, originCooldown, cooldown);
+        }
+        else
+        {
+            // UI 스킬 슬롯 아이콘 변경
+            UIManager.Instance.ChangeSkillSlotIcon(index, nextSkill);
+        }
+    }
+
+    // 다음 스킬 확인
+    private bool CheckNextSkill(int index, out HaruSkill nextSkill)
+    {
+        int iCnt = 0;
+        while (iCnt < 3)
+        {
+            if (readySkill[(int)skillSlot[index, iCnt]])
+                break;
+            ++iCnt;
+        }
+
+        // 사용 가능한 다음 스킬이 없음
+        if (iCnt == 3)
+        {
+            nextSkill = HaruSkill.End;
+            return true;
+        }
+
+        nextSkill = skillSlot[index, iCnt];
+        return false;
     }
 }

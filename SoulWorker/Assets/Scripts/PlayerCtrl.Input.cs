@@ -131,12 +131,10 @@ public partial class PlayerCtrl: MonoBehaviour
 
         if (CheckState(state, retState))
         {
-            if (playerInfo.CheckSkillCooldown(0))
-            {
-                ChangeFlagFalse();
-                state = retState;
-                ChangeFlagTrue();
-            }
+            ChangeFlagFalse();
+            state = retState;
+            ChangeFlagTrue();
+            playerInfo.UseSkillSlot(0);
         }
     }
 
