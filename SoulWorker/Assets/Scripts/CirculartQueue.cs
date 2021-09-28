@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class KeyInputQueue<T>
+public class CirculartQueue<T>
 {
 	private enum DEFAULT
 	{
@@ -13,7 +13,7 @@ public class KeyInputQueue<T>
 	private int m_queueSize;
 
 	
-	public KeyInputQueue()
+	public CirculartQueue()
 	{
 		m_queue = new T[(int)DEFAULT.DEFAULT_SIZE];
 		m_rear = 0;
@@ -21,7 +21,7 @@ public class KeyInputQueue<T>
 		m_queueSize = (int)DEFAULT.DEFAULT_SIZE;	//배열사이즈
 	}
 	
-	public KeyInputQueue(int Size)
+	public CirculartQueue(int Size)
 	{
 		m_queue = new T[Size];
 		m_rear = 0;
@@ -29,7 +29,7 @@ public class KeyInputQueue<T>
 		m_queueSize = Size;							//배열사이즈
 	}
 
-	public KeyInputQueue(KeyInputQueue<T> copy)
+	public CirculartQueue(CirculartQueue<T> copy)
 	{
 		m_queue = new T[copy.m_queueSize];
 		Array.Copy(copy.m_queue, m_queue, copy.m_queueSize);

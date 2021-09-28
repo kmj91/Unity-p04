@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public bool useMouse = false;                   // 마우스 사용 여부
 
 
-    private KeyInputQueue<KeyInfo> keyQueue;        // 키 입력 큐
+    private CirculartQueue<KeyInfo> keyQueue;        // 키 입력 큐
     private Dictionary<KeyCode, Action> keyDown;    // 키 누름
     private Dictionary<KeyCode, Action> keyUp;      // 키 뗌
 
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     // 키 초기화
     private void KeyInit()
     {
-        keyQueue = new KeyInputQueue<KeyInfo>();
+        keyQueue = new CirculartQueue<KeyInfo>();
 
         // 키 누름
         keyDown = new Dictionary<KeyCode, Action>
