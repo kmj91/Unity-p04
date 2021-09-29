@@ -10967,6 +10967,13 @@ MonoBehaviour:
   - {fileID: 492719227}
   - {fileID: 1862836245}
   - {fileID: 761489994}
+  m_hotkeySkillSecondCooldownCount:
+  - {fileID: 2046228933}
+  - {fileID: 225835798}
+  - {fileID: 1762602933}
+  - {fileID: 2139840277}
+  - {fileID: 655547209}
+  - {fileID: 1973342759}
 --- !u!1 &1734086452
 GameObject:
   m_ObjectHideFlags: 0

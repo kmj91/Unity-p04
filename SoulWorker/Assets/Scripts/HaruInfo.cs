@@ -345,11 +345,7 @@ public partial class HaruInfo : PlayerInfo
             {
                 // UI 재사용 대기시간 갱신
                 UIManager.Instance.UpdateSkillCooldown(index, originCooldown, cooldown);
-            }
-            // 다른 경우
-            else
-            {
-                // 스킬 슬롯 위쪽에 재사용 대기시간 표시
+                return;
             }
         }
         else
@@ -359,6 +355,24 @@ public partial class HaruInfo : PlayerInfo
                 // UI 스킬 슬롯 아이콘 변경
                 UIManager.Instance.ChangeSkillSlotIcon(index, nextSkill);
             }
+        }
+
+        // 마지막 이전에 사용한 스킬 인덱스 얻어오기
+        int second = skillSlotQueue[index].GetEndIndex();
+        if (second - 1 < 0)
+        {
+            second = skillSlotQueue[index].GetQueueSize() - 1;
+        }
+        else
+        {
+            --second;
+        }
+
+        // 마지막에서 두번째로 사용한 스킬이면
+        if (skillSlotQueue[index].GetQueue()[second] == skill)
+        {
+            // 스킬 슬롯 위쪽에 재사용 대기시간 표시
+            UIManager.Instance.UpdateSkillSecondCooldown(index, originCooldown, cooldown);
         }
     }
 
