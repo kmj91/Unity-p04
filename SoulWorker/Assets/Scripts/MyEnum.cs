@@ -110,6 +110,7 @@
         NormalAttack3,
         NormalAttack4,
         NormalAttack5,
+        None,
         End
     }
 

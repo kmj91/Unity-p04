@@ -163,4 +163,12 @@ public class CirculartQueue<T>
 		return m_front;
 	}
 
+	public int GetEndIndex()
+	{
+		if (m_rear - 1 < 0)
+			return m_queueSize - 1;
+		else
+			return m_rear - 1;
+	}
+
 }

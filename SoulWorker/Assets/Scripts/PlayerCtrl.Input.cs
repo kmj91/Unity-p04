@@ -134,7 +134,7 @@ public partial class PlayerCtrl: MonoBehaviour
             ChangeFlagFalse();
             state = retState;
             ChangeFlagTrue();
-            playerInfo.UseSkillSlot(0);
+            playerInfo.InputSkillSlot(0);
         }
     }
 
