@@ -102,6 +102,7 @@
 
     public enum HaruSkill
     {
+        None,
         FirstBlade,
         PierceStep,
         SpinCutter,
@@ -110,7 +111,6 @@
         NormalAttack3,
         NormalAttack4,
         NormalAttack5,
-        None,
         End
     }
 

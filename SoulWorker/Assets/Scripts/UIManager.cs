@@ -58,7 +58,8 @@ public partial class UIManager : MonoBehaviour
     [SerializeField] private Image[] m_hotkeySkillCooldownBack;     // 재사용 대기시간 뒤쪽 이미지
     [SerializeField] private Image[] m_hotkeySkillCooldownFront;    // 재사용 대기시간 앞쪽 이미지
     [SerializeField] private Text[] m_hotkeySkillCooldownCount;     // 재사용 대기시간 카운트
-    [SerializeField] private Text[] m_hotkeySkillSecondCooldownCount;     // 재사용 이전 스킬 대기시간 카운트
+    [SerializeField] private Text[] m_hotkeySkillSecondCooldownCount;       // 재사용 이전 스킬 대기시간 카운트
+    [SerializeField] private GameObject[] m_hotkeySkillSecondCooldownBar;   // 재사용 대기시간 바
 
     private int boosHpBarNum = -1;      // 현재 보스 체력 줄
 
@@ -192,6 +193,7 @@ public partial class UIManager : MonoBehaviour
     // 스킬 아이콘 위쪽 재사용 대기시간 갱신
     public void UpdateSkillSecondCooldown(int index, float originCooldown, float cooldown)
     {
+        m_hotkeySkillSecondCooldownBar[index].SetActive(true);
         m_hotkeySkillSecondCooldownCount[index].text = cooldown.ToString();
     }
 
@@ -207,6 +209,12 @@ public partial class UIManager : MonoBehaviour
         m_hotkeySkillCooldownBack[index].gameObject.SetActive(false);
         m_hotkeySkillCooldownFront[index].gameObject.SetActive(false);
         m_hotkeySkillCooldownCount[index].gameObject.SetActive(false);
+    }
+
+    // 스킬 아이콘 위쪽 재사용 대기시간 비활성화
+    public void OffSkillSlotSecondCooldown(int index)
+    {
+        m_hotkeySkillSecondCooldownBar[index].SetActive(false);
     }
 
     private void Update()

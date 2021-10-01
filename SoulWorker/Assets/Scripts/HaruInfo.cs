@@ -184,6 +184,7 @@ public partial class HaruInfo : PlayerInfo
         skillSlot[0, 2] = HaruSkill.SpinCutter;
 
         skillSlot[1, 0] = HaruSkill.PierceStep;
+        skillSlot[1, 1] = HaruSkill.FirstBlade;
 
         skillSlot[2, 0] = HaruSkill.SpinCutter;
 
@@ -293,7 +294,7 @@ public partial class HaruInfo : PlayerInfo
         AllSkillSlotCheckReady(skill);
     }
 
-    // 스킬 사용
+    // 스킬 사용 큐에 입력
     private void EnqueueUseSkill(HaruSkill skill)
     {
         // 스킬 슬롯 전체 순회
@@ -307,6 +308,21 @@ public partial class HaruInfo : PlayerInfo
                     skillSlotQueue[x].Enqueue(skill);
                     break;
                 }
+            }
+        }
+    }
+
+    // 스킬 삭제 큐에서 삭제
+    private void EraseSkill(HaruSkill skill, int index)
+    {
+        for (int y = 0; y < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++y)
+        {
+            // 사용하려는 스킬과 같음
+            if (skillSlot[index, y] == skill)
+            {
+                // 삭제
+                skillSlotQueue[index].Erase(skill);
+                break;
             }
         }
     }
@@ -341,7 +357,7 @@ public partial class HaruInfo : PlayerInfo
         if (CheckNextSkill(index, out nextSkill))
         {
             // 마지막으로 사용한 스킬과 비교해서 같으면
-            if (skillSlotQueue[index].GetQueue()[skillSlotQueue[index].GetEndIndex()] == skill)
+            if (GetLastSkill(index) == skill)
             {
                 // UI 재사용 대기시간 갱신
                 UIManager.Instance.UpdateSkillCooldown(index, originCooldown, cooldown);
@@ -369,7 +385,8 @@ public partial class HaruInfo : PlayerInfo
         }
 
         // 마지막에서 두번째로 사용한 스킬이면
-        if (skillSlotQueue[index].GetQueue()[second] == skill)
+        if (skillSlotQueue[index].GetQueue()[second] == skill ||
+            skillSlotQueue[index].GetQueue()[second] == HaruSkill.None)
         {
             // 스킬 슬롯 위쪽에 재사용 대기시간 표시
             UIManager.Instance.UpdateSkillSecondCooldown(index, originCooldown, cooldown);
@@ -406,15 +423,135 @@ public partial class HaruInfo : PlayerInfo
         {
             for (int y = 0; y < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++y)
             {
-                // 사용하려는 스킬과 같음
-                if (skillSlot[x, y] == skill)
+                // 사용하려는 스킬이 아니면
+                if (skillSlot[x, y] != skill)
+                    continue;
+
+                // 첫번째 스킬
+                if (y == 0)
                 {
-                    // 스킬 재사용 대기시간 비활성화
-                    UIManager.Instance.OffSkillSlotCooldown(x);
+                    // 위에 스킬 사용 준비 안됨
+                    if ((!readySkill[(int)skillSlot[x, 1]] || skillSlot[x, 1] == HaruSkill.None) &&
+                        (!readySkill[(int)skillSlot[x, 2]] || skillSlot[x, 2] == HaruSkill.None))
+                    {
+                        // 스킬 재사용 대기시간 비활성화
+                        UIManager.Instance.OffSkillSlotCooldown(x);
+                        // UI 스킬 슬롯 아이콘 변경
+                        UIManager.Instance.ChangeSkillSlotIcon(x, skill);
+                        // 큐에서 삭제
+                        EraseSkill(skill, x);
+                        break;
+                    }
+
+                    // 마지막으로 사용한 스킬과 같음
+                    if (GetLastSkill(x) == skill)
+                    {
+                        // 스킬 아이콘 위쪽 재사용 대기시간 비활성화
+                        UIManager.Instance.OffSkillSlotSecondCooldown(x);
+                    }
                     // UI 스킬 슬롯 아이콘 변경
                     UIManager.Instance.ChangeSkillSlotIcon(x, skill);
+                    // 큐에서 삭제
+                    EraseSkill(skill, x);
+                    break;
+                }
+                // 두번째 스킬
+                else if (y == 1)
+                {
+                    // 아래쪽 준비 안됨 위쪽 준비 안됨
+                    if (!readySkill[(int)skillSlot[x, 0]] &&
+                        (!readySkill[(int)skillSlot[x, 2]] || skillSlot[x, 2] == HaruSkill.None))
+                    {
+                        // 스킬 재사용 대기시간 비활성화
+                        UIManager.Instance.OffSkillSlotCooldown(x);
+                        // UI 스킬 슬롯 아이콘 변경
+                        UIManager.Instance.ChangeSkillSlotIcon(x, skill);
+                        // 큐에서 삭제
+                        EraseSkill(skill, x);
+                        break;
+                    }
+
+                    // 아래쪽 준비 안됨 위쪽 준비됨
+                    if (!readySkill[(int)skillSlot[x, 0]] &&
+                        readySkill[(int)skillSlot[x, 2]])
+                    {
+                        // 스킬 아이콘 위쪽 재사용 대기시간 비활성화
+                        UIManager.Instance.OffSkillSlotSecondCooldown(x);
+                        // UI 스킬 슬롯 아이콘 변경
+                        UIManager.Instance.ChangeSkillSlotIcon(x, skill);
+                        // 큐에서 삭제
+                        EraseSkill(skill, x);
+                        break;
+                    }
+
+                    // 아래쪽 준비됨 마지막으로 사용한 스킬과 같음
+                    if (readySkill[(int)skillSlot[x, 0]] &&
+                        GetLastSkill(x) == skill)
+                    {
+                        // 스킬 아이콘 위쪽 재사용 대기시간 비활성화
+                        UIManager.Instance.OffSkillSlotSecondCooldown(x);
+                        // 큐에서 삭제
+                        EraseSkill(skill, x);
+                        break;
+                    }
+                }
+                // 세번째 스킬
+                else if (y == 2)
+                {
+                    // 아래쪽 준비 안됨
+                    if (!readySkill[(int)skillSlot[x, 0]] &&
+                        !readySkill[(int)skillSlot[x, 1]])
+                    {
+                        // 스킬 재사용 대기시간 비활성화
+                        UIManager.Instance.OffSkillSlotCooldown(x);
+                        // UI 스킬 슬롯 아이콘 변경
+                        UIManager.Instance.ChangeSkillSlotIcon(x, skill);
+                        // 큐에서 삭제
+                        EraseSkill(skill, x);
+                        break;
+                    }
+
+                    // 아래쪽 준비됨 마지막으로 사용한 스킬과 같음
+                    if ((readySkill[(int)skillSlot[x, 0]] || readySkill[(int)skillSlot[x, 1]]) &&
+                        GetLastSkill(x) == skill)
+                    {
+                        // 스킬 아이콘 위쪽 재사용 대기시간 비활성화
+                        UIManager.Instance.OffSkillSlotSecondCooldown(x);
+                        // 큐에서 삭제
+                        EraseSkill(skill, x);
+                        break;
+                    }
                 }
             }
         }
+    }
+
+    // 마지막으로 사용한 스킬 획득
+    private HaruSkill GetLastSkill(int index)
+    {
+        HaruSkill retSkill = HaruSkill.None;
+        var queue = skillSlotQueue[index].GetQueue();
+        int iSize = skillSlotQueue[index].GetQueueSize();
+        int iRear = skillSlotQueue[index].GetRear();
+        int iFront = skillSlotQueue[index].GetFront();
+
+        while (iRear != iFront)
+        {
+            --iRear;
+            if (iRear < 0)
+            {
+                iRear = iSize - 1;
+            }
+
+            // None 제외
+            if (queue[iRear] != HaruSkill.None)
+            {
+                // 마지막으로 사용한 스킬
+                retSkill = queue[iRear];
+                break;
+            }
+        }
+
+        return retSkill;
     }
 }

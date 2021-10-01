@@ -86,6 +86,34 @@ public class CirculartQueue<T>
 		return true;
 	}
 
+	public bool Erase(T Data)
+	{
+		//비어있는가?
+		if (m_rear == m_front)
+		{
+			return false;
+		}
+
+		T[] newQueue = new T[m_queueSize];
+		T preData = Data;
+
+		int iCnt = 0;
+		while (Dequeue(ref preData))
+		{
+			if (!preData.Equals(Data))
+			{
+				newQueue[iCnt] = preData;
+				++iCnt;
+			}
+		}
+
+		m_queue = newQueue;
+		m_front = 0;
+		m_rear = iCnt;
+
+		return true;
+	}
+
 	public bool Peek(T Out)
 	{
 		//비어있는가?
