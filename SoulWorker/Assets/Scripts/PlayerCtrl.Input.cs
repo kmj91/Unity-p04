@@ -151,6 +151,7 @@ public partial class PlayerCtrl: MonoBehaviour
             ChangeFlagFalse();
             state = retState;
             ChangeFlagTrue();
+            playerInfo.InputSkillSlot(1);
         }
     }
 
@@ -167,6 +168,7 @@ public partial class PlayerCtrl: MonoBehaviour
             ChangeFlagFalse();
             state = retState;
             ChangeFlagTrue();
+            playerInfo.InputSkillSlot(2);
         }
     }
 

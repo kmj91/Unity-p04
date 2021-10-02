@@ -339,7 +339,7 @@ public partial class HaruInfo : PlayerInfo
                 if (skillSlot[x, y] == skill)
                 {
                     // 해당 스킬 슬롯 재사용 대기시간 처리
-                    UpdateUISkillSlotCooldown(skill, x, originCooldown, cooldown);
+                    UpdateUISkillSlotCooldown(skill, x, y, originCooldown, cooldown);
                     break;
                 }
             }
@@ -347,37 +347,79 @@ public partial class HaruInfo : PlayerInfo
     }
 
     // 스킬 슬롯 재사용 대기시간 처리
-    private void UpdateUISkillSlotCooldown(HaruSkill skill, int index, float originCooldown, float cooldown)
+    private void UpdateUISkillSlotCooldown(HaruSkill skill, int x, int y, float originCooldown, float cooldown)
     {
         // 다음 사용할 스킬
         HaruSkill nextSkill;
 
         // 현재 스킬 슬롯 상태
-        // true면 다음 사용할 스킬이 없음
-        if (CheckNextSkill(index, out nextSkill))
+        if (!CheckNextSkill(x, out nextSkill) &&    // false면 다음 사용할 스킬이 없음
+            GetLastSkill(x) == skill)               // 마지막으로 사용한 스킬과 비교해서 같으면
         {
-            // 마지막으로 사용한 스킬과 비교해서 같으면
-            if (GetLastSkill(index) == skill)
+            // UI 재사용 대기시간 갱신
+            UIManager.Instance.UpdateSkillCooldown(x, originCooldown, cooldown);
+            return;
+        }
+        // 다음 사용할 스킬이 있음
+        else if(nextSkill != HaruSkill.None)
+        {
+            // UI 스킬 슬롯 아이콘 변경
+            UIManager.Instance.ChangeSkillSlotIcon(x, nextSkill);
+        }
+
+        // 첫번째 스킬
+        if (y == 0)
+        {
+            // 위쪽 스킬들이 하나라도 준비 되있고
+            if (readySkill[(int)skillSlot[x, 1]] || readySkill[(int)skillSlot[x, 2]])
             {
-                // UI 재사용 대기시간 갱신
-                UIManager.Instance.UpdateSkillCooldown(index, originCooldown, cooldown);
+                // 마지막으로 사용한 스킬과 비교해서 같으면
+                if (GetLastSkill(x) == skill)
+                {
+                    // 스킬 슬롯 위쪽에 재사용 대기시간 표시
+                    UIManager.Instance.UpdateSkillSecondCooldown(x, originCooldown, cooldown);
+                }
                 return;
             }
         }
-        else
+
+        // 두번째 스킬
+        if (y == 1)
         {
-            if (nextSkill != HaruSkill.None)
+            // 아래나 위쪽 스킬이 하나라도 준비 되있고
+            if (readySkill[(int)skillSlot[x, 0]] || readySkill[(int)skillSlot[x, 2]])
             {
-                // UI 스킬 슬롯 아이콘 변경
-                UIManager.Instance.ChangeSkillSlotIcon(index, nextSkill);
+                // 마지막으로 사용한 스킬과 비교해서 같으면
+                if (GetLastSkill(x) == skill)
+                {
+                    // 스킬 슬롯 위쪽에 재사용 대기시간 표시
+                    UIManager.Instance.UpdateSkillSecondCooldown(x, originCooldown, cooldown);
+                }
+                return;
             }
         }
 
-        // 마지막 이전에 사용한 스킬 인덱스 얻어오기
-        int second = skillSlotQueue[index].GetEndIndex();
+        // 세번째 스킬
+        if (y == 2)
+        {
+            // 아래쪽 위쪽 스킬이 하나라도 준비 되있고
+            if (readySkill[(int)skillSlot[x, 0]] || readySkill[(int)skillSlot[x, 1]])
+            {
+                // 마지막으로 사용한 스킬과 비교해서 같으면
+                if (GetLastSkill(x) == skill)
+                {
+                    // 스킬 슬롯 위쪽에 재사용 대기시간 표시
+                    UIManager.Instance.UpdateSkillSecondCooldown(x, originCooldown, cooldown);
+                }
+                return;
+            }
+        }
+
+        // 모든 스킬이 준비가 안되있고 두번째 사용한 스킬과 비교해서 같으면
+        int second = skillSlotQueue[x].GetEndIndex();
         if (second - 1 < 0)
         {
-            second = skillSlotQueue[index].GetQueueSize() - 1;
+            second = skillSlotQueue[x].GetQueueSize() - 1;
         }
         else
         {
@@ -385,11 +427,11 @@ public partial class HaruInfo : PlayerInfo
         }
 
         // 마지막에서 두번째로 사용한 스킬이면
-        if (skillSlotQueue[index].GetQueue()[second] == skill ||
-            skillSlotQueue[index].GetQueue()[second] == HaruSkill.None)
+        if (skillSlotQueue[x].GetQueue()[second] == skill ||
+            skillSlotQueue[x].GetQueue()[second] == HaruSkill.None)
         {
             // 스킬 슬롯 위쪽에 재사용 대기시간 표시
-            UIManager.Instance.UpdateSkillSecondCooldown(index, originCooldown, cooldown);
+            UIManager.Instance.UpdateSkillSecondCooldown(x, originCooldown, cooldown);
         }
     }
 
@@ -407,12 +449,12 @@ public partial class HaruInfo : PlayerInfo
         // 사용 가능한 다음 스킬이 없음
         if (iCnt == 3)
         {
-            nextSkill = HaruSkill.End;
-            return true;
+            nextSkill = HaruSkill.None;
+            return false;
         }
 
         nextSkill = skillSlot[index, iCnt];
-        return false;
+        return true;
     }
 
     // 모든 스킬 슬롯 재사용 대기시간 완료 검사
