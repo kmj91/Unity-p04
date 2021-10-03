@@ -7,36 +7,36 @@ using System.Collections.Generic;
 
 public class ItemHaruWeapon : Item
 {
-    [SerializeField] private PlayerInfo playerInfo;
-    [SerializeField] private BoxCollider boxCollider;
+    [SerializeField] private PlayerInfo m_playerInfo;
+    [SerializeField] private BoxCollider m_boxCollider;
 
-    public AttackType attackType;   // 공격 타입
-    public float attackDamage;      // 공격 대미지
+    public AttackType m_attackType; // 공격 타입
+    public float m_attackDamage;      // 공격 대미지
 
-    private LayerMask mask;
+    private LayerMask m_mask;
 
 
 
     public void OnTrigger()
     {
-        boxCollider.isTrigger = true;
+        m_boxCollider.isTrigger = true;
     }
 
     public void OffTrigger()
     {
-        boxCollider.isTrigger = false;
+        m_boxCollider.isTrigger = false;
     }
 
     private void Awake()
     {
-        boxCollider = GetComponent<BoxCollider>();
+        m_boxCollider = GetComponent<BoxCollider>();
         // 몬스터와 충돌
-        mask = LayerMask.NameToLayer("Monster");
+        m_mask = LayerMask.NameToLayer("Monster");
 
-        abilityDatas = new List<AbilityData>();
+        m_abilityDatas = new List<AbilityData>();
 
         // 타입
-        type = ItemType.HaruWeapon;
+        m_type = ItemType.HaruWeapon;
 
         // 무기 정보 파일 읽기
         string filePath = Path.Combine(Application.streamingAssetsPath, "WeaponInfo.txt");
@@ -46,25 +46,25 @@ public class ItemHaruWeapon : Item
             return;
 
         // 무기 스텟
-        if (!Utility.Parser_GetValue_String(weponInfo, "name", out itemName))
+        if (!Utility.Parser_GetValue_String(weponInfo, "name", out m_itemName))
             return;
         float outUsePlayer;
         if (!Utility.Parser_GetValue_Float(weponInfo, "usePlayer", out outUsePlayer))
             return;
-        usePlayer = (UsePlayer)outUsePlayer;
-        if (!Utility.Parser_GetValue_Float(weponInfo, "level", out useLevel))
+        m_usePlayer = (UsePlayer)outUsePlayer;
+        if (!Utility.Parser_GetValue_Float(weponInfo, "level", out m_useLevel))
             return;
 
         AbilityData data = new AbilityData();
         if (!Utility.Parser_GetValue_Float(weponInfo, "atk", out data.amount))
             return;
         data.type = AbilityType.Attack;
-        abilityDatas.Add(data);
+        m_abilityDatas.Add(data);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer != mask.value) return;
+        if (other.gameObject.layer != m_mask.value) return;
 
         var hit = other.GetComponent<LivingEntity>();
         if (hit == null)
@@ -72,13 +72,13 @@ public class ItemHaruWeapon : Item
 
         DamageMessage msg = new DamageMessage
         {
-            damager = playerInfo.gameObject,
-            damage = attackDamage,
-            criticalRate = playerInfo.currentPlayerData.criticalRate,
-            criticalDamage = playerInfo.currentPlayerData.criticalDamage,
-            accuracy = playerInfo.currentPlayerData.accuracy,
-            partialDamage = playerInfo.currentPlayerData.partialDamage,
-            attackType = attackType
+            damager = m_playerInfo.gameObject,
+            damage = m_attackDamage,
+            criticalRate = m_playerInfo.currentPlayerData.criticalRate,
+            criticalDamage = m_playerInfo.currentPlayerData.criticalDamage,
+            accuracy = m_playerInfo.currentPlayerData.accuracy,
+            partialDamage = m_playerInfo.currentPlayerData.partialDamage,
+            attackType = m_attackType
         };
         hit.ApplyDamage(ref msg);
     }

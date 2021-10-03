@@ -18,22 +18,22 @@ public partial class UIManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private Image playerHpBar;     // 플레이어 체력바
-    [SerializeField] private Image playerHpSignal;  // 플레이어 체력 신호 애니메이션
-    [SerializeField] private Text playerHpText;     // 플레이어 체력 텍스트
-    [SerializeField] private Text playerName;       // 플레이어 이름
+    [SerializeField] private Image m_playerHpBar;       // 플레이어 체력바
+    [SerializeField] private Image m_playerHpSignal;    // 플레이어 체력 신호 애니메이션
+    [SerializeField] private Text m_playerHpText;       // 플레이어 체력 텍스트
+    [SerializeField] private Text m_playerName;         // 플레이어 이름
 
-    [SerializeField] private Image bossHpBarBack;   // 보스 체력바 뒤쪽
-    [SerializeField] private Image bossHpBarFront;  // 보스 체력바 앞쪽
-    [SerializeField] private Image bossHpLostBar;   // 보스 잃은 체력바
-    [SerializeField] private Text bossNameText;     // 보스 이름 텍스트
-    [SerializeField] private GameObject bossSuperArmor;         // 보스 슈퍼 아머 상태일 때 아이콘과 텍스트 이미지
-    [SerializeField] private Image bossSuperArmorBar;           // 보스 슈퍼 아머 바
-    [SerializeField] private Image bossSuperArmorBreakGuard;    // 보스 슈퍼 아머 브레이크 가드
-    [SerializeField] private Image bossSuperArmorBreakEffect;   // 보스 슈퍼 아머 브레이크 이펙트
-    [SerializeField] private Image bossSuperArmorBreak;         // 보스 슈퍼 아머 브레이크 텍스트 이미지
+    [SerializeField] private Image m_bossHpBarBack;     // 보스 체력바 뒤쪽
+    [SerializeField] private Image m_bossHpBarFront;    // 보스 체력바 앞쪽
+    [SerializeField] private Image m_bossHpLostBar;     // 보스 잃은 체력바
+    [SerializeField] private Text m_bossNameText;       // 보스 이름 텍스트
+    [SerializeField] private GameObject m_bossSuperArmor;           // 보스 슈퍼 아머 상태일 때 아이콘과 텍스트 이미지
+    [SerializeField] private Image m_bossSuperArmorBar;             // 보스 슈퍼 아머 바
+    [SerializeField] private Image m_bossSuperArmorBreakGuard;      // 보스 슈퍼 아머 브레이크 가드
+    [SerializeField] private Image m_bossSuperArmorBreakEffect;     // 보스 슈퍼 아머 브레이크 이펙트
+    [SerializeField] private Image m_bossSuperArmorBreak;           // 보스 슈퍼 아머 브레이크 텍스트 이미지
 
-    [SerializeField] private Sprite[] bossHpBarSprite;          // 보스 체력바 스프라이트
+    [SerializeField] private Sprite[] m_bossHpBarSprite;            // 보스 체력바 스프라이트
 
     [SerializeField] private Image m_characterinfo;                 // 캐릭터 정보 창
     [SerializeField] private RectTransform m_equipmentTransform;    // 장비 창 위치
@@ -61,22 +61,22 @@ public partial class UIManager : MonoBehaviour
     [SerializeField] private Text[] m_hotkeySkillSecondCooldownCount;       // 재사용 이전 스킬 대기시간 카운트
     [SerializeField] private GameObject[] m_hotkeySkillSecondCooldownBar;   // 재사용 대기시간 바
 
-    private int boosHpBarNum = -1;      // 현재 보스 체력 줄
+    private int m_boosHpBarNum = -1;      // 현재 보스 체력 줄
 
 
     // 플레이어 체력
     public void UpdatePlayerHp(float currentHp, float maxHp)
     {
-        playerHpText.text = currentHp + "/" + maxHp;
+        m_playerHpText.text = currentHp + "/" + maxHp;
         float amount = currentHp / maxHp;
-        playerHpBar.fillAmount = amount;
-        playerHpSignal.fillAmount = amount;
+        m_playerHpBar.fillAmount = amount;
+        m_playerHpSignal.fillAmount = amount;
     }
 
     // 플레이어 이름
     public void UpdatePlayerName(string name)
     {
-        playerName.text = name;
+        m_playerName.text = name;
     }
 
     // 플레이어 SG
@@ -95,50 +95,50 @@ public partial class UIManager : MonoBehaviour
         int hpBarNum = (int)num;
 
         // 보스 체력줄이 다름
-        if (boosHpBarNum != hpBarNum)
+        if (m_boosHpBarNum != hpBarNum)
         {
             // 0 보다 작으면 예외 처리
             if (hpBarNum < 0)
                 hpBarNum = 0;
 
             // 앞쪽 체력바
-            bossHpBarFront.sprite = bossHpBarSprite[hpBarNum % 6];
+            m_bossHpBarFront.sprite = m_bossHpBarSprite[hpBarNum % 6];
 
             // 체력바가 한줄 남았으면 뒤쪽 체력바는 비활성화
             if (hpBarNum != 0)
             {
                 // 비활성화 되어있으면 활성화
-                if (!bossHpBarBack.enabled)
-                    bossHpBarBack.enabled = true;
-                bossHpBarBack.sprite = bossHpBarSprite[(hpBarNum - 1) % 6];
+                if (!m_bossHpBarBack.enabled)
+                    m_bossHpBarBack.enabled = true;
+                m_bossHpBarBack.sprite = m_bossHpBarSprite[(hpBarNum - 1) % 6];
             }
             else
             {
                 // 비활성화
-                bossHpBarBack.enabled = false;
+                m_bossHpBarBack.enabled = false;
             }
 
             // 체력줄이 바뀜
-            boosHpBarNum = hpBarNum;
-            bossHpLostBar.fillAmount = 1f;
+            m_boosHpBarNum = hpBarNum;
+            m_bossHpLostBar.fillAmount = 1f;
         }
 
         
 
         float amount = num - hpBarNum;
-        bossHpBarFront.fillAmount = amount;
+        m_bossHpBarFront.fillAmount = amount;
     }
 
     // 보스 이름
     public void UpdateBossName(string name)
     {
-        bossNameText.text = name;
+        m_bossNameText.text = name;
     }
 
     // 보스 슈퍼 아머
     public void UpdateBossSuperArmor(float currentSA, float maxSA)
     {
-        bossSuperArmorBar.fillAmount = currentSA / maxSA;
+        m_bossSuperArmorBar.fillAmount = currentSA / maxSA;
     }
 
     // GET 장비창 트랜스폼
@@ -174,7 +174,7 @@ public partial class UIManager : MonoBehaviour
         m_equipmentStamina.text = data.stamina.ToString();
         m_equipmentMoveSpeed.text = data.moveSpeed.ToString("F1") + "%";
         m_equipmentDefense.text = data.defense.ToString();
-        m_equipmentEvade.text = data.evade.ToString();
+        m_equipmentEvade.text = data.m_evade.ToString();
         m_equipmentDamageReduction.text = data.damageReduction.ToString("F1") + "%";
         m_equipmentCriticalResistance.text = data.criticalResistance.ToString("F1") + "%";
         m_equipmentShorterCooldown.text = data.shorterCooldown.ToString("F1") + "%";
@@ -224,10 +224,10 @@ public partial class UIManager : MonoBehaviour
 
     private void LostBarUpdate()
     {
-        if (bossHpBarFront.fillAmount >= bossHpLostBar.fillAmount)
+        if (m_bossHpBarFront.fillAmount >= m_bossHpLostBar.fillAmount)
             return;
 
         // 잃은 체력을 따라감
-        bossHpLostBar.fillAmount -= 0.0003f;
+        m_bossHpLostBar.fillAmount -= 0.0003f;
     }
 }

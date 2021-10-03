@@ -5,71 +5,71 @@ public partial class AsphaltGolemAI : MonsterAI
 {
     private void SetSpeedZero()
     {
-        bodyAnime.SetFloat("Speed", 0);
-        armsAnime.SetFloat("Speed", 0);
+        m_bodyAnime.SetFloat("Speed", 0);
+        m_armsAnime.SetFloat("Speed", 0);
     }
 
     private void SetTrigerDMGL()
     {
-        bodyAnime.SetTrigger("B_DMG_L");
-        armsAnime.SetTrigger("B_DMG_L");
+        m_bodyAnime.SetTrigger("B_DMG_L");
+        m_armsAnime.SetTrigger("B_DMG_L");
     }
 
     private void SetTrigerDMGR()
     {
-        bodyAnime.SetTrigger("B_DMG_R");
-        armsAnime.SetTrigger("B_DMG_R");
+        m_bodyAnime.SetTrigger("B_DMG_R");
+        m_armsAnime.SetTrigger("B_DMG_R");
     }
 
     private void SetTrigerKB()
     {
-        bodyAnime.SetTrigger("B_KB");
-        armsAnime.SetTrigger("B_KB");
+        m_bodyAnime.SetTrigger("B_KB");
+        m_armsAnime.SetTrigger("B_KB");
     }
 
     private void SetTrigerKDHam()
     {
-        bodyAnime.SetTrigger("B_KD_Ham");
-        armsAnime.SetTrigger("B_KD_Ham");
+        m_bodyAnime.SetTrigger("B_KD_Ham");
+        m_armsAnime.SetTrigger("B_KD_Ham");
     }
 
     private void SetTrigerKDStr()
     {
-        bodyAnime.SetTrigger("B_KD_Str");
-        armsAnime.SetTrigger("B_KD_Str");
+        m_bodyAnime.SetTrigger("B_KD_Str");
+        m_armsAnime.SetTrigger("B_KD_Str");
     }
 
     private void SetTrigerKDUpp()
     {
-        bodyAnime.SetTrigger("B_KD_Upp");
-        armsAnime.SetTrigger("B_KD_Upp");
+        m_bodyAnime.SetTrigger("B_KD_Upp");
+        m_armsAnime.SetTrigger("B_KD_Upp");
     }
 
     private void SetTrigerDeath()
     {
-        bodyAnime.SetTrigger("Death");
-        armsAnime.SetTrigger("Death");
+        m_bodyAnime.SetTrigger("Death");
+        m_armsAnime.SetTrigger("Death");
     }
 
     private void SetTrigerASkill_01()
     {
-        isActionEnd = false;
-        bodyAnime.SetTrigger("A_Skill_01");
-        armsAnime.SetTrigger("A_Skill_01");
+        m_isActionEnd = false;
+        m_bodyAnime.SetTrigger("A_Skill_01");
+        m_armsAnime.SetTrigger("A_Skill_01");
     }
 
     private void SetTrigerASkill_02()
     {
-        isActionEnd = false;
-        bodyAnime.SetTrigger("A_Skill_02");
-        armsAnime.SetTrigger("A_Skill_02");
+        m_isActionEnd = false;
+        m_bodyAnime.SetTrigger("A_Skill_02");
+        m_armsAnime.SetTrigger("A_Skill_02");
     }
 
     private void SetTrigerASkill_03()
     {
-        isActionEnd = false;
-        bodyAnime.SetTrigger("A_Skill_03");
-        armsAnime.SetTrigger("A_Skill_03");
+        m_isActionEnd = false;
+        m_bodyAnime.SetTrigger("A_Skill_03");
+        m_armsAnime.SetTrigger("A_Skill_03");
     }
 
 
@@ -82,79 +82,79 @@ public partial class AsphaltGolemAI : MonsterAI
     private void Ani_Run()
     {
         // 타겟에서 근접하면
-        if (Vector3.Distance(targetEntity.transform.position, monsterTransform.position) <= meleeDistance - 1f)
+        if (Vector3.Distance(m_targetEntity.transform.position, m_monsterTransform.position) <= m_meleeDistance - 1f)
         {
-            state = AsphaltGolemState.Idle;
-            isActionEnd = true;
+            m_state = AsphaltGolemState.Idle;
+            m_isActionEnd = true;
             return;
         }
 
         // 이동
-        agent.SetDestination(targetEntity.transform.position);
+        m_agent.SetDestination(m_targetEntity.transform.position);
         // 이동 애니메이션 처리
-        float velocity = agent.desiredVelocity.magnitude;
-        bodyAnime.SetFloat("Speed", velocity);
-        armsAnime.SetFloat("Speed", velocity);
+        float velocity = m_agent.desiredVelocity.magnitude;
+        m_bodyAnime.SetFloat("Speed", velocity);
+        m_armsAnime.SetFloat("Speed", velocity);
     }
 
     private void Ani_DMG_L()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            state = AsphaltGolemState.Idle;
-            isActionEnd = true;
-            isTargetFollow = true;
+            m_state = AsphaltGolemState.Idle;
+            m_isActionEnd = true;
+            m_isTargetFollow = true;
         }
 
     }
 
     private void Ani_DMG_R()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            state = AsphaltGolemState.Idle;
-            isActionEnd = true;
-            isTargetFollow = true;
+            m_state = AsphaltGolemState.Idle;
+            m_isActionEnd = true;
+            m_isTargetFollow = true;
         }
     }
 
     private void Ani_KB()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            state = AsphaltGolemState.Idle;
-            isActionEnd = true;
-            isTargetFollow = true;
+            m_state = AsphaltGolemState.Idle;
+            m_isActionEnd = true;
+            m_isTargetFollow = true;
         }
     }
 
     private void Ani_KD_Ham()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            state = AsphaltGolemState.Idle;
-            isActionEnd = true;
-            isTargetFollow = true;
+            m_state = AsphaltGolemState.Idle;
+            m_isActionEnd = true;
+            m_isTargetFollow = true;
         }
     }
 
     private void Ani_KD_Str()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            state = AsphaltGolemState.Idle;
-            isActionEnd = true;
-            isTargetFollow = true;
+            m_state = AsphaltGolemState.Idle;
+            m_isActionEnd = true;
+            m_isTargetFollow = true;
         }
     }
 
     private void Ani_KD_Upp()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
         {
-            state = AsphaltGolemState.Idle;
-            isActionEnd = true;
-            isTargetFollow = true;
+            m_state = AsphaltGolemState.Idle;
+            m_isActionEnd = true;
+            m_isTargetFollow = true;
         }
     }
 
@@ -165,12 +165,12 @@ public partial class AsphaltGolemAI : MonsterAI
 
     private void Ani_A_Skill_01()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_01"))
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_01"))
         {
-            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            float time = m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (isTargetFollow && 0.1f <= time)
-                isTargetFollow = false;
+            if (m_isTargetFollow && 0.1f <= time)
+                m_isTargetFollow = false;
 
             if (0.4f <= time)
             {
@@ -185,21 +185,21 @@ public partial class AsphaltGolemAI : MonsterAI
 
             if (0.99f <= time)
             {
-                state = AsphaltGolemState.Idle;
-                isActionEnd = true;
-                isTargetFollow = true;
+                m_state = AsphaltGolemState.Idle;
+                m_isActionEnd = true;
+                m_isTargetFollow = true;
             }
         }
     }
 
     private void Ani_A_Skill_02()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_02"))
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_02"))
         {
-            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            float time = m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-            if (isTargetFollow &&  0.1f <= time)
-                isTargetFollow = false;
+            if (m_isTargetFollow &&  0.1f <= time)
+                m_isTargetFollow = false;
 
             if (0.6f <= time)
             {
@@ -216,18 +216,18 @@ public partial class AsphaltGolemAI : MonsterAI
 
             if (0.99f <= time)
             {
-                state = AsphaltGolemState.Idle;
-                isActionEnd = true;
-                isTargetFollow = true;
+                m_state = AsphaltGolemState.Idle;
+                m_isActionEnd = true;
+                m_isTargetFollow = true;
             }
         }
     }
 
     private void Ani_A_Skill_03()
     {
-        if (bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_03"))
+        if (m_bodyAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.A_Skill.B_A_Skill_03"))
         {
-            float time = bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            float time = m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
             if (0.11f <= time)
             {
@@ -240,14 +240,14 @@ public partial class AsphaltGolemAI : MonsterAI
                 OnTriggerLeft();
             }
 
-            if (isTargetFollow && 0.1f <= time)
-                isTargetFollow = false;
+            if (m_isTargetFollow && 0.1f <= time)
+                m_isTargetFollow = false;
 
             if (0.99f <= time)
             {
-                state = AsphaltGolemState.Idle;
-                isActionEnd = true;
-                isTargetFollow = true;
+                m_state = AsphaltGolemState.Idle;
+                m_isActionEnd = true;
+                m_isTargetFollow = true;
                 OffTriggerLeft();
             }
         }

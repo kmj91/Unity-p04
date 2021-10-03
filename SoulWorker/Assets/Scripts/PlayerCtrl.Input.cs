@@ -6,9 +6,9 @@ public partial class PlayerCtrl: MonoBehaviour
 {
     public void MoveNone()
     {
-        moveInput = Vector2.zero;
+        m_moveInput = Vector2.zero;
 
-        if (CheckState(state, HaruState.Idle))
+        if (CheckState(m_state, HaruState.Idle))
         {
             IdleBranch();
         }
@@ -16,9 +16,9 @@ public partial class PlayerCtrl: MonoBehaviour
 
     public void Move(Vector2 dir)
     {
-        moveInput = dir;
+        m_moveInput = dir;
 
-        if (CheckState(state, HaruState.Run) && !lockInput)
+        if (CheckState(m_state, HaruState.Run) && !m_lockInput)
         {
             MoveBranch();
         }
@@ -26,40 +26,40 @@ public partial class PlayerCtrl: MonoBehaviour
 
     public void Dash()
     {
-        if (CheckState(state, HaruState.Dash))
+        if (CheckState(m_state, HaruState.Dash))
         {
             ChangeFlagFalse();
-            state = HaruState.Dash;
+            m_state = HaruState.Dash;
             ChangeFlagTrue();
         }
     }
 
     public void MouseLeft()
     {
-        if (CheckState(state, HaruState.NormalAttack1) && !lockInput)
+        if (CheckState(m_state, HaruState.NormalAttack1) && !m_lockInput)
         {
             ChangeFlagFalse();
-            state = HaruState.NormalAttack1;
+            m_state = HaruState.NormalAttack1;
             ChangeFlagTrue();
         }
-        else if (CheckState(state, HaruState.NormalAttack2) && !lockInput && normalAtk)
+        else if (CheckState(m_state, HaruState.NormalAttack2) && !m_lockInput && m_normalAtk)
         {
-            state = HaruState.NormalAttack2;
+            m_state = HaruState.NormalAttack2;
             ChangeFlagTrue();
         }
-        else if (CheckState(state, HaruState.NormalAttack3) && !lockInput && normalAtk)
+        else if (CheckState(m_state, HaruState.NormalAttack3) && !m_lockInput && m_normalAtk)
         {
-            state = HaruState.NormalAttack3;
+            m_state = HaruState.NormalAttack3;
             ChangeFlagTrue();
         }
-        else if (CheckState(state, HaruState.NormalAttack4) && !lockInput && normalAtk)
+        else if (CheckState(m_state, HaruState.NormalAttack4) && !m_lockInput && m_normalAtk)
         {
-            state = HaruState.NormalAttack4;
+            m_state = HaruState.NormalAttack4;
             ChangeFlagTrue();
         }
-        else if (CheckState(state, HaruState.NormalAttack5) && !lockInput && normalAtk)
+        else if (CheckState(m_state, HaruState.NormalAttack5) && !m_lockInput && m_normalAtk)
         {
-            state = HaruState.NormalAttack5;
+            m_state = HaruState.NormalAttack5;
             ChangeFlagTrue();
         }
     }
@@ -71,39 +71,39 @@ public partial class PlayerCtrl: MonoBehaviour
 
     public void Jump()
     {
-        if (lockInput)
+        if (m_lockInput)
             return;
 
-        if (dash)
+        if (m_dash)
         {
-            if (CheckState(state, HaruState.DashJump) && characterController.isGrounded)
+            if (CheckState(m_state, HaruState.DashJump) && m_characterController.isGrounded)
             {
                 ChangeFlagFalse();
-                state = HaruState.DashJump;
+                m_state = HaruState.DashJump;
                 ChangeFlagTrue();
 
-                lastJumpTime = Time.time;
-                currentVelocityY = jumpVelocity * 0.6f;
-                moveAnimeDir = modelTransform.forward;
-                oldInput = moveInput;
+                m_lastJumpTime = Time.time;
+                m_currentVelocityY = m_jumpVelocity * 0.6f;
+                m_moveAnimeDir = m_modelTransform.forward;
+                m_oldInput = m_moveInput;
                 // 대쉬 점프 속도가 높지 않으면 강제로 맞춰줌
-                if (targetSpeed != moveSpeed * dashSpeedGob)
+                if (m_targetSpeed != m_moveSpeed * m_dashSpeedGob)
                 {
-                    targetSpeed = moveSpeed * dashSpeedGob;
+                    m_targetSpeed = m_moveSpeed * m_dashSpeedGob;
                 }
             }
         }
         else
         {
-            if (CheckState(state, HaruState.Jump) && characterController.isGrounded)
+            if (CheckState(m_state, HaruState.Jump) && m_characterController.isGrounded)
             {
                 ChangeFlagFalse();
-                state = HaruState.Jump;
+                m_state = HaruState.Jump;
                 ChangeFlagTrue();
 
-                lastJumpTime = Time.time;
-                currentVelocityY = jumpVelocity;
-                moveInput = new Vector2(0, 0);
+                m_lastJumpTime = Time.time;
+                m_currentVelocityY = m_jumpVelocity;
+                m_moveInput = new Vector2(0, 0);
             }
         }
     }
@@ -112,12 +112,12 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         return;
 
-        if (CheckState(state, HaruState.Evade))
+        if (CheckState(m_state, HaruState.Evade))
         {
             ChangeFlagFalse();
-            state = HaruState.Evade;
+            m_state = HaruState.Evade;
             ChangeFlagTrue();
-            moveAnimeDir = dir;
+            m_moveAnimeDir = dir;
         }
     }
 
@@ -126,15 +126,15 @@ public partial class PlayerCtrl: MonoBehaviour
         HaruState retState;
 
         // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!playerInfo.GetStateOfSkillSlot(0, out retState))
+        if (!m_playerInfo.GetStateOfSkillSlot(0, out retState))
             return;
 
-        if (CheckState(state, retState))
+        if (CheckState(m_state, retState))
         {
             ChangeFlagFalse();
-            state = retState;
+            m_state = retState;
             ChangeFlagTrue();
-            playerInfo.InputSkillSlot(0);
+            m_playerInfo.InputSkillSlot(0);
         }
     }
 
@@ -143,15 +143,15 @@ public partial class PlayerCtrl: MonoBehaviour
         HaruState retState;
 
         // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!playerInfo.GetStateOfSkillSlot(1, out retState))
+        if (!m_playerInfo.GetStateOfSkillSlot(1, out retState))
             return;
 
-        if (CheckState(state, retState))
+        if (CheckState(m_state, retState))
         {
             ChangeFlagFalse();
-            state = retState;
+            m_state = retState;
             ChangeFlagTrue();
-            playerInfo.InputSkillSlot(1);
+            m_playerInfo.InputSkillSlot(1);
         }
     }
 
@@ -160,15 +160,15 @@ public partial class PlayerCtrl: MonoBehaviour
         HaruState retState;
 
         // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!playerInfo.GetStateOfSkillSlot(2, out retState))
+        if (!m_playerInfo.GetStateOfSkillSlot(2, out retState))
             return;
 
-        if (CheckState(state, retState))
+        if (CheckState(m_state, retState))
         {
             ChangeFlagFalse();
-            state = retState;
+            m_state = retState;
             ChangeFlagTrue();
-            playerInfo.InputSkillSlot(2);
+            m_playerInfo.InputSkillSlot(2);
         }
     }
 
@@ -193,22 +193,22 @@ public partial class PlayerCtrl: MonoBehaviour
 
     private void IdleBranch()
     {
-        switch (state)
+        switch (m_state)
         {
             case HaruState.Run:
                 ChangeFlagFalse();
-                state = HaruState.RunEnd;
+                m_state = HaruState.RunEnd;
                 ChangeFlagTrue();
                 return;
             case HaruState.Dash:
                 ChangeFlagFalse();
-                state = HaruState.DashEnd;
+                m_state = HaruState.DashEnd;
                 ChangeFlagTrue();
                 return;
             default:
                 ChangeFlagFalse();
                 lastIdleChangeTime = Time.time;
-                state = HaruState.Idle;
+                m_state = HaruState.Idle;
                 ChangeFlagTrue();
                 return;
         }
@@ -217,33 +217,33 @@ public partial class PlayerCtrl: MonoBehaviour
     private void MoveBranch()
     {
         // 다운 상태
-        if (state == HaruState.KD_Upp_Down)
+        if (m_state == HaruState.KD_Upp_Down)
         {
             ChangeFlagFalse();
-            state = HaruState.KD_Upp_Raise;
+            m_state = HaruState.KD_Upp_Raise;
             ChangeFlagTrue();
             return;
         }
 
         // 대쉬 착지중이면
         // 입력키 상태에따라 Dash or Run 으로 변경됨
-        if (state == HaruState.DashLand)
+        if (m_state == HaruState.DashLand)
         {
-            if (moveInput == oldInput && dash)
+            if (m_moveInput == m_oldInput && m_dash)
             {
                 ChangeFlagFalse();
-                state = HaruState.Dash;
+                m_state = HaruState.Dash;
                 ChangeFlagTrue();
             }
             else
             {
                 ChangeFlagFalse();
-                state = HaruState.Run;
+                m_state = HaruState.Run;
                 ChangeFlagTrue();
             }
         }
         // 일반 공격중
-        else if (normalAtk && !moveStand)
+        else if (m_normalAtk && !m_moveStand)
         {
             return;
         }
@@ -251,18 +251,18 @@ public partial class PlayerCtrl: MonoBehaviour
         else
         {
             ChangeFlagFalse();
-            state = HaruState.Run;
+            m_state = HaruState.Run;
             ChangeFlagTrue();
         }
     }
 
     private void StartNormalAttack(int attackCnt)
     {
-        lockInput = true;
-        moveAttack = true;
-        moveStand = false;
-        normalAtk = true;
-        isAttacking = false;
+        m_lockInput = true;
+        m_moveAttack = true;
+        m_moveStand = false;
+        m_normalAtk = true;
+        m_isAttacking = false;
         SetNormalAttackCnt(attackCnt);
         SetAttackDir();
     }
@@ -271,7 +271,7 @@ public partial class PlayerCtrl: MonoBehaviour
     {
         ChangeFlagFalse();
         lastIdleChangeTime = Time.time;
-        state = HaruState.Idle;
+        m_state = HaruState.Idle;
         ChangeFlagTrue();
     }
 
@@ -279,17 +279,17 @@ public partial class PlayerCtrl: MonoBehaviour
     // 공격 방향
     private void SetAttackDir()
     {
-        if (cameraDirAtk)
+        if (m_cameraDirAtk)
         {
             // 카메라 방향
-            moveAnimeDir = cameraTransform.forward;
+            m_moveAnimeDir = m_cameraTransform.forward;
             return;
         }
 
-        // cameraDirAtk가 false일 경우 공격 방향
-        if (moveInput == Vector2.zero)
-            moveAnimeDir = modelTransform.forward;
+        // m_cameraDirAtk가 false일 경우 공격 방향
+        if (m_moveInput == Vector2.zero)
+            m_moveAnimeDir = m_modelTransform.forward;
         else
-            moveAnimeDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
+            m_moveAnimeDir = (m_cameraTransform.forward * m_moveInput.y) + (m_cameraTransform.right * m_moveInput.x);
     }
 }

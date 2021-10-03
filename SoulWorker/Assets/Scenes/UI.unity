@@ -10897,27 +10897,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42d684819e1e284eb13e60ce699f4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHpBar: {fileID: 130728635}
-  playerHpSignal: {fileID: 660839104}
-  playerHpText: {fileID: 901977723}
-  playerName: {fileID: 1231919929}
-  bossHpBarBack: {fileID: 1559418032}
-  bossHpBarFront: {fileID: 1495491288}
-  bossHpLostBar: {fileID: 1869701443}
-  bossNameText: {fileID: 1831512343}
-  bossSuperArmor: {fileID: 1142811306}
-  bossSuperArmorBar: {fileID: 530323110}
-  bossSuperArmorBreakGuard: {fileID: 1123168472}
-  bossSuperArmorBreakEffect: {fileID: 2079517638}
-  bossSuperArmorBreak: {fileID: 469560975}
-  bossHpBarSprite:
+  m_playerHpBar: {fileID: 130728635}
+  m_playerHpSignal: {fileID: 660839104}
+  m_playerHpText: {fileID: 901977723}
+  m_playerName: {fileID: 1231919929}
+  m_bossHpBarBack: {fileID: 1559418032}
+  m_bossHpBarFront: {fileID: 1495491288}
+  m_bossHpLostBar: {fileID: 1869701443}
+  m_bossNameText: {fileID: 1831512343}
+  m_bossSuperArmor: {fileID: 1142811306}
+  m_bossSuperArmorBar: {fileID: 530323110}
+  m_bossSuperArmorBreakGuard: {fileID: 1123168472}
+  m_bossSuperArmorBreakEffect: {fileID: 2079517638}
+  m_bossSuperArmorBreak: {fileID: 469560975}
+  m_bossHpBarSprite:
   - {fileID: 8484030793908474369, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: -7868393053494390922, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: 3912503313807001267, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: 7918502477841467764, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: 12121534870464039, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: -753926199851564581, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
-  - {fileID: 8795594432789449632, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   m_characterinfo: {fileID: 1401884273}
   m_equipmentTransform: {fileID: 15481547}
   m_equipmentHP: {fileID: 1586758294}

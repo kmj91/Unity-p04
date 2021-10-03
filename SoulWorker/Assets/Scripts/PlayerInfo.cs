@@ -12,7 +12,7 @@ public class PlayerInfo : MonoBehaviour
     public Item shoulderGear;
     public Item bodyGear;
     public Item legGear;
-    public Item weapon;
+    public Item m_weapon;
 
 
     public void SetUp(ref PlayerData data)
@@ -25,7 +25,7 @@ public class PlayerInfo : MonoBehaviour
     {
         currentPlayerData = originPlayerData;
 
-        foreach (var ability in weapon.abilityDatas)
+        foreach (var ability in m_weapon.m_abilityDatas)
         {
             switch (ability.type)
             {
@@ -60,7 +60,7 @@ public class PlayerInfo : MonoBehaviour
 
     public float GetCurrentEvade()
     {
-        return currentPlayerData.evade;
+        return currentPlayerData.m_evade;
     }
 
     public float GetCurrentCriticalResistance()

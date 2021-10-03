@@ -11,83 +11,83 @@ using Random = UnityEngine.Random;
 
 public partial class PlayerCtrl : MonoBehaviour
 {
-    public GameManager gameManager;
-    public HaruInfo playerInfo;             // 플레이어 정보
-    public ItemHaruWeapon weapon;
-    public float moveSpeed = 5.0f;          // 이동 속도
-    public float dashSpeedGob = 2.0f;       // 대쉬 속도 = moveSpeed * dashSpeedGob
-    public float mouseSpeed = 100.0f;       // 마우스 속도
-    public float rotationSpeed = 10.0f;     // 회전 속도
-    public float jumpVelocity = 5.0f;       // 점프력
-    [Range(0.01f, 1.0f)] public float airControlPercent;
-    public float speedSmoothTime = 0.1f;
+    public GameManager m_gameManager;       // 게임 매니저
+    public HaruInfo m_playerInfo;           // 플레이어 정보
+    public ItemHaruWeapon m_weapon;
+    public float m_moveSpeed = 5.0f;        // 이동 속도
+    public float m_dashSpeedGob = 2.0f;     // 대쉬 속도 = m_moveSpeed * m_dashSpeedGob
+    public float m_mouseSpeed = 100.0f;     // 마우스 속도
+    public float m_rotationSpeed = 10.0f;   // 회전 속도
+    public float m_jumpVelocity = 10.0f;     // 점프력
+    [Range(0.01f, 1.0f)] public float m_airControlPercent;
+    public float m_speedSmoothTime = 0.1f;
     // 캐릭터 컬라이더가 실제 움직인 거리
-    public float currentSpeed =>
-        new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
+    public float m_currentSpeed =>
+        new Vector2(m_characterController.velocity.x, m_characterController.velocity.z).magnitude;
 
-    public Transform modelTransform;
-    public Transform cameraTransform;
-    public Transform weaponholder;
-    public Transform aimTransform;
-    public Animator hairAnime;
-    public Animator faceAnime;
-    public Animator bodyAnime;
-    public Animator pantsAnime;
-    public Animator handsAnime;
-    public Animator footAnime;
+    public Transform m_modelTransform;
+    public Transform m_cameraTransform;
+    public Transform m_weaponholder;
+    public Transform m_aimTransform;
+    public Animator m_hairAnime;
+    public Animator m_faceAnime;
+    public Animator m_bodyAnime;
+    public Animator m_pantsAnime;
+    public Animator m_handsAnime;
+    public Animator m_footAnime;
 
-    private CharacterController characterController;
-    private Transform playerTransform;
-    public HaruState state { get; protected set; }    // 상태
-    private Vector2 moveInput = Vector2.zero;
-    private Vector2 oldInput = Vector2.zero;            // 대쉬 점프할 때 입력 값 저장
-    private Vector3 moveAnimeDir = Vector3.zero;
-    private Vector3 turnDir = Vector3.forward;
+    private CharacterController m_characterController;
+    private Transform m_playerTransform;
+    public HaruState m_state { get; protected set; }    // 상태
+    private Vector2 m_moveInput = Vector2.zero;
+    private Vector2 m_oldInput = Vector2.zero;          // 대쉬 점프할 때 입력 값 저장
+    private Vector3 m_moveAnimeDir = Vector3.zero;
+    private Vector3 m_turnDir = Vector3.forward;
 
-    private bool[,] changeState;
-    private Action[] moveUpdate;
-    private Action[] animeUpdate;
-    private float speedSmoothVelocity;
-    private float currentVelocityY;
-    private float targetSpeed;          // SmoothDamp가 적용된 이동 속도
-    private float lastJumpTime;         // 상태가 점프로 변경된 시간
+    private bool[,] m_changeState;
+    private Action[] m_moveUpdate;
+    private Action[] m_animeUpdate;
+    private float m_speedSmoothVelocity;
+    private float m_currentVelocityY;
+    private float m_targetSpeed;        // SmoothDamp가 적용된 이동 속도
+    private float m_lastJumpTime;       // 상태가 점프로 변경된 시간
 
-    private const float idleChangeDelay = 0.1f;   // 0.1초 정도 대기후 변환
+    private const float m_idleChangeDelay = 0.1f;   // 0.1초 정도 대기후 변환
     private float lastIdleChangeTime;   // 상태가 대기로 변경된 시간
     
-    private bool jump;                  // 점프 상태 플래그
-    private bool dash;                  // 대쉬 상태 플래그
-    private bool upp;                   // 어퍼 상태 플래그
-    private bool down;                  // 다운 상태 플래그
-    public bool evade { get; protected set; }   // 회피 상태 플래그
-    private bool normalAtk;
-    private bool lockInput;
-    private bool moveAttack;            // 공격시 전진 플래그
-    private bool moveStand;             // 공격후 제자리 플래그
-    private bool isAttacking;           // 공격 트리거 on off 플래그
-    private bool cameraDirAtk = false;          // 카메라 방향으로 공격 플래그
-    private bool isUIObject = false;
+    private bool m_jump;                // 점프 상태 플래그
+    private bool m_dash;                // 대쉬 상태 플래그
+    private bool m_upp;                 // 어퍼 상태 플래그
+    private bool m_down;                // 다운 상태 플래그
+    public bool m_evade { get; protected set; }     // 회피 상태 플래그
+    private bool m_normalAtk;
+    private bool m_lockInput;
+    private bool m_moveAttack;          // 공격시 전진 플래그
+    private bool m_moveStand;           // 공격후 제자리 플래그
+    private bool m_isAttacking;         // 공격 트리거 on off 플래그
+    private bool m_cameraDirAtk = false;        // 카메라 방향으로 공격 플래그
+    private bool m_isUIObject = false;
 
 
     public void FSM_Hit(ref DamageMessage damageMessage)
     {
         // 공중에 뜸
-        if (upp)
+        if (m_upp)
         {
             // 공중 피격
             ChangeFlagFalse();
-            state = HaruState.KD_Upp_Air_Hit;
+            m_state = HaruState.KD_Upp_Air_Hit;
             ChangeFlagTrue();
-            moveAnimeDir = damageMessage.hitDir;
-            turnDir = -moveAnimeDir;
+            m_moveAnimeDir = damageMessage.hitDir;
+            m_turnDir = -m_moveAnimeDir;
             return;
         }
         // 이미 다운된 상태
-        else if (down)
+        else if (m_down)
         {
             // 다운 피격
             ChangeFlagFalse();
-            state = HaruState.KD_Upp_Down_Hit;
+            m_state = HaruState.KD_Upp_Down_Hit;
             ChangeFlagTrue();
             return;
         }
@@ -99,50 +99,50 @@ public partial class PlayerCtrl : MonoBehaviour
                 if (rand == 0)
                 {
                     ChangeFlagFalse();
-                    state = HaruState.DMG_L;
+                    m_state = HaruState.DMG_L;
                     ChangeFlagTrue();
                 }
                 else
                 {
                     ChangeFlagFalse();
-                    state = HaruState.DMG_R;
+                    m_state = HaruState.DMG_R;
                     ChangeFlagTrue();
                 }
-                turnDir = -damageMessage.hitDir;
+                m_turnDir = -damageMessage.hitDir;
                 break;
             case AttackType.Upper:
                 ChangeFlagFalse();
-                state = HaruState.KD_Upp;
+                m_state = HaruState.KD_Upp;
                 ChangeFlagTrue();
 
-                lastJumpTime = Time.time;
-                currentVelocityY = damageMessage.power;
-                moveAnimeDir = damageMessage.hitDir;
-                turnDir = -moveAnimeDir;
+                m_lastJumpTime = Time.time;
+                m_currentVelocityY = damageMessage.power;
+                m_moveAnimeDir = damageMessage.hitDir;
+                m_turnDir = -m_moveAnimeDir;
                 break;
             case AttackType.Down:
                 // 0 보다 크면 뒤쪽에서 맞음
-                if (0 < Vector3.Dot(modelTransform.forward, damageMessage.hitDir))
+                if (0 < Vector3.Dot(m_modelTransform.forward, damageMessage.hitDir))
                 {
                     ChangeFlagFalse();
-                    state = HaruState.KD_Ham_B;
+                    m_state = HaruState.KD_Ham_B;
                     ChangeFlagTrue();
 
-                    lastJumpTime = Time.time;
-                    turnDir = damageMessage.hitDir;
+                    m_lastJumpTime = Time.time;
+                    m_turnDir = damageMessage.hitDir;
                 }
                 else
                 {
                     ChangeFlagFalse();
-                    state = HaruState.KD_Ham_F;
+                    m_state = HaruState.KD_Ham_F;
                     ChangeFlagTrue();
 
-                    lastJumpTime = Time.time;
-                    turnDir = -damageMessage.hitDir;
+                    m_lastJumpTime = Time.time;
+                    m_turnDir = -damageMessage.hitDir;
                 }
 
-                currentVelocityY = damageMessage.power;
-                moveAnimeDir = damageMessage.hitDir;
+                m_currentVelocityY = damageMessage.power;
+                m_moveAnimeDir = damageMessage.hitDir;
                 break;
             case AttackType.Break:
                 break;
@@ -157,208 +157,208 @@ public partial class PlayerCtrl : MonoBehaviour
     public void SetUIObject()
     {
         // Update 처리 X
-        isUIObject = true;
+        m_isUIObject = true;
         // N_Stand 상태
         SetTrigerNormalStand();
         // 무기 착용 X
-        weapon.gameObject.SetActive(false);
+        m_weapon.gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
-        if (!isUIObject)
+        if (!m_isUIObject)
             return;
 
         // N_Stand 상태
         SetTrigerNormalStand();
         // 무기 착용 X
-        weapon.gameObject.SetActive(false);
+        m_weapon.gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update
     private void Start()
     {
-        playerTransform = GetComponent<Transform>();
-        characterController = GetComponent<CharacterController>();
-        state = HaruState.Idle;
+        m_playerTransform = GetComponent<Transform>();
+        m_characterController = GetComponent<CharacterController>();
+        m_state = HaruState.Idle;
 
-        moveUpdate = new Action[(int)HaruState.End];
-        moveUpdate[(int)HaruState.Idle] = Move_Idle;
-        moveUpdate[(int)HaruState.Run] = Move_Run;
-        moveUpdate[(int)HaruState.RunEnd] = Move_RunEnd;
-        moveUpdate[(int)HaruState.Dash] = Move_Dash;
-        moveUpdate[(int)HaruState.DashEnd] = Move_DashEnd;
-        moveUpdate[(int)HaruState.Jump] = Move_Jump;
-        moveUpdate[(int)HaruState.DashJump] = Move_DashJump;
-        moveUpdate[(int)HaruState.Land] = Move_Land;
-        moveUpdate[(int)HaruState.DashLand] = Move_DashLand;
-        moveUpdate[(int)HaruState.Evade] = Move_Evade;
-        moveUpdate[(int)HaruState.DMG_L] = Move_Idle;
-        moveUpdate[(int)HaruState.DMG_R] = Move_Idle;
-        moveUpdate[(int)HaruState.KB] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Ham_F] = Move_KD_Ham_F;
-        moveUpdate[(int)HaruState.KD_Ham_B] = Move_KD_Ham_B;
-        moveUpdate[(int)HaruState.KD_Str] = Move_KD_Str;
-        moveUpdate[(int)HaruState.KD_Upp] = Move_KD_Upp;
-        moveUpdate[(int)HaruState.KD_Upp_End] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Upp_Down] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Upp_Air_Hit] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Upp_Down_Hit] = Move_Idle;
-        moveUpdate[(int)HaruState.KD_Upp_Raise] = Move_Idle;
-        moveUpdate[(int)HaruState.NormalAttack1] = Move_NormalAttack1;
-        moveUpdate[(int)HaruState.NormalAttack2] = Move_NormalAttack2;
-        moveUpdate[(int)HaruState.NormalAttack3] = Move_NormalAttack3;
-        moveUpdate[(int)HaruState.NormalAttack4] = Move_NormalAttack4;
-        moveUpdate[(int)HaruState.NormalAttack5] = Move_NormalAttack5;
-        moveUpdate[(int)HaruState.FirstBlade] = Move_FirstBlade;
-        moveUpdate[(int)HaruState.FirstBlade02] = Move_FirstBlade02;
-        moveUpdate[(int)HaruState.PierceStep] = Move_PierceStep;
-        moveUpdate[(int)HaruState.SpinCutter] = Move_SpinCutter;
+        m_moveUpdate = new Action[(int)HaruState.End];
+        m_moveUpdate[(int)HaruState.Idle] = Move_Idle;
+        m_moveUpdate[(int)HaruState.Run] = Move_Run;
+        m_moveUpdate[(int)HaruState.RunEnd] = Move_RunEnd;
+        m_moveUpdate[(int)HaruState.Dash] = Move_Dash;
+        m_moveUpdate[(int)HaruState.DashEnd] = Move_DashEnd;
+        m_moveUpdate[(int)HaruState.Jump] = Move_Jump;
+        m_moveUpdate[(int)HaruState.DashJump] = Move_DashJump;
+        m_moveUpdate[(int)HaruState.Land] = Move_Land;
+        m_moveUpdate[(int)HaruState.DashLand] = Move_DashLand;
+        m_moveUpdate[(int)HaruState.Evade] = Move_Evade;
+        m_moveUpdate[(int)HaruState.DMG_L] = Move_Idle;
+        m_moveUpdate[(int)HaruState.DMG_R] = Move_Idle;
+        m_moveUpdate[(int)HaruState.KB] = Move_Idle;
+        m_moveUpdate[(int)HaruState.KD_Ham_F] = Move_KD_Ham_F;
+        m_moveUpdate[(int)HaruState.KD_Ham_B] = Move_KD_Ham_B;
+        m_moveUpdate[(int)HaruState.KD_Str] = Move_KD_Str;
+        m_moveUpdate[(int)HaruState.KD_Upp] = Move_KD_Upp;
+        m_moveUpdate[(int)HaruState.KD_Upp_End] = Move_Idle;
+        m_moveUpdate[(int)HaruState.KD_Upp_Down] = Move_Idle;
+        m_moveUpdate[(int)HaruState.KD_Upp_Air_Hit] = Move_Idle;
+        m_moveUpdate[(int)HaruState.KD_Upp_Down_Hit] = Move_Idle;
+        m_moveUpdate[(int)HaruState.KD_Upp_Raise] = Move_Idle;
+        m_moveUpdate[(int)HaruState.NormalAttack1] = Move_NormalAttack1;
+        m_moveUpdate[(int)HaruState.NormalAttack2] = Move_NormalAttack2;
+        m_moveUpdate[(int)HaruState.NormalAttack3] = Move_NormalAttack3;
+        m_moveUpdate[(int)HaruState.NormalAttack4] = Move_NormalAttack4;
+        m_moveUpdate[(int)HaruState.NormalAttack5] = Move_NormalAttack5;
+        m_moveUpdate[(int)HaruState.FirstBlade] = Move_FirstBlade;
+        m_moveUpdate[(int)HaruState.FirstBlade02] = Move_FirstBlade02;
+        m_moveUpdate[(int)HaruState.PierceStep] = Move_PierceStep;
+        m_moveUpdate[(int)HaruState.SpinCutter] = Move_SpinCutter;
 
-        animeUpdate = new Action[(int)HaruState.End];
-        animeUpdate[(int)HaruState.Idle] = Ani_Idle;
-        animeUpdate[(int)HaruState.Run] = Ani_Run;
-        animeUpdate[(int)HaruState.RunEnd] = Ani_RunEnd;
-        animeUpdate[(int)HaruState.Dash] = Ani_Dash;
-        animeUpdate[(int)HaruState.DashEnd] = Ani_DashEnd;
-        animeUpdate[(int)HaruState.Jump] = Ani_Jump;
-        animeUpdate[(int)HaruState.DashJump] = Ani_DashJump;
-        animeUpdate[(int)HaruState.Land] = Ani_Land;
-        animeUpdate[(int)HaruState.DashLand] = Ani_DashLand;
-        animeUpdate[(int)HaruState.Evade] = Ani_Evade;
-        animeUpdate[(int)HaruState.DMG_L] = Ani_DMG_L;
-        animeUpdate[(int)HaruState.DMG_R] = Ani_DMG_R;
-        animeUpdate[(int)HaruState.KB] = Ani_KB;
-        animeUpdate[(int)HaruState.KD_Ham_F] = Ani_KD_Ham_F;
-        animeUpdate[(int)HaruState.KD_Ham_B] = Ani_KD_Ham_B;
-        animeUpdate[(int)HaruState.KD_Str] = Ani_KD_Str;
-        animeUpdate[(int)HaruState.KD_Upp] = Ani_KD_Upp;
-        animeUpdate[(int)HaruState.KD_Upp_End] = Ani_KD_Upp_End;
-        animeUpdate[(int)HaruState.KD_Upp_Down] = Ani_KD_Upp_Down;
-        animeUpdate[(int)HaruState.KD_Upp_Air_Hit] = Ani_KD_Upp_Air_Hit;
-        animeUpdate[(int)HaruState.KD_Upp_Down_Hit] = Ani_KD_Upp_Down_Hit;
-        animeUpdate[(int)HaruState.KD_Upp_Raise] = Ani_KD_Upp_Raise;
-        animeUpdate[(int)HaruState.NormalAttack1] = Ani_NormalAttack1;
-        animeUpdate[(int)HaruState.NormalAttack2] = Ani_NormalAttack2;
-        animeUpdate[(int)HaruState.NormalAttack3] = Ani_NormalAttack3;
-        animeUpdate[(int)HaruState.NormalAttack4] = Ani_NormalAttack4;
-        animeUpdate[(int)HaruState.NormalAttack5] = Ani_NormalAttack5;
-        animeUpdate[(int)HaruState.FirstBlade] = Ani_FirstBlade;
-        animeUpdate[(int)HaruState.FirstBlade02] = Ani_FirstBlade02;
-        animeUpdate[(int)HaruState.PierceStep] = Ani_PierceStep;
-        animeUpdate[(int)HaruState.SpinCutter] = Ani_SpinCutter;
+        m_animeUpdate = new Action[(int)HaruState.End];
+        m_animeUpdate[(int)HaruState.Idle] = Ani_Idle;
+        m_animeUpdate[(int)HaruState.Run] = Ani_Run;
+        m_animeUpdate[(int)HaruState.RunEnd] = Ani_RunEnd;
+        m_animeUpdate[(int)HaruState.Dash] = Ani_Dash;
+        m_animeUpdate[(int)HaruState.DashEnd] = Ani_DashEnd;
+        m_animeUpdate[(int)HaruState.Jump] = Ani_Jump;
+        m_animeUpdate[(int)HaruState.DashJump] = Ani_DashJump;
+        m_animeUpdate[(int)HaruState.Land] = Ani_Land;
+        m_animeUpdate[(int)HaruState.DashLand] = Ani_DashLand;
+        m_animeUpdate[(int)HaruState.Evade] = Ani_Evade;
+        m_animeUpdate[(int)HaruState.DMG_L] = Ani_DMG_L;
+        m_animeUpdate[(int)HaruState.DMG_R] = Ani_DMG_R;
+        m_animeUpdate[(int)HaruState.KB] = Ani_KB;
+        m_animeUpdate[(int)HaruState.KD_Ham_F] = Ani_KD_Ham_F;
+        m_animeUpdate[(int)HaruState.KD_Ham_B] = Ani_KD_Ham_B;
+        m_animeUpdate[(int)HaruState.KD_Str] = Ani_KD_Str;
+        m_animeUpdate[(int)HaruState.KD_Upp] = Ani_KD_Upp;
+        m_animeUpdate[(int)HaruState.KD_Upp_End] = Ani_KD_Upp_End;
+        m_animeUpdate[(int)HaruState.KD_Upp_Down] = Ani_KD_Upp_Down;
+        m_animeUpdate[(int)HaruState.KD_Upp_Air_Hit] = Ani_KD_Upp_Air_Hit;
+        m_animeUpdate[(int)HaruState.KD_Upp_Down_Hit] = Ani_KD_Upp_Down_Hit;
+        m_animeUpdate[(int)HaruState.KD_Upp_Raise] = Ani_KD_Upp_Raise;
+        m_animeUpdate[(int)HaruState.NormalAttack1] = Ani_NormalAttack1;
+        m_animeUpdate[(int)HaruState.NormalAttack2] = Ani_NormalAttack2;
+        m_animeUpdate[(int)HaruState.NormalAttack3] = Ani_NormalAttack3;
+        m_animeUpdate[(int)HaruState.NormalAttack4] = Ani_NormalAttack4;
+        m_animeUpdate[(int)HaruState.NormalAttack5] = Ani_NormalAttack5;
+        m_animeUpdate[(int)HaruState.FirstBlade] = Ani_FirstBlade;
+        m_animeUpdate[(int)HaruState.FirstBlade02] = Ani_FirstBlade02;
+        m_animeUpdate[(int)HaruState.PierceStep] = Ani_PierceStep;
+        m_animeUpdate[(int)HaruState.SpinCutter] = Ani_SpinCutter;
 
-        changeState = new bool[(int)HaruState.End, (int)HaruState.End];
+        m_changeState = new bool[(int)HaruState.End, (int)HaruState.End];
 
-        changeState[(int)HaruState.Idle, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.Idle, (int)HaruState.Dash] = true;
-        changeState[(int)HaruState.Idle, (int)HaruState.Jump] = true;
-        changeState[(int)HaruState.Idle, (int)HaruState.Evade] = true;
-        changeState[(int)HaruState.Idle, (int)HaruState.NormalAttack1] = true;
-        changeState[(int)HaruState.Idle, (int)HaruState.FirstBlade] = true;
-        changeState[(int)HaruState.Idle, (int)HaruState.PierceStep] = true;
-        changeState[(int)HaruState.Idle, (int)HaruState.SpinCutter] = true;
+        m_changeState[(int)HaruState.Idle, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.Idle, (int)HaruState.Dash] = true;
+        m_changeState[(int)HaruState.Idle, (int)HaruState.Jump] = true;
+        m_changeState[(int)HaruState.Idle, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.Idle, (int)HaruState.NormalAttack1] = true;
+        m_changeState[(int)HaruState.Idle, (int)HaruState.FirstBlade] = true;
+        m_changeState[(int)HaruState.Idle, (int)HaruState.PierceStep] = true;
+        m_changeState[(int)HaruState.Idle, (int)HaruState.SpinCutter] = true;
 
-        changeState[(int)HaruState.Run, (int)HaruState.Idle] = true;
-        changeState[(int)HaruState.Run, (int)HaruState.Dash] = true;
-        changeState[(int)HaruState.Run, (int)HaruState.Jump] = true;
-        changeState[(int)HaruState.Run, (int)HaruState.Evade] = true;
-        changeState[(int)HaruState.Run, (int)HaruState.NormalAttack1] = true;
-        changeState[(int)HaruState.Run, (int)HaruState.FirstBlade] = true;
-        changeState[(int)HaruState.Run, (int)HaruState.PierceStep] = true;
-        changeState[(int)HaruState.Run, (int)HaruState.SpinCutter] = true;
+        m_changeState[(int)HaruState.Run, (int)HaruState.Idle] = true;
+        m_changeState[(int)HaruState.Run, (int)HaruState.Dash] = true;
+        m_changeState[(int)HaruState.Run, (int)HaruState.Jump] = true;
+        m_changeState[(int)HaruState.Run, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.Run, (int)HaruState.NormalAttack1] = true;
+        m_changeState[(int)HaruState.Run, (int)HaruState.FirstBlade] = true;
+        m_changeState[(int)HaruState.Run, (int)HaruState.PierceStep] = true;
+        m_changeState[(int)HaruState.Run, (int)HaruState.SpinCutter] = true;
 
-        changeState[(int)HaruState.RunEnd, (int)HaruState.Dash] = true;
-        changeState[(int)HaruState.RunEnd, (int)HaruState.Jump] = true;
-        changeState[(int)HaruState.RunEnd, (int)HaruState.Evade] = true;
-        changeState[(int)HaruState.RunEnd, (int)HaruState.NormalAttack1] = true;
-        changeState[(int)HaruState.RunEnd, (int)HaruState.FirstBlade] = true;
-        changeState[(int)HaruState.RunEnd, (int)HaruState.PierceStep] = true;
-        changeState[(int)HaruState.RunEnd, (int)HaruState.SpinCutter] = true;
+        m_changeState[(int)HaruState.RunEnd, (int)HaruState.Dash] = true;
+        m_changeState[(int)HaruState.RunEnd, (int)HaruState.Jump] = true;
+        m_changeState[(int)HaruState.RunEnd, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.RunEnd, (int)HaruState.NormalAttack1] = true;
+        m_changeState[(int)HaruState.RunEnd, (int)HaruState.FirstBlade] = true;
+        m_changeState[(int)HaruState.RunEnd, (int)HaruState.PierceStep] = true;
+        m_changeState[(int)HaruState.RunEnd, (int)HaruState.SpinCutter] = true;
 
-        changeState[(int)HaruState.Dash, (int)HaruState.Idle] = true;
-        changeState[(int)HaruState.Dash, (int)HaruState.DashJump] = true;
+        m_changeState[(int)HaruState.Dash, (int)HaruState.Idle] = true;
+        m_changeState[(int)HaruState.Dash, (int)HaruState.DashJump] = true;
 
-        changeState[(int)HaruState.Jump, (int)HaruState.Land] = true;
+        m_changeState[(int)HaruState.Jump, (int)HaruState.Land] = true;
 
-        changeState[(int)HaruState.DashJump, (int)HaruState.DashLand] = true;
+        m_changeState[(int)HaruState.DashJump, (int)HaruState.DashLand] = true;
 
-        changeState[(int)HaruState.Land, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.Land, (int)HaruState.Dash] = true;
-        changeState[(int)HaruState.Land, (int)HaruState.Jump] = true;
+        m_changeState[(int)HaruState.Land, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.Land, (int)HaruState.Dash] = true;
+        m_changeState[(int)HaruState.Land, (int)HaruState.Jump] = true;
 
-        changeState[(int)HaruState.DashLand, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.DashLand, (int)HaruState.Run] = true;
 
-        changeState[(int)HaruState.Evade, (int)HaruState.NormalAttack1] = true;
+        m_changeState[(int)HaruState.Evade, (int)HaruState.NormalAttack1] = true;
 
-        changeState[(int)HaruState.KD_Upp_Down, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.KD_Upp_Down, (int)HaruState.Run] = true;
 
-        changeState[(int)HaruState.NormalAttack1, (int)HaruState.NormalAttack2] = true;
-        changeState[(int)HaruState.NormalAttack1, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.NormalAttack1, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.NormalAttack1, (int)HaruState.NormalAttack2] = true;
+        m_changeState[(int)HaruState.NormalAttack1, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.NormalAttack1, (int)HaruState.Evade] = true;
 
-        changeState[(int)HaruState.NormalAttack2, (int)HaruState.NormalAttack3] = true;
-        changeState[(int)HaruState.NormalAttack2, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.NormalAttack2, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.NormalAttack2, (int)HaruState.NormalAttack3] = true;
+        m_changeState[(int)HaruState.NormalAttack2, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.NormalAttack2, (int)HaruState.Evade] = true;
 
-        changeState[(int)HaruState.NormalAttack3, (int)HaruState.NormalAttack4] = true;
-        changeState[(int)HaruState.NormalAttack3, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.NormalAttack3, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.NormalAttack3, (int)HaruState.NormalAttack4] = true;
+        m_changeState[(int)HaruState.NormalAttack3, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.NormalAttack3, (int)HaruState.Evade] = true;
 
-        changeState[(int)HaruState.NormalAttack4, (int)HaruState.NormalAttack5] = true;
-        changeState[(int)HaruState.NormalAttack4, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.NormalAttack4, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.NormalAttack4, (int)HaruState.NormalAttack5] = true;
+        m_changeState[(int)HaruState.NormalAttack4, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.NormalAttack4, (int)HaruState.Evade] = true;
 
-        changeState[(int)HaruState.NormalAttack5, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.NormalAttack5, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.NormalAttack5, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.NormalAttack5, (int)HaruState.Evade] = true;
 
-        changeState[(int)HaruState.FirstBlade, (int)HaruState.FirstBlade02] = true;
-        changeState[(int)HaruState.FirstBlade, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.FirstBlade, (int)HaruState.Evade] = true;
-        changeState[(int)HaruState.FirstBlade, (int)HaruState.NormalAttack1] = true;
+        m_changeState[(int)HaruState.FirstBlade, (int)HaruState.FirstBlade02] = true;
+        m_changeState[(int)HaruState.FirstBlade, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.FirstBlade, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.FirstBlade, (int)HaruState.NormalAttack1] = true;
 
-        changeState[(int)HaruState.FirstBlade02, (int)HaruState.Run] = true;
-        changeState[(int)HaruState.FirstBlade02, (int)HaruState.Evade] = true;
-        changeState[(int)HaruState.FirstBlade02, (int)HaruState.NormalAttack1] = true;
+        m_changeState[(int)HaruState.FirstBlade02, (int)HaruState.Run] = true;
+        m_changeState[(int)HaruState.FirstBlade02, (int)HaruState.Evade] = true;
+        m_changeState[(int)HaruState.FirstBlade02, (int)HaruState.NormalAttack1] = true;
 
         // 무기 장착
-        weapon.transform.parent = weaponholder;
-        weapon.transform.localPosition = Vector3.zero;
-        weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        weapon.transform.localScale = Vector3.one;
+        m_weapon.transform.parent = m_weaponholder;
+        m_weapon.transform.localPosition = Vector3.zero;
+        m_weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        m_weapon.transform.localScale = Vector3.one;
 
-        playerInfo.UpdateInfo();
+        m_playerInfo.UpdateInfo();
     }
 
     private void FixedUpdate()
     {
-        if (isUIObject)
+        if (m_isUIObject)
             return;
 
         // 이동 업데이트
-        moveUpdate[(int)state]();
+        m_moveUpdate[(int)m_state]();
         PlayerRotation();
         AimRotation();
     }
 
     private void Update()
     {
-        if (isUIObject)
+        if (m_isUIObject)
             return;
 
         // 애니메이션 업데이트
-        animeUpdate[(int)state]();
+        m_animeUpdate[(int)m_state]();
     }
 
 
     // 상태 확인
     private bool CheckState(HaruState left, HaruState right)
     {
-        if (!changeState[(int)left, (int)right])
+        if (!m_changeState[(int)left, (int)right])
             return false;
 
         // 너무 빠르게 상태를 변환하려고 함
-        if (Time.time <= lastIdleChangeTime + idleChangeDelay)
+        if (Time.time <= lastIdleChangeTime + m_idleChangeDelay)
             return false;
 
         return true;
@@ -367,10 +367,10 @@ public partial class PlayerCtrl : MonoBehaviour
     private void PlayerRotation()
     {
         // 방향이 같지 않음
-        if (modelTransform.forward != turnDir)
+        if (m_modelTransform.forward != m_turnDir)
         {
-            Quaternion rotation = Quaternion.LookRotation(turnDir);
-            modelTransform.rotation = Quaternion.Lerp(modelTransform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            Quaternion rotation = Quaternion.LookRotation(m_turnDir);
+            m_modelTransform.rotation = Quaternion.Lerp(m_modelTransform.rotation, rotation, m_rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -381,7 +381,7 @@ public partial class PlayerCtrl : MonoBehaviour
         float xRotation = Input.GetAxis("Mouse Y");
 
         // X축 회전 제한
-        Quaternion rotation = aimTransform.rotation * Quaternion.Euler(new Vector3(-xRotation * mouseSpeed * Time.deltaTime, 0, 0));
+        Quaternion rotation = m_aimTransform.rotation * Quaternion.Euler(new Vector3(-xRotation * m_mouseSpeed * Time.deltaTime, 0, 0));
         float xAngle = Mathf.Round(rotation.eulerAngles.x);
         if (180.0f <= xAngle && xAngle < 310.0f)
         {
@@ -392,17 +392,17 @@ public partial class PlayerCtrl : MonoBehaviour
             xAngle = 50.0f;
         }
 
-        aimTransform.rotation = Quaternion.Euler(new Vector3(xAngle, aimTransform.eulerAngles.y, aimTransform.eulerAngles.x));
+        m_aimTransform.rotation = Quaternion.Euler(new Vector3(xAngle, m_aimTransform.eulerAngles.y, m_aimTransform.eulerAngles.x));
 
         // Y축 자전
-        aimTransform.RotateAround(playerTransform.position, Vector3.up, yRotation * mouseSpeed * Time.deltaTime);
+        m_aimTransform.RotateAround(m_playerTransform.position, Vector3.up, yRotation * m_mouseSpeed * Time.deltaTime);
     }
 
     // 현재 상태가 바뀌기 때문에
     // 이전 상태의 플래그들 false로 변경
     private void ChangeFlagFalse()
     {
-        switch (state)
+        switch (m_state)
         {
             case HaruState.Idle:
                 break;
@@ -412,30 +412,30 @@ public partial class PlayerCtrl : MonoBehaviour
             case HaruState.RunEnd:
                 break;
             case HaruState.Dash:
-                dash = false;
+                m_dash = false;
                 SetDashFalse();
                 break;
             case HaruState.DashEnd:
                 break;
             case HaruState.Jump:
-                jump = false;
+                m_jump = false;
                 SetJumpFalse();
                 break;
             case HaruState.DashJump:
-                dash = false;
-                jump = false;
+                m_dash = false;
+                m_jump = false;
                 SetDashFalse();
                 SetJumpFalse();
                 break;
             case HaruState.Land:
-                lockInput = false;
+                m_lockInput = false;
                 break;
             case HaruState.DashLand:
-                lockInput = false;
+                m_lockInput = false;
                 break;
             case HaruState.Evade:
-                evade = false;
-                lockInput = false;
+                m_evade = false;
+                m_lockInput = false;
                 break;
             case HaruState.DMG_L:
                 break;
@@ -444,37 +444,37 @@ public partial class PlayerCtrl : MonoBehaviour
             case HaruState.KB:
                 break;
             case HaruState.KD_Ham_F:
-                upp = false;
+                m_upp = false;
                 SetUppFalse();
                 break;
             case HaruState.KD_Ham_B:
-                upp = false;
+                m_upp = false;
                 SetUppFalse();
                 break;
             case HaruState.KD_Str:
                 break;
             case HaruState.KD_Upp:
-                upp = false;
+                m_upp = false;
                 SetUppFalse();
                 break;
             case HaruState.KD_Upp_End:
-                down = false;
+                m_down = false;
                 SetDownFalse();
                 break;
             case HaruState.KD_Upp_Down:
-                down = false;
+                m_down = false;
                 SetDownFalse();
                 break;
             case HaruState.KD_Upp_Air_Hit:
-                upp = false;
+                m_upp = false;
                 SetUppFalse();
                 break;
             case HaruState.KD_Upp_Down_Hit:
-                down = false;
+                m_down = false;
                 SetDownFalse();
                 break;
             case HaruState.KD_Upp_Raise:
-                down = false;
+                m_down = false;
                 SetDownFalse();
                 break;
             case HaruState.NormalAttack1:
@@ -482,32 +482,32 @@ public partial class PlayerCtrl : MonoBehaviour
             case HaruState.NormalAttack3:
             case HaruState.NormalAttack4:
             case HaruState.NormalAttack5:
-                normalAtk = false;
-                lockInput = false;
-                moveAttack = false;
-                moveStand = false;
+                m_normalAtk = false;
+                m_lockInput = false;
+                m_moveAttack = false;
+                m_moveStand = false;
                 SetTrigerNormalAttackEnd();
                 SetNormalAttackCnt(0);
-                if (isAttacking)
+                if (m_isAttacking)
                 {
-                    isAttacking = false;
+                    m_isAttacking = false;
                     // 무기 충돌 트리거 OFF
-                    weapon.OffTrigger();
+                    m_weapon.OffTrigger();
                 }
                 break;
             case HaruState.FirstBlade:
             case HaruState.FirstBlade02:
             case HaruState.PierceStep:
             case HaruState.SpinCutter:
-                normalAtk = false;
-                lockInput = false;
-                moveAttack = false;
-                moveStand = false;
-                if (isAttacking)
+                m_normalAtk = false;
+                m_lockInput = false;
+                m_moveAttack = false;
+                m_moveStand = false;
+                if (m_isAttacking)
                 {
-                    isAttacking = false;
+                    m_isAttacking = false;
                     // 무기 충돌 트리거 OFF
-                    weapon.OffTrigger();
+                    m_weapon.OffTrigger();
                 }
                 break;
             default:
@@ -519,7 +519,7 @@ public partial class PlayerCtrl : MonoBehaviour
     // 이전 상태의 플래그들 true로 변경
     private void ChangeFlagTrue()
     {
-        switch (state)
+        switch (m_state)
         {
             case HaruState.Idle:
                 SetSpeedZero();
@@ -531,35 +531,35 @@ public partial class PlayerCtrl : MonoBehaviour
             case HaruState.RunEnd:
                 break;
             case HaruState.Dash:
-                dash = true;
+                m_dash = true;
                 SetDashTrue();
                 SetTrigerBattleDash();
                 break;
             case HaruState.DashEnd:
                 break;
             case HaruState.Jump:
-                jump = true;
+                m_jump = true;
                 SetJumpTrue();
                 SetTrigerBattleJump();
                 break;
             case HaruState.DashJump:
-                dash = true;
-                jump = true;
+                m_dash = true;
+                m_jump = true;
                 SetDashTrue();
                 SetJumpTrue();
                 SetTrigerBattleDashJump();
                 break;
             case HaruState.Land:
-                lockInput = true;
+                m_lockInput = true;
                 SetSpeedZero();
                 break;
             case HaruState.DashLand:
-                lockInput = true;
+                m_lockInput = true;
                 SetSpeedZero();
                 break;
             case HaruState.Evade:
-                evade = true;
-                lockInput = true;
+                m_evade = true;
+                m_lockInput = true;
                 SetTrigerEvade();
                 break;
             case HaruState.DMG_L:
@@ -571,38 +571,38 @@ public partial class PlayerCtrl : MonoBehaviour
             case HaruState.KB:
                 break;
             case HaruState.KD_Ham_F:
-                upp = true;
+                m_upp = true;
                 SetUppTrue();
                 SetTrigerKDHamF();
                 break;
             case HaruState.KD_Ham_B:
-                upp = true;
+                m_upp = true;
                 SetUppTrue();
                 SetTrigerKDHamB();
                 break;
             case HaruState.KD_Str:
                 break;
             case HaruState.KD_Upp:
-                upp = true;
+                m_upp = true;
                 SetUppTrue();
                 SetTrigerKDUpp();
                 break;
             case HaruState.KD_Upp_End:
-                down = true;
+                m_down = true;
                 SetDownTrue();
                 SetTrigerKDUppEnd();
                 break;
             case HaruState.KD_Upp_Down:
-                down = true;
+                m_down = true;
                 SetDownTrue();
                 break;
             case HaruState.KD_Upp_Air_Hit:
-                upp = true;
+                m_upp = true;
                 SetUppTrue();
                 SetTrigerKDUppAirHit();
                 break;
             case HaruState.KD_Upp_Down_Hit:
-                down = true;
+                m_down = true;
                 SetDownTrue();
                 SetTrigerKDUppDownHit();
                 break;
@@ -630,34 +630,34 @@ public partial class PlayerCtrl : MonoBehaviour
                 StartNormalAttack(5);
                 break;
             case HaruState.FirstBlade:
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                isAttacking = false;
+                m_lockInput = true;
+                m_moveAttack = true;
+                m_moveStand = false;
+                m_isAttacking = false;
                 SetTrigerSkillFirstBlade();
                 SetAttackDir();
                 break;
             case HaruState.FirstBlade02:
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                isAttacking = false;
+                m_lockInput = true;
+                m_moveAttack = true;
+                m_moveStand = false;
+                m_isAttacking = false;
                 SetTrigerSkillFirstBlade02();
                 SetAttackDir();
                 break;
             case HaruState.PierceStep:
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                isAttacking = false;
+                m_lockInput = true;
+                m_moveAttack = true;
+                m_moveStand = false;
+                m_isAttacking = false;
                 SetTrigerSkillPierceStep();
                 SetAttackDir();
                 break;
             case HaruState.SpinCutter:
-                lockInput = true;
-                moveAttack = true;
-                moveStand = false;
-                isAttacking = false;
+                m_lockInput = true;
+                m_moveAttack = true;
+                m_moveStand = false;
+                m_isAttacking = false;
                 SetTrigerSkillSpinCutter();
                 SetAttackDir();
                 break;

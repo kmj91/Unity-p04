@@ -4,240 +4,240 @@ public partial class PlayerCtrl : MonoBehaviour
 {
     private void Move_Idle()
     {
-        characterController.Move(Vector3.down);
+        m_characterController.Move(Vector3.down);
     }
 
     private void Move_Run()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed, ref m_speedSmoothVelocity, m_speedSmoothTime);
 
-        Vector3 moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
+        Vector3 moveDir = (m_cameraTransform.forward * m_moveInput.y) + (m_cameraTransform.right * m_moveInput.x);
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_RunEnd()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed, ref m_speedSmoothVelocity, m_speedSmoothTime);
 
-        Vector3 moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
+        Vector3 moveDir = (m_cameraTransform.forward * m_moveInput.y) + (m_cameraTransform.right * m_moveInput.x);
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_Dash()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed * dashSpeedGob, ref speedSmoothVelocity, speedSmoothTime);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed * m_dashSpeedGob, ref m_speedSmoothVelocity, m_speedSmoothTime);
 
-        Vector3 moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
+        Vector3 moveDir = (m_cameraTransform.forward * m_moveInput.y) + (m_cameraTransform.right * m_moveInput.x);
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_DashEnd()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed * dashSpeedGob, ref speedSmoothVelocity, speedSmoothTime);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed * m_dashSpeedGob, ref m_speedSmoothVelocity, m_speedSmoothTime);
 
-        Vector3 moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
+        Vector3 moveDir = (m_cameraTransform.forward * m_moveInput.y) + (m_cameraTransform.right * m_moveInput.x);
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_Jump()
     {
         // SmoothDamp 사용 안 함
-        targetSpeed = moveSpeed;
+        m_targetSpeed = m_moveSpeed;
 
-        Vector3 moveDir = (cameraTransform.forward * moveInput.y) + (cameraTransform.right * moveInput.x);
+        Vector3 moveDir = (m_cameraTransform.forward * m_moveInput.y) + (m_cameraTransform.right * m_moveInput.x);
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_DashJump()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed, ref m_speedSmoothVelocity, m_speedSmoothTime / m_airControlPercent);
 
         // 대쉬 점프는 방향 변경 불가
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_Land()
     {
-        characterController.Move(Vector3.down);
+        m_characterController.Move(Vector3.down);
     }
 
     private void Move_DashLand()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed, ref m_speedSmoothVelocity, m_speedSmoothTime);
 
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_Evade()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, 15f, ref speedSmoothVelocity, speedSmoothTime);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 15f, ref m_speedSmoothVelocity, m_speedSmoothTime);
 
-        Vector3 moveDir = (cameraTransform.forward * moveAnimeDir.y) + (cameraTransform.right * moveAnimeDir.x);
+        Vector3 moveDir = (m_cameraTransform.forward * m_moveAnimeDir.y) + (m_cameraTransform.right * m_moveAnimeDir.x);
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_KD_Ham_F()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed, ref m_speedSmoothVelocity, m_speedSmoothTime / m_airControlPercent);
 
         // 대쉬 점프는 방향 변경 불가
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_KD_Ham_B()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed, ref m_speedSmoothVelocity, m_speedSmoothTime / m_airControlPercent);
 
         // 대쉬 점프는 방향 변경 불가
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
@@ -248,358 +248,358 @@ public partial class PlayerCtrl : MonoBehaviour
 
     private void Move_KD_Upp()
     {
-        targetSpeed = Mathf.SmoothDamp(currentSpeed, moveSpeed, ref speedSmoothVelocity, speedSmoothTime / airControlPercent);
+        m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, m_moveSpeed, ref m_speedSmoothVelocity, m_speedSmoothTime / m_airControlPercent);
 
         // 대쉬 점프는 방향 변경 불가
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_NormalAttack1()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 2.7f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 2.7f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 2.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 2.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else 
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_NormalAttack2()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 5.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 5.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 1.2f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 1.2f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_NormalAttack3()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 5.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 5.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 2.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 2.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_NormalAttack4()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 4.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 4.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 1.5f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 1.5f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     private void Move_NormalAttack5()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 4.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 4.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 1.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 1.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     // 퍼스트 블레이드
     private void Move_FirstBlade()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 6.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 6.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 1.8f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 1.8f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     // 퍼스트 블레이드 추가 공격
     private void Move_FirstBlade02()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 2.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 2.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 1.8f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 1.8f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     // 피어스 스탭
     private void Move_PierceStep()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 10.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 10.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 1.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 1.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 
     // 스핀 커터
     private void Move_SpinCutter()
     {
-        if (moveAttack)
+        if (m_moveAttack)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 5.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 5.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
-        else if (moveStand)
+        else if (m_moveStand)
         {
-            targetSpeed = Mathf.SmoothDamp(currentSpeed, 1.0f, ref speedSmoothVelocity, speedSmoothTime);
+            m_targetSpeed = Mathf.SmoothDamp(m_currentSpeed, 1.0f, ref m_speedSmoothVelocity, m_speedSmoothTime);
         }
         else
         {
-            characterController.Move(Vector3.down);
+            m_characterController.Move(Vector3.down);
             return;
         }
 
         // 카메라 방향 혹은 캐릭터 방향
-        Vector3 moveDir = moveAnimeDir;
+        Vector3 moveDir = m_moveAnimeDir;
         moveDir.y = 0.0f;
         moveDir = moveDir.normalized;
 
-        currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
-        Vector3 velocity = moveDir * targetSpeed + Vector3.up * currentVelocityY;
-        characterController.Move(velocity * Time.deltaTime);
+        m_currentVelocityY += Time.deltaTime * Physics.gravity.y * 3.0f;
+        Vector3 velocity = moveDir * m_targetSpeed + Vector3.up * m_currentVelocityY;
+        m_characterController.Move(velocity * Time.deltaTime);
 
         // 현제 캐릭터가 바라보는 곳과 이동 방향이 같지 않으면 이동 방향값 셋팅
         // 단 캐릭터 조작을 하지 않아서 가만히 있으면 X
-        if (modelTransform.forward != moveDir && Vector3.zero != moveDir)
-            turnDir = moveDir;
+        if (m_modelTransform.forward != moveDir && Vector3.zero != moveDir)
+            m_turnDir = moveDir;
 
         // 땅에 닿으면 초기화
-        if (characterController.isGrounded)
+        if (m_characterController.isGrounded)
         {
-            currentVelocityY = 0.0f;
+            m_currentVelocityY = 0.0f;
         }
     }
 }

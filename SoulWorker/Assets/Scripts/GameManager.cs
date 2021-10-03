@@ -10,13 +10,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerCtrl playerCtrl;                   // 플레이어 컨트롤 스크립트
-    public bool useMouse = false;                   // 마우스 사용 여부
+    public PlayerCtrl m_playerCtrl;                 // 플레이어 컨트롤 스크립트
+    public bool m_useMouse = false;                 // 마우스 사용 여부
 
 
-    private CirculartQueue<KeyInfo> keyQueue;        // 키 입력 큐
-    private Dictionary<KeyCode, Action> keyDown;    // 키 누름
-    private Dictionary<KeyCode, Action> keyUp;      // 키 뗌
+    private CirculartQueue<KeyInfo> m_keyQueue;     // 키 입력 큐
+    private Dictionary<KeyCode, Action> m_keyDown;  // 키 누름
+    private Dictionary<KeyCode, Action> m_keyUp;    // 키 뗌
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         // UI 캐릭터 모습
         var uiMgr = UIManager.Instance;
-        var uiPlayer = Instantiate(playerCtrl.gameObject);
+        var uiPlayer = Instantiate(m_playerCtrl.gameObject);
 
         // 부모 지정
         uiPlayer.transform.parent = uiMgr.GetEquipmentTransform();
@@ -50,10 +50,10 @@ public class GameManager : MonoBehaviour
     // (현재시간 - time) 사이에 키값을 입력 받았으면 true
     public bool KeyInputCheck(KeyCode key, float time)
     {
-        var queue = keyQueue.GetQueue();
-        int iSize = keyQueue.GetQueueSize();
-        int iRear = keyQueue.GetRear();
-        int iFront = keyQueue.GetFront();
+        var queue = m_keyQueue.GetQueue();
+        int iSize = m_keyQueue.GetQueueSize();
+        int iRear = m_keyQueue.GetRear();
+        int iFront = m_keyQueue.GetFront();
 
         while (iRear != iFront)
         {
@@ -78,10 +78,10 @@ public class GameManager : MonoBehaviour
     // 키 초기화
     private void KeyInit()
     {
-        keyQueue = new CirculartQueue<KeyInfo>();
+        m_keyQueue = new CirculartQueue<KeyInfo>();
 
         // 키 누름
-        keyDown = new Dictionary<KeyCode, Action>
+        m_keyDown = new Dictionary<KeyCode, Action>
         {
             { KeyCode.W, KeyDown_Forward },     // 앞으로 이동
             { KeyCode.S, KeyDown_Back },        // 뒤로 이동
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         };
 
         // 키 뗌
-        keyUp = new Dictionary<KeyCode, Action>
+        m_keyUp = new Dictionary<KeyCode, Action>
         {
             { KeyCode.W, KeyUp_Forward },       // 앞으로 이동
             { KeyCode.S, KeyUp_Back },          // 뒤로 이동
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
     {
         // 키 뗌
         // UI 관련
-        foreach (var dic in keyUp)
+        foreach (var dic in m_keyUp)
         {
             if (Input.GetKeyUp(dic.Key))
             {
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
         // 조작 관련
         if (Input.anyKeyDown)
         {
-            foreach (var dic in keyDown)
+            foreach (var dic in m_keyDown)
             {
                 if (Input.GetKeyDown(dic.Key))
                 {
@@ -163,10 +163,10 @@ public class GameManager : MonoBehaviour
     // 스킬
     private void SkillCheck()
     {
-        var queue = keyQueue.GetQueue();
-        int iSize = keyQueue.GetQueueSize();
-        int iRear = keyQueue.GetRear();
-        int iFront = keyQueue.GetFront();
+        var queue = m_keyQueue.GetQueue();
+        int iSize = m_keyQueue.GetQueueSize();
+        int iRear = m_keyQueue.GetRear();
+        int iFront = m_keyQueue.GetFront();
 
         while (iRear != iFront)
         {
@@ -179,32 +179,32 @@ public class GameManager : MonoBehaviour
             // 스킬 슬롯 1
             if (queue[iRear].key == KeyCode.Alpha1)
             {
-                playerCtrl.SkillSlot1();
+                m_playerCtrl.SkillSlot1();
             }
             // 스킬 슬롯 2
             else if (queue[iRear].key == KeyCode.Alpha2)
             {
-                playerCtrl.SkillSlot2();
+                m_playerCtrl.SkillSlot2();
             }
             // 스킬 슬롯 3
             else if (queue[iRear].key == KeyCode.Alpha3)
             {
-                playerCtrl.SkillSlot3();
+                m_playerCtrl.SkillSlot3();
             }
             // 스킬 슬롯 4
             else if (queue[iRear].key == KeyCode.Alpha4)
             {
-                playerCtrl.SkillSlot4();
+                m_playerCtrl.SkillSlot4();
             }
             // 스킬 슬롯 5
             else if (queue[iRear].key == KeyCode.Alpha5)
             {
-                playerCtrl.SkillSlot5();
+                m_playerCtrl.SkillSlot5();
             }
             // 스킬 슬롯 6
             else if (queue[iRear].key == KeyCode.Alpha6)
             {
-                playerCtrl.SkillSlot6();
+                m_playerCtrl.SkillSlot6();
             }
         }
     }
@@ -212,10 +212,10 @@ public class GameManager : MonoBehaviour
     // 회피
     private void EvadeCheck()
     {
-        var queue = keyQueue.GetQueue();
-        int iSize = keyQueue.GetQueueSize();
-        int iRear = keyQueue.GetRear();
-        int iFront = keyQueue.GetFront();
+        var queue = m_keyQueue.GetQueue();
+        int iSize = m_keyQueue.GetQueueSize();
+        int iRear = m_keyQueue.GetRear();
+        int iFront = m_keyQueue.GetFront();
 
         while (iRear != iFront)
         {
@@ -228,8 +228,8 @@ public class GameManager : MonoBehaviour
             // 회피
             if (queue[iRear].key == KeyCode.LeftShift)
             {
-                iRear = keyQueue.GetRear();
-                iFront = keyQueue.GetFront();
+                iRear = m_keyQueue.GetRear();
+                iFront = m_keyQueue.GetFront();
 
                 while (iRear != iFront)
                 {
@@ -253,19 +253,19 @@ public class GameManager : MonoBehaviour
                             // 앞 왼쪽으로 회피
                             if (queue[iRear].key == KeyCode.A)
                             {
-                                playerCtrl.Evade(new Vector2(-1f, 1f));
+                                m_playerCtrl.Evade(new Vector2(-1f, 1f));
                                 return;
                             }
                             // 앞 오른쪽으로 회피
                             else if (queue[iRear].key == KeyCode.D)
                             {
-                                playerCtrl.Evade(new Vector2(1f, 1f));
+                                m_playerCtrl.Evade(new Vector2(1f, 1f));
                                 return;
                             }
                         }
 
                         // 앞으로 회피
-                        playerCtrl.Evade(new Vector2(0f, 1f));
+                        m_playerCtrl.Evade(new Vector2(0f, 1f));
                         return;
                     }
                     // 뒤로 이동
@@ -282,19 +282,19 @@ public class GameManager : MonoBehaviour
                             // 뒤 왼쪽으로 회피
                             if (queue[iRear].key == KeyCode.A)
                             {
-                                playerCtrl.Evade(new Vector2(-1f, -1f));
+                                m_playerCtrl.Evade(new Vector2(-1f, -1f));
                                 return;
                             }
                             // 뒤 오른쪽으로 회피
                             else if (queue[iRear].key == KeyCode.D)
                             {
-                                playerCtrl.Evade(new Vector2(1f, -1f));
+                                m_playerCtrl.Evade(new Vector2(1f, -1f));
                                 return;
                             }
                         }
 
                         // 뒤로 회피
-                        playerCtrl.Evade(new Vector2(0f, -1f));
+                        m_playerCtrl.Evade(new Vector2(0f, -1f));
                         return;
                     }
                     // 왼쪽으로 이동
@@ -311,19 +311,19 @@ public class GameManager : MonoBehaviour
                             // 앞 왼쪽으로 회피
                             if (queue[iRear].key == KeyCode.W)
                             {
-                                playerCtrl.Evade(new Vector2(-1f, 1f));
+                                m_playerCtrl.Evade(new Vector2(-1f, 1f));
                                 return;
                             }
                             // 뒤 왼쪽으로 회피
                             else if (queue[iRear].key == KeyCode.S)
                             {
-                                playerCtrl.Evade(new Vector2(-1f, -1f));
+                                m_playerCtrl.Evade(new Vector2(-1f, -1f));
                                 return;
                             }
                         }
 
                         // 왼쪽으로 회피
-                        playerCtrl.Evade(new Vector2(-1f, 0f));
+                        m_playerCtrl.Evade(new Vector2(-1f, 0f));
                         return;
                     }
                     // 오른쪽으로 이동
@@ -340,19 +340,19 @@ public class GameManager : MonoBehaviour
                             // 앞 오른쪽으로 회피
                             if (queue[iRear].key == KeyCode.W)
                             {
-                                playerCtrl.Evade(new Vector2(1f, 1f));
+                                m_playerCtrl.Evade(new Vector2(1f, 1f));
                                 return;
                             }
                             // 뒤 오른쪽으로 회피
                             else if (queue[iRear].key == KeyCode.S)
                             {
-                                playerCtrl.Evade(new Vector2(1f, -1f));
+                                m_playerCtrl.Evade(new Vector2(1f, -1f));
                                 return;
                             }
                         }
 
                         // 오른쪽으로 회피
-                        playerCtrl.Evade(new Vector2(1f, 0f));
+                        m_playerCtrl.Evade(new Vector2(1f, 0f));
                         return;
                     }
                 }
@@ -363,10 +363,10 @@ public class GameManager : MonoBehaviour
     // 점프
     private void JumpCheck()
     {
-        var queue = keyQueue.GetQueue();
-        int iSize = keyQueue.GetQueueSize();
-        int iRear = keyQueue.GetRear();
-        int iFront = keyQueue.GetFront();
+        var queue = m_keyQueue.GetQueue();
+        int iSize = m_keyQueue.GetQueueSize();
+        int iRear = m_keyQueue.GetRear();
+        int iFront = m_keyQueue.GetFront();
 
         while (iRear != iFront)
         {
@@ -379,7 +379,7 @@ public class GameManager : MonoBehaviour
             // 점프
             if (queue[iRear].key == KeyCode.Space)
             {
-                playerCtrl.Jump();
+                m_playerCtrl.Jump();
                 return;
             }
         }
@@ -388,10 +388,10 @@ public class GameManager : MonoBehaviour
     // 마우스
     private void MouseCheck()
     {
-        var queue = keyQueue.GetQueue();
-        int iSize = keyQueue.GetQueueSize();
-        int iRear = keyQueue.GetRear();
-        int iFront = keyQueue.GetFront();
+        var queue = m_keyQueue.GetQueue();
+        int iSize = m_keyQueue.GetQueueSize();
+        int iRear = m_keyQueue.GetRear();
+        int iFront = m_keyQueue.GetFront();
 
         while (iRear != iFront)
         {
@@ -404,13 +404,13 @@ public class GameManager : MonoBehaviour
             // 마우스 왼쪽
             if (queue[iRear].key == KeyCode.Mouse0)
             {
-                playerCtrl.MouseLeft();
+                m_playerCtrl.MouseLeft();
                 return;
             }
             // 마우스 오른쪽
             else if (queue[iRear].key == KeyCode.Mouse1)
             {
-                playerCtrl.MouseRight();
+                m_playerCtrl.MouseRight();
                 return;
             }
         }
@@ -419,10 +419,10 @@ public class GameManager : MonoBehaviour
     // 이동
     private void MoveCheck()
     {
-        var queue = keyQueue.GetQueue();
-        int iSize = keyQueue.GetQueueSize();
-        int iRear = keyQueue.GetRear();
-        int iFront = keyQueue.GetFront();
+        var queue = m_keyQueue.GetQueue();
+        int iSize = m_keyQueue.GetQueueSize();
+        int iRear = m_keyQueue.GetRear();
+        int iFront = m_keyQueue.GetFront();
 
         while (iRear != iFront)
         {
@@ -438,7 +438,7 @@ public class GameManager : MonoBehaviour
                 // 대쉬 입력 확인
                 if (DashCheck(KeyCode.W, queue[iRear].time, iRear))
                 {
-                    playerCtrl.Dash();
+                    m_playerCtrl.Dash();
                 }
 
                 while (iRear != iFront)
@@ -452,19 +452,19 @@ public class GameManager : MonoBehaviour
                     // 앞 왼쪽으로 이동
                     if (queue[iRear].key == KeyCode.A)
                     {
-                        playerCtrl.Move(new Vector2(-1f, 1f));
+                        m_playerCtrl.Move(new Vector2(-1f, 1f));
                         return;
                     }
                     // 앞 오른쪽으로 이동
                     else if(queue[iRear].key == KeyCode.D)
                     {
-                        playerCtrl.Move(new Vector2(1f, 1f));
+                        m_playerCtrl.Move(new Vector2(1f, 1f));
                         return;
                     }
                 }
 
                 // 앞으로 이동
-                playerCtrl.Move(new Vector2(0f, 1f));
+                m_playerCtrl.Move(new Vector2(0f, 1f));
                 return;
             }
             // 뒤로 이동
@@ -473,7 +473,7 @@ public class GameManager : MonoBehaviour
                 // 대쉬 입력 확인
                 if (DashCheck(KeyCode.S, queue[iRear].time, iRear))
                 {
-                    playerCtrl.Dash();
+                    m_playerCtrl.Dash();
                 }
 
                 while (iRear != iFront)
@@ -487,19 +487,19 @@ public class GameManager : MonoBehaviour
                     // 뒤 왼쪽으로 이동
                     if (queue[iRear].key == KeyCode.A)
                     {
-                        playerCtrl.Move(new Vector2(-1f, -1f));
+                        m_playerCtrl.Move(new Vector2(-1f, -1f));
                         return;
                     }
                     // 뒤 오른쪽으로 이동
                     else if (queue[iRear].key == KeyCode.D)
                     {
-                        playerCtrl.Move(new Vector2(1f, -1f));
+                        m_playerCtrl.Move(new Vector2(1f, -1f));
                         return;
                     }
                 }
 
                 // 뒤로 이동
-                playerCtrl.Move(new Vector2(0f, -1f));
+                m_playerCtrl.Move(new Vector2(0f, -1f));
                 return;
             }
             // 왼쪽으로 이동
@@ -508,7 +508,7 @@ public class GameManager : MonoBehaviour
                 // 대쉬 입력 확인
                 if (DashCheck(KeyCode.A, queue[iRear].time, iRear))
                 {
-                    playerCtrl.Dash();
+                    m_playerCtrl.Dash();
                 }
 
                 while (iRear != iFront)
@@ -522,19 +522,19 @@ public class GameManager : MonoBehaviour
                     // 앞 왼쪽으로 이동
                     if (queue[iRear].key == KeyCode.W)
                     {
-                        playerCtrl.Move(new Vector2(-1f, 1f));
+                        m_playerCtrl.Move(new Vector2(-1f, 1f));
                         return;
                     }
                     // 뒤 왼쪽으로 이동
                     else if (queue[iRear].key == KeyCode.S)
                     {
-                        playerCtrl.Move(new Vector2(-1f, -1f));
+                        m_playerCtrl.Move(new Vector2(-1f, -1f));
                         return;
                     }
                 }
 
                 // 왼쪽으로 이동
-                playerCtrl.Move(new Vector2(-1f, 0f));
+                m_playerCtrl.Move(new Vector2(-1f, 0f));
                 return;
             }
             // 오른쪽으로 이동
@@ -543,7 +543,7 @@ public class GameManager : MonoBehaviour
                 // 대쉬 입력 확인
                 if (DashCheck(KeyCode.D, queue[iRear].time, iRear))
                 {
-                    playerCtrl.Dash();
+                    m_playerCtrl.Dash();
                 }
 
                 while (iRear != iFront)
@@ -557,32 +557,32 @@ public class GameManager : MonoBehaviour
                     // 앞 오른쪽으로 이동
                     if (queue[iRear].key == KeyCode.W)
                     {
-                        playerCtrl.Move(new Vector2(1f, 1f));
+                        m_playerCtrl.Move(new Vector2(1f, 1f));
                         return;
                     }
                     // 뒤 오른쪽으로 이동
                     else if (queue[iRear].key == KeyCode.S)
                     {
-                        playerCtrl.Move(new Vector2(1f, -1f));
+                        m_playerCtrl.Move(new Vector2(1f, -1f));
                         return;
                     }
                 }
 
                 // 오른쪽으로 이동
-                playerCtrl.Move(new Vector2(1f, 0f));
+                m_playerCtrl.Move(new Vector2(1f, 0f));
                 return;
             }
         }
 
-        playerCtrl.MoveNone();
+        m_playerCtrl.MoveNone();
     }
 
     // 대쉬 입력 확인
     private bool DashCheck(KeyCode key, float time, int iRear)
     {
-        var queue = keyQueue.GetQueue();
-        int iSize = keyQueue.GetQueueSize();
-        int iFront = keyQueue.GetFront();
+        var queue = m_keyQueue.GetQueue();
+        int iSize = m_keyQueue.GetQueueSize();
+        int iFront = m_keyQueue.GetFront();
 
         while (iRear != iFront)
         {
@@ -609,10 +609,10 @@ public class GameManager : MonoBehaviour
     // 키값 지우기
     private void EraseKey(KeyCode key)
     {
-        var queue = keyQueue.GetQueue();
-        int iSize = keyQueue.GetQueueSize();
-        int iRear = keyQueue.GetRear();
-        int iFront = keyQueue.GetFront();
+        var queue = m_keyQueue.GetQueue();
+        int iSize = m_keyQueue.GetQueueSize();
+        int iRear = m_keyQueue.GetRear();
+        int iFront = m_keyQueue.GetFront();
 
         while (iRear != iFront)
         {
@@ -640,98 +640,98 @@ public class GameManager : MonoBehaviour
     private void KeyDown_Forward()
     {
         KeyInfo key = new KeyInfo(KeyCode.W, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 뒤로 이동
     private void KeyDown_Back()
     {
         KeyInfo key = new KeyInfo(KeyCode.S, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 왼쪽으로 이동
     private void KeyDown_Left()
     {
         KeyInfo key = new KeyInfo(KeyCode.A, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 오른쪽으로 이동
     private void KeyDown_Right()
     {
         KeyInfo key = new KeyInfo(KeyCode.D, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 마우스 왼쪽
     private void KeyDown_Mouse0()
     {
         KeyInfo key = new KeyInfo(KeyCode.Mouse0, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 마우스 오른쪽
     private void KeyDown_Mouse1()
     {
         KeyInfo key = new KeyInfo(KeyCode.Mouse1, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 점프
     private void KeyDown_Jump()
     {
         KeyInfo key = new KeyInfo(KeyCode.Space, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 회피
     private void KeyDown_Dvade()
     {
         KeyInfo key = new KeyInfo(KeyCode.LeftShift, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 1
     private void KeyDown_Alpha1()
     {
         KeyInfo key = new KeyInfo(KeyCode.Alpha1, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 2
     private void KeyDown_Alpha2()
     {
         KeyInfo key = new KeyInfo(KeyCode.Alpha2, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 3
     private void KeyDown_Alpha3()
     {
         KeyInfo key = new KeyInfo(KeyCode.Alpha3, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 4
     private void KeyDown_Alpha4()
     {
         KeyInfo key = new KeyInfo(KeyCode.Alpha4, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 5
     private void KeyDown_Alpha5()
     {
         KeyInfo key = new KeyInfo(KeyCode.Alpha5, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
     // 스킬 슬롯 6
     private void KeyDown_Alpha6()
     {
         KeyInfo key = new KeyInfo(KeyCode.Alpha6, Time.time);
-        keyQueue.Enqueue(in key);
+        m_keyQueue.Enqueue(in key);
     }
 
 
@@ -824,7 +824,7 @@ public class GameManager : MonoBehaviour
     private void KeyUp_Inventory()
     {
         // 마우스 사용
-        useMouse = true;
+        m_useMouse = true;
         // 조작키 큐? 배열 초기화 해야함
     }
 
@@ -832,7 +832,7 @@ public class GameManager : MonoBehaviour
     private void KeyUp_Characterinfo()
     {
         // 마우스 사용
-        useMouse = true;
+        m_useMouse = true;
         UIManager.Instance.Characterinfo();
     }
 }

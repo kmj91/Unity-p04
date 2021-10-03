@@ -2,31 +2,31 @@
 
 public class SmoothFollow : MonoBehaviour
 {
-    public Transform target;
-    public float distance = 10.0f;
-    private float rotationDamping = 3.0f;
+    public Transform m_target;
+    public float m_distance = 3.0f;
+    private float m_rotationDamping = 3.0f;
 
     void LateUpdate()
     {
-        if (!target)
+        if (!m_target)
             return;
 
 
-        var wantedRotationAngleY = target.eulerAngles.y;
-        var wantedRotationAngleX = target.eulerAngles.x;
+        var wantedRotationAngleY = m_target.eulerAngles.y;
+        var wantedRotationAngleX = m_target.eulerAngles.x;
 
         var currentRotationAngleY = transform.eulerAngles.y;
         var currentRotationAngleX = transform.eulerAngles.x;
 
 
-        currentRotationAngleY = Mathf.LerpAngle(currentRotationAngleY, wantedRotationAngleY, rotationDamping * Time.deltaTime);
-        currentRotationAngleX = Mathf.LerpAngle(currentRotationAngleX, wantedRotationAngleX, rotationDamping * Time.deltaTime);
+        currentRotationAngleY = Mathf.LerpAngle(currentRotationAngleY, wantedRotationAngleY, m_rotationDamping * Time.deltaTime);
+        currentRotationAngleX = Mathf.LerpAngle(currentRotationAngleX, wantedRotationAngleX, m_rotationDamping * Time.deltaTime);
 
         var currentRotation = Quaternion.Euler(currentRotationAngleX, currentRotationAngleY, 0);
 
-        transform.position = target.position;
-        transform.position -= currentRotation * Vector3.forward * distance;
+        transform.position = m_target.position;
+        transform.position -= currentRotation * Vector3.forward * m_distance;
 
-        transform.LookAt(target);
+        transform.LookAt(m_target);
     }
 }

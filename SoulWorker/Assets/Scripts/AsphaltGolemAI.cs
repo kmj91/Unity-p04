@@ -15,42 +15,42 @@ using UnityEditor;
 public partial class AsphaltGolemAI : MonsterAI
 {
 
-    [SerializeField] private MonsterInfo monsterInfo;       // 몬스터 정보
-    [SerializeField] private Animator bodyAnime;            // 몸 애니메이터
-    [SerializeField] private Animator armsAnime;            // 팔 애니메이터
-    [SerializeField] private BoxCollider rightBoxCollider;  // 오른팔 충돌체
-    [SerializeField] private BoxCollider leftBoxCollider;   // 왼팔 충돌체
-    public float moveSpeed = 3.0f;          // 이동 속도
-    public float rotationSpeed = 3.0f;      // 회전 속도
-    public float damage = 100.0f;           // 공격력
-    public LivingEntity targetEntity;       // 추적 대상
-    public LayerMask whatIsTarget;
+    [SerializeField] private MonsterInfo m_monsterInfo;         // 몬스터 정보
+    [SerializeField] private Animator m_bodyAnime;              // 몸 애니메이터
+    [SerializeField] private Animator m_armsAnime;              // 팔 애니메이터
+    [SerializeField] private BoxCollider m_rightBoxCollider;    // 오른팔 충돌체
+    [SerializeField] private BoxCollider m_leftBoxCollider;     // 왼팔 충돌체
+    public float m_moveSpeed = 3.0f;        // 이동 속도
+    public float m_rotationSpeed = 3.0f;    // 회전 속도
+    public float m_damage = 100.0f;         // 공격력
+    public LivingEntity m_targetEntity;     // 추적 대상
+    public LayerMask m_whatIsTarget;        // 안써도 될 것 같음 m_mask 로 대체
 
-    public Transform attackRoot;
-    public Transform eyeTrasform;
-    public float attackRadius = 1.3f;
-    public float attackDistance;
-    public float fieldOfView = 50.0f;
-    public float viewDistance = 10.0f;
-    public float patrolSpeed = 2.0f;
-    public float meleeDistance = 4f;
+    public Transform m_attackRoot;          // 안쓰는 것 같은데... 나중에 확인 할 것
+    public Transform m_eyeTrasform;
+    public float m_attackRadius = 1.3f;     // 안쓰는 것 같음
+    public float m_attackDistance;          // 안쓰는 것 같음
+    public float m_fieldOfView = 50.0f;
+    public float m_viewDistance = 10.0f;
+    public float m_patrolSpeed = 2.0f;      // 안써도 될 것 같음 m_moveSpeed 확인할 것
+    public float m_meleeDistance = 4f;
     
-    private Transform monsterTransform;
-    private AsphaltGolemState state = AsphaltGolemState.Idle;   // 상태
-    private NavMeshAgent agent;
-    private LayerMask mask;
-    private RaycastHit[] hits = new RaycastHit[10];
-    private List<LivingEntity> lastAttackdTargts = new List<LivingEntity>();
-    private bool hasTarget => targetEntity != null && !targetEntity.dead;
+    private Transform m_monsterTransform;
+    private AsphaltGolemState m_state = AsphaltGolemState.Idle;   // 상태
+    private NavMeshAgent m_agent;
+    private LayerMask m_mask;
+    private RaycastHit[] m_hits = new RaycastHit[10];   // 안쓰는 것 같음
+    private List<LivingEntity> m_lastAttackdTargts = new List<LivingEntity>();  // 안쓰는 것 같음
+    private bool m_hasTarget => m_targetEntity != null && !m_targetEntity.m_dead;
 
-    private MonsterSkillInfo[,] skillGroup;
-    private Action[] animeUpdate;
-    private Action[,] monsterAI;
-    private Target target = Target.End;
-    private Phase phase = Phase.End;
-    private bool isSuperArmourBreak = true;
-    private bool isActionEnd = true;
-    private bool isTargetFollow = true;
+    private MonsterSkillInfo[,] m_skillGroup;
+    private Action[] m_animeUpdate;
+    private Action[,] m_monsterAI;
+    private Target m_target = Target.End;
+    private Phase m_phase = Phase.End;
+    private bool m_isSuperArmourBreak = true;
+    private bool m_isActionEnd = true;
+    private bool m_isTargetFollow = true;
 
 
 
@@ -61,26 +61,26 @@ public partial class AsphaltGolemAI : MonsterAI
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        if (attackRoot != null)
+        if (m_attackRoot != null)
         {
             Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-            Gizmos.DrawSphere(attackRoot.position, attackRadius);
+            Gizmos.DrawSphere(m_attackRoot.position, m_attackRadius);
         }
 
-        if (eyeTrasform != null)
+        if (m_eyeTrasform != null)
         {
 
-            var leftEyeRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
+            var leftEyeRotation = Quaternion.AngleAxis(-m_fieldOfView * 0.5f, Vector3.up);
             var leftRayDirection = leftEyeRotation * transform.forward;
             Handles.color = new Color(1f, 0f, 0f, 0.2f);
-            Handles.DrawSolidArc(eyeTrasform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
+            Handles.DrawSolidArc(m_eyeTrasform.position, Vector3.up, leftRayDirection, m_fieldOfView, m_viewDistance);
 
 
             Handles.color = new Color(1f, 0f, 0f, 0.2f);
-            Handles.DrawSolidDisc(eyeTrasform.position, Vector3.up, meleeDistance);
+            Handles.DrawSolidDisc(m_eyeTrasform.position, Vector3.up, m_meleeDistance);
 
             Handles.color = new Color(1f, 1f, 1f, 0.2f);
-            Handles.DrawSolidDisc(eyeTrasform.position, Vector3.up, viewDistance);
+            Handles.DrawSolidDisc(m_eyeTrasform.position, Vector3.up, m_viewDistance);
         }
     }
 #endif
@@ -88,18 +88,18 @@ public partial class AsphaltGolemAI : MonsterAI
 
     private void Awake()
     {
-        monsterTransform = transform;
-        agent = GetComponent<NavMeshAgent>();
+        m_monsterTransform = transform;
+        m_agent = GetComponent<NavMeshAgent>();
 
-        //var attackPivot = attackRoot.position;
-        //attackPivot.y = monsterTransform.position.y;
-        //attackDistance = Vector3.Distance(monsterTransform.position, attackPivot) + attackRadius;
+        //var attackPivot = m_attackRoot.position;
+        //attackPivot.y = m_monsterTransform.position.y;
+        //m_attackDistance = Vector3.Distance(m_monsterTransform.position, attackPivot) + m_attackRadius;
 
-        agent.stoppingDistance = meleeDistance - 1f;
-        agent.speed = patrolSpeed;
+        m_agent.stoppingDistance = m_meleeDistance - 1f;
+        m_agent.speed = m_patrolSpeed;
 
         // 플레이어와 충돌
-        mask = LayerMask.NameToLayer("Player");
+        m_mask = LayerMask.NameToLayer("Player");
 
         // 몬스터 정보 초기화
         MonsterInfoInit();
@@ -107,39 +107,39 @@ public partial class AsphaltGolemAI : MonsterAI
 
     private void Start()
     {
-        animeUpdate = new Action[(int)AsphaltGolemState.End];
-        animeUpdate[(int)AsphaltGolemState.Idle] = Ani_Idle;
-        animeUpdate[(int)AsphaltGolemState.Run] = Ani_Run;
-        animeUpdate[(int)AsphaltGolemState.DMG_L] = Ani_DMG_L;
-        animeUpdate[(int)AsphaltGolemState.DMG_R] = Ani_DMG_R;
-        animeUpdate[(int)AsphaltGolemState.KB] = Ani_KB;
-        animeUpdate[(int)AsphaltGolemState.KD_Ham] = Ani_KD_Ham;
-        animeUpdate[(int)AsphaltGolemState.KD_Str] = Ani_KD_Str;
-        animeUpdate[(int)AsphaltGolemState.KD_Upp] = Ani_KD_Upp;
-        animeUpdate[(int)AsphaltGolemState.Death] = Ani_Death;
-        animeUpdate[(int)AsphaltGolemState.A_Skill_01] = Ani_A_Skill_01;
-        animeUpdate[(int)AsphaltGolemState.A_Skill_01] = Ani_A_Skill_01;
-        animeUpdate[(int)AsphaltGolemState.A_Skill_02] = Ani_A_Skill_02;
-        animeUpdate[(int)AsphaltGolemState.A_Skill_03] = Ani_A_Skill_03;
+        m_animeUpdate = new Action[(int)AsphaltGolemState.End];
+        m_animeUpdate[(int)AsphaltGolemState.Idle] = Ani_Idle;
+        m_animeUpdate[(int)AsphaltGolemState.Run] = Ani_Run;
+        m_animeUpdate[(int)AsphaltGolemState.DMG_L] = Ani_DMG_L;
+        m_animeUpdate[(int)AsphaltGolemState.DMG_R] = Ani_DMG_R;
+        m_animeUpdate[(int)AsphaltGolemState.KB] = Ani_KB;
+        m_animeUpdate[(int)AsphaltGolemState.KD_Ham] = Ani_KD_Ham;
+        m_animeUpdate[(int)AsphaltGolemState.KD_Str] = Ani_KD_Str;
+        m_animeUpdate[(int)AsphaltGolemState.KD_Upp] = Ani_KD_Upp;
+        m_animeUpdate[(int)AsphaltGolemState.Death] = Ani_Death;
+        m_animeUpdate[(int)AsphaltGolemState.A_Skill_01] = Ani_A_Skill_01;
+        m_animeUpdate[(int)AsphaltGolemState.A_Skill_01] = Ani_A_Skill_01;
+        m_animeUpdate[(int)AsphaltGolemState.A_Skill_02] = Ani_A_Skill_02;
+        m_animeUpdate[(int)AsphaltGolemState.A_Skill_03] = Ani_A_Skill_03;
 
-        monsterAI = new Action[(int)Target.End, (int)Phase.End];
-        monsterAI[(int)Target.No, (int)Phase.Phase_1] = AI_NoTarget;
-        monsterAI[(int)Target.No, (int)Phase.Phase_2] = AI_NoTarget;
-        monsterAI[(int)Target.Yes, (int)Phase.Phase_1] = AI_Phase_1;
-        monsterAI[(int)Target.Yes, (int)Phase.Phase_2] = AI_Phase_2;
+        m_monsterAI = new Action[(int)Target.End, (int)Phase.End];
+        m_monsterAI[(int)Target.No, (int)Phase.Phase_1] = AI_NoTarget;
+        m_monsterAI[(int)Target.No, (int)Phase.Phase_2] = AI_NoTarget;
+        m_monsterAI[(int)Target.Yes, (int)Phase.Phase_1] = AI_Phase_1;
+        m_monsterAI[(int)Target.Yes, (int)Phase.Phase_2] = AI_Phase_2;
 
         // 스킬 그룹
-        skillGroup = new MonsterSkillInfo[3, 3];
+        m_skillGroup = new MonsterSkillInfo[3, 3];
         // 근거리 잡기
-        skillGroup[0, 0] = new MonsterSkillInfo(4, 100f, 0f);
+        m_skillGroup[0, 0] = new MonsterSkillInfo(4, 100f, 0f);
         // 일반 1
-        skillGroup[1, 0] = new MonsterSkillInfo(3, 15f, 0f);
-        skillGroup[1, 1] = new MonsterSkillInfo(2, 25f, 0f);
-        skillGroup[1, 2] = new MonsterSkillInfo(1, 100f, 0f);
+        m_skillGroup[1, 0] = new MonsterSkillInfo(3, 15f, 0f);
+        m_skillGroup[1, 1] = new MonsterSkillInfo(2, 25f, 0f);
+        m_skillGroup[1, 2] = new MonsterSkillInfo(1, 100f, 0f);
         // 일반 2
-        skillGroup[2, 0] = new MonsterSkillInfo(2, 15f, 0f);
-        skillGroup[2, 1] = new MonsterSkillInfo(3, 25f, 0f);
-        skillGroup[2, 2] = new MonsterSkillInfo(1, 100f, 0f);
+        m_skillGroup[2, 0] = new MonsterSkillInfo(2, 15f, 0f);
+        m_skillGroup[2, 1] = new MonsterSkillInfo(3, 25f, 0f);
+        m_skillGroup[2, 2] = new MonsterSkillInfo(1, 100f, 0f);
 
         // 코루틴
         StartCoroutine(UpdatePath());
@@ -147,22 +147,22 @@ public partial class AsphaltGolemAI : MonsterAI
 
     private void Update()
     {
-        if (dead)
+        if (m_dead)
             return;
 
-        //if (state == AsphaltGolemState.Run &&
-        //    Vector3.Distance(targetEntity.transform.position, mTransform.position) <= attackDistance)
+        //if (m_state == AsphaltGolemState.Run &&
+        //    Vector3.Distance(m_targetEntity.transform.position, mTransform.position) <= m_attackDistance)
         //{
         //    //BeginAttack();
         //}
 
         // 애니메이션 업데이트
-        animeUpdate[(int)state]();
+        m_animeUpdate[(int)m_state]();
     }
 
     private void FixedUpdate()
     {
-        if (dead)
+        if (m_dead)
             return;
 
         // 회전
@@ -174,7 +174,7 @@ public partial class AsphaltGolemAI : MonsterAI
         // 1초
         WaitForSeconds wait = new WaitForSeconds(1f);
 
-        while (!dead)
+        while (!m_dead)
         {
             // 시간 감소
             // ...
@@ -183,38 +183,38 @@ public partial class AsphaltGolemAI : MonsterAI
             CheckTarget();
 
             // 하나의 행동이 끝나면 다음 행동을 받음
-            if (isActionEnd)
+            if (m_isActionEnd)
                 UpdateAI();
 
-            if (hasTarget)
+            if (m_hasTarget)
             {
                 //// 정찰 상태면 추적 상태로
-                //if (state == AsphaltGolemState.Idle)
+                //if (m_state == AsphaltGolemState.Idle)
                 //{
-                //    state = AsphaltGolemState.Run;
+                //    m_state = AsphaltGolemState.Run;
                 //}
 
-                //agent.SetDestination(targetEntity.transform.position);
+                //m_agent.SetDestination(m_targetEntity.transform.position);
             }
             else
             {
                 /*
-                if (targetEntity != null) targetEntity = null;
+                if (m_targetEntity != null) m_targetEntity = null;
 
                 // 정찰 상태가 아니면 정찰 상태로
-                if (state != AsphaltGolemState.Run)
+                if (m_state != AsphaltGolemState.Run)
                 {
-                    state = AsphaltGolemState.Run;
+                    m_state = AsphaltGolemState.Run;
                 }
 
-                if (agent.remainingDistance <= 3.0f)
+                if (m_agent.remainingDistance <= 3.0f)
                 {
                     var patrolTargetPosition = Utility.GetRandomPointOnNavMesh(mTransform.position, 20.0f, NavMesh.AllAreas);
-                    agent.SetDestination(patrolTargetPosition);
+                    m_agent.SetDestination(patrolTargetPosition);
                 }
 
                 // 시야 내 콜라이더들을 가져옴
-                var colliders = Physics.OverlapSphere(eyeTrasform.position, viewDistance, whatIsTarget);
+                var colliders = Physics.OverlapSphere(m_eyeTrasform.position, m_viewDistance, m_whatIsTarget);
 
                 foreach (var collider in colliders)
                 {
@@ -226,9 +226,9 @@ public partial class AsphaltGolemAI : MonsterAI
 
                     var livingEntity = collider.GetComponent<LivingEntity>();
 
-                    if (livingEntity != null && !livingEntity.dead)
+                    if (livingEntity != null && !livingEntity.m_dead)
                     {
-                        targetEntity = livingEntity;
+                        m_targetEntity = livingEntity;
                         break;
                     }
                 }
@@ -242,49 +242,49 @@ public partial class AsphaltGolemAI : MonsterAI
 
     private void Rotation()
     {
-        if (!hasTarget || !isTargetFollow)
+        if (!m_hasTarget || !m_isTargetFollow)
             return;
 
-        Vector3 targetDir = targetEntity.transform.position - monsterTransform.position;
+        Vector3 targetDir = m_targetEntity.transform.position - m_monsterTransform.position;
         Quaternion rotation = Quaternion.LookRotation(targetDir);
-        monsterTransform.rotation = Quaternion.Lerp(monsterTransform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        m_monsterTransform.rotation = Quaternion.Lerp(m_monsterTransform.rotation, rotation, m_rotationSpeed * Time.deltaTime);
     }
 
     private void CheckTarget()
     {
-        if (!hasTarget)
+        if (!m_hasTarget)
             return;
 
         // 범위 내 플레이어 콜라이더들을 가져옴
-        var colliders = Physics.OverlapSphere(eyeTrasform.position, viewDistance, whatIsTarget);
+        var colliders = Physics.OverlapSphere(m_eyeTrasform.position, m_viewDistance, m_whatIsTarget);
 
         foreach (var collider in colliders)
         {
             var livingEntity = collider.GetComponent<LivingEntity>();
 
-            if (livingEntity != null && !livingEntity.dead)
+            if (livingEntity != null && !livingEntity.m_dead)
             {
-                targetEntity = livingEntity;
+                m_targetEntity = livingEntity;
                 break;
             }
         }
     }
 
-    private bool IsTargetOnSight(Transform target)
+    private bool IsTargetOnSight(Transform m_target)
     {
-        var direction = target.position - eyeTrasform.position;
-        direction.y = eyeTrasform.forward.y;
+        var direction = m_target.position - m_eyeTrasform.position;
+        direction.y = m_eyeTrasform.forward.y;
 
-        if (Vector3.Angle(direction, eyeTrasform.forward) > fieldOfView * 0.5f)
+        if (Vector3.Angle(direction, m_eyeTrasform.forward) > m_fieldOfView * 0.5f)
             return false;
 
-        //direction = target.position - eyeTrasform.position;
+        //direction = m_target.position - m_eyeTrasform.position;
 
         RaycastHit hit;
 
-        if (Physics.Raycast(eyeTrasform.position, direction, out hit, viewDistance, whatIsTarget))
+        if (Physics.Raycast(m_eyeTrasform.position, direction, out hit, m_viewDistance, m_whatIsTarget))
         {
-            if (hit.transform == target)
+            if (hit.transform == m_target)
                 return true;
         }
         
@@ -294,19 +294,19 @@ public partial class AsphaltGolemAI : MonsterAI
     private void UpdateAI()
     {
         // 타겟
-        if (hasTarget)
-            target = Target.Yes;
+        if (m_hasTarget)
+            m_target = Target.Yes;
         else
-            target = Target.No;
+            m_target = Target.No;
 
         // 페이즈
-        if (startingHealth * 0.5 <= health)
-            phase = Phase.Phase_1;
+        if (m_startingHealth * 0.5 <= m_health)
+            m_phase = Phase.Phase_1;
         else
-            phase = Phase.Phase_2;
+            m_phase = Phase.Phase_2;
 
         // AI 처리
-        monsterAI[(int)target, (int)phase]();
+        m_monsterAI[(int)m_target, (int)m_phase]();
     }
 
     private void AI_NoTarget()
@@ -319,32 +319,32 @@ public partial class AsphaltGolemAI : MonsterAI
         int skill;
 
         // 타겟과의 거리
-        var direction = targetEntity.transform.position - eyeTrasform.position;
-        direction.y = eyeTrasform.forward.y;
+        var direction = m_targetEntity.transform.position - m_eyeTrasform.position;
+        direction.y = m_eyeTrasform.forward.y;
 
         float rand = Random.Range(0f, 99f);
 
         // 이동
-        if (direction.magnitude > meleeDistance)
+        if (direction.magnitude > m_meleeDistance)
         {
-            state = AsphaltGolemState.Run;
-            isActionEnd = false;
+            m_state = AsphaltGolemState.Run;
+            m_isActionEnd = false;
             return;
         }
         // 근거리 잡기
-        else if (direction.magnitude <= meleeDistance && rand < 30f)
+        else if (direction.magnitude <= m_meleeDistance && rand < 30f)
         {
-            SkillCondition(ref skillGroup, 0, out skill);
+            SkillCondition(ref m_skillGroup, 0, out skill);
         }
         // 일반 2
         else if (rand < 60f)
         {
-            SkillCondition(ref skillGroup, 2, out skill);
+            SkillCondition(ref m_skillGroup, 2, out skill);
         }
         // 일반 1
         else
         {
-            SkillCondition(ref skillGroup, 1, out skill);
+            SkillCondition(ref m_skillGroup, 1, out skill);
         }
 
         // 공격 상태로 전환
@@ -361,15 +361,15 @@ public partial class AsphaltGolemAI : MonsterAI
         switch (skill)
         {
             case 1: // 어퍼
-                state = AsphaltGolemState.A_Skill_01;
+                m_state = AsphaltGolemState.A_Skill_01;
                 SetTrigerASkill_01();
                 return;
             case 2: // 광역 내려찍기
-                state = AsphaltGolemState.A_Skill_02;
+                m_state = AsphaltGolemState.A_Skill_02;
                 SetTrigerASkill_02();
                 return;
             case 3: // 방패 기둥 꺼내서 전방 충격파, 찍뎀 + 충격파 스킬
-                state = AsphaltGolemState.A_Skill_03;
+                m_state = AsphaltGolemState.A_Skill_03;
                 SetTrigerASkill_03();
                 return;
             case 4: // 잡기

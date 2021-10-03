@@ -18,31 +18,31 @@ public partial class AsphaltGolemAI : MonsterAI
         UpdateUI();
 
         // 죽었으면 나감
-        if (dead)
+        if (m_dead)
             return false;
 
         // 타겟이 없으면
-        if (targetEntity == null)
+        if (m_targetEntity == null)
         {
             // 공격자를 타겟으로
-            targetEntity = damageMessage.damager.GetComponent<LivingEntity>();
+            m_targetEntity = damageMessage.damager.GetComponent<LivingEntity>();
         }
         // 타겟이 있으면
         else
         {
             // 대미지 어그로 확률 1/10000
             var damager = damageMessage.damager.GetComponent<LivingEntity>();
-            if (targetEntity != damager)
+            if (m_targetEntity != damager)
             {
                 int aggro = Random.Range(0, 10000);
                 // 타겟 변경
                 if (aggro < 1)
-                    targetEntity = damager;
+                    m_targetEntity = damager;
             }
         }
 
         // 슈퍼아머 브레이크 상태
-        if (!isSuperArmourBreak)
+        if (!m_isSuperArmourBreak)
             return true;
 
         // 공격 타입에 따른 상태 변환
@@ -58,22 +58,22 @@ public partial class AsphaltGolemAI : MonsterAI
         // 컬라이더 비활성화
         GetComponent<Collider>().enabled = false;
         // 에이전트 비활성화
-        agent.enabled = false;
+        m_agent.enabled = false;
         // 상태
-        state = AsphaltGolemState.Death;
+        m_state = AsphaltGolemState.Death;
         // 애니메이션 트리거
         SetTrigerDeath();
     }
 
     public void SetUp(float health, float damage, float runSpeed, float patrolSpeed, Color skinColor)
     {
-        startingHealth = health;
-        this.health = health;
-        this.damage = damage;
-        moveSpeed = runSpeed;
-        this.patrolSpeed = patrolSpeed;
+        m_startingHealth = health;
+        m_health = health;
+        m_damage = damage;
+        m_moveSpeed = runSpeed;
+        m_patrolSpeed = patrolSpeed;
 
-        agent.speed = patrolSpeed;
+        m_agent.speed = patrolSpeed;
     }
 
 
@@ -92,7 +92,7 @@ public partial class AsphaltGolemAI : MonsterAI
         //public float armourBreak;       // 적 방어도 관통[%]
 
         //public float defense;           // 방어도
-        //public float evade;             // 회피도
+        //public float m_evade;             // 회피도
         //public float damageReduction;   // 피해 감소[%]
         //public float criticalResistance;// 치명타 저항[%]
 
@@ -115,7 +115,7 @@ public partial class AsphaltGolemAI : MonsterAI
             armourBreak = 0f,
 
             defense = 100f,
-            evade = 0f,
+            m_evade = 0f,
             damageReduction = 50f,
             criticalResistance = 0f,
 
@@ -124,13 +124,13 @@ public partial class AsphaltGolemAI : MonsterAI
             superArmour = 100f,
             CCImmunity = true
         };
-        monsterInfo.SetUp(ref data);
+        m_monsterInfo.SetUp(ref data);
 
-        DelCurrentLevel = monsterInfo.GetCurrentLevel;
-        DelCurrentHp = monsterInfo.GetCurrentHp;
-        DelCurrentDefense = monsterInfo.GetCurrentDefense;
-        DelCurrentEvade = monsterInfo.GetCurrentEvade;
-        DelCurrentCriticalResistance = monsterInfo.GetCurrentCriticalResistance;
+        m_DelCurrentLevel = m_monsterInfo.GetCurrentLevel;
+        m_DelCurrentHp = m_monsterInfo.GetCurrentHp;
+        m_DelCurrentDefense = m_monsterInfo.GetCurrentDefense;
+        m_DelCurrentEvade = m_monsterInfo.GetCurrentEvade;
+        m_DelCurrentCriticalResistance = m_monsterInfo.GetCurrentCriticalResistance;
     }
 
     private void FSM_Hit(AttackType type)
@@ -141,31 +141,31 @@ public partial class AsphaltGolemAI : MonsterAI
                 int rand = Random.Range(0, 2);
                 if (rand == 0)
                 {
-                    state = AsphaltGolemState.DMG_L;
+                    m_state = AsphaltGolemState.DMG_L;
                     // 애니메이션 트리거
                     SetTrigerDMGL();
                 }
                 else
                 {
-                    state = AsphaltGolemState.DMG_R;
+                    m_state = AsphaltGolemState.DMG_R;
                     // 애니메이션 트리거
                     SetTrigerDMGR();
                 }
                 break;
             case AttackType.Upper:
-                state = AsphaltGolemState.KD_Upp;
+                m_state = AsphaltGolemState.KD_Upp;
                 SetTrigerKDUpp();
                 break;
             case AttackType.Break:
-                state = AsphaltGolemState.KB;
+                m_state = AsphaltGolemState.KB;
                 SetTrigerKB();
                 break;
             case AttackType.Down:
-                state = AsphaltGolemState.KD_Ham;
+                m_state = AsphaltGolemState.KD_Ham;
                 SetTrigerKDHam();
                 break;
             case AttackType.Strike:
-                state = AsphaltGolemState.KD_Str;
+                m_state = AsphaltGolemState.KD_Str;
                 SetTrigerKDStr();
                 break;
             default:
@@ -178,6 +178,6 @@ public partial class AsphaltGolemAI : MonsterAI
     private void UpdateUI()
     {
         // UI 갱신
-        UIManager.Instance.UpdateBossHp(health, startingHealth);
+        UIManager.Instance.UpdateBossHp(m_health, m_startingHealth);
     }
 }

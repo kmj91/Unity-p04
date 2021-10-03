@@ -6,28 +6,28 @@ using MyStruct;
 
 public partial class HaruInfo : PlayerInfo
 {
-    public SkinnedMeshRenderer faceRenderer;
-    public SkinnedMeshRenderer bodyRenderer;
-    public SkinnedMeshRenderer handsRenderer;
-    public SkinnedMeshRenderer pantsRenderer;
-    public SkinnedMeshRenderer shoessRenderer;
-    public SkinnedMeshRenderer hairRenderer;
-    public Texture2D faceMask;
-    public Texture2D bodyMask;
-    public Texture2D sockMask;
-    public Texture2D hairMask;
+    public SkinnedMeshRenderer m_faceRenderer;
+    public SkinnedMeshRenderer m_bodyRenderer;
+    public SkinnedMeshRenderer m_handsRenderer;
+    public SkinnedMeshRenderer m_pantsRenderer;
+    public SkinnedMeshRenderer m_shoessRenderer;
+    public SkinnedMeshRenderer m_hairRenderer;
+    public Texture2D m_faceMask;
+    public Texture2D m_bodyMask;
+    public Texture2D m_sockMask;
+    public Texture2D m_hairMask;
 
-    public Color skinColor;
-    public Color hiarColor;
+    public Color m_skinColor;
+    public Color m_hiarColor;
 
-    private HaruSkill[,] skillSlot;     // 스킬 슬롯
+    private HaruSkill[,] m_skillSlot;   // 스킬 슬롯
     private CirculartQueue<HaruSkill>[] skillSlotQueue; // 스킬 슬롯 큐
     // 1 : 스킬 종류
     // 2 : 스킬 레벨
     // 3 : 타격 수
-    private float[,,] skillDamage;
-    private float[] skillCooldown;      // 스킬 재사용 대기시간
-    private bool[] readySkill;          // 스킬 사용 준비
+    private float[,,] m_skillDamage;
+    private float[] m_skillCooldown;    // 스킬 재사용 대기시간
+    private bool[] m_readySkill;        // 스킬 사용 준비
 
 
     private enum DEFAULT
@@ -37,31 +37,31 @@ public partial class HaruInfo : PlayerInfo
     }
 
     // 스킬 슬롯 인덱스의 스킬 상태 얻기
-    public bool GetStateOfSkillSlot(int index, out HaruState state)
+    public bool GetStateOfSkillSlot(int index, out HaruState m_state)
     {
         for (int iCnt = 0; iCnt < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++iCnt)
         {
             // 스킬 사용 가능
-            if (readySkill[(int)skillSlot[index, iCnt]])
+            if (m_readySkill[(int)m_skillSlot[index, iCnt]])
             {
-                // skill -> state 변환
-                switch (skillSlot[index, iCnt])
+                // skill -> m_state 변환
+                switch (m_skillSlot[index, iCnt])
                 {
                     case HaruSkill.FirstBlade:
-                        state = HaruState.FirstBlade;
+                        m_state = HaruState.FirstBlade;
                         return true;
                     case HaruSkill.PierceStep:
-                        state = HaruState.PierceStep;
+                        m_state = HaruState.PierceStep;
                         return true;
                     case HaruSkill.SpinCutter:
-                        state = HaruState.SpinCutter;
+                        m_state = HaruState.SpinCutter;
                         return true;
                     default:
                         break;
                 }
             }
         }
-        state = HaruState.End;
+        m_state = HaruState.End;
         return false;
     }
 
@@ -70,11 +70,11 @@ public partial class HaruInfo : PlayerInfo
     {
         for (int iCnt = 0; iCnt < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++iCnt)
         {
-            HaruSkill skill = skillSlot[index, iCnt];
+            HaruSkill skill = m_skillSlot[index, iCnt];
             // 스킬 사용 가능한지 확인
-            if (readySkill[(int)skill])
+            if (m_readySkill[(int)skill])
             {
-                readySkill[(int)skill] = false;
+                m_readySkill[(int)skill] = false;
                 // 사용 스킬 큐에 입력
                 EnqueueUseSkill(skill);
                 // 코루틴
@@ -95,7 +95,7 @@ public partial class HaruInfo : PlayerInfo
         if (cnt < 0 && 5 <= cnt)
             return false;
 
-        damage = skillDamage[(int)skill, 0, cnt];
+        damage = m_skillDamage[(int)skill, 0, cnt];
 
         return true;
     }
@@ -121,7 +121,7 @@ public partial class HaruInfo : PlayerInfo
         //public float extraDmgToBossNamed;   // 적 추가 피해 보스 / 네임드[%]
 
         //public float defense;           // 방어도
-        //public float evade;             // 회피도
+        //public float m_evade;             // 회피도
         //public float damageReduction;   // 피해 감소[%]
         //public float criticalResistance;// 치명타 저항[%]
         //public float shorterCooldown;   // 재사용 대기시간 감소
@@ -150,7 +150,7 @@ public partial class HaruInfo : PlayerInfo
             extraDmgToBossNamed = 0f,
 
             defense = 7f,
-            evade = 0f,
+            m_evade = 0f,
             damageReduction = 0f,
             criticalResistance = 0f,
             shorterCooldown = 0f,
@@ -169,24 +169,24 @@ public partial class HaruInfo : PlayerInfo
         UIManager.Instance.UpdateEquipment(ref currentPlayerData);
 
         // 스킬 슬롯 생성
-        skillSlot = new HaruSkill[(int)DEFAULT.SKILL_SLOT_X_SIZE, (int)DEFAULT.SKILL_SLOT_Y_SIZE];
+        m_skillSlot = new HaruSkill[(int)DEFAULT.SKILL_SLOT_X_SIZE, (int)DEFAULT.SKILL_SLOT_Y_SIZE];
 
         for (int x = 0; x < (int)DEFAULT.SKILL_SLOT_X_SIZE; ++x)
         {
             for (int y = 0; y < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++y)
             {
-                skillSlot[x, y] = HaruSkill.None;
+                m_skillSlot[x, y] = HaruSkill.None;
             }
         }
 
-        skillSlot[0, 0] = HaruSkill.FirstBlade;
-        skillSlot[0, 1] = HaruSkill.PierceStep;
-        skillSlot[0, 2] = HaruSkill.SpinCutter;
+        m_skillSlot[0, 0] = HaruSkill.FirstBlade;
+        m_skillSlot[0, 1] = HaruSkill.PierceStep;
+        m_skillSlot[0, 2] = HaruSkill.SpinCutter;
 
-        skillSlot[1, 0] = HaruSkill.PierceStep;
-        skillSlot[1, 1] = HaruSkill.FirstBlade;
+        m_skillSlot[1, 0] = HaruSkill.PierceStep;
+        m_skillSlot[1, 1] = HaruSkill.FirstBlade;
 
-        skillSlot[2, 0] = HaruSkill.SpinCutter;
+        m_skillSlot[2, 0] = HaruSkill.SpinCutter;
 
 
         // 스킬 슬롯 큐 초기화
@@ -198,77 +198,77 @@ public partial class HaruInfo : PlayerInfo
         }
 
 
-        skillDamage = new float[(int)HaruSkill.End, 5, 10];
+        m_skillDamage = new float[(int)HaruSkill.End, 5, 10];
 
-        skillDamage[(int)HaruSkill.NormalAttack1, 0, 0] = 0.5f;
-        skillDamage[(int)HaruSkill.NormalAttack1, 1, 0] = 0.625f;
-        skillDamage[(int)HaruSkill.NormalAttack1, 2, 0] = 0.75f;
-        skillDamage[(int)HaruSkill.NormalAttack1, 3, 0] = 0.875f;
-        skillDamage[(int)HaruSkill.NormalAttack1, 4, 0] = 1f;
+        m_skillDamage[(int)HaruSkill.NormalAttack1, 0, 0] = 0.5f;
+        m_skillDamage[(int)HaruSkill.NormalAttack1, 1, 0] = 0.625f;
+        m_skillDamage[(int)HaruSkill.NormalAttack1, 2, 0] = 0.75f;
+        m_skillDamage[(int)HaruSkill.NormalAttack1, 3, 0] = 0.875f;
+        m_skillDamage[(int)HaruSkill.NormalAttack1, 4, 0] = 1f;
 
-        skillDamage[(int)HaruSkill.NormalAttack2, 0, 0] = 0.2f;
-        skillDamage[(int)HaruSkill.NormalAttack2, 1, 0] = 0.325f;
-        skillDamage[(int)HaruSkill.NormalAttack2, 2, 0] = 0.45f;
-        skillDamage[(int)HaruSkill.NormalAttack2, 3, 0] = 0.575f;
-        skillDamage[(int)HaruSkill.NormalAttack2, 4, 0] = 0.7f;
+        m_skillDamage[(int)HaruSkill.NormalAttack2, 0, 0] = 0.2f;
+        m_skillDamage[(int)HaruSkill.NormalAttack2, 1, 0] = 0.325f;
+        m_skillDamage[(int)HaruSkill.NormalAttack2, 2, 0] = 0.45f;
+        m_skillDamage[(int)HaruSkill.NormalAttack2, 3, 0] = 0.575f;
+        m_skillDamage[(int)HaruSkill.NormalAttack2, 4, 0] = 0.7f;
 
-        skillDamage[(int)HaruSkill.NormalAttack3, 0, 0] = 0.3f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 1, 0] = 0.425f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 2, 0] = 0.55f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 3, 0] = 0.675f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 4, 0] = 0.8f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 0, 1] = 0.3f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 1, 1] = 0.425f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 2, 1] = 0.55f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 3, 1] = 0.675f;
-        skillDamage[(int)HaruSkill.NormalAttack3, 4, 1] = 0.8f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 0, 0] = 0.3f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 1, 0] = 0.425f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 2, 0] = 0.55f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 3, 0] = 0.675f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 4, 0] = 0.8f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 0, 1] = 0.3f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 1, 1] = 0.425f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 2, 1] = 0.55f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 3, 1] = 0.675f;
+        m_skillDamage[(int)HaruSkill.NormalAttack3, 4, 1] = 0.8f;
 
-        skillDamage[(int)HaruSkill.NormalAttack4, 0, 0] = 0.3f;
-        skillDamage[(int)HaruSkill.NormalAttack4, 1, 0] = 0.425f;
-        skillDamage[(int)HaruSkill.NormalAttack4, 2, 0] = 0.55f;
-        skillDamage[(int)HaruSkill.NormalAttack4, 3, 0] = 0.675f;
-        skillDamage[(int)HaruSkill.NormalAttack4, 4, 0] = 0.8f;
+        m_skillDamage[(int)HaruSkill.NormalAttack4, 0, 0] = 0.3f;
+        m_skillDamage[(int)HaruSkill.NormalAttack4, 1, 0] = 0.425f;
+        m_skillDamage[(int)HaruSkill.NormalAttack4, 2, 0] = 0.55f;
+        m_skillDamage[(int)HaruSkill.NormalAttack4, 3, 0] = 0.675f;
+        m_skillDamage[(int)HaruSkill.NormalAttack4, 4, 0] = 0.8f;
 
-        skillDamage[(int)HaruSkill.NormalAttack5, 0, 0] = 0.5f;
-        skillDamage[(int)HaruSkill.NormalAttack5, 1, 0] = 0.625f;
-        skillDamage[(int)HaruSkill.NormalAttack5, 2, 0] = 0.75f;
-        skillDamage[(int)HaruSkill.NormalAttack5, 3, 0] = 0.875f;
-        skillDamage[(int)HaruSkill.NormalAttack5, 4, 0] = 1f;
+        m_skillDamage[(int)HaruSkill.NormalAttack5, 0, 0] = 0.5f;
+        m_skillDamage[(int)HaruSkill.NormalAttack5, 1, 0] = 0.625f;
+        m_skillDamage[(int)HaruSkill.NormalAttack5, 2, 0] = 0.75f;
+        m_skillDamage[(int)HaruSkill.NormalAttack5, 3, 0] = 0.875f;
+        m_skillDamage[(int)HaruSkill.NormalAttack5, 4, 0] = 1f;
 
-        skillDamage[(int)HaruSkill.FirstBlade, 0, 0] = 2.7f;
-        skillDamage[(int)HaruSkill.FirstBlade, 0, 1] = 2.7f;
-        skillDamage[(int)HaruSkill.FirstBlade, 0, 2] = 1.35f;
-        skillDamage[(int)HaruSkill.FirstBlade, 1, 0] = 2.81f;
-        skillDamage[(int)HaruSkill.FirstBlade, 1, 1] = 2.81f;
-        skillDamage[(int)HaruSkill.FirstBlade, 1, 2] = 1.46f;
-        skillDamage[(int)HaruSkill.FirstBlade, 2, 0] = 3.09f;
-        skillDamage[(int)HaruSkill.FirstBlade, 2, 1] = 3.09f;
-        skillDamage[(int)HaruSkill.FirstBlade, 2, 2] = 1.74f;
-        skillDamage[(int)HaruSkill.FirstBlade, 3, 0] = 3.37f;
-        skillDamage[(int)HaruSkill.FirstBlade, 3, 1] = 3.37f;
-        skillDamage[(int)HaruSkill.FirstBlade, 3, 2] = 2.03f;
-        skillDamage[(int)HaruSkill.FirstBlade, 4, 0] = 3.82f;
-        skillDamage[(int)HaruSkill.FirstBlade, 4, 1] = 3.82f;
-        skillDamage[(int)HaruSkill.FirstBlade, 4, 2] = 2.48f;
-
-
-        skillCooldown = new float[(int)HaruSkill.End];
-
-        skillCooldown[(int)HaruSkill.FirstBlade] = 10f;
-        skillCooldown[(int)HaruSkill.PierceStep] = 8f;
-        skillCooldown[(int)HaruSkill.SpinCutter] = 5f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 0, 0] = 2.7f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 0, 1] = 2.7f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 0, 2] = 1.35f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 1, 0] = 2.81f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 1, 1] = 2.81f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 1, 2] = 1.46f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 2, 0] = 3.09f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 2, 1] = 3.09f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 2, 2] = 1.74f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 3, 0] = 3.37f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 3, 1] = 3.37f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 3, 2] = 2.03f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 4, 0] = 3.82f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 4, 1] = 3.82f;
+        m_skillDamage[(int)HaruSkill.FirstBlade, 4, 2] = 2.48f;
 
 
-        readySkill = new bool[(int)HaruSkill.End];
+        m_skillCooldown = new float[(int)HaruSkill.End];
 
-        readySkill[(int)HaruSkill.FirstBlade] = true;
-        readySkill[(int)HaruSkill.PierceStep] = true;
-        readySkill[(int)HaruSkill.SpinCutter] = true;
+        m_skillCooldown[(int)HaruSkill.FirstBlade] = 10f;
+        m_skillCooldown[(int)HaruSkill.PierceStep] = 8f;
+        m_skillCooldown[(int)HaruSkill.SpinCutter] = 5f;
+
+
+        m_readySkill = new bool[(int)HaruSkill.End];
+
+        m_readySkill[(int)HaruSkill.FirstBlade] = true;
+        m_readySkill[(int)HaruSkill.PierceStep] = true;
+        m_readySkill[(int)HaruSkill.SpinCutter] = true;
     }
 
     private IEnumerator CountSkillCooldown(HaruSkill skill)
     {
-        float cooldown = skillCooldown[(int)skill];
+        float cooldown = m_skillCooldown[(int)skill];
         float originCooldown = cooldown;
         // 1초
         WaitForSeconds wait = new WaitForSeconds(1f);
@@ -289,7 +289,7 @@ public partial class HaruInfo : PlayerInfo
         }
 
         // 스킬 사용 가능
-        readySkill[(int)skill] = true;
+        m_readySkill[(int)skill] = true;
         // UI 재사용 대기시간 완료 처리
         AllSkillSlotCheckReady(skill);
     }
@@ -303,7 +303,7 @@ public partial class HaruInfo : PlayerInfo
             for (int y = 0; y < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++y)
             {
                 // 사용하려는 스킬과 같음
-                if (skillSlot[x, y] == skill)
+                if (m_skillSlot[x, y] == skill)
                 {
                     skillSlotQueue[x].Enqueue(skill);
                     break;
@@ -318,7 +318,7 @@ public partial class HaruInfo : PlayerInfo
         for (int y = 0; y < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++y)
         {
             // 사용하려는 스킬과 같음
-            if (skillSlot[index, y] == skill)
+            if (m_skillSlot[index, y] == skill)
             {
                 // 삭제
                 skillSlotQueue[index].Erase(skill);
@@ -336,7 +336,7 @@ public partial class HaruInfo : PlayerInfo
             for (int y = 0; y < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++y)
             {
                 // 사용하려는 스킬과 같음
-                if (skillSlot[x, y] == skill)
+                if (m_skillSlot[x, y] == skill)
                 {
                     // 해당 스킬 슬롯 재사용 대기시간 처리
                     UpdateUISkillSlotCooldown(skill, x, y, originCooldown, cooldown);
@@ -371,7 +371,7 @@ public partial class HaruInfo : PlayerInfo
         if (y == 0)
         {
             // 위쪽 스킬들이 하나라도 준비 되있고
-            if (readySkill[(int)skillSlot[x, 1]] || readySkill[(int)skillSlot[x, 2]])
+            if (m_readySkill[(int)m_skillSlot[x, 1]] || m_readySkill[(int)m_skillSlot[x, 2]])
             {
                 // 마지막으로 사용한 스킬과 비교해서 같으면
                 if (GetLastSkill(x) == skill)
@@ -387,7 +387,7 @@ public partial class HaruInfo : PlayerInfo
         if (y == 1)
         {
             // 아래나 위쪽 스킬이 하나라도 준비 되있고
-            if (readySkill[(int)skillSlot[x, 0]] || readySkill[(int)skillSlot[x, 2]])
+            if (m_readySkill[(int)m_skillSlot[x, 0]] || m_readySkill[(int)m_skillSlot[x, 2]])
             {
                 // 마지막으로 사용한 스킬과 비교해서 같으면
                 if (GetLastSkill(x) == skill)
@@ -403,7 +403,7 @@ public partial class HaruInfo : PlayerInfo
         if (y == 2)
         {
             // 아래쪽 위쪽 스킬이 하나라도 준비 되있고
-            if (readySkill[(int)skillSlot[x, 0]] || readySkill[(int)skillSlot[x, 1]])
+            if (m_readySkill[(int)m_skillSlot[x, 0]] || m_readySkill[(int)m_skillSlot[x, 1]])
             {
                 // 마지막으로 사용한 스킬과 비교해서 같으면
                 if (GetLastSkill(x) == skill)
@@ -441,7 +441,7 @@ public partial class HaruInfo : PlayerInfo
         int iCnt = 0;
         while (iCnt < 3)
         {
-            if (readySkill[(int)skillSlot[index, iCnt]])
+            if (m_readySkill[(int)m_skillSlot[index, iCnt]])
                 break;
             ++iCnt;
         }
@@ -453,7 +453,7 @@ public partial class HaruInfo : PlayerInfo
             return false;
         }
 
-        nextSkill = skillSlot[index, iCnt];
+        nextSkill = m_skillSlot[index, iCnt];
         return true;
     }
 
@@ -466,15 +466,15 @@ public partial class HaruInfo : PlayerInfo
             for (int y = 0; y < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++y)
             {
                 // 사용하려는 스킬이 아니면
-                if (skillSlot[x, y] != skill)
+                if (m_skillSlot[x, y] != skill)
                     continue;
 
                 // 첫번째 스킬
                 if (y == 0)
                 {
                     // 위에 스킬 사용 준비 안됨
-                    if ((!readySkill[(int)skillSlot[x, 1]] || skillSlot[x, 1] == HaruSkill.None) &&
-                        (!readySkill[(int)skillSlot[x, 2]] || skillSlot[x, 2] == HaruSkill.None))
+                    if ((!m_readySkill[(int)m_skillSlot[x, 1]] || m_skillSlot[x, 1] == HaruSkill.None) &&
+                        (!m_readySkill[(int)m_skillSlot[x, 2]] || m_skillSlot[x, 2] == HaruSkill.None))
                     {
                         // 스킬 재사용 대기시간 비활성화
                         UIManager.Instance.OffSkillSlotCooldown(x);
@@ -501,8 +501,8 @@ public partial class HaruInfo : PlayerInfo
                 else if (y == 1)
                 {
                     // 아래쪽 준비 안됨 위쪽 준비 안됨
-                    if (!readySkill[(int)skillSlot[x, 0]] &&
-                        (!readySkill[(int)skillSlot[x, 2]] || skillSlot[x, 2] == HaruSkill.None))
+                    if (!m_readySkill[(int)m_skillSlot[x, 0]] &&
+                        (!m_readySkill[(int)m_skillSlot[x, 2]] || m_skillSlot[x, 2] == HaruSkill.None))
                     {
                         // 스킬 재사용 대기시간 비활성화
                         UIManager.Instance.OffSkillSlotCooldown(x);
@@ -514,8 +514,8 @@ public partial class HaruInfo : PlayerInfo
                     }
 
                     // 아래쪽 준비 안됨 위쪽 준비됨
-                    if (!readySkill[(int)skillSlot[x, 0]] &&
-                        readySkill[(int)skillSlot[x, 2]])
+                    if (!m_readySkill[(int)m_skillSlot[x, 0]] &&
+                        m_readySkill[(int)m_skillSlot[x, 2]])
                     {
                         // 스킬 아이콘 위쪽 재사용 대기시간 비활성화
                         UIManager.Instance.OffSkillSlotSecondCooldown(x);
@@ -527,7 +527,7 @@ public partial class HaruInfo : PlayerInfo
                     }
 
                     // 아래쪽 준비됨 마지막으로 사용한 스킬과 같음
-                    if (readySkill[(int)skillSlot[x, 0]] &&
+                    if (m_readySkill[(int)m_skillSlot[x, 0]] &&
                         GetLastSkill(x) == skill)
                     {
                         // 스킬 아이콘 위쪽 재사용 대기시간 비활성화
@@ -541,8 +541,8 @@ public partial class HaruInfo : PlayerInfo
                 else if (y == 2)
                 {
                     // 아래쪽 준비 안됨
-                    if (!readySkill[(int)skillSlot[x, 0]] &&
-                        !readySkill[(int)skillSlot[x, 1]])
+                    if (!m_readySkill[(int)m_skillSlot[x, 0]] &&
+                        !m_readySkill[(int)m_skillSlot[x, 1]])
                     {
                         // 스킬 재사용 대기시간 비활성화
                         UIManager.Instance.OffSkillSlotCooldown(x);
@@ -554,7 +554,7 @@ public partial class HaruInfo : PlayerInfo
                     }
 
                     // 아래쪽 준비됨 마지막으로 사용한 스킬과 같음
-                    if ((readySkill[(int)skillSlot[x, 0]] || readySkill[(int)skillSlot[x, 1]]) &&
+                    if ((m_readySkill[(int)m_skillSlot[x, 0]] || m_readySkill[(int)m_skillSlot[x, 1]]) &&
                         GetLastSkill(x) == skill)
                     {
                         // 스킬 아이콘 위쪽 재사용 대기시간 비활성화

@@ -6,22 +6,22 @@ public partial class HaruInfo : PlayerInfo
     public void CheckTextureMask()
     {
         // 헤어 텍스처 마스크 확인
-        var materials = hairRenderer.materials;
+        var materials = m_hairRenderer.materials;
         var size = materials.Length;
         for (int i = 0; i < size; ++i)
         {
             if (materials[i].name.Contains("Mask"))
             {
                 // 텍스처 생성
-                Texture2D hairTexture = new Texture2D(hairMask.width, hairMask.height);
-                for (int y = 0; y < hairMask.height; ++y)
+                Texture2D hairTexture = new Texture2D(m_hairMask.width, m_hairMask.height);
+                for (int y = 0; y < m_hairMask.height; ++y)
                 {
-                    for (int x = 0; x < hairMask.width; ++x)
+                    for (int x = 0; x < m_hairMask.width; ++x)
                     {
-                        Color mask = hairMask.GetPixel(x, y);
+                        Color mask = m_hairMask.GetPixel(x, y);
                         // R 값 원본 색상
                         float fPer = (1 - mask.r) * 1.5f + mask.r;
-                        Color outColor = hiarColor * fPer;
+                        Color outColor = m_hiarColor * fPer;
                         // G 값 하이라이트 
                         fPer = mask.g * 1.5f + (1 - mask.g);
                         outColor = outColor * fPer;
@@ -37,22 +37,22 @@ public partial class HaruInfo : PlayerInfo
         }
 
         // 얼굴 텍스처 마스크 확인
-        materials = faceRenderer.materials;
+        materials = m_faceRenderer.materials;
         size = materials.Length;
         for (int i=0; i < size; ++i)
         {
             if (materials[i].name.Contains("PC_A_Parts_Default_Face_02_Mask_01"))
             {
                 // 텍스처 생성
-                Texture2D faceTexture = new Texture2D(faceMask.width, faceMask.height);
-                for (int y = 0; y < faceMask.height; ++y)
+                Texture2D faceTexture = new Texture2D(m_faceMask.width, m_faceMask.height);
+                for (int y = 0; y < m_faceMask.height; ++y)
                 {
-                    for (int x = 0; x < faceMask.width; ++x)
+                    for (int x = 0; x < m_faceMask.width; ++x)
                     {
-                        Color mask = faceMask.GetPixel(x, y);
+                        Color mask = m_faceMask.GetPixel(x, y);
                         // R 값 원본 색상
                         float fPer = (1 - mask.r) * 1.5f + mask.r;
-                        Color outColor = skinColor * fPer;
+                        Color outColor = m_skinColor * fPer;
                         // G 값 하이라이트 
                         fPer = mask.g * 1.5f + (1 - mask.g);
                         outColor = outColor * fPer;
@@ -68,22 +68,22 @@ public partial class HaruInfo : PlayerInfo
         }
 
         // 상의 텍스처 마스크 확인
-        materials = bodyRenderer.materials;
+        materials = m_bodyRenderer.materials;
         size = materials.Length;
         for (int i = 0; i < size; ++i)
         {
             if (materials[i].name.Contains("PC_A_Parts_Default_Body_03_Mask_01"))
             {
                 // 텍스처 생성
-                Texture2D bodyTexture = new Texture2D(bodyMask.width, bodyMask.height);
-                for (int y = 0; y < bodyMask.height; ++y)
+                Texture2D bodyTexture = new Texture2D(m_bodyMask.width, m_bodyMask.height);
+                for (int y = 0; y < m_bodyMask.height; ++y)
                 {
-                    for (int x = 0; x < bodyMask.width; ++x)
+                    for (int x = 0; x < m_bodyMask.width; ++x)
                     {
-                        Color mask = bodyMask.GetPixel(x, y);
+                        Color mask = m_bodyMask.GetPixel(x, y);
                         // R 값 원본 색상
                         float fPer = (1 - mask.r) * 1.5f + mask.r;
-                        Color outColor = skinColor * fPer;
+                        Color outColor = m_skinColor * fPer;
                         // G 값 하이라이트 
                         fPer = mask.g * 1.5f + (1 - mask.g);
                         outColor = outColor * fPer;
@@ -99,22 +99,22 @@ public partial class HaruInfo : PlayerInfo
         }
 
         // 손 텍스처 마스크 확인
-        materials = handsRenderer.materials;
+        materials = m_handsRenderer.materials;
         size = materials.Length;
         for (int i = 0; i < size; ++i)
         {
             if (materials[i].name.Contains("PC_A_Parts_Default_Body_03_Mask_01"))
             {
                 // 텍스처 생성
-                Texture2D handsTexture = new Texture2D(bodyMask.width, bodyMask.height);
-                for (int y = 0; y < bodyMask.height; ++y)
+                Texture2D handsTexture = new Texture2D(m_bodyMask.width, m_bodyMask.height);
+                for (int y = 0; y < m_bodyMask.height; ++y)
                 {
-                    for (int x = 0; x < bodyMask.width; ++x)
+                    for (int x = 0; x < m_bodyMask.width; ++x)
                     {
-                        Color mask = bodyMask.GetPixel(x, y);
+                        Color mask = m_bodyMask.GetPixel(x, y);
                         // R 값 원본 색상
                         float fPer = (1 - mask.r) * 1.5f + mask.r;
-                        Color outColor = skinColor * fPer;
+                        Color outColor = m_skinColor * fPer;
                         // G 값 하이라이트 
                         fPer = mask.g * 1.5f + (1 - mask.g);
                         outColor = outColor * fPer;
@@ -130,22 +130,22 @@ public partial class HaruInfo : PlayerInfo
         }
 
         // 하의 텍스처 마스크 확인
-        materials = pantsRenderer.materials;
+        materials = m_pantsRenderer.materials;
         size = materials.Length;
         for (int i = 0; i < size; ++i)
         {
             if (materials[i].name.Contains("PC_A_EQ_Default_Socks_05_Mask_01"))
             {
                 // 텍스처 생성
-                Texture2D pantsTexture = new Texture2D(sockMask.width, sockMask.height);
-                for (int y = 0; y < sockMask.height; ++y)
+                Texture2D pantsTexture = new Texture2D(m_sockMask.width, m_sockMask.height);
+                for (int y = 0; y < m_sockMask.height; ++y)
                 {
-                    for (int x = 0; x < sockMask.width; ++x)
+                    for (int x = 0; x < m_sockMask.width; ++x)
                     {
-                        Color mask = sockMask.GetPixel(x, y);
+                        Color mask = m_sockMask.GetPixel(x, y);
                         // R 값 원본 색상
                         float fPer = (1 - mask.r) * 1.5f + mask.r;
-                        Color outColor = skinColor * fPer;
+                        Color outColor = m_skinColor * fPer;
                         // G 값 하이라이트 
                         fPer = mask.g * 1.5f + (1 - mask.g);
                         outColor = outColor * fPer;
@@ -161,22 +161,22 @@ public partial class HaruInfo : PlayerInfo
         }
 
         // 신발 텍스처 마스크 확인
-        materials = shoessRenderer.materials;
+        materials = m_shoessRenderer.materials;
         size = materials.Length;
         for (int i = 0; i < size; ++i)
         {
             if (materials[i].name.Contains("PC_A_EQ_Default_Socks_05_Mask_01"))
             {
                 // 텍스처 생성
-                Texture2D shoessTexture = new Texture2D(sockMask.width, sockMask.height);
-                for (int y = 0; y < sockMask.height; ++y)
+                Texture2D shoessTexture = new Texture2D(m_sockMask.width, m_sockMask.height);
+                for (int y = 0; y < m_sockMask.height; ++y)
                 {
-                    for (int x = 0; x < sockMask.width; ++x)
+                    for (int x = 0; x < m_sockMask.width; ++x)
                     {
-                        Color mask = sockMask.GetPixel(x, y);
+                        Color mask = m_sockMask.GetPixel(x, y);
                         // R 값 원본 색상
                         float fPer = (1 - mask.r) * 1.5f + mask.r;
-                        Color outColor = skinColor * fPer;
+                        Color outColor = m_skinColor * fPer;
                         // G 값 하이라이트 
                         fPer = mask.g * 1.5f + (1 - mask.g);
                         outColor = outColor * fPer;

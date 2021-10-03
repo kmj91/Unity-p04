@@ -4,8 +4,8 @@ using MyStruct;
 
 public class PlayerHealth : LivingEntity
 {
-    [SerializeField] private PlayerInfo playerInfo;     // 플레이어 정보
-    [SerializeField] private PlayerCtrl playerCtrl;     // 플레이어 상태 조작
+    [SerializeField] private PlayerInfo m_playerInfo;     // 플레이어 정보
+    [SerializeField] private PlayerCtrl m_playerCtrl;     // 플레이어 상태 조작
 
     public override void RestoreHealth(float newHealth)
     {
@@ -17,7 +17,7 @@ public class PlayerHealth : LivingEntity
     public override bool ApplyDamage(ref DamageMessage damageMessage)
     {
         // 회피
-        if (playerCtrl.evade)
+        if (m_playerCtrl.m_evade)
             return false;
 
         if (!base.ApplyDamage(ref damageMessage)) return false;
@@ -26,7 +26,7 @@ public class PlayerHealth : LivingEntity
         UpdateUI();
 
         // 공격 타입에 따른 상태 변환
-        playerCtrl.FSM_Hit(ref damageMessage);
+        m_playerCtrl.FSM_Hit(ref damageMessage);
 
         return true;
     }
@@ -50,11 +50,11 @@ public class PlayerHealth : LivingEntity
 
     private void Awake()
     {
-        DelCurrentLevel = playerInfo.GetCurrentLevel;
-        DelCurrentHp = playerInfo.GetCurrentHp;
-        DelCurrentDefense = playerInfo.GetCurrentDefense;
-        DelCurrentEvade = playerInfo.GetCurrentEvade;
-        DelCurrentCriticalResistance = playerInfo.GetCurrentCriticalResistance;
+        m_DelCurrentLevel = m_playerInfo.GetCurrentLevel;
+        m_DelCurrentHp = m_playerInfo.GetCurrentHp;
+        m_DelCurrentDefense = m_playerInfo.GetCurrentDefense;
+        m_DelCurrentEvade = m_playerInfo.GetCurrentEvade;
+        m_DelCurrentCriticalResistance = m_playerInfo.GetCurrentCriticalResistance;
     }
 
     private void Update()
@@ -65,6 +65,6 @@ public class PlayerHealth : LivingEntity
     private void UpdateUI()
     {
         // UI 갱신
-        UIManager.Instance.UpdatePlayerHp(health, startingHealth);
+        UIManager.Instance.UpdatePlayerHp(m_health, m_startingHealth);
     }
 }

@@ -32,7 +32,7 @@ public class MonsterInfo : MonoBehaviour
 
     public float GetCurrentEvade()
     {
-        return currentMonsterData.evade;
+        return currentMonsterData.m_evade;
     }
 
     public float GetCurrentCriticalResistance()
