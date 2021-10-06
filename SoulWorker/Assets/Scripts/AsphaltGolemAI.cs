@@ -64,7 +64,7 @@ public partial class AsphaltGolemAI : MonsterAI
         if (m_attackRoot != null)
         {
             Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-            Gizmos.DrawSphere(m_attackRoot.position, m_attackRadius);
+            //Gizmos.DrawSphere(m_attackRoot.position, m_attackRadius);
         }
 
         if (m_eyeTrasform != null)
@@ -73,7 +73,7 @@ public partial class AsphaltGolemAI : MonsterAI
             var leftEyeRotation = Quaternion.AngleAxis(-m_fieldOfView * 0.5f, Vector3.up);
             var leftRayDirection = leftEyeRotation * transform.forward;
             Handles.color = new Color(1f, 0f, 0f, 0.2f);
-            Handles.DrawSolidArc(m_eyeTrasform.position, Vector3.up, leftRayDirection, m_fieldOfView, m_viewDistance);
+            //Handles.DrawSolidArc(m_eyeTrasform.position, Vector3.up, leftRayDirection, m_fieldOfView, m_viewDistance);
 
 
             Handles.color = new Color(1f, 0f, 0f, 0.2f);

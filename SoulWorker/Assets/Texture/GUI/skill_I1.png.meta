@@ -16,10 +16,13 @@ TextureImporter:
     second: skill_border
   - first:
       213: -5074296518356380597
-    second: skill_I1_4
+    second: skill_icon
   - first:
       213: -3957863016616851038
     second: skill_front
+  - first:
+      213: 3499115744053310744
+    second: skill_container
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -205,6 +208,48 @@ TextureImporter:
       bones: []
       spriteID: 2a985e85e88d219c0800000000000000
       internalID: -3957863016616851038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_icon
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 955
+        width: 68
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b44dd5a833a7499b0800000000000000
+      internalID: -5074296518356380597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_container
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 928
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8153648ea3b5f8030800000000000000
+      internalID: 3499115744053310744
       vertices: []
       indices: 
       edges: []
