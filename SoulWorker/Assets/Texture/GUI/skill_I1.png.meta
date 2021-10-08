@@ -23,6 +23,9 @@ TextureImporter:
   - first:
       213: 3499115744053310744
     second: skill_container
+  - first:
+      213: -3305039815747694523
+    second: skill_contentBG
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -250,6 +253,27 @@ TextureImporter:
       bones: []
       spriteID: 8153648ea3b5f8030800000000000000
       internalID: 3499115744053310744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_contentBG
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 463
+        width: 41
+        height: 561
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 4, y: 4, z: 4, w: 35}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54016d56cc32222d0800000000000000
+      internalID: -3305039815747694523
       vertices: []
       indices: 
       edges: []
