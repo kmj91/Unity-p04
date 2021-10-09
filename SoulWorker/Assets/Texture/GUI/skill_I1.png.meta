@@ -135,13 +135,13 @@ TextureImporter:
       name: skill_button_yellow
       rect:
         serializedVersion: 2
-        x: 602
-        y: 931
-        width: 20
-        height: 21
+        x: 689
+        y: 930
+        width: 22
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -266,7 +266,7 @@ TextureImporter:
         width: 41
         height: 561
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 4, y: 4, z: 4, w: 35}
       outline: []
       physicsShape: []
