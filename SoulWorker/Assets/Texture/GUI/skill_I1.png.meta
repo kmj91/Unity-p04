@@ -26,6 +26,18 @@ TextureImporter:
   - first:
       213: -3305039815747694523
     second: skill_contentBG
+  - first:
+      213: -6844108400060868217
+    second: skill_arrow
+  - first:
+      213: 7793845151550960285
+    second: skill_unableLabel
+  - first:
+      213: -3694139921066494836
+    second: skill_icon_plus
+  - first:
+      213: -5920832645546920463
+    second: skill_icon_minus
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -162,7 +174,7 @@ TextureImporter:
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 3, y: 3, z: 3, w: 3}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -274,6 +286,90 @@ TextureImporter:
       bones: []
       spriteID: 54016d56cc32222d0800000000000000
       internalID: -3305039815747694523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_arrow
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 845
+        width: 55
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 789da1afba7d401a0800000000000000
+      internalID: -6844108400060868217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_unableLabel
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 844
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d92789c2fdc492c60800000000000000
+      internalID: 7793845151550960285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_icon_plus
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 858
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84fd3e6057cbbcc0800000000000000
+      internalID: -3694139921066494836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_icon_minus
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 858
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f5b3ab241af4dda0800000000000000
+      internalID: -5920832645546920463
       vertices: []
       indices: 
       edges: []
