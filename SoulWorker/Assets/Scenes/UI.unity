@@ -8517,8 +8517,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2141023125}
   m_HandleRect: {fileID: 2141023124}
   m_Direction: 2
-  m_Value: 0.9999973
-  m_Size: 0.54222286
+  m_Value: 0.99999183
+  m_Size: 0.5422214
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11404,7 +11404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1123168471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17009,7 +17009,7 @@ MonoBehaviour:
   m_bossNameText: {fileID: 1831512343}
   m_bossSuperArmor: {fileID: 1142811306}
   m_bossSuperArmorBar: {fileID: 530323110}
-  m_bossSuperArmorBreakGuard: {fileID: 1123168472}
+  m_bossSuperArmorBreakGuard: {fileID: 1123168470}
   m_bossSuperArmorBreakEffect: {fileID: 2079517637}
   m_bossSuperArmorBreak: {fileID: 469560973}
   m_bossHpBarSprite:
@@ -17083,6 +17083,7 @@ MonoBehaviour:
   - {fileID: 2023614528}
   - {fileID: 1884906616}
   - {fileID: 441766280}
+  m_skillinfo: {fileID: 1501546274}
 --- !u!1 &1734086452
 GameObject:
   m_ObjectHideFlags: 0
