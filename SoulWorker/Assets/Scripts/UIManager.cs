@@ -29,13 +29,13 @@ public partial class UIManager : MonoBehaviour
     [SerializeField] private Text m_bossNameText;       // 보스 이름 텍스트
     [SerializeField] private GameObject m_bossSuperArmor;           // 보스 슈퍼 아머 상태일 때 아이콘과 텍스트 이미지
     [SerializeField] private Image m_bossSuperArmorBar;             // 보스 슈퍼 아머 바
-    [SerializeField] private Image m_bossSuperArmorBreakGuard;      // 보스 슈퍼 아머 브레이크 가드
-    [SerializeField] private Image m_bossSuperArmorBreakEffect;     // 보스 슈퍼 아머 브레이크 이펙트
-    [SerializeField] private Image m_bossSuperArmorBreak;           // 보스 슈퍼 아머 브레이크 텍스트 이미지
+    [SerializeField] private GameObject m_bossSuperArmorBreakGuard; // 보스 슈퍼 아머 브레이크 가드
+    [SerializeField] private Animator m_bossSuperArmorBreakEffect;  // 보스 슈퍼 아머 브레이크 이펙트
+    [SerializeField] private GameObject m_bossSuperArmorBreak;      // 보스 슈퍼 아머 브레이크 텍스트 이미지
 
     [SerializeField] private Sprite[] m_bossHpBarSprite;            // 보스 체력바 스프라이트
 
-    [SerializeField] private Image m_characterinfo;                 // 캐릭터 정보 창
+    [SerializeField] private GameObject m_characterinfo;            // 캐릭터 정보 창
     [SerializeField] private RectTransform m_equipmentTransform;    // 장비 창 위치
     [SerializeField] private Text m_equipmentHP;                    // 캐릭터 정보 HP
     [SerializeField] private Text m_equipmentAttack;                // 캐릭터 정보 공격력
@@ -55,8 +55,8 @@ public partial class UIManager : MonoBehaviour
 
     [SerializeField] private Sprite[] m_haruSkillIcon;              // 하루 스킬 아이콘 스프라이트
     [SerializeField] private Image[] m_hotkeySkillIcon;             // 스킬 아이콘
-    [SerializeField] private Image[] m_hotkeySkillCooldownBack;     // 재사용 대기시간 뒤쪽 이미지
-    [SerializeField] private Image[] m_hotkeySkillCooldownFront;    // 재사용 대기시간 앞쪽 이미지
+    [SerializeField] private GameObject[] m_hotkeySkillCooldownBack;// 재사용 대기시간 뒤쪽 이미지
+    [SerializeField] private Image[] m_hotkeySkillCooldownFront;    // 재사용 대기시간 앞쪽 이미지, 재사용 시간 경과에 따라 fillAmount 값 조정
     [SerializeField] private Text[] m_hotkeySkillCooldownCount;     // 재사용 대기시간 카운트
     [SerializeField] private Text[] m_hotkeySkillSecondCooldownCount;       // 재사용 이전 스킬 대기시간 카운트
     [SerializeField] private GameObject[] m_hotkeySkillSecondCooldownBar;   // 재사용 대기시간 바
@@ -150,13 +150,13 @@ public partial class UIManager : MonoBehaviour
     // 캐릭터 정보 창
     public void Characterinfo()
     {
-        if (m_characterinfo.IsActive())
+        if (m_characterinfo.activeSelf)
         {
-            m_characterinfo.gameObject.SetActive(false);
+            m_characterinfo.SetActive(false);
         }
         else
         {
-            m_characterinfo.gameObject.SetActive(true);
+            m_characterinfo.SetActive(true);
         }
     }
 

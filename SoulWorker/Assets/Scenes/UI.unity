@@ -11404,7 +11404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1123168471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17010,8 +17010,8 @@ MonoBehaviour:
   m_bossSuperArmor: {fileID: 1142811306}
   m_bossSuperArmorBar: {fileID: 530323110}
   m_bossSuperArmorBreakGuard: {fileID: 1123168472}
-  m_bossSuperArmorBreakEffect: {fileID: 2079517638}
-  m_bossSuperArmorBreak: {fileID: 469560975}
+  m_bossSuperArmorBreakEffect: {fileID: 2079517637}
+  m_bossSuperArmorBreak: {fileID: 469560973}
   m_bossHpBarSprite:
   - {fileID: 8484030793908474369, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: -7868393053494390922, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
@@ -17019,7 +17019,7 @@ MonoBehaviour:
   - {fileID: 7918502477841467764, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: 12121534870464039, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
   - {fileID: -753926199851564581, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
-  m_characterinfo: {fileID: 1401884273}
+  m_characterinfo: {fileID: 1401884271}
   m_equipmentTransform: {fileID: 15481547}
   m_equipmentHP: {fileID: 1586758294}
   m_equipmentAttack: {fileID: 576624608}
@@ -17049,12 +17049,12 @@ MonoBehaviour:
   - {fileID: 278920408}
   - {fileID: 1663116627}
   m_hotkeySkillCooldownBack:
-  - {fileID: 1948934418}
-  - {fileID: 1826014924}
-  - {fileID: 16414393}
-  - {fileID: 2008328502}
-  - {fileID: 1324754356}
-  - {fileID: 257912313}
+  - {fileID: 1948934416}
+  - {fileID: 1826014922}
+  - {fileID: 16414391}
+  - {fileID: 2008328500}
+  - {fileID: 1324754354}
+  - {fileID: 257912311}
   m_hotkeySkillCooldownFront:
   - {fileID: 1829850408}
   - {fileID: 676307698}
