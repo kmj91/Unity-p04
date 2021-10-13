@@ -8517,8 +8517,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2141023125}
   m_HandleRect: {fileID: 2141023124}
   m_Direction: 2
-  m_Value: 0.99999183
-  m_Size: 0.5422214
+  m_Value: 0.9999973
+  m_Size: 0.54222286
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13675,6 +13675,7 @@ GameObject:
   - component: {fileID: 1394521250}
   - component: {fileID: 1394521252}
   - component: {fileID: 1394521251}
+  - component: {fileID: 1394521253}
   m_Layer: 5
   m_Name: Skill Icon
   m_TagString: Untagged
@@ -13738,6 +13739,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394521249}
   m_CullTransparentMesh: 0
+--- !u!114 &1394521253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394521249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702fef50994eac24aaebc3eb2f120bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragOnSurfaces: 1
 --- !u!1 &1401884271
 GameObject:
   m_ObjectHideFlags: 0

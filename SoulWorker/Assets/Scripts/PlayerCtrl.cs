@@ -322,10 +322,7 @@ public partial class PlayerCtrl : MonoBehaviour
         m_changeState[(int)HaruState.FirstBlade02, (int)HaruState.NormalAttack1] = true;
 
         // 무기 장착
-        m_weapon.transform.parent = m_weaponholder;
-        m_weapon.transform.localPosition = Vector3.zero;
-        m_weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        m_weapon.transform.localScale = Vector3.one;
+        m_weapon.transform.SetParent(m_weaponholder, false);
 
         m_playerInfo.UpdateInfo();
     }
