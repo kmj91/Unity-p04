@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class UIDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class UIDragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public RectTransform m_DraggingWindow;
 
