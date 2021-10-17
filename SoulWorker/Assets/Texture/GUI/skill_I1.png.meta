@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5344690289875333208
-    second: skill_presetIconBack
+    second: skill_slot_preset
   - first:
       213: -3390317205563642682
     second: skill_button_yellow
@@ -46,13 +46,31 @@ TextureImporter:
     second: skill_container_2
   - first:
       213: -8885554839899596084
-    second: skill_icon_buff
+    second: skill_arrowButton
   - first:
       213: 5616967861014440214
     second: skill_icon_changeName
   - first:
       213: 2177505425593302231
-    second: skill_icon_buff
+    second: skill_arrowButton
+  - first:
+      213: 8654160133536739889
+    second: skill_presetArrow
+  - first:
+      213: 395720252533284846
+    second: skill_label_2
+  - first:
+      213: -7337439126536538137
+    second: skill_breakSkill_1
+  - first:
+      213: -6928392653347340298
+    second: skill_breakSkill_2
+  - first:
+      213: -6671644602964013941
+    second: skill_arrowBreakSkill
+  - first:
+      213: -5197772508162461828
+    second: skill_icon_lock
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -138,16 +156,16 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: skill_presetIconBack
+      name: skill_slot_preset
       rect:
         serializedVersion: 2
-        x: 755
-        y: 877
-        width: 50
-        height: 50
+        x: 756
+        y: 878
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 2, y: 2, z: 2, w: 2}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -461,7 +479,7 @@ TextureImporter:
         width: 26
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -469,6 +487,153 @@ TextureImporter:
       bones: []
       spriteID: cca188763fa20b480800000000000000
       internalID: -8885554839899596084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_arrowButton
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 864
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc79fcc5ad083e10800000000000000
+      internalID: 2177505425593302231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_presetArrow
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 931
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 132fdcc2ac0c91870800000000000000
+      internalID: 8654160133536739889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_label_2
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 934
+        width: 39
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eef9caa1971ed7500800000000000000
+      internalID: 395720252533284846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_breakSkill_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 956
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e7bcb56dfd2c2a90800000000000000
+      internalID: -7337439126536538137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_breakSkill_2
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 968
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ff3ec8079769df90800000000000000
+      internalID: -6928392653347340298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_arrowBreakSkill
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 840
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c8dacd49e8963a0800000000000000
+      internalID: -6671644602964013941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_icon_lock
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 843
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f6fab517dcdd7b0800000000000000
+      internalID: -5197772508162461828
       vertices: []
       indices: 
       edges: []
