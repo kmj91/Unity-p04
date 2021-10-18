@@ -71,6 +71,9 @@ TextureImporter:
   - first:
       213: -5197772508162461828
     second: skill_icon_lock
+  - first:
+      213: -7585190617150720322
+    second: skill_presetButton
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -634,6 +637,27 @@ TextureImporter:
       bones: []
       spriteID: c7f6fab517dcdd7b0800000000000000
       internalID: -5197772508162461828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_presetButton
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 840
+        width: 14
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb6fa1f525dfbb690800000000000000
+      internalID: -7585190617150720322
       vertices: []
       indices: 
       edges: []
