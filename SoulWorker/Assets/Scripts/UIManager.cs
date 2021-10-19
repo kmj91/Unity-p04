@@ -18,13 +18,7 @@ public partial class UIManager : MonoBehaviour
         }
     }
 
-    //-------------------------------
-    // 플레이어 체력 바
-    //-------------------------------
-    [SerializeField] private Image m_playerHpBar;       // 플레이어 체력바
-    [SerializeField] private Image m_playerHpSignal;    // 플레이어 체력 신호 애니메이션
-    [SerializeField] private Text m_playerHpText;       // 플레이어 체력 텍스트
-    [SerializeField] private Text m_playerName;         // 플레이어 이름
+    [SerializeField] private UIPlayerHp m_UIPlayerHP;   // 플레이어 체력 바
 
     //-------------------------------
     // 보스 체력 바
@@ -83,24 +77,21 @@ public partial class UIManager : MonoBehaviour
 
 
     // 플레이어 체력
-    public void UpdatePlayerHp(float currentHp, float maxHp)
+    public void SetPlayerHp(float currentHp, float maxHp)
     {
-        m_playerHpText.text = currentHp + "/" + maxHp;
-        float amount = currentHp / maxHp;
-        m_playerHpBar.fillAmount = amount;
-        m_playerHpSignal.fillAmount = amount;
+        m_UIPlayerHP.SetPlayerHp(currentHp, maxHp);
     }
 
     // 플레이어 이름
-    public void UpdatePlayerName(string name)
+    public void SetPlayerName(string name)
     {
-        m_playerName.text = name;
+        m_UIPlayerHP.SetPlayerName(name);
     }
 
     // 플레이어 SG
-    public void UpdatePlayerSG(float sg)
+    public void SetPlayerSG(float sg)
     {
-
+        m_UIPlayerHP.SetPlayerSG(sg);
     }
 
 

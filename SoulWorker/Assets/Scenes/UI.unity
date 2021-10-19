@@ -8685,6 +8685,7 @@ GameObject:
   - component: {fileID: 671299597}
   - component: {fileID: 671299599}
   - component: {fileID: 671299598}
+  - component: {fileID: 671299600}
   m_Layer: 5
   m_Name: HpState Base
   m_TagString: Untagged
@@ -8751,6 +8752,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671299596}
   m_CullTransparentMesh: 0
+--- !u!114 &671299600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671299596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1addd72edddc8b54d8896e32c9789cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerHpBar: {fileID: 130728635}
+  m_playerHpSignal: {fileID: 660839104}
+  m_playerHpText: {fileID: 901977723}
+  m_playerName: {fileID: 1231919929}
 --- !u!1 &676307696
 GameObject:
   m_ObjectHideFlags: 0
@@ -23581,6 +23598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42d684819e1e284eb13e60ce699f4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_UIPlayerHP: {fileID: 671299600}
   m_playerHpBar: {fileID: 130728635}
   m_playerHpSignal: {fileID: 660839104}
   m_playerHpText: {fileID: 901977723}
