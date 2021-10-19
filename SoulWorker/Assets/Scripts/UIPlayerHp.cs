@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class UIPlayerHp : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class UIPlayerHp : MonoBehaviour
     // 플레이어 체력
     public void SetPlayerHp(float currentHp, float maxHp)
     {
-        m_playerHpText.text = currentHp + "/" + maxHp;
+        m_playerHpText.text = Math.Ceiling(currentHp) + "/" + maxHp;
         float amount = currentHp / maxHp;
         m_playerHpBar.fillAmount = amount;
         m_playerHpSignal.fillAmount = amount;
