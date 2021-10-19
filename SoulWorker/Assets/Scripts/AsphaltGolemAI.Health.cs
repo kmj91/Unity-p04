@@ -178,6 +178,6 @@ public partial class AsphaltGolemAI : MonsterAI
     private void UpdateUI()
     {
         // UI 갱신
-        UIManager.Instance.UpdateBossHp(m_health, m_startingHealth);
+        UIManager.Instance.SetBossHp(m_health, m_startingHealth);
     }
 }

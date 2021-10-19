@@ -4489,6 +4489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 367163208}
+  - component: {fileID: 367163209}
   m_Layer: 5
   m_Name: Hotkey Base
   m_TagString: Untagged
@@ -4518,6 +4519,65 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 95}
   m_SizeDelta: {x: 660, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &367163209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367163207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d5297458c6bff4583a3b354e1d0c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_haruSkillIcon:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 4188443d2d8bd9e4f919cca60812a06c, type: 3}
+  - {fileID: 21300000, guid: ac3070bdd374fce4dbce149bfa309493, type: 3}
+  - {fileID: 21300000, guid: 4b3054792bfc1c94e81e426817d64be0, type: 3}
+  m_hotkeySkillIcon:
+  - {fileID: 341904683}
+  - {fileID: 1107671268}
+  - {fileID: 628958015}
+  - {fileID: 599492695}
+  - {fileID: 278920408}
+  - {fileID: 1663116627}
+  m_hotkeySkillCooldownBack:
+  - {fileID: 1948934416}
+  - {fileID: 1826014922}
+  - {fileID: 16414391}
+  - {fileID: 2008328500}
+  - {fileID: 1324754354}
+  - {fileID: 257912311}
+  m_hotkeySkillCooldownFront:
+  - {fileID: 1829850408}
+  - {fileID: 676307698}
+  - {fileID: 1364887291}
+  - {fileID: 643999673}
+  - {fileID: 1646464391}
+  - {fileID: 592831924}
+  m_hotkeySkillCooldownCount:
+  - {fileID: 1937254324}
+  - {fileID: 760873492}
+  - {fileID: 728085604}
+  - {fileID: 492719227}
+  - {fileID: 1862836245}
+  - {fileID: 761489994}
+  m_hotkeySkillSecondCooldownCount:
+  - {fileID: 2046228933}
+  - {fileID: 225835798}
+  - {fileID: 1762602933}
+  - {fileID: 2139840277}
+  - {fileID: 655547209}
+  - {fileID: 1973342759}
+  m_hotkeySkillSecondCooldownBar:
+  - {fileID: 2059062016}
+  - {fileID: 1035155300}
+  - {fileID: 751865714}
+  - {fileID: 2023614528}
+  - {fileID: 1884906616}
+  - {fileID: 441766280}
 --- !u!1 &378720647
 GameObject:
   m_ObjectHideFlags: 0
@@ -19075,6 +19135,7 @@ GameObject:
   - component: {fileID: 1401884272}
   - component: {fileID: 1401884274}
   - component: {fileID: 1401884273}
+  - component: {fileID: 1401884275}
   m_Layer: 5
   m_Name: Characterinfo Base
   m_TagString: Untagged
@@ -19142,6 +19203,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401884271}
   m_CullTransparentMesh: 0
+--- !u!114 &1401884275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401884271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0bec396ba9c8549be7b20aac2fb631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_equipmentTransform: {fileID: 15481547}
+  m_equipmentHP: {fileID: 1586758294}
+  m_equipmentAttack: {fileID: 576624608}
+  m_equipmentCritical: {fileID: 783448114}
+  m_equipmentAttackSpeed: {fileID: 378720649}
+  m_equipmentAccuracy: {fileID: 638748758}
+  m_equipmentArmourBreak: {fileID: 999567234}
+  m_equipmentExtraDmgToEnemy: {fileID: 523537192}
+  m_equipmentExtraDmgToBossNamed: {fileID: 1751180743}
+  m_equipmentStamina: {fileID: 333114643}
+  m_equipmentMoveSpeed: {fileID: 1558119063}
+  m_equipmentDefense: {fileID: 1861997368}
+  m_equipmentEvade: {fileID: 1407895109}
+  m_equipmentDamageReduction: {fileID: 1751377627}
+  m_equipmentCriticalResistance: {fileID: 17626068}
+  m_equipmentShorterCooldown: {fileID: 2050734020}
 --- !u!1 &1407871319
 GameObject:
   m_ObjectHideFlags: 0
@@ -23599,90 +23688,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIPlayerHP: {fileID: 671299600}
-  m_playerHpBar: {fileID: 130728635}
-  m_playerHpSignal: {fileID: 660839104}
-  m_playerHpText: {fileID: 901977723}
-  m_playerName: {fileID: 1231919929}
-  m_bossHpBarBack: {fileID: 1559418032}
-  m_bossHpBarFront: {fileID: 1495491288}
-  m_bossHpLostBar: {fileID: 1869701443}
-  m_bossNameText: {fileID: 1831512343}
-  m_bossSuperArmor: {fileID: 1142811306}
-  m_bossSuperArmorBar: {fileID: 530323110}
-  m_bossSuperArmorBreakGuard: {fileID: 1123168470}
-  m_bossSuperArmorBreakEffect: {fileID: 2079517637}
-  m_bossSuperArmorBreak: {fileID: 469560973}
-  m_bossHpBarSprite:
-  - {fileID: 8484030793908474369, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
-  - {fileID: -7868393053494390922, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
-  - {fileID: 3912503313807001267, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
-  - {fileID: 7918502477841467764, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
-  - {fileID: 12121534870464039, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
-  - {fileID: -753926199851564581, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
-  m_characterinfo: {fileID: 1401884271}
-  m_equipmentTransform: {fileID: 15481547}
-  m_equipmentHP: {fileID: 1586758294}
-  m_equipmentAttack: {fileID: 576624608}
-  m_equipmentCritical: {fileID: 783448114}
-  m_equipmentAttackSpeed: {fileID: 378720649}
-  m_equipmentAccuracy: {fileID: 638748758}
-  m_equipmentArmourBreak: {fileID: 999567234}
-  m_equipmentExtraDmgToEnemy: {fileID: 523537192}
-  m_equipmentExtraDmgToBossNamed: {fileID: 1751180743}
-  m_equipmentStamina: {fileID: 333114643}
-  m_equipmentMoveSpeed: {fileID: 1558119063}
-  m_equipmentDefense: {fileID: 1861997368}
-  m_equipmentEvade: {fileID: 1407895109}
-  m_equipmentDamageReduction: {fileID: 1751377627}
-  m_equipmentCriticalResistance: {fileID: 17626068}
-  m_equipmentShorterCooldown: {fileID: 2050734020}
-  m_haruSkillIcon:
-  - {fileID: 0}
-  - {fileID: 21300000, guid: 4188443d2d8bd9e4f919cca60812a06c, type: 3}
-  - {fileID: 21300000, guid: ac3070bdd374fce4dbce149bfa309493, type: 3}
-  - {fileID: 21300000, guid: 4b3054792bfc1c94e81e426817d64be0, type: 3}
-  m_hotkeySkillIcon:
-  - {fileID: 341904683}
-  - {fileID: 1107671268}
-  - {fileID: 628958015}
-  - {fileID: 599492695}
-  - {fileID: 278920408}
-  - {fileID: 1663116627}
-  m_hotkeySkillCooldownBack:
-  - {fileID: 1948934416}
-  - {fileID: 1826014922}
-  - {fileID: 16414391}
-  - {fileID: 2008328500}
-  - {fileID: 1324754354}
-  - {fileID: 257912311}
-  m_hotkeySkillCooldownFront:
-  - {fileID: 1829850408}
-  - {fileID: 676307698}
-  - {fileID: 1364887291}
-  - {fileID: 643999673}
-  - {fileID: 1646464391}
-  - {fileID: 592831924}
-  m_hotkeySkillCooldownCount:
-  - {fileID: 1937254324}
-  - {fileID: 760873492}
-  - {fileID: 728085604}
-  - {fileID: 492719227}
-  - {fileID: 1862836245}
-  - {fileID: 761489994}
-  m_hotkeySkillSecondCooldownCount:
-  - {fileID: 2046228933}
-  - {fileID: 225835798}
-  - {fileID: 1762602933}
-  - {fileID: 2139840277}
-  - {fileID: 655547209}
-  - {fileID: 1973342759}
-  m_hotkeySkillSecondCooldownBar:
-  - {fileID: 2059062016}
-  - {fileID: 1035155300}
-  - {fileID: 751865714}
-  - {fileID: 2023614528}
-  - {fileID: 1884906616}
-  - {fileID: 441766280}
+  m_UITargetBoss: {fileID: 2007471967}
+  m_UICharacterinfo: {fileID: 1401884275}
+  m_hotkeySkillIcon: {fileID: 367163209}
   m_skillinfo: {fileID: 1501546274}
 --- !u!1 &1726591005
 GameObject:
@@ -29022,6 +29030,7 @@ GameObject:
   - component: {fileID: 2007471964}
   - component: {fileID: 2007471966}
   - component: {fileID: 2007471965}
+  - component: {fileID: 2007471967}
   m_Layer: 5
   m_Name: TargetBoss Base
   m_TagString: Untagged
@@ -29094,6 +29103,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007471963}
   m_CullTransparentMesh: 0
+--- !u!114 &2007471967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007471963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3dbbfb4043d6a4199c59d47e4e4de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bossHpBarSprite:
+  - {fileID: 8484030793908474369, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: -7868393053494390922, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: 3912503313807001267, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: 7918502477841467764, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: 12121534870464039, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  - {fileID: -753926199851564581, guid: 58870c72d530a0f4085016e5eaa43fbf, type: 3}
+  m_bossHpBarBack: {fileID: 1559418032}
+  m_bossHpBarFront: {fileID: 1495491288}
+  m_bossHpLostBar: {fileID: 1869701443}
+  m_bossNameText: {fileID: 1831512343}
+  m_bossSuperArmor: {fileID: 530323108}
+  m_bossSuperArmorBar: {fileID: 530323110}
+  m_bossSuperArmorBreakGuard: {fileID: 1123168470}
+  m_bossSuperArmorBreakEffect: {fileID: 2079517637}
+  m_bossSuperArmorBreak: {fileID: 469560973}
 --- !u!1 &2008328500
 GameObject:
   m_ObjectHideFlags: 0

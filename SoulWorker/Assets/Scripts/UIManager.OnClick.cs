@@ -4,7 +4,7 @@ public partial class UIManager : MonoBehaviour
 {
     public void OnClickCloseCharacterinfo()
     {
-        m_characterinfo.gameObject.SetActive(false);
+        m_UICharacterinfo.gameObject.SetActive(false);
     }
 
     public void OnClickCloseSkillinfo()

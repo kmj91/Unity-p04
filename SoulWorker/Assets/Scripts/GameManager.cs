@@ -834,7 +834,7 @@ public class GameManager : MonoBehaviour
     {
         // 마우스 사용
         m_useMouse = true;
-        UIManager.Instance.Characterinfo();
+        UIManager.Instance.ToggleCharacterinfo();
     }
 
     private void KeyUp_Skillinfo()
