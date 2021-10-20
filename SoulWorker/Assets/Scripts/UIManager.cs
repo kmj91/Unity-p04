@@ -21,12 +21,8 @@ public partial class UIManager : MonoBehaviour
     [SerializeField] private UIPlayerHp m_UIPlayerHP;           // 플레이어 체력 바
     [SerializeField] private UITargetBoss m_UITargetBoss;       // 보스 체력 바
     [SerializeField] private UICharacterinfo m_UICharacterinfo; // 캐릭터 정보 창
-    [SerializeField] private UIHotkey m_hotkeySkillIcon;        // 스킬 단축키
-
-    //-------------------------------
-    // 스킬 정보 창
-    //-------------------------------
-    [SerializeField] private GameObject m_skillinfo;            // 스킬 정보 창
+    [SerializeField] private UIHotkey m_UIHotkey;               // 스킬 단축키
+    [SerializeField] private UISkill m_UISkillinfo;             // 스킬 정보 창
 
 
     //-------------------------------
@@ -99,43 +95,39 @@ public partial class UIManager : MonoBehaviour
     // 스킬 재사용 대기시간 갱신
     public void UpdateSkillCooldown(int index, float originCooldown, float cooldown)
     {
-        m_hotkeySkillIcon.UpdateSkillCooldown(index, originCooldown, cooldown);
+        m_UIHotkey.UpdateSkillCooldown(index, originCooldown, cooldown);
     }
 
     // 스킬 아이콘 위쪽 재사용 대기시간 갱신
     public void UpdateSkillSecondCooldown(int index, float originCooldown, float cooldown)
     {
-        m_hotkeySkillIcon.UpdateSkillSecondCooldown(index, originCooldown, cooldown);
+        m_UIHotkey.UpdateSkillSecondCooldown(index, originCooldown, cooldown);
     }
 
     // 스킬 슬롯 아이콘 변경
     public void ChangeSkillSlotIcon(int index, HaruSkill skill)
     {
-        m_hotkeySkillIcon.ChangeSkillSlotIcon(index, skill);
+        m_UIHotkey.ChangeSkillSlotIcon(index, skill);
     }
 
     // 스킬 재사용 대기시간 비활성화
     public void OffSkillSlotCooldown(int index)
     {
-        m_hotkeySkillIcon.OffSkillSlotCooldown(index);
+        m_UIHotkey.OffSkillSlotCooldown(index);
     }
 
     // 스킬 아이콘 위쪽 재사용 대기시간 비활성화
     public void OffSkillSlotSecondCooldown(int index)
     {
-        m_hotkeySkillIcon.OffSkillSlotSecondCooldown(index);
+        m_UIHotkey.OffSkillSlotSecondCooldown(index);
     }
 
+    //-------------------------------
     // 스킬 정보 창
-    public void Skillinfo()
+    //-------------------------------
+    // 스킬 정보 창
+    public void ToggleSkillinfo()
     {
-        if (m_skillinfo.activeSelf)
-        {
-            m_skillinfo.SetActive(false);
-        }
-        else
-        {
-            m_skillinfo.SetActive(true);
-        }
+        m_UISkillinfo.ToggleSkillinfo();
     }
 }

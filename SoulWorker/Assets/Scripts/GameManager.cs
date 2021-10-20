@@ -841,6 +841,6 @@ public class GameManager : MonoBehaviour
     {
         // 마우스 사용
         m_useMouse = true;
-        UIManager.Instance.Skillinfo();
+        UIManager.Instance.ToggleSkillinfo();
     }
 }
