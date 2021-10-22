@@ -5,6 +5,10 @@ using MyEnum;
 
 public partial class HaruInfo : PlayerInfo
 {
+    private int m_maxSkillPoint = 10;        // 최대 스킬 포인트
+    private int m_skillPoint = 10;           // 사용하고 남은 스킬 포인트
+    private int[] m_skillLevel;         // 스킬 레벨
+
     private HaruSkill[,] m_skillSlot;   // 스킬 슬롯
     private CirculartQueue<HaruSkill>[] skillSlotQueue; // 스킬 슬롯 큐
     // 1 : 스킬 종류

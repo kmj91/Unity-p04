@@ -17,4 +17,16 @@ public class UISkill : MonoBehaviour
             gameObject.SetActive(true);
         }
     }
+
+    // 스킬 포인트
+    public void SetSkillPoint(int MaxSP, int SP)
+    {
+
+    }
+
+    // 스킬 레벨
+    public void SetSkillLevel()
+    {
+
+    }
 }

@@ -88,6 +88,14 @@ public partial class HaruInfo : PlayerInfo
         // 장비창 갱신
         UIManager.Instance.SetEquipmentStat(ref currentPlayerData);
 
+        // 스킬 레벨 초기화
+        m_skillLevel = new int[(int)HaruSkill.End];
+
+        m_skillLevel[(int)HaruSkill.FirstBlade] = 1;
+        m_skillLevel[(int)HaruSkill.PierceStep] = 1;
+        m_skillLevel[(int)HaruSkill.SpinCutter] = 1;
+
+
         // 스킬 슬롯 생성
         m_skillSlot = new HaruSkill[(int)DEFAULT.SKILL_SLOT_X_SIZE, (int)DEFAULT.SKILL_SLOT_Y_SIZE];
 
