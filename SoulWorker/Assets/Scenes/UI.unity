@@ -2580,7 +2580,7 @@ GameObject:
   - component: {fileID: 188077984}
   - component: {fileID: 188077983}
   m_Layer: 5
-  m_Name: Skill Name 1-1
+  m_Name: Skill Name 1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7526,7 +7526,7 @@ GameObject:
   - component: {fileID: 586606798}
   - component: {fileID: 586606797}
   m_Layer: 5
-  m_Name: Center Level Label 1-1
+  m_Name: Center Level Label 1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8023,7 +8023,7 @@ GameObject:
   - component: {fileID: 628746450}
   - component: {fileID: 628746449}
   m_Layer: 5
-  m_Name: Center Level Text 1-1
+  m_Name: Center Level Text 1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10560,7 +10560,7 @@ GameObject:
   - component: {fileID: 764456447}
   - component: {fileID: 764456446}
   m_Layer: 5
-  m_Name: Center Skill Border 1-1
+  m_Name: Center Skill Border 1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11763,7 +11763,7 @@ GameObject:
   - component: {fileID: 836400176}
   - component: {fileID: 836400175}
   m_Layer: 5
-  m_Name: Sign Left 1-1
+  m_Name: Sign Left 1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17614,7 +17614,7 @@ GameObject:
   - component: {fileID: 1254103470}
   - component: {fileID: 1254103469}
   m_Layer: 5
-  m_Name: Center Comment Text 1-1
+  m_Name: Center Comment Text 1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20962,6 +20962,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864fc50c6fb36be4e84b9e0fb8c4d785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_skillLevel:
+  - {fileID: 710119457}
+  - {fileID: 1861115260}
+  - {fileID: 628746450}
 --- !u!1 &1501900277
 GameObject:
   m_ObjectHideFlags: 0
@@ -25164,7 +25168,7 @@ GameObject:
   - component: {fileID: 1787187708}
   - component: {fileID: 1787187707}
   m_Layer: 5
-  m_Name: Sign Right 1-1
+  m_Name: Sign Right 1-3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class UISkill : MonoBehaviour
 {
-
+    [SerializeField] private Text[] m_skillLevel;     // 스킬 레벨 텍스트
 
 
     // 스킬 정보 창
