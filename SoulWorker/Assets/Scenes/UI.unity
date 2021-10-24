@@ -16854,7 +16854,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1716731205}
+      - m_Target: {fileID: 1501546278}
         m_MethodName: OnClickCloseSkillinfo
         m_Mode: 1
         m_Arguments:
@@ -18026,7 +18026,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1716731205}
+      - m_Target: {fileID: 1401884275}
         m_MethodName: OnClickCloseCharacterinfo
         m_Mode: 1
         m_Arguments:

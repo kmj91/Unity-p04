@@ -6,6 +6,12 @@ public class UISkill : MonoBehaviour
     [SerializeField] private Text[] m_skillLevel;     // 스킬 레벨 텍스트
 
 
+    // 창 닫기
+    public void OnClickCloseSkillinfo()
+    {
+        gameObject.SetActive(false);
+    }
+
     // 스킬 정보 창
     public void ToggleSkillinfo()
     {

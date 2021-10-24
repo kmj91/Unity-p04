@@ -22,6 +22,12 @@ public class UICharacterinfo : MonoBehaviour
     [SerializeField] private Text m_equipmentShorterCooldown;       // 재사용 대기시간 감소
 
 
+    // 창 닫기
+    public void OnClickCloseCharacterinfo()
+    {
+        gameObject.SetActive(false);
+    }
+
     // GET 장비창 트랜스폼
     public Transform GetEquipmentTransform()
     {
