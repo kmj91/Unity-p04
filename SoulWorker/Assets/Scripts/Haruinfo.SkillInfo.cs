@@ -80,7 +80,7 @@ public partial class HaruInfo : PlayerInfo
     // skill : 스킬 이름
     // cnt : 스킬 타격수
     // damage : 스킬 데미지
-    public bool GetSkillDamage(HaruSkill skill, int cnt, ref float damage)
+    public bool GetSkillDamage(HaruSkillDamage skill, int cnt, ref float damage)
     {
         if (cnt < 0 && 5 <= cnt)
             return false;

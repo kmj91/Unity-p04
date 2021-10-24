@@ -100,9 +100,19 @@
         End
     }
 
+    // 하루 스킬 종류
     public enum HaruSkill
     {
+        FirstBlade,
+        PierceStep,
+        SpinCutter,
         None,
+        End
+    }
+
+    // 스킬과 일반 공격들의 데미지를 정해주기 위한 enum
+    public enum HaruSkillDamage
+    {
         FirstBlade,
         PierceStep,
         SpinCutter,

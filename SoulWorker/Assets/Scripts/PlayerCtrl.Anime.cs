@@ -664,7 +664,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.NormalAttack1, 0, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack1, 0, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -720,7 +720,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.NormalAttack2, 0, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack2, 0, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -775,7 +775,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.NormalAttack3, 1, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack3, 1, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -792,7 +792,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.NormalAttack3, 0, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack3, 0, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -847,7 +847,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Down;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.NormalAttack4, 0, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack4, 0, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -902,7 +902,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Strike;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.NormalAttack5, 0, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack5, 0, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -949,7 +949,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Strike;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.FirstBlade, 2, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 2, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -966,7 +966,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.FirstBlade, 1, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 1, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -983,7 +983,7 @@ public partial class PlayerCtrl : MonoBehaviour
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
                 float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkill.FirstBlade, 0, ref damage))
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 0, ref damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }

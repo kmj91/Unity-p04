@@ -4662,7 +4662,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_haruSkillIcon:
-  - {fileID: 0}
   - {fileID: 21300000, guid: 4188443d2d8bd9e4f919cca60812a06c, type: 3}
   - {fileID: 21300000, guid: ac3070bdd374fce4dbce149bfa309493, type: 3}
   - {fileID: 21300000, guid: 4b3054792bfc1c94e81e426817d64be0, type: 3}
@@ -12119,8 +12118,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2141023125}
   m_HandleRect: {fileID: 2141023124}
   m_Direction: 2
-  m_Value: 0.99999183
-  m_Size: 0.5422214
+  m_Value: 0.9999973
+  m_Size: 0.54222286
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -20966,6 +20965,10 @@ MonoBehaviour:
   - {fileID: 710119457}
   - {fileID: 1861115260}
   - {fileID: 628746450}
+  m_skillButtonSprite:
+  - {fileID: -7853675981570173360, guid: 53355ff036896dd419d20f9701b35a20, type: 3}
+  - {fileID: -3390317205563642682, guid: 53355ff036896dd419d20f9701b35a20, type: 3}
+  - {fileID: -713488022996263528, guid: 53355ff036896dd419d20f9701b35a20, type: 3}
   m_skillLevelUpButton:
   - {fileID: 2004250876}
   - {fileID: 1630023387}
