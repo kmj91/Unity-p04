@@ -125,6 +125,12 @@ public partial class UIManager : MonoBehaviour
     //-------------------------------
     // 스킬 정보 창
     //-------------------------------
+    // 플레이어 정보
+    public void SetPlayerInfo(HaruInfo playerinfo)
+    {
+        m_UISkillinfo.SetPlayerInfo(playerinfo);
+    }
+
     // 스킬 정보 창
     public void ToggleSkillinfo()
     {

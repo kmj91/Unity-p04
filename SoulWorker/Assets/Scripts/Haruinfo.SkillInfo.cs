@@ -26,6 +26,30 @@ public partial class HaruInfo : PlayerInfo
     }
 
 
+    // 최대 스킬 포인트 얻어오기
+    public int GetMaxSkillPoint()
+    {
+        return m_maxSkillPoint;
+    }
+
+    // 최대 스킬 포인트 값 셋
+    public void SetMaxSkillPoint(int sp)
+    {
+        m_maxSkillPoint = sp;
+    }
+
+    // 스킬 포인트 얻어오기
+    public int GetSkillPoint()
+    {
+        return m_skillPoint;
+    }
+
+    // 스킬 포인트 값 셋
+    public void SetSkillPoint(int sp)
+    {
+        m_skillPoint = sp;
+    }
+
     // 스킬 슬롯 인덱스의 스킬 상태 얻기
     public bool GetStateOfSkillSlot(int index, out HaruState m_state)
     {

@@ -87,6 +87,8 @@ public partial class HaruInfo : PlayerInfo
         CheckTextureMask();
         // 장비창 갱신
         UIManager.Instance.SetEquipmentStat(ref currentPlayerData);
+        // UI 스킬 멤버변수에 플레이어 정보
+        UIManager.Instance.SetPlayerInfo(this);
 
         // 스킬 레벨 초기화
         m_skillLevel = new int[(int)HaruSkill.End];
