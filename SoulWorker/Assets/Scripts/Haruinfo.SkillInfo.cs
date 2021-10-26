@@ -50,6 +50,18 @@ public partial class HaruInfo : PlayerInfo
         m_skillPoint = sp;
     }
 
+    // 스킬 레벨 얻어오기
+    public int GetSkillLevel(HaruSkill skill)
+    {
+        return m_skillLevel[(int)skill];
+    }
+
+    // 스킬 레벨 셋
+    public void SetSkillLevel(HaruSkill skill, int level)
+    {
+        m_skillLevel[(int)skill] = level;
+    }
+
     // 스킬 슬롯 인덱스의 스킬 상태 얻기
     public bool GetStateOfSkillSlot(int index, out HaruState m_state)
     {

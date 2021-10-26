@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+using MyEnum;
+
 public class UISkill : MonoBehaviour
 {
     private HaruInfo m_haruinfo;     // 플레이어 정보
@@ -26,7 +28,15 @@ public class UISkill : MonoBehaviour
     // 퍼스트 블레이드 스킬 레벨 업
     public void OnClickFirstBladeLavelUp()
     {
-        
+        int level = m_haruinfo.GetSkillLevel(HaruSkill.FirstBlade);
+        // 최대 레벨
+        if (level + 1 > 5)
+            return;
+
+        // 텍스트 변경
+        m_skillLevel[(int)HaruSkill.FirstBlade].text = ++level + "/5";
+        // 증가한 레벨 플레이어 정보로
+        m_haruinfo.SetSkillLevel(HaruSkill.FirstBlade, level);
     }
 
     // 스킬 정보 창
