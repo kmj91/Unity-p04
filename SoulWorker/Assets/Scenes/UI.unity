@@ -9614,7 +9614,7 @@ GameObject:
   - component: {fileID: 723691480}
   - component: {fileID: 723691479}
   m_Layer: 5
-  m_Name: Text
+  m_Name: SP Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20977,6 +20977,7 @@ MonoBehaviour:
   - {fileID: 402354953}
   - {fileID: 2083431125}
   - {fileID: 1981399107}
+  m_skillPoint: {fileID: 723691480}
 --- !u!1 &1501900277
 GameObject:
   m_ObjectHideFlags: 0
