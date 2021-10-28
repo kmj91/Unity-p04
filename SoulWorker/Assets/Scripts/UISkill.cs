@@ -26,6 +26,24 @@ public class UISkill : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    // 퍼스트 블레이드 스킬 레벨 다운
+    public void OnClickFirstBladeLavelDown()
+    {
+        int level = m_haruinfo.GetSkillLevel(HaruSkill.FirstBlade);
+        // 최소 레벨
+        if (level - 1 < 0)
+            return;
+
+        // 텍스트 변경
+        m_skillLevel[(int)HaruSkill.FirstBlade].text = --level + "/5";
+        // 감소한 레벨 플레이어 정보로
+        m_haruinfo.SetSkillLevel(HaruSkill.FirstBlade, level);
+        // sp 증가
+        int sp = m_haruinfo.GetSkillPoint();
+        m_haruinfo.SetSkillPoint(++sp);
+        m_skillPoint.text = sp + " / " + m_haruinfo.GetMaxSkillPoint();
+    }
+
     // 퍼스트 블레이드 스킬 레벨 업
     public void OnClickFirstBladeLavelUp()
     {
