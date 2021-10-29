@@ -13,6 +13,12 @@ public class UISkill : MonoBehaviour
     [SerializeField] private Image[] m_skillLevelDownButton;    // 스킬 레벨 다운 버튼 이미지
     [SerializeField] private Text m_skillPoint;                 // 스킬 포인트 텍스트
 
+    private enum SkillButtonSprite
+    {
+        Gray,
+        Yellow,
+        Blut
+    }
 
     // 플레이어 정보
     public void SetPlayerInfo(HaruInfo playerinfo)
@@ -64,13 +70,21 @@ public class UISkill : MonoBehaviour
     }
 
 
-    // 스킬 레벨 업
+    // 스킬 레벨 다운
     private void SkillLevelDown(HaruSkill skill)
     {
         int level = m_haruinfo.GetSkillLevel(skill);
-        // 최소 레벨
+        // 0 보다 작음
         if (level - 1 < 0)
             return;
+
+        // 0 레벨
+        if (level - 1 == 0)
+            m_skillLevelDownButton[(int)skill].sprite = m_skillButtonSprite[(int)SkillButtonSprite.Gray];
+
+        // 5레벨
+        if (level == 5)
+            m_skillLevelUpButton[(int)skill].sprite = m_skillButtonSprite[(int)SkillButtonSprite.Yellow];
 
         // 텍스트 변경
         m_skillLevel[(int)skill].text = --level + "/5";
@@ -82,7 +96,7 @@ public class UISkill : MonoBehaviour
         m_skillPoint.text = sp + " / " + m_haruinfo.GetMaxSkillPoint();
     }
 
-    // 스킬 레벨 다운
+    // 스킬 레벨 업
     private void SkillLevelUp(HaruSkill skill)
     {
         int sp = m_haruinfo.GetSkillPoint();
@@ -91,9 +105,17 @@ public class UISkill : MonoBehaviour
             return;
 
         int level = m_haruinfo.GetSkillLevel(skill);
-        // 최대 레벨
+        // 5 레벨 보다 큼
         if (level + 1 > 5)
             return;
+
+        // 5 레벨
+        if (level + 1 == 5)
+            m_skillLevelUpButton[(int)skill].sprite = m_skillButtonSprite[(int)SkillButtonSprite.Gray];
+
+        // 0레벨
+        if(level == 0)
+            m_skillLevelDownButton[(int)skill].sprite = m_skillButtonSprite[(int)SkillButtonSprite.Yellow];
 
         // 텍스트 변경
         m_skillLevel[(int)skill].text = ++level + "/5";
