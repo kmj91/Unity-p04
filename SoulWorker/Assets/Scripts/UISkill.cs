@@ -80,11 +80,20 @@ public class UISkill : MonoBehaviour
 
         // 0 레벨
         if (level - 1 == 0)
+        {
+            // 기본 스킬 예외 
+            if (HaruSkill.FirstBlade == skill || HaruSkill.PierceStep == skill || HaruSkill.SpinCutter == skill)
+                return;
             m_skillLevelDownButton[(int)skill].sprite = m_skillButtonSprite[(int)SkillButtonSprite.Gray];
+        }
 
         // 5레벨
         if (level == 5)
             m_skillLevelUpButton[(int)skill].sprite = m_skillButtonSprite[(int)SkillButtonSprite.Yellow];
+
+        // 1레벨 기본 스킬 예외 
+        if (level - 1 == 1 && (HaruSkill.FirstBlade == skill || HaruSkill.PierceStep == skill || HaruSkill.SpinCutter == skill))
+            m_skillLevelDownButton[(int)skill].sprite = m_skillButtonSprite[(int)SkillButtonSprite.Gray];
 
         // 텍스트 변경
         m_skillLevel[(int)skill].text = --level + "/5";
