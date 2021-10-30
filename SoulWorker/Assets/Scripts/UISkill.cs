@@ -32,16 +32,16 @@ public class UISkill : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // 퍼스트 블레이드 스킬 레벨 다운
-    public void OnClickFirstBladeLavelDown()
+    // 스킬 레벨 다운 버튼
+    public void OnClickSkillLavelDown(int skill)
     {
-        SkillLevelDown(HaruSkill.FirstBlade);
+        SkillLevelDown((HaruSkill)skill);
     }
 
-    // 퍼스트 블레이드 스킬 레벨 업
-    public void OnClickFirstBladeLavelUp()
+    // 스킬 레벨 업 버튼
+    public void OnClickSkillLavelUp(int skill)
     {
-        SkillLevelUp(HaruSkill.FirstBlade);
+        SkillLevelUp((HaruSkill)skill);
     }
 
     // 스킬 정보 창
