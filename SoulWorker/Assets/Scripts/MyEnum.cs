@@ -106,6 +106,7 @@
         FirstBlade,
         PierceStep,
         SpinCutter,
+        NormalAttack,
         None,
         End
     }

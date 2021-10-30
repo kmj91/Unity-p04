@@ -121,7 +121,39 @@ public partial class HaruInfo : PlayerInfo
         if (cnt < 0 && 5 <= cnt)
             return false;
 
-        damage = m_skillDamage[(int)skill, 0, cnt];
+        HaruSkill skillLevel;
+        switch (skill)
+        {
+            case HaruSkillDamage.FirstBlade:
+                skillLevel = HaruSkill.FirstBlade;
+                break;
+            case HaruSkillDamage.PierceStep:
+                skillLevel = HaruSkill.PierceStep;
+                break;
+            case HaruSkillDamage.SpinCutter:
+                skillLevel = HaruSkill.SpinCutter;
+                break;
+            case HaruSkillDamage.NormalAttack1:
+                skillLevel = HaruSkill.NormalAttack;
+                break;
+            case HaruSkillDamage.NormalAttack2:
+                skillLevel = HaruSkill.NormalAttack;
+                break;
+            case HaruSkillDamage.NormalAttack3:
+                skillLevel = HaruSkill.NormalAttack;
+                break;
+            case HaruSkillDamage.NormalAttack4:
+                skillLevel = HaruSkill.NormalAttack;
+                break;
+            case HaruSkillDamage.NormalAttack5:
+                skillLevel = HaruSkill.NormalAttack;
+                break;
+            default:
+                skillLevel = HaruSkill.None;
+                break;
+        }
+
+        damage = m_skillDamage[(int)skill, m_skillLevel[(int)skillLevel] - 1, cnt];
 
         return true;
     }
