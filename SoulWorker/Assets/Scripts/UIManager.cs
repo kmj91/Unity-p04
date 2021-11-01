@@ -18,6 +18,8 @@ public partial class UIManager : MonoBehaviour
         }
     }
 
+    public Sprite[] m_haruSkillIcon;          // 하루 스킬 아이콘 스프라이트
+
     [SerializeField] private UIPlayerHp m_UIPlayerHP;           // 플레이어 체력 바
     [SerializeField] private UITargetBoss m_UITargetBoss;       // 보스 체력 바
     [SerializeField] private UICharacterinfo m_UICharacterinfo; // 캐릭터 정보 창
@@ -125,10 +127,10 @@ public partial class UIManager : MonoBehaviour
     //-------------------------------
     // 스킬 정보 창
     //-------------------------------
-    // 플레이어 정보
-    public void SetPlayerInfo(HaruInfo playerinfo)
+    // 스킬 정보 창 초기화
+    public void InitSkillInfo(HaruInfo playerinfo)
     {
-        m_UISkillinfo.SetPlayerInfo(playerinfo);
+        m_UISkillinfo.InitSkillInfo(playerinfo);
     }
 
     // 스킬 정보 창

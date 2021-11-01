@@ -106,8 +106,8 @@
         FirstBlade,
         PierceStep,
         SpinCutter,
-        NormalAttack,
         None,
+        NormalAttack,
         End
     }
 
@@ -123,6 +123,12 @@
         NormalAttack4,
         NormalAttack5,
         End
+    }
+
+    public enum SkillSlotSize
+    {
+        y = 3,
+        x = 6
     }
 
     public enum AsphaltGolemState

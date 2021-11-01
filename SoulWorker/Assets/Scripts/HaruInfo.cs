@@ -96,11 +96,11 @@ public partial class HaruInfo : PlayerInfo
 
 
         // 스킬 슬롯 생성
-        m_skillSlot = new HaruSkill[(int)DEFAULT.SKILL_SLOT_X_SIZE, (int)DEFAULT.SKILL_SLOT_Y_SIZE];
+        m_skillSlot = new HaruSkill[(int)SkillSlotSize.x, (int)SkillSlotSize.y];
 
-        for (int x = 0; x < (int)DEFAULT.SKILL_SLOT_X_SIZE; ++x)
+        for (int x = 0; x < (int)SkillSlotSize.x; ++x)
         {
-            for (int y = 0; y < (int)DEFAULT.SKILL_SLOT_Y_SIZE; ++y)
+            for (int y = 0; y < (int)SkillSlotSize.y; ++y)
             {
                 m_skillSlot[x, y] = HaruSkill.None;
             }
@@ -117,9 +117,9 @@ public partial class HaruInfo : PlayerInfo
 
 
         // 스킬 슬롯 큐 초기화
-        skillSlotQueue = new CirculartQueue<HaruSkill>[(int)DEFAULT.SKILL_SLOT_X_SIZE];
+        skillSlotQueue = new CirculartQueue<HaruSkill>[(int)SkillSlotSize.x];
 
-        for (int iCnt = 0; iCnt < (int)DEFAULT.SKILL_SLOT_X_SIZE; ++iCnt)
+        for (int iCnt = 0; iCnt < (int)SkillSlotSize.x; ++iCnt)
         {
             skillSlotQueue[iCnt] = new CirculartQueue<HaruSkill>(4);
         }

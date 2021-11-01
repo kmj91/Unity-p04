@@ -13,6 +13,14 @@ public class UISkill : MonoBehaviour
     [SerializeField] private Image[] m_skillLevelDownButton;    // 스킬 레벨 다운 버튼 이미지
     [SerializeField] private Text m_skillPoint;                 // 스킬 포인트 텍스트
 
+    [System.Serializable]
+    public class SkillPresetElement
+    {
+        public Image[] data;
+        public Image this[int index] { get { return data[index]; } }
+    }
+    [SerializeField] private SkillPresetElement[] m_skillPreset;    // 스킬 프리셋 이미지
+
     private enum SkillButtonSprite
     {
         Gray,
@@ -20,11 +28,6 @@ public class UISkill : MonoBehaviour
         Blut
     }
 
-    // 플레이어 정보
-    public void SetPlayerInfo(HaruInfo playerinfo)
-    {
-        m_haruinfo = playerinfo;
-    }
 
     // 창 닫기
     public void OnClickCloseSkillinfo()
@@ -44,6 +47,29 @@ public class UISkill : MonoBehaviour
         SkillLevelUp((HaruSkill)skill);
     }
 
+
+
+    // 스킬 정보 창 초기화
+    public void InitSkillInfo(HaruInfo playerinfo)
+    {
+        m_haruinfo = playerinfo;
+
+        // sp 정보
+        m_skillPoint.text = m_haruinfo.GetSkillPoint() + " / " + m_haruinfo.GetMaxSkillPoint();
+
+        // 프리셋 정보
+        HaruSkill[,] skillSlot = m_haruinfo.GetSkillSlot();
+        // 스킬 슬롯 전체 순회
+        for (int x = 0; x < (int)SkillSlotSize.x; ++x)
+        {
+            for (int y = 0; y < (int)SkillSlotSize.y; ++y)
+            {
+                // 스킬 프리셋 이미지 초기화
+                m_skillPreset[x][y].sprite = UIManager.Instance.m_haruSkillIcon[(int)skillSlot[x, y]];
+            }
+        }
+    }
+
     // 스킬 정보 창
     public void ToggleSkillinfo()
     {
@@ -57,17 +83,6 @@ public class UISkill : MonoBehaviour
         }
     }
 
-    // 스킬 포인트
-    public void SetSkillPoint(int MaxSP, int SP)
-    {
-
-    }
-
-    // 스킬 레벨
-    public void SetSkillLevel()
-    {
-
-    }
 
 
     // 스킬 레벨 다운

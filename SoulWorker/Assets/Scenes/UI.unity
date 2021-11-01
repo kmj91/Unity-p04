@@ -4661,10 +4661,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d5297458c6bff4583a3b354e1d0c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_haruSkillIcon:
-  - {fileID: 21300000, guid: 4188443d2d8bd9e4f919cca60812a06c, type: 3}
-  - {fileID: 21300000, guid: ac3070bdd374fce4dbce149bfa309493, type: 3}
-  - {fileID: 21300000, guid: 4b3054792bfc1c94e81e426817d64be0, type: 3}
   m_hotkeySkillIcon:
   - {fileID: 341904683}
   - {fileID: 1107671268}
@@ -9741,7 +9737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10 / 10
+  m_Text: 0 / 0
 --- !u!222 &723691481
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21088,6 +21084,31 @@ MonoBehaviour:
   - {fileID: 2083431125}
   - {fileID: 1981399107}
   m_skillPoint: {fileID: 723691480}
+  m_skillPreset:
+  - data:
+    - {fileID: 1893365066}
+    - {fileID: 64031110}
+    - {fileID: 1311467121}
+  - data:
+    - {fileID: 968709424}
+    - {fileID: 1826611779}
+    - {fileID: 1447237673}
+  - data:
+    - {fileID: 1673720206}
+    - {fileID: 10319722}
+    - {fileID: 1136919115}
+  - data:
+    - {fileID: 995533794}
+    - {fileID: 660119913}
+    - {fileID: 247193}
+  - data:
+    - {fileID: 1562414406}
+    - {fileID: 35372998}
+    - {fileID: 462076291}
+  - data:
+    - {fileID: 228184171}
+    - {fileID: 883067665}
+    - {fileID: 653026934}
 --- !u!1 &1501900277
 GameObject:
   m_ObjectHideFlags: 0
@@ -24294,6 +24315,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42d684819e1e284eb13e60ce699f4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_haruSkillIcon:
+  - {fileID: 21300000, guid: 4188443d2d8bd9e4f919cca60812a06c, type: 3}
+  - {fileID: 21300000, guid: ac3070bdd374fce4dbce149bfa309493, type: 3}
+  - {fileID: 21300000, guid: 4b3054792bfc1c94e81e426817d64be0, type: 3}
+  - {fileID: 21300000, guid: cf5aa9a2566fca141ade910d0560ecc2, type: 3}
   m_UIPlayerHP: {fileID: 671299600}
   m_UITargetBoss: {fileID: 2007471967}
   m_UICharacterinfo: {fileID: 1401884275}

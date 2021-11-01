@@ -4,7 +4,6 @@ using MyEnum;
 
 public class UIHotkey : MonoBehaviour
 {
-    [SerializeField] private Sprite[] m_haruSkillIcon;              // 하루 스킬 아이콘 스프라이트
     [SerializeField] private Image[] m_hotkeySkillIcon;             // 스킬 아이콘
     [SerializeField] private GameObject[] m_hotkeySkillCooldownBack;// 재사용 대기시간 뒤쪽 이미지
     [SerializeField] private Image[] m_hotkeySkillCooldownFront;    // 재사용 대기시간 앞쪽 이미지, 재사용 시간 경과에 따라 fillAmount 값 조정
@@ -33,7 +32,7 @@ public class UIHotkey : MonoBehaviour
     // 스킬 슬롯 아이콘 변경
     public void ChangeSkillSlotIcon(int index, HaruSkill skill)
     {
-        m_hotkeySkillIcon[index].sprite = m_haruSkillIcon[(int)skill];
+        m_hotkeySkillIcon[index].sprite = UIManager.Instance.m_haruSkillIcon[(int)skill];
     }
 
     // 스킬 재사용 대기시간 비활성화
