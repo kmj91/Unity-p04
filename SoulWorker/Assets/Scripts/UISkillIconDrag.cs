@@ -21,10 +21,15 @@ public class UISkillIconDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         m_DraggingIcon = new GameObject("icon");
 
         m_DraggingIcon.transform.SetParent(canvas.transform, false);
+        // 하이어라키에서 마지막 순서로
         m_DraggingIcon.transform.SetAsLastSibling();
 
         var image = m_DraggingIcon.AddComponent<Image>();
 
+        // 레이캐스트 끔
+        image.raycastTarget = false;
+
+        // 생성한 이미지 스프라이트
         image.sprite = GetComponent<Image>().sprite;
         image.SetNativeSize();
 
