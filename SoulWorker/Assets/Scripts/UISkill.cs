@@ -5,7 +5,7 @@ using MyEnum;
 
 public class UISkill : MonoBehaviour
 {
-    private HaruInfo m_haruinfo;     // 플레이어 정보
+    public HaruInfo m_haruInfo;     // 플레이어 정보
 
     [SerializeField] private Text[] m_skillLevel;               // 스킬 레벨 텍스트
     [SerializeField] private Sprite[] m_skillButtonSprite;      // 스킬 버튼 스프라이트
@@ -50,27 +50,26 @@ public class UISkill : MonoBehaviour
 
 
     // 스킬 정보 창 초기화
-    public void InitSkillInfo(HaruInfo playerinfo)
+    public void InitSkillInfo()
     {
-        m_haruinfo = playerinfo;
-
         // sp 정보
-        m_skillPoint.text = m_haruinfo.GetSkillPoint() + " / " + m_haruinfo.GetMaxSkillPoint();
+        m_skillPoint.text = m_haruInfo.GetSkillPoint() + " / " + m_haruInfo.GetMaxSkillPoint();
 
         // 프리셋 정보
-        HaruSkill[,] skillSlot = m_haruinfo.GetSkillSlot();
+        HaruSkill[,] skillSlot = m_haruInfo.GetSkillSlot();
         // 스킬 슬롯 전체 순회
-        for (int x = 0; x < (int)SkillSlotSize.x; ++x)
+        for (int x = 0; x < (int)SkillSlotSize.Column; ++x)
         {
-            for (int y = 0; y < (int)SkillSlotSize.y; ++y)
+            for (int y = 0; y < (int)SkillSlotSize.Row; ++y)
             {
                 // 스킬 프리셋 이미지 초기화
                 m_skillPreset[x][y].sprite = UIManager.Instance.m_haruSkillIcon[(int)skillSlot[x, y]];
+                m_skillPreset[x][y].enabled = true;
             }
         }
     }
 
-    // 스킬 정보 창
+    // 스킬 정보 창 토글
     public void ToggleSkillinfo()
     {
         if (gameObject.activeSelf)
@@ -84,11 +83,10 @@ public class UISkill : MonoBehaviour
     }
 
 
-
     // 스킬 레벨 다운
     private void SkillLevelDown(HaruSkill skill)
     {
-        int level = m_haruinfo.GetSkillLevel(skill);
+        int level = m_haruInfo.GetSkillLevel(skill);
         // 0 보다 작음
         if (level - 1 < 0)
             return;
@@ -113,22 +111,22 @@ public class UISkill : MonoBehaviour
         // 텍스트 변경
         m_skillLevel[(int)skill].text = --level + "/5";
         // 감소한 레벨 플레이어 정보로
-        m_haruinfo.SetSkillLevel(skill, level);
+        m_haruInfo.SetSkillLevel(skill, level);
         // sp 증가
-        int sp = m_haruinfo.GetSkillPoint();
-        m_haruinfo.SetSkillPoint(++sp);
-        m_skillPoint.text = sp + " / " + m_haruinfo.GetMaxSkillPoint();
+        int sp = m_haruInfo.GetSkillPoint();
+        m_haruInfo.SetSkillPoint(++sp);
+        m_skillPoint.text = sp + " / " + m_haruInfo.GetMaxSkillPoint();
     }
 
     // 스킬 레벨 업
     private void SkillLevelUp(HaruSkill skill)
     {
-        int sp = m_haruinfo.GetSkillPoint();
+        int sp = m_haruInfo.GetSkillPoint();
         // sp가 충분한지 검사
         if (sp < 1)
             return;
 
-        int level = m_haruinfo.GetSkillLevel(skill);
+        int level = m_haruInfo.GetSkillLevel(skill);
         // 5 레벨 보다 큼
         if (level + 1 > 5)
             return;
@@ -144,9 +142,9 @@ public class UISkill : MonoBehaviour
         // 텍스트 변경
         m_skillLevel[(int)skill].text = ++level + "/5";
         // 증가한 레벨 플레이어 정보로
-        m_haruinfo.SetSkillLevel(skill, level);
+        m_haruInfo.SetSkillLevel(skill, level);
         // sp 감소
-        m_haruinfo.SetSkillPoint(--sp);
-        m_skillPoint.text = sp + " / " + m_haruinfo.GetMaxSkillPoint();
+        m_haruInfo.SetSkillPoint(--sp);
+        m_skillPoint.text = sp + " / " + m_haruInfo.GetMaxSkillPoint();
     }
 }

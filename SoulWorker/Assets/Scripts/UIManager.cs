@@ -18,7 +18,8 @@ public partial class UIManager : MonoBehaviour
         }
     }
 
-    public Sprite[] m_haruSkillIcon;          // 하루 스킬 아이콘 스프라이트
+    public Sprite[] m_haruSkillIcon;    // 하루 스킬 아이콘 스프라이트
+    public HaruInfo m_haruInfo;         // 플레이어 정보
 
     [SerializeField] private UIPlayerHp m_UIPlayerHP;           // 플레이어 체력 바
     [SerializeField] private UITargetBoss m_UITargetBoss;       // 보스 체력 바
@@ -26,6 +27,14 @@ public partial class UIManager : MonoBehaviour
     [SerializeField] private UIHotkey m_UIHotkey;               // 스킬 단축키
     [SerializeField] private UISkill m_UISkillinfo;             // 스킬 정보 창
 
+
+    // 플레이어 정보 초기화
+    public void InitPlayerInfo(HaruInfo playerInfo)
+    {
+        m_haruInfo = playerInfo;
+        m_UICharacterinfo.m_haruInfo = playerInfo;
+        m_UISkillinfo.m_haruInfo = playerInfo;
+    }
 
     //-------------------------------
     // 보스 체력 바
@@ -73,23 +82,24 @@ public partial class UIManager : MonoBehaviour
     //-------------------------------
     // 캐릭터 정보 창
     //-------------------------------
-    // GET 장비창 트랜스폼
+    // 캐릭터 스텟 정보 초기화
+    public void InitEquipmentStat()
+    {
+        m_UICharacterinfo.InitEquipmentStat();
+    }
+
+    // 장비창 트랜스폼 정보 얻어오기
     public Transform GetEquipmentTransform()
     {
         return m_UICharacterinfo.GetEquipmentTransform();
     }
 
-    // 캐릭터 정보 창
+    // 캐릭터 정보 창 토글
     public void ToggleCharacterinfo()
     {
         m_UICharacterinfo.ToggleCharacterinfo();
     }
-
-    // 캐릭터 스텟 셋
-    public void SetEquipmentStat(ref PlayerData data)
-    {
-        m_UICharacterinfo.SetEquipmentStat(ref data);
-    }
+    
 
     //-------------------------------
     // 스킬 단축키
@@ -124,16 +134,17 @@ public partial class UIManager : MonoBehaviour
         m_UIHotkey.OffSkillSlotSecondCooldown(index);
     }
 
+
     //-------------------------------
     // 스킬 정보 창
     //-------------------------------
     // 스킬 정보 창 초기화
-    public void InitSkillInfo(HaruInfo playerinfo)
+    public void InitSkillInfo()
     {
-        m_UISkillinfo.InitSkillInfo(playerinfo);
+        m_UISkillinfo.InitSkillInfo();
     }
 
-    // 스킬 정보 창
+    // 스킬 정보 창 토글
     public void ToggleSkillinfo()
     {
         m_UISkillinfo.ToggleSkillinfo();

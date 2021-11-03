@@ -127,8 +127,8 @@
 
     public enum SkillSlotSize
     {
-        y = 3,
-        x = 6
+        Row = 3,        // 행
+        Column = 6      // 열
     }
 
     public enum AsphaltGolemState

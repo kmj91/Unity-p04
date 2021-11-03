@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UISkillIconDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public bool dragOnSurfaces = true;
+    public int m_skillNum;
 
     private GameObject m_DraggingIcon;
     private RectTransform m_DraggingPlane;

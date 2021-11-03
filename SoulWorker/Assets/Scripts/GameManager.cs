@@ -28,10 +28,11 @@ public class GameManager : MonoBehaviour
     {
         UIManager uiMgr = UIManager.Instance;
         HaruInfo haruinfo = m_playerCtrl.gameObject.GetComponent<HaruInfo>();
-        // 장비창 갱신
-        uiMgr.SetEquipmentStat(ref haruinfo.currentPlayerData);
+        uiMgr.InitPlayerInfo(haruinfo);
+        // 장비창 스텟 정보 초기화
+        uiMgr.InitEquipmentStat();
         // UI 스킬 창 초기화
-        uiMgr.InitSkillInfo(haruinfo);
+        uiMgr.InitSkillInfo();
 
         // UI 캐릭터 모습
         var uiPlayer = Instantiate(m_playerCtrl.gameObject);

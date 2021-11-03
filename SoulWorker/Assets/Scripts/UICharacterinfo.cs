@@ -4,6 +4,8 @@ using MyStruct;
 
 public class UICharacterinfo : MonoBehaviour
 {
+    public HaruInfo m_haruInfo;
+
     [SerializeField] private RectTransform m_equipmentTransform;    // 장비 창 위치
     [SerializeField] private Text m_equipmentHP;                    // 캐릭터 정보 HP
     [SerializeField] private Text m_equipmentAttack;                // 캐릭터 정보 공격력
@@ -28,28 +30,12 @@ public class UICharacterinfo : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // GET 장비창 트랜스폼
-    public Transform GetEquipmentTransform()
-    {
-        return m_equipmentTransform;
-    }
 
-    // 캐릭터 정보 창
-    public void ToggleCharacterinfo()
+    // 캐릭터 스텟 정보 초기화
+    public void InitEquipmentStat()
     {
-        if (gameObject.activeSelf)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
-        }
-    }
+        PlayerData data = m_haruInfo.currentPlayerData;
 
-    // 캐릭터 장비창 스텟
-    public void SetEquipmentStat(ref PlayerData data)
-    {
         m_equipmentHP.text = data.hp.ToString();
         m_equipmentAttack.text = data.minAtk + " - " + data.maxAtk;
         m_equipmentCritical.text = data.criticalRate.ToString("F1") + "% (+" + data.criticalDamage + ")";
@@ -65,5 +51,24 @@ public class UICharacterinfo : MonoBehaviour
         m_equipmentDamageReduction.text = data.damageReduction.ToString("F1") + "%";
         m_equipmentCriticalResistance.text = data.criticalResistance.ToString("F1") + "%";
         m_equipmentShorterCooldown.text = data.shorterCooldown.ToString("F1") + "%";
+    }
+
+    // 장비창 트랜스폼 정보 얻어오기
+    public Transform GetEquipmentTransform()
+    {
+        return m_equipmentTransform;
+    }
+
+    // 캐릭터 정보 창 토글
+    public void ToggleCharacterinfo()
+    {
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

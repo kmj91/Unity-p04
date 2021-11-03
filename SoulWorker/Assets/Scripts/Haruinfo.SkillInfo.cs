@@ -61,10 +61,16 @@ public partial class HaruInfo : PlayerInfo
         return m_skillSlot;
     }
 
+    // 스킬 프리셋에 스킬 등록
+    public void SetSkillPreset(HaruSkill skill, int column, int row)
+    {
+        m_skillSlot[column, row] = skill;
+    }
+
     // 스킬 슬롯 인덱스의 스킬 상태 얻기
     public bool GetStateOfSkillSlot(int index, out HaruState m_state)
     {
-        for (int iCnt = 0; iCnt < (int)SkillSlotSize.y; ++iCnt)
+        for (int iCnt = 0; iCnt < (int)SkillSlotSize.Row; ++iCnt)
         {
             // 스킬 사용 가능
             if (m_readySkill[(int)m_skillSlot[index, iCnt]])
@@ -93,7 +99,7 @@ public partial class HaruInfo : PlayerInfo
     // 스킬 사용
     public bool InputSkillSlot(int index)
     {
-        for (int iCnt = 0; iCnt < (int)SkillSlotSize.y; ++iCnt)
+        for (int iCnt = 0; iCnt < (int)SkillSlotSize.Row; ++iCnt)
         {
             HaruSkill skill = m_skillSlot[index, iCnt];
             // 스킬 사용 가능한지 확인
@@ -193,9 +199,9 @@ public partial class HaruInfo : PlayerInfo
     private void EnqueueUseSkill(HaruSkill skill)
     {
         // 스킬 슬롯 전체 순회
-        for (int x = 0; x < (int)SkillSlotSize.x; ++x)
+        for (int x = 0; x < (int)SkillSlotSize.Column; ++x)
         {
-            for (int y = 0; y < (int)SkillSlotSize.y; ++y)
+            for (int y = 0; y < (int)SkillSlotSize.Row; ++y)
             {
                 // 사용하려는 스킬과 같음
                 if (m_skillSlot[x, y] == skill)
@@ -210,7 +216,7 @@ public partial class HaruInfo : PlayerInfo
     // 스킬 삭제 큐에서 삭제
     private void EraseSkill(HaruSkill skill, int index)
     {
-        for (int y = 0; y < (int)SkillSlotSize.y; ++y)
+        for (int y = 0; y < (int)SkillSlotSize.Row; ++y)
         {
             // 사용하려는 스킬과 같음
             if (m_skillSlot[index, y] == skill)
@@ -226,9 +232,9 @@ public partial class HaruInfo : PlayerInfo
     private void AllSkillSlotCheckCooldown(HaruSkill skill, float originCooldown, float cooldown)
     {
         // 스킬 슬롯 전체 순회
-        for (int x = 0; x < (int)SkillSlotSize.x; ++x)
+        for (int x = 0; x < (int)SkillSlotSize.Column; ++x)
         {
-            for (int y = 0; y < (int)SkillSlotSize.y; ++y)
+            for (int y = 0; y < (int)SkillSlotSize.Row; ++y)
             {
                 // 사용하려는 스킬과 같음
                 if (m_skillSlot[x, y] == skill)
@@ -356,9 +362,9 @@ public partial class HaruInfo : PlayerInfo
     private void AllSkillSlotCheckReady(HaruSkill skill)
     {
         // 스킬 슬롯 전체 순회
-        for (int x = 0; x < (int)SkillSlotSize.x; ++x)
+        for (int x = 0; x < (int)SkillSlotSize.Column; ++x)
         {
-            for (int y = 0; y < (int)SkillSlotSize.y; ++y)
+            for (int y = 0; y < (int)SkillSlotSize.Row; ++y)
             {
                 // 사용하려는 스킬이 아니면
                 if (m_skillSlot[x, y] != skill)
