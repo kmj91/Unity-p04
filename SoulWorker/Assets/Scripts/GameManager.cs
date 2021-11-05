@@ -187,32 +187,32 @@ public class GameManager : MonoBehaviour
             // 스킬 슬롯 1
             if (queue[iRear].key == KeyCode.Alpha1)
             {
-                m_playerCtrl.SkillSlot1();
+                m_playerCtrl.SkillHotkey(0);
             }
             // 스킬 슬롯 2
             else if (queue[iRear].key == KeyCode.Alpha2)
             {
-                m_playerCtrl.SkillSlot2();
+                m_playerCtrl.SkillHotkey(1);
             }
             // 스킬 슬롯 3
             else if (queue[iRear].key == KeyCode.Alpha3)
             {
-                m_playerCtrl.SkillSlot3();
+                m_playerCtrl.SkillHotkey(2);
             }
             // 스킬 슬롯 4
             else if (queue[iRear].key == KeyCode.Alpha4)
             {
-                m_playerCtrl.SkillSlot4();
+                m_playerCtrl.SkillHotkey(3);
             }
             // 스킬 슬롯 5
             else if (queue[iRear].key == KeyCode.Alpha5)
             {
-                m_playerCtrl.SkillSlot5();
+                m_playerCtrl.SkillHotkey(4);
             }
             // 스킬 슬롯 6
             else if (queue[iRear].key == KeyCode.Alpha6)
             {
-                m_playerCtrl.SkillSlot6();
+                m_playerCtrl.SkillHotkey(5);
             }
         }
     }

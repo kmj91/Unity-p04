@@ -64,6 +64,12 @@ public partial class HaruInfo : PlayerInfo
     // 스킬 프리셋에 스킬 등록
     public void SetSkillPreset(HaruSkill skill, int column, int row)
     {
+        // 스킬이 재사용 대기시간 중임
+        if (!m_readySkill[(int)m_skillSlot[column, row]])
+        {
+            // 기존 스킬 UI 재사용 대기시간 처리
+        }
+
         m_skillSlot[column, row] = skill;
     }
 
@@ -96,8 +102,8 @@ public partial class HaruInfo : PlayerInfo
         return false;
     }
 
-    // 스킬 사용
-    public bool InputSkillSlot(int index)
+    // 스킬 단축키 입력
+    public bool PressSkillHotkey(int index)
     {
         for (int iCnt = 0; iCnt < (int)SkillSlotSize.Row; ++iCnt)
         {

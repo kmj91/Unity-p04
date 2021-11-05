@@ -121,12 +121,13 @@ public partial class PlayerCtrl: MonoBehaviour
         }
     }
 
-    public void SkillSlot1()
+    // 스킬 단축키
+    public void SkillHotkey(int index)
     {
         HaruState retState;
 
         // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!m_playerInfo.GetStateOfSkillSlot(0, out retState))
+        if (!m_playerInfo.GetStateOfSkillSlot(index, out retState))
             return;
 
         if (CheckState(m_state, retState))
@@ -134,57 +135,8 @@ public partial class PlayerCtrl: MonoBehaviour
             ChangeFlagFalse();
             m_state = retState;
             ChangeFlagTrue();
-            m_playerInfo.InputSkillSlot(0);
+            m_playerInfo.PressSkillHotkey(index);
         }
-    }
-
-    public void SkillSlot2()
-    {
-        HaruState retState;
-
-        // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!m_playerInfo.GetStateOfSkillSlot(1, out retState))
-            return;
-
-        if (CheckState(m_state, retState))
-        {
-            ChangeFlagFalse();
-            m_state = retState;
-            ChangeFlagTrue();
-            m_playerInfo.InputSkillSlot(1);
-        }
-    }
-
-    public void SkillSlot3()
-    {
-        HaruState retState;
-
-        // 해당 스킬슬롯의 스킬 상태 얻어오기
-        if (!m_playerInfo.GetStateOfSkillSlot(2, out retState))
-            return;
-
-        if (CheckState(m_state, retState))
-        {
-            ChangeFlagFalse();
-            m_state = retState;
-            ChangeFlagTrue();
-            m_playerInfo.InputSkillSlot(2);
-        }
-    }
-
-    public void SkillSlot4()
-    {
-
-    }
-
-    public void SkillSlot5()
-    {
-
-    }
-
-    public void SkillSlot6()
-    {
-
     }
 
 
