@@ -64,13 +64,139 @@ public partial class HaruInfo : PlayerInfo
     // 스킬 프리셋에 스킬 등록
     public void SetSkillPreset(HaruSkill skill, int column, int row)
     {
+        //-----------------------------------------------
+        // 교체전 스킬이 재사용 대기시간이 돌고 있으면 UI 끔
+        //-----------------------------------------------
+        // 교체전 스킬
+        HaruSkill oldSkill = m_skillSlot[column, row];
+
         // 스킬이 재사용 대기시간 중임
-        if (!m_readySkill[(int)m_skillSlot[column, row]])
+        if (!m_readySkill[(int)oldSkill])
         {
             // 기존 스킬 UI 재사용 대기시간 처리
+
+            // 큐 인덱스 뒤에서 두번째
+            int second = skillSlotQueue[column].GetEndIndex();
+            if (second - 1 < 0)
+            {
+                second = skillSlotQueue[column].GetQueueSize() - 1;
+            }
+            else
+            {
+                --second;
+            }
+
+            // 첫번째 스킬
+            if (row == 0)
+            {
+                // row 스킬들이 하나라도 준비됨
+                if (m_readySkill[(int)m_skillSlot[column, 1]] || m_readySkill[(int)m_skillSlot[column, 2]])
+                {
+                    // 마지막으로 사용한 스킬과 같음
+                    if (GetLastSkill(column) == oldSkill)
+                    {
+                        // 스킬 슬롯 위쪽에 재사용 대기시간 끔
+                        UIManager.Instance.OffSkillSlotSecondCooldown(column);
+                    }
+                }
+                // 모든 row 스킬이 준비 안됨
+                else
+                {
+                    // 스킬 슬롯 위쪽에 재사용 대기시간 끔
+                    UIManager.Instance.OffSkillSlotSecondCooldown(column);
+                    // 스킬 재사용 대기시간 비활성화
+                    UIManager.Instance.OffSkillSlotCooldown(column);
+
+                    // 교체될 스킬이 준비됨
+                    if (m_readySkill[(int)skill])
+                    {
+                        UIManager.Instance.ChangeSkillSlotIcon(column, skill);
+                    }
+                }
+                
+            }
+            // 두번째 스킬
+            else if (row == 1)
+            {
+                // row 스킬들이 하나라도 준비됨
+                if (m_readySkill[(int)m_skillSlot[column, 0]] || m_readySkill[(int)m_skillSlot[column, 2]])
+                {
+                    // 마지막으로 사용한 스킬과 같음
+                    if (GetLastSkill(column) == oldSkill)
+                    {
+                        // 스킬 슬롯 위쪽에 재사용 대기시간 끔
+                        UIManager.Instance.OffSkillSlotSecondCooldown(column);
+                    }
+                }
+                // 모든 row 스킬이 준비 안됨
+                else
+                {
+                    // 스킬 슬롯 위쪽에 재사용 대기시간 끔
+                    UIManager.Instance.OffSkillSlotSecondCooldown(column);
+                    // 스킬 재사용 대기시간 비활성화
+                    UIManager.Instance.OffSkillSlotCooldown(column);
+
+                    // 교체될 스킬이 준비됨
+                    if (m_readySkill[(int)skill])
+                    {
+                        UIManager.Instance.ChangeSkillSlotIcon(column, skill);
+                    }
+                }
+            }
+            // 세번째 스킬
+            else if (row == 2)
+            {
+                // row 스킬들이 하나라도 준비됨
+                if (m_readySkill[(int)m_skillSlot[column, 0]] || m_readySkill[(int)m_skillSlot[column, 1]])
+                {
+                    // 마지막으로 사용한 스킬과 같음
+                    if (GetLastSkill(column) == oldSkill)
+                    {
+                        // 스킬 슬롯 위쪽에 재사용 대기시간 끔
+                        UIManager.Instance.OffSkillSlotSecondCooldown(column);
+                    }
+                }
+                // 모든 row 스킬이 준비 안됨
+                else
+                {
+                    // 스킬 슬롯 위쪽에 재사용 대기시간 끔
+                    UIManager.Instance.OffSkillSlotSecondCooldown(column);
+                    // 스킬 재사용 대기시간 비활성화
+                    UIManager.Instance.OffSkillSlotCooldown(column);
+
+                    // 교체될 스킬이 준비됨
+                    if (m_readySkill[(int)skill])
+                    {
+                        UIManager.Instance.ChangeSkillSlotIcon(column, skill);
+                    }
+                }
+            }
         }
 
+        
+
+        //-----------------------------------------------
+        // 교체
+        //-----------------------------------------------
+        // 프리셋 스킬 변경
         m_skillSlot[column, row] = skill;
+
+        // 교체전 스킬 큐에서 삭제
+        for (int iCnt = 0; iCnt < (int)SkillSlotSize.Row; ++iCnt)
+        {
+            // 프리셋에 남아있으면 삭제하지 않음
+            if (m_skillSlot[column, iCnt] == oldSkill)
+                break;
+
+            // 프리셋에 없으면 삭제
+            if((int)SkillSlotSize.Row - 1 == iCnt)
+                EraseSkill(oldSkill, column);
+        }
+
+
+        //-----------------------------------------------
+        // 교체된 스킬이 재사용 대기시간이 돌고 있으면
+        //-----------------------------------------------
     }
 
     // 스킬 슬롯 인덱스의 스킬 상태 얻기
@@ -175,8 +301,8 @@ public partial class HaruInfo : PlayerInfo
     {
         float cooldown = m_skillCooldown[(int)skill];
         float originCooldown = cooldown;
-        // 1초
-        WaitForSeconds wait = new WaitForSeconds(1f);
+        // 0.5초
+        WaitForSeconds wait = new WaitForSeconds(0.5f);
 
         // UI 재사용 대기시간 처리
         AllSkillSlotCheckCooldown(skill, originCooldown, cooldown);
