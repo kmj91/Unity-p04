@@ -12785,8 +12785,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2141023125}
   m_HandleRect: {fileID: 2141023124}
   m_Direction: 2
-  m_Value: 0.9999899
-  m_Size: 0.54222286
+  m_Value: 0.9999958
+  m_Size: 0.54222137
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24052,6 +24052,7 @@ GameObject:
   - component: {fileID: 1586727261}
   - component: {fileID: 1586727264}
   - component: {fileID: 1586727263}
+  - component: {fileID: 1586727265}
   m_Layer: 5
   m_Name: Skill Tooltip
   m_TagString: Untagged
@@ -24162,6 +24163,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1586727265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586727259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d0f7dcd6edda2448209240152b835d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_skillTypeSprite:
+  - {fileID: 1744232958870559622, guid: 947d4306deed37a4f9af52f4bbefcb64, type: 3}
+  - {fileID: 2519740208719505813, guid: 947d4306deed37a4f9af52f4bbefcb64, type: 3}
+  m_skillIcon: {fileID: 2031103119}
+  m_skillType: {fileID: 904621853}
+  m_skillName: {fileID: 600068357}
+  m_skillLevel: {fileID: 1547582943}
+  m_skillMaster: {fileID: 548943799}
+  m_skillUnacquired: {fileID: 896067977}
+  m_skillInfo:
+  - title: {fileID: 1947039652}
+    damage: {fileID: 1935454352}
+    superAmourBreak: {fileID: 413887238}
+    layout: {fileID: 1449609702}
+  - title: {fileID: 1254173605}
+    damage: {fileID: 1921984098}
+    superAmourBreak: {fileID: 49220718}
+    layout: {fileID: 1286089952}
+  m_skillNormalLayout: {fileID: 0}
+  m_normalTitle: {fileID: 456395602}
+  m_skillSG: {fileID: 1607001307}
+  m_skillCooldown: {fileID: 1712780651}
+  m_skillCommnet: {fileID: 1336431962}
+  m_skillManual:
+  - title: {fileID: 1405442440}
+    text: {fileID: 1450246235}
+    layout: {fileID: 829047157}
+  - title: {fileID: 1048554286}
+    text: {fileID: 1338450857}
+    layout: {fileID: 103503444}
 --- !u!1 &1586758292
 GameObject:
   m_ObjectHideFlags: 0

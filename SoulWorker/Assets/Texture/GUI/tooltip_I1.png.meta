@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: -4684197567447434023
     second: tooltip_icon_master
+  - first:
+      213: 2519740208719505813
+    second: tooltip_label_passive
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,6 +133,27 @@ TextureImporter:
       bones: []
       spriteID: 9dcfb8e51236efeb0800000000000000
       internalID: -4684197567447434023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tooltip_label_passive
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 62
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599aef2ae5ae7f220800000000000000
+      internalID: 2519740208719505813
       vertices: []
       indices: 
       edges: []
