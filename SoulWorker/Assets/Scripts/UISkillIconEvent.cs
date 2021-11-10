@@ -3,13 +3,21 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class UISkillIconDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class UISkillIconEvent : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler
 {
     public bool dragOnSurfaces = true;
     public int m_skillNum;
 
     private GameObject m_DraggingIcon;
     private RectTransform m_DraggingPlane;
+    private UISkill m_skillInfo;                // 스킬 정보 창
+
+
+    private void Start()
+    {
+        // 스킬 정보 창
+        m_skillInfo = UIManager.Instance.GetSkillInfo();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -83,5 +91,10 @@ public class UISkillIconDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             t = t.parent;
         }
         return comp;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        m_skillInfo.ShowSkillTooltip();
     }
 }

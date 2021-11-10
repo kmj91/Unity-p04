@@ -21,6 +21,8 @@ public class UISkill : MonoBehaviour
     }
     [SerializeField] private SkillPresetElement[] m_skillPreset;    // 스킬 프리셋 이미지
 
+    [SerializeField] private UISkillTooltip m_skillTooltip;         // 스킬 툴팁
+
     private enum SkillButtonSprite
     {
         Gray,
@@ -70,7 +72,7 @@ public class UISkill : MonoBehaviour
     }
 
     // 스킬 정보 창 토글
-    public void ToggleSkillinfo()
+    public void ToggleSkillInfo()
     {
         if (gameObject.activeSelf)
         {
@@ -81,6 +83,12 @@ public class UISkill : MonoBehaviour
             gameObject.SetActive(true);
         }
     }
+
+    public void ShowSkillTooltip()
+    {
+        m_skillTooltip.gameObject.SetActive(true);
+    }
+
 
 
     // 스킬 레벨 다운

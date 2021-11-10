@@ -19,13 +19,13 @@ public partial class UIManager : MonoBehaviour
     }
 
     public Sprite[] m_haruSkillIcon;    // 하루 스킬 아이콘 스프라이트
-    public HaruInfo m_haruInfo;         // 플레이어 정보
+    private HaruInfo m_haruInfo;        // 플레이어 정보
 
     [SerializeField] private UIPlayerHp m_UIPlayerHP;           // 플레이어 체력 바
     [SerializeField] private UITargetBoss m_UITargetBoss;       // 보스 체력 바
     [SerializeField] private UICharacterinfo m_UICharacterinfo; // 캐릭터 정보 창
     [SerializeField] private UIHotkey m_UIHotkey;               // 스킬 단축키
-    [SerializeField] private UISkill m_UISkillinfo;             // 스킬 정보 창
+    [SerializeField] private UISkill m_UISkillInfo;             // 스킬 정보 창
 
 
     // 플레이어 정보 초기화
@@ -33,7 +33,13 @@ public partial class UIManager : MonoBehaviour
     {
         m_haruInfo = playerInfo;
         m_UICharacterinfo.m_haruInfo = playerInfo;
-        m_UISkillinfo.m_haruInfo = playerInfo;
+        m_UISkillInfo.m_haruInfo = playerInfo;
+    }
+
+    // 플레이어 정보 스크립트 얻어오기
+    public HaruInfo GetPlayerInfo()
+    {
+        return m_haruInfo;
     }
 
     //-------------------------------
@@ -141,12 +147,18 @@ public partial class UIManager : MonoBehaviour
     // 스킬 정보 창 초기화
     public void InitSkillInfo()
     {
-        m_UISkillinfo.InitSkillInfo();
+        m_UISkillInfo.InitSkillInfo();
     }
 
     // 스킬 정보 창 토글
-    public void ToggleSkillinfo()
+    public void ToggleSkillInfo()
     {
-        m_UISkillinfo.ToggleSkillinfo();
+        m_UISkillInfo.ToggleSkillInfo();
+    }
+
+    // 스킬 정보 창 스크립트 얻어오기
+    public UISkill GetSkillInfo()
+    {
+        return m_UISkillInfo;
     }
 }

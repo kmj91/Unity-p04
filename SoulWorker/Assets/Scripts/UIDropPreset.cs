@@ -11,13 +11,20 @@ public class UIDropPreset : MonoBehaviour, IDropHandler
 
     private Image m_presetSlot;     // 프리셋 슬롯 이미지
 
+
+    private void Start()
+    {
+        // 스킬 이미지
+        m_presetSlot = GetComponent<Image>();
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         var item = eventData.pointerDrag.GetComponent<Image>();
         if (item == null)
             return;
 
-        int skillNum = eventData.pointerDrag.GetComponent<UISkillIconDrag>().m_skillNum;
+        int skillNum = eventData.pointerDrag.GetComponent<UISkillIconEvent>().m_skillNum;
         // 스킬 번호 확인
         if ((int)HaruSkill.FirstBlade > skillNum && (int)HaruSkill.None <= skillNum)
             return;
@@ -26,12 +33,6 @@ public class UIDropPreset : MonoBehaviour, IDropHandler
         m_presetSlot.enabled = true;
 
         // 스킬 프리셋에 스킬 등록
-        UIManager.Instance.m_haruInfo.SetSkillPreset((HaruSkill)skillNum, m_column, m_row);
-    }
-
-
-    private void Start()
-    {
-        m_presetSlot = GetComponent<Image>();
+        UIManager.Instance.GetPlayerInfo().SetSkillPreset((HaruSkill)skillNum, m_column, m_row);
     }
 }

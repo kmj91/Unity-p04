@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
             { KeyCode.Alpha6 , KeyUp_Alpha6 },  // 스킬 슬롯 6
             { KeyCode.I, KeyUp_Inventory },     // 인벤토리
             { KeyCode.P, KeyUp_Characterinfo }, // 캐릭터 상태창
-            { KeyCode.K, KeyUp_Skillinfo }      // 스킬 정보창
+            { KeyCode.K, KeyUp_SkillInfo }      // 스킬 정보창
         };
     }
 
@@ -844,10 +844,10 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.ToggleCharacterinfo();
     }
 
-    private void KeyUp_Skillinfo()
+    private void KeyUp_SkillInfo()
     {
         // 마우스 사용
         m_useMouse = true;
-        UIManager.Instance.ToggleSkillinfo();
+        UIManager.Instance.ToggleSkillInfo();
     }
 }
