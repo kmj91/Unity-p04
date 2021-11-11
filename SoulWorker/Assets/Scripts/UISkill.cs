@@ -84,9 +84,16 @@ public class UISkill : MonoBehaviour
         }
     }
 
-    public void ShowSkillTooltip()
+    // 스킬 툴팁 켜기
+    public void ShowSkillTooltip(HaruSkill skill)
     {
-        m_skillTooltip.gameObject.SetActive(true);
+        m_skillTooltip.ShowSkillTooltip(skill);
+    }
+
+    // 스킬 툴팁 끄기
+    public void DisableSkillTooltip()
+    {
+        m_skillTooltip.gameObject.SetActive(false);
     }
 
 

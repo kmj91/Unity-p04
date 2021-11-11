@@ -2,8 +2,10 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+using MyEnum;
+
 [RequireComponent(typeof(Image))]
-public class UISkillIconEvent : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler
+public class UISkillIconEvent : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public bool dragOnSurfaces = true;
     public int m_skillNum;
@@ -19,6 +21,7 @@ public class UISkillIconEvent : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         m_skillInfo = UIManager.Instance.GetSkillInfo();
     }
 
+    // 드래그 시작
     public void OnBeginDrag(PointerEventData eventData)
     {
         var canvas = FindInParents<Canvas>(gameObject);
@@ -50,6 +53,7 @@ public class UISkillIconEvent : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         SetDraggedPosition(eventData);
     }
 
+    // 드래그 중
     public void OnDrag(PointerEventData data)
     {
         if (m_DraggingIcon != null)
@@ -70,6 +74,7 @@ public class UISkillIconEvent : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         }
     }
 
+    // 드래그 끝
     public void OnEndDrag(PointerEventData eventData)
     {
         if (m_DraggingIcon != null)
@@ -93,8 +98,15 @@ public class UISkillIconEvent : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         return comp;
     }
 
+    // 마우스 포인터 IN
     public void OnPointerEnter(PointerEventData eventData)
     {
-        m_skillInfo.ShowSkillTooltip();
+        m_skillInfo.ShowSkillTooltip((HaruSkill)m_skillNum);
+    }
+
+    // 마우스 포인터 OUT
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        m_skillInfo.DisableSkillTooltip();
     }
 }

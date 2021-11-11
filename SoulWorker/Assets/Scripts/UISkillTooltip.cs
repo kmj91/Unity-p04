@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+using MyEnum;
+
 public class UISkillTooltip : MonoBehaviour
 {
     // 스킬 타입 스프라이트 번호
@@ -50,4 +52,13 @@ public class UISkillTooltip : MonoBehaviour
         public GameObject layout;       // 메뉴얼 레이아웃 오브젝트
     }
     [SerializeField] private SkillManual[] m_skillManual;       // 스킬 메뉴얼
+
+
+    // 스킬 툴팁 켜기
+    public void ShowSkillTooltip(HaruSkill skill)
+    {
+        gameObject.SetActive(true);
+        // 스킬 아이콘 변경
+        m_skillIcon.sprite = UIManager.Instance.m_haruSkillIcon[(int)skill];
+    }
 }
