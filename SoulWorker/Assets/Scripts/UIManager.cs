@@ -6,6 +6,8 @@ using MyEnum;
 
 public partial class UIManager : Singleton<UIManager>
 {
+    private UIManager() { }
+
     public Sprite[] m_haruSkillIcon;    // 하루 스킬 아이콘 스프라이트
     private HaruInfo m_haruInfo;        // 플레이어 정보
 
@@ -15,6 +17,11 @@ public partial class UIManager : Singleton<UIManager>
     [SerializeField] private UIHotkey m_UIHotkey;               // 스킬 단축키
     [SerializeField] private UISkill m_UISkillInfo;             // 스킬 정보 창
 
+
+    private void Awake()
+    {
+        SingletonInit(this);
+    }
 
     // 플레이어 정보 초기화
     public void InitPlayerInfo(HaruInfo playerInfo)
