@@ -2,6 +2,7 @@
 
 using MyEnum;
 using MyStruct;
+using System.IO;
 
 public partial class HaruInfo : PlayerInfo
 {
@@ -79,6 +80,10 @@ public partial class HaruInfo : PlayerInfo
             superArmourBreak = 0f
         };
         SetUp(ref data);
+
+        // 스킬 정보 파일 읽기
+        string filePath = Path.Combine(Application.streamingAssetsPath, "HaruSkillInfo.txt");
+        string fileText = Utility.ReadText(filePath);
     }
 
     private void Start()

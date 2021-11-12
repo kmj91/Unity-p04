@@ -4,20 +4,8 @@ using UnityEngine.UI;
 using MyStruct;
 using MyEnum;
 
-public partial class UIManager : MonoBehaviour
+public partial class UIManager : Singleton<UIManager>
 {
-    private static UIManager instance;
-
-    public static UIManager Instance
-    {
-        get
-        {
-            if (instance == null) instance = FindObjectOfType<UIManager>();
-
-            return instance;
-        }
-    }
-
     public Sprite[] m_haruSkillIcon;    // 하루 스킬 아이콘 스프라이트
     private HaruInfo m_haruInfo;        // 플레이어 정보
 
