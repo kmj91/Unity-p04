@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-using MyStruct;
 using MyEnum;
 
 public partial class UIManager : Singleton<UIManager>

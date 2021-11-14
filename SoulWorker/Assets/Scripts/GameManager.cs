@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 using MyStruct;
-using MyEnum;
-using System.Xml.Serialization;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour

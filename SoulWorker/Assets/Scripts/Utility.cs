@@ -58,6 +58,7 @@ public static class Utility
         return value;
     }
 
+    // 파싱 에어리어
     public static bool Parser_GetArea(string fileText, string areaName, out string data)
     {
         int length = fileText.Length - 1;
@@ -72,6 +73,24 @@ public static class Utility
                 return false;
 
             if (ParsingArea(fileText, areaName, ref begin, ref end, ref data))
+                return true;
+        }
+
+        return false;
+    }
+
+    // 파싱 다음 에어리어
+    public static bool Parser_GetNextArea(ref string fileText, out string data)
+    {
+        int length = fileText.Length - 1;
+        int begin = 0;
+        int end = 0;
+
+        data = "";
+
+        while (end < length)
+        {
+            if (ParsingNextArea(ref fileText, ref begin, ref end, ref data))
                 return true;
         }
 
@@ -156,6 +175,7 @@ public static class Utility
 
 
 
+    // 다음 문자 시작위치로 인덱스 반환
     private static bool NextWord(string text, ref int begin, ref int end)
     {
         int length = text.Length - 1;
@@ -358,6 +378,49 @@ public static class Utility
 
         // 구역 획득
         data = fileText.Substring(begin, end - begin);
+
+        return true;
+    }
+
+    // 다음 구역 파싱
+    // fileText : 파싱할 텍스트 문자열
+    // begin : 구역 시작 인덱스
+    // end : 구역 끝 인덱스
+    private static bool ParsingNextArea(ref string fileText, ref int begin, ref int end, ref string data)
+    {
+        int length = fileText.Length - 1;
+
+        // '{' 찾기
+        while (fileText[begin] != '{')
+        {
+            // 버퍼의 끝
+            if (begin == length)
+            {
+                end = begin;
+                return false;
+            }
+
+            // 다음 글자로
+            ++begin;
+        }
+
+        end = begin;
+
+        // '}' 찾기
+        while (fileText[end] != '}')
+        {
+            // 버퍼의 끝
+            if (end == length)
+                return false;
+
+            // 다음 글자로
+            ++end;
+        }
+
+        // 구역 획득
+        data = fileText.Substring(begin, end - begin);
+        // 다음 구역 인덱스
+        fileText = fileText.Substring(end);
 
         return true;
     }
