@@ -60,5 +60,15 @@ public class UISkillTooltip : MonoBehaviour
         gameObject.SetActive(true);
         // 스킬 아이콘 변경
         m_skillIcon.sprite = UIManager.Instance.m_haruSkillIcon[(int)skill];
+
+        // 툴팁 갱신
+        UpdateTooltip(skill);
+    }
+
+
+    // 툴팁 갱신
+    private void UpdateTooltip(HaruSkill skill)
+    {
+
     }
 }
