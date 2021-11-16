@@ -53,6 +53,14 @@ public class UISkillTooltip : MonoBehaviour
     }
     [SerializeField] private SkillManual[] m_skillManual;       // 스킬 메뉴얼
 
+    private UISkill m_uiSkillInfo;                              // 스킬 정보 창
+
+
+    private void Start()
+    {
+        // 스킬 정보 창
+        m_uiSkillInfo = UIManager.Instance.GetSkillInfo();
+    }
 
     // 스킬 툴팁 켜기
     public void ShowSkillTooltip(HaruSkill skill)
@@ -69,6 +77,64 @@ public class UISkillTooltip : MonoBehaviour
     // 툴팁 갱신
     private void UpdateTooltip(HaruSkill skill)
     {
+        // 스킬 레벨
+        int skillLevel = m_uiSkillInfo.m_haruInfo.GetSkillLevel(skill);
 
+        switch (skill)
+        {
+            case HaruSkill.FirstBlade:
+                SetTitle(SkillTypeSprite.Active, "퍼스트 블레이드", skillLevel);
+                SetSkillInfo(HaruSkillDamage.FirstBlade, skill, "[기본 정보]");
+                break;
+            case HaruSkill.PierceStep:
+                break;
+            case HaruSkill.SpinCutter:
+                break;
+            default:
+                break;
+        }
+    }
+
+    // 툴팁 타이틀
+    private void SetTitle(SkillTypeSprite skillType, string skillName, int skillLevel)
+    {
+        // 스킬 타입 스프라이트
+        m_skillType.sprite = m_skillTypeSprite[(int)skillType];
+
+        // 스킬 레벨 로마자
+        string roma = "";
+        switch (skillLevel)
+        {
+            case 1:
+                roma = "I";
+                break;
+            case 2:
+                roma = "II";
+                break;
+            case 3:
+                roma = "III";
+                break;
+            case 4:
+                roma = "IV";
+                break;
+            case 5:
+                roma = "V";
+                break;
+            default:
+                break;
+        }
+        // 스킬 이름 + 로마자
+        m_skillName.text = skillName + " " + roma;
+        // 스킬 레벨
+        m_skillLevel.text = "레벨 " + skillLevel;
+    }
+
+    private void SetSkillInfo(HaruSkillDamage skillDamage, HaruSkill skill, string infoTitle)
+    {
+        // 스킬 정보 1 타이틀
+        m_skillInfo[0].title.text = infoTitle;
+        float damage;
+        m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, out damage);
+        m_skillInfo[0].damage.text = "피해량 [" + (damage * 100) + "%]";
     }
 }

@@ -14,7 +14,8 @@ public partial class HaruInfo : PlayerInfo
     // 1 : 스킬 종류
     // 2 : 스킬 레벨
     // 3 : 타격 수
-    private float[,,] m_skillDamage;
+    // 4 : 피해량 or 슈퍼아머 파괴량
+    private float[,,,] m_skillDamage;
     private float[] m_skillCooldown;    // 스킬 재사용 대기시간
     private bool[] m_readySkill;        // 스킬 사용 준비
 
@@ -253,8 +254,10 @@ public partial class HaruInfo : PlayerInfo
     // skill : 스킬 이름
     // cnt : 스킬 타격수
     // damage : 스킬 데미지
-    public bool GetSkillDamage(HaruSkillDamage skill, int cnt, ref float damage)
+    public bool GetSkillDamage(HaruSkillDamage skill, int cnt, out float damage)
     {
+        damage = 0;
+
         if (cnt < 0 && 5 <= cnt)
             return false;
 
@@ -290,9 +293,19 @@ public partial class HaruInfo : PlayerInfo
                 break;
         }
 
-        damage = m_skillDamage[(int)skill, m_skillLevel[(int)skillLevel] - 1, cnt];
+        damage = m_skillDamage[(int)skill, m_skillLevel[(int)skillLevel] - 1, cnt, (int)SkillDamageType.Damage];
 
         return true;
+    }
+
+    public void GetSkillTooltipDamage(HaruSkillDamage skillDamage, HaruSkill skill, out float damage)
+    {
+        damage = 0;
+
+        for (int iCnt = 0; iCnt < (int)SkillBasicInfo.MaxLevel; ++iCnt)
+        {
+           damage += m_skillDamage[(int)skillDamage, m_skillLevel[(int)skill] - 1, iCnt, (int)SkillDamageType.Damage];
+        }
     }
 
 

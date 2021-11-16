@@ -125,6 +125,21 @@
         End
     }
 
+    // 스킬 정보
+    public enum SkillBasicInfo
+    {
+        MaxLevel = 5,
+        MaxAtkCnt = 10
+    }
+
+    // 데미지 타입
+    public enum SkillDamageType
+    {
+        Damage,
+        SuperArmour,
+        End
+    }
+
     public enum SkillSlotSize
     {
         Row = 3,        // 행

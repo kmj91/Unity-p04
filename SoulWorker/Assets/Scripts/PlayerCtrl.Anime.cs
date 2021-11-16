@@ -663,8 +663,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack1, 0, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack1, 0, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -719,8 +719,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack2, 0, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack2, 0, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -774,8 +774,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack3, 1, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack3, 1, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -791,8 +791,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack3, 0, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack3, 0, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -846,8 +846,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Down;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack4, 0, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack4, 0, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -901,8 +901,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Strike;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack5, 0, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.NormalAttack5, 0, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -948,8 +948,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Strike;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 2, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 2, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -965,8 +965,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 1, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 1, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
@@ -982,8 +982,8 @@ public partial class PlayerCtrl : MonoBehaviour
                 // 무기 충돌 트리거 ON
                 m_weapon.OnTrigger();
                 m_weapon.m_attackType = AttackType.Normal;
-                float damage = 0f;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 0, ref damage))
+                float damage;
+                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 0, out damage))
                     return;
                 m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
             }
