@@ -136,5 +136,6 @@ public class UISkillTooltip : MonoBehaviour
         float damage;
         m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, out damage);
         m_skillInfo[0].damage.text = "피해량 [" + (damage * 100) + "%]";
+        m_skillInfo[0].superAmourBreak.text = "슈퍼아머 파괴량 [" + (damage * 100) + "%]";
     }
 }
