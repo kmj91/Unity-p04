@@ -127,56 +127,73 @@ public partial class HaruInfo : PlayerInfo
 
         m_skillDamage = new float[(int)HaruSkillDamage.End, (int)SkillBasicInfo.MaxLevel, (int)SkillBasicInfo.MaxAtkCnt, (int)SkillDamageType.End];
 
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 0, 0, 0] = 0.5f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 1, 0, 0] = 0.625f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 2, 0, 0] = 0.75f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 3, 0, 0] = 0.875f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 4, 0, 0] = 1f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 0, 0, (int)SkillDamageType.Damage] = 0.5f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 1, 0, (int)SkillDamageType.Damage] = 0.625f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 2, 0, (int)SkillDamageType.Damage] = 0.75f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 3, 0, (int)SkillDamageType.Damage] = 0.875f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack1, 4, 0, (int)SkillDamageType.Damage] = 1f;
 
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 0, 0, 0] = 0.2f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 1, 0, 0] = 0.325f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 2, 0, 0] = 0.45f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 3, 0, 0] = 0.575f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 4, 0, 0] = 0.7f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 0, 0, (int)SkillDamageType.Damage] = 0.2f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 1, 0, (int)SkillDamageType.Damage] = 0.325f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 2, 0, (int)SkillDamageType.Damage] = 0.45f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 3, 0, (int)SkillDamageType.Damage] = 0.575f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack2, 4, 0, (int)SkillDamageType.Damage] = 0.7f;
 
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 0, 0, 0] = 0.3f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 1, 0, 0] = 0.425f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 2, 0, 0] = 0.55f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 3, 0, 0] = 0.675f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 4, 0, 0] = 0.8f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 0, 1, 0] = 0.3f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 1, 1, 0] = 0.425f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 2, 1, 0] = 0.55f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 3, 1, 0] = 0.675f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 4, 1, 0] = 0.8f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 0, 0, (int)SkillDamageType.Damage] = 0.3f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 1, 0, (int)SkillDamageType.Damage] = 0.425f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 2, 0, (int)SkillDamageType.Damage] = 0.55f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 3, 0, (int)SkillDamageType.Damage] = 0.675f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 4, 0, (int)SkillDamageType.Damage] = 0.8f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 0, 1, (int)SkillDamageType.Damage] = 0.3f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 1, 1, (int)SkillDamageType.Damage] = 0.425f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 2, 1, (int)SkillDamageType.Damage] = 0.55f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 3, 1, (int)SkillDamageType.Damage] = 0.675f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack3, 4, 1, (int)SkillDamageType.Damage] = 0.8f;
 
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 0, 0, 0] = 0.3f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 1, 0, 0] = 0.425f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 2, 0, 0] = 0.55f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 3, 0, 0] = 0.675f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 4, 0, 0] = 0.8f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 0, 0, (int)SkillDamageType.Damage] = 0.3f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 1, 0, (int)SkillDamageType.Damage] = 0.425f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 2, 0, (int)SkillDamageType.Damage] = 0.55f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 3, 0, (int)SkillDamageType.Damage] = 0.675f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack4, 4, 0, (int)SkillDamageType.Damage] = 0.8f;
 
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 0, 0, 0] = 0.5f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 1, 0, 0] = 0.625f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 2, 0, 0] = 0.75f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 3, 0, 0] = 0.875f;
-        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 4, 0, 0] = 1f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 0, 0, (int)SkillDamageType.Damage] = 0.5f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 1, 0, (int)SkillDamageType.Damage] = 0.625f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 2, 0, (int)SkillDamageType.Damage] = 0.75f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 3, 0, (int)SkillDamageType.Damage] = 0.875f;
+        m_skillDamage[(int)HaruSkillDamage.NormalAttack5, 4, 0, (int)SkillDamageType.Damage] = 1f;
 
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 0, 0] = 2.7f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 1, 0] = 2.7f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 2, 0] = 1.35f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 0, 0] = 2.81f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 1, 0] = 2.81f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 2, 0] = 1.46f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 0, 0] = 3.09f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 1, 0] = 3.09f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 2, 0] = 1.74f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 0, 0] = 3.37f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 1, 0] = 3.37f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 2, 0] = 2.03f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 0, 0] = 3.82f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 1, 0] = 3.82f;
-        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 2, 0] = 2.48f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 0, (int)SkillDamageType.Damage] = 2.7f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 1, (int)SkillDamageType.Damage] = 2.7f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 2, (int)SkillDamageType.Damage] = 1.35f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 0, (int)SkillDamageType.Damage] = 2.81f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 1, (int)SkillDamageType.Damage] = 2.81f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 2, (int)SkillDamageType.Damage] = 1.46f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 0, (int)SkillDamageType.Damage] = 3.09f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 1, (int)SkillDamageType.Damage] = 3.09f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 2, (int)SkillDamageType.Damage] = 1.74f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 0, (int)SkillDamageType.Damage] = 3.37f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 1, (int)SkillDamageType.Damage] = 3.37f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 2, (int)SkillDamageType.Damage] = 2.03f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 0, (int)SkillDamageType.Damage] = 3.82f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 1, (int)SkillDamageType.Damage] = 3.82f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 2, (int)SkillDamageType.Damage] = 2.48f;
+
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 0, (int)SkillDamageType.SuperArmour] = 1.45f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 1, (int)SkillDamageType.SuperArmour] = 1.45f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 0, 2, (int)SkillDamageType.SuperArmour] = 0.72f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 0, (int)SkillDamageType.SuperArmour] = 1.51f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 1, (int)SkillDamageType.SuperArmour] = 1.51f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 1, 2, (int)SkillDamageType.SuperArmour] = 0.78f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 0, (int)SkillDamageType.SuperArmour] = 1.66f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 1, (int)SkillDamageType.SuperArmour] = 1.66f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 2, 2, (int)SkillDamageType.SuperArmour] = 0.94f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 0, (int)SkillDamageType.SuperArmour] = 1.81f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 1, (int)SkillDamageType.SuperArmour] = 1.81f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 3, 2, (int)SkillDamageType.SuperArmour] = 1.08f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 0, (int)SkillDamageType.SuperArmour] = 2.05f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 1, (int)SkillDamageType.SuperArmour] = 2.05f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 2, (int)SkillDamageType.SuperArmour] = 1.33f;
+
 
 
         m_skillCooldown = new float[(int)HaruSkill.End];

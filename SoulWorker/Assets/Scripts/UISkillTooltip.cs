@@ -133,9 +133,7 @@ public class UISkillTooltip : MonoBehaviour
     {
         // 스킬 정보 1 타이틀
         m_skillInfo[0].title.text = infoTitle;
-        float damage;
-        m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, out damage);
-        m_skillInfo[0].damage.text = "피해량 [" + (damage * 100) + "%]";
-        m_skillInfo[0].superAmourBreak.text = "슈퍼아머 파괴량 [" + (damage * 100) + "%]";
+        m_skillInfo[0].damage.text = "피해량 [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.Damage) * 100) + "%]";
+        m_skillInfo[0].superAmourBreak.text = "슈퍼아머 파괴량 [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.SuperArmour) * 100) + "%]";
     }
 }

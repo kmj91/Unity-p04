@@ -298,14 +298,20 @@ public partial class HaruInfo : PlayerInfo
         return true;
     }
 
-    public void GetSkillTooltipDamage(HaruSkillDamage skillDamage, HaruSkill skill, out float damage)
+    // 스킬 총 피해량 정보 얻어오기
+    // skillDamage : 얻어올 스킬 데미지 인덱스
+    // skill : 레벨 확인용 스킬 인덱스 번호
+    // type : 일반 피해량 or 슈퍼아머 파괴량
+    public float GetSkillTooltipDamage(HaruSkillDamage skillDamage, HaruSkill skill, SkillDamageType type)
     {
-        damage = 0;
+        float damage = 0;
 
         for (int iCnt = 0; iCnt < (int)SkillBasicInfo.MaxLevel; ++iCnt)
         {
-           damage += m_skillDamage[(int)skillDamage, m_skillLevel[(int)skill] - 1, iCnt, (int)SkillDamageType.Damage];
+           damage += m_skillDamage[(int)skillDamage, m_skillLevel[(int)skill] - 1, iCnt, (int)type];
         }
+
+        return damage;
     }
 
 
