@@ -41,7 +41,7 @@ public class UISkillTooltip : MonoBehaviour
     [SerializeField] private Text m_skillCooldown;              // 재사용 대기 시간
 
     // 코멘트
-    [SerializeField] private Text m_skillCommnet;               // 스킬 코멘트
+    [SerializeField] private Text m_skillComment;               // 스킬 코멘트
 
     // 스킬 메뉴얼
     [System.Serializable]
@@ -84,7 +84,12 @@ public class UISkillTooltip : MonoBehaviour
         {
             case HaruSkill.FirstBlade:
                 SetTitle(SkillTypeSprite.Active, "퍼스트 블레이드", skillLevel);
-                SetSkillInfo(HaruSkillDamage.FirstBlade, skill, "[기본 정보]");
+                SetSkillInfo(HaruSkillDamage.FirstBlade, skill, "[스킬 정보]");
+                SetSkillInfoSecond(HaruSkillDamage.FirstBlade02, skill, "[스킬 정보 : 추가 공격]");
+                SetSkillInfoNormal(skill, "[스킬 정보 : 일반]", 35);
+                SetSkillComment("빠르게 전진하며 검을 세번 휘둘러 마무리로 적을 밀쳐냅니다.\n추가 조작시 밀쳐내는 대신 검을 올려칩니다.");
+                SetManual("[조작법]", "마우스 : 스킬 퀵슬롯에 등록하여 해당 키 입력");
+                SetManualSecond("[조작법 : 추가 공격]", "마우스 : 두번째 공격 이후 (우클릭)");
                 break;
             case HaruSkill.PierceStep:
                 break;
@@ -129,11 +134,50 @@ public class UISkillTooltip : MonoBehaviour
         m_skillLevel.text = "레벨 " + skillLevel;
     }
 
+    // 스킬 정보
     private void SetSkillInfo(HaruSkillDamage skillDamage, HaruSkill skill, string infoTitle)
     {
         // 스킬 정보 1 타이틀
         m_skillInfo[0].title.text = infoTitle;
-        m_skillInfo[0].damage.text = "피해량 [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.Damage) * 100) + "%]";
-        m_skillInfo[0].superAmourBreak.text = "슈퍼아머 파괴량 [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.SuperArmour) * 100) + "%]";
+        m_skillInfo[0].damage.text = "피해량 : [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.Damage) * 100) + "%]";
+        m_skillInfo[0].superAmourBreak.text = "슈퍼아머 파괴량 : [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.SuperArmour) * 100) + "%]";
+    }
+
+    // 스킬 정보 두번째
+    private void SetSkillInfoSecond(HaruSkillDamage skillDamage, HaruSkill skill, string infoTitle)
+    {
+        // 스킬 정보 2 타이틀
+        m_skillInfo[1].title.text = infoTitle;
+        m_skillInfo[1].damage.text = "피해량 : [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.Damage) * 100) + "%]";
+        m_skillInfo[1].superAmourBreak.text = "슈퍼아머 파괴량 : [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.SuperArmour) * 100) + "%]";
+    }
+
+    // 스킬 정보 일반
+    private void SetSkillInfoNormal(HaruSkill skill, string infoTitle, int sg)
+    {
+        // 스킬 정보 2 타이틀
+        m_normalTitle.text = infoTitle;
+        m_skillSG.text = "SG 소모량 : [" + sg + "]";
+        m_skillCooldown.text = "재사용 대기 시간 : [" + (int)m_uiSkillInfo.m_haruInfo.GetSkillCooldown(skill) + "초]";
+    }
+
+    // 스킬 코멘트
+    private void SetSkillComment(string comment)
+    {
+        m_skillComment.text = comment;
+    }
+
+    // 메뉴얼
+    private void SetManual(string title, string text)
+    {
+        m_skillManual[0].title.text = title;
+        m_skillManual[0].text.text = text;
+    }
+
+    // 메뉴얼 두번째
+    private void SetManualSecond(string title, string text)
+    {
+        m_skillManual[1].title.text = title;
+        m_skillManual[1].text.text = text;
     }
 }

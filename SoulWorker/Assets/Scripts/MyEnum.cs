@@ -115,6 +115,7 @@
     public enum HaruSkillDamage
     {
         FirstBlade,
+        FirstBlade02,   // 추가 공격
         PierceStep,
         SpinCutter,
         NormalAttack1,

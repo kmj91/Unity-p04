@@ -314,6 +314,12 @@ public partial class HaruInfo : PlayerInfo
         return damage;
     }
 
+    // 스킬 재사용 대기시간 얻어오기
+    public float GetSkillCooldown(HaruSkill skill)
+    {
+        return m_skillCooldown[(int)skill];
+    }
+
 
 
     private IEnumerator CountSkillCooldown(HaruSkill skill)

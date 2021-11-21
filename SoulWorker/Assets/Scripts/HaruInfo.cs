@@ -194,6 +194,18 @@ public partial class HaruInfo : PlayerInfo
         m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 1, (int)SkillDamageType.SuperArmour] = 2.05f;
         m_skillDamage[(int)HaruSkillDamage.FirstBlade, 4, 2, (int)SkillDamageType.SuperArmour] = 1.33f;
 
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 0, 0, (int)SkillDamageType.Damage] = 1.35f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 1, 0, (int)SkillDamageType.Damage] = 1.42f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 2, 0, (int)SkillDamageType.Damage] = 1.58f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 3, 0, (int)SkillDamageType.Damage] = 1.75f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 4, 0, (int)SkillDamageType.Damage] = 2.02f;
+
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 0, 0, (int)SkillDamageType.SuperArmour] = 0.72f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 1, 0, (int)SkillDamageType.SuperArmour] = 0.76f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 2, 0, (int)SkillDamageType.SuperArmour] = 0.85f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 3, 0, (int)SkillDamageType.SuperArmour] = 0.94f;
+        m_skillDamage[(int)HaruSkillDamage.FirstBlade02, 4, 0, (int)SkillDamageType.SuperArmour] = 1.09f;
+
 
 
         m_skillCooldown = new float[(int)HaruSkill.End];

@@ -19824,7 +19824,7 @@ GameObject:
   - component: {fileID: 1336431961}
   - component: {fileID: 1336431960}
   m_Layer: 5
-  m_Name: Commnet
+  m_Name: Comment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24194,11 +24194,11 @@ MonoBehaviour:
     damage: {fileID: 1921984098}
     superAmourBreak: {fileID: 49220718}
     layout: {fileID: 1286089952}
-  m_skillNormalLayout: {fileID: 0}
+  m_skillNormalLayout: {fileID: 945732979}
   m_normalTitle: {fileID: 456395602}
   m_skillSG: {fileID: 1607001307}
   m_skillCooldown: {fileID: 1712780651}
-  m_skillCommnet: {fileID: 1336431962}
+  m_skillComment: {fileID: 1336431962}
   m_skillManual:
   - title: {fileID: 1405442440}
     text: {fileID: 1450246235}
