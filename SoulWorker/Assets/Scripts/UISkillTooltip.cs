@@ -92,6 +92,13 @@ public class UISkillTooltip : MonoBehaviour
                 SetManualSecond("[조작법 : 추가 공격]", "마우스 : 두번째 공격 이후 (우클릭)");
                 break;
             case HaruSkill.PierceStep:
+                SetTitle(SkillTypeSprite.Active, "피어스 스텝", skillLevel);
+                SetSkillInfo(HaruSkillDamage.PierceStep, skill, "[스킬 정보]");
+                m_skillInfo[1].layout.SetActive(false);
+                SetSkillInfoNormal(skill, "[스킬 정보 : 일반]", 15);
+                SetSkillComment("전방으로 빠르게 돌진하며 적을 미쳐냅니다.\n스킬을 캔슬하여 사용할 수 있습니다.");
+                SetManual("[조작법]", "마우스 : 스킬 퀵슬롯에 등록하여 해당 키 입력");
+                m_skillManual[1].layout.SetActive(false);
                 break;
             case HaruSkill.SpinCutter:
                 break;
