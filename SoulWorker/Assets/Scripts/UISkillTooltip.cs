@@ -101,6 +101,13 @@ public class UISkillTooltip : MonoBehaviour
                 m_skillManual[1].layout.SetActive(false);
                 break;
             case HaruSkill.SpinCutter:
+                SetTitle(SkillTypeSprite.Active, "스핀 커터", skillLevel);
+                SetSkillInfo(HaruSkillDamage.SpinCutter, skill, "[스킬 정보]");
+                m_skillInfo[1].layout.SetActive(false);
+                SetSkillInfoNormal(skill, "[스킬 정보 : 일반]", 35);
+                SetSkillComment("전방으로 낮게 뛰어올라 연속 회전 공격을 해 적을 밀어붙입니다.");
+                SetManual("[조작법]", "마우스 : 스킬 퀵슬롯에 등록하여 해당 키 입력");
+                m_skillManual[1].layout.SetActive(false);
                 break;
             default:
                 break;
