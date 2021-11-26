@@ -151,47 +151,68 @@ public class UISkillTooltip : MonoBehaviour
     // 스킬 정보
     private void SetSkillInfo(HaruSkillDamage skillDamage, HaruSkill skill, string infoTitle)
     {
-        // 스킬 정보 1 타이틀
+        // 활성화
+        m_skillInfo[0].layout.SetActive(true);
+        // 스킬 정보 1 타이틀 텍스트
         m_skillInfo[0].title.text = infoTitle;
+        // 피해량 텍스트
         m_skillInfo[0].damage.text = "피해량 : [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.Damage) * 100) + "%]";
+        // 슈퍼아머 파괴량 텍스트
         m_skillInfo[0].superAmourBreak.text = "슈퍼아머 파괴량 : [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.SuperArmour) * 100) + "%]";
     }
 
     // 스킬 정보 두번째
     private void SetSkillInfoSecond(HaruSkillDamage skillDamage, HaruSkill skill, string infoTitle)
     {
+        // 활성화
+        m_skillInfo[1].layout.SetActive(true);
         // 스킬 정보 2 타이틀
         m_skillInfo[1].title.text = infoTitle;
+        // 피해량 텍스트
         m_skillInfo[1].damage.text = "피해량 : [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.Damage) * 100) + "%]";
+        // 슈퍼아머 파괴량 텍스트
         m_skillInfo[1].superAmourBreak.text = "슈퍼아머 파괴량 : [" + (m_uiSkillInfo.m_haruInfo.GetSkillTooltipDamage(skillDamage, skill, SkillDamageType.SuperArmour) * 100) + "%]";
     }
 
     // 스킬 정보 일반
     private void SetSkillInfoNormal(HaruSkill skill, string infoTitle, int sg)
     {
+        // 활성화
+        m_skillNormalLayout.SetActive(true);
         // 스킬 정보 2 타이틀
         m_normalTitle.text = infoTitle;
+        // SG 소모량 텍스트
         m_skillSG.text = "SG 소모량 : [" + sg + "]";
+        // 재사용 대기시간 텍스트
         m_skillCooldown.text = "재사용 대기 시간 : [" + (int)m_uiSkillInfo.m_haruInfo.GetSkillCooldown(skill) + "초]";
     }
 
     // 스킬 코멘트
     private void SetSkillComment(string comment)
     {
+        // 코멘트
         m_skillComment.text = comment;
     }
 
     // 메뉴얼
     private void SetManual(string title, string text)
     {
+        // 활성화
+        m_skillManual[0].layout.SetActive(true);
+        // 메뉴얼 1 타이틀
         m_skillManual[0].title.text = title;
+        // 메뉴얼 텍스트
         m_skillManual[0].text.text = text;
     }
 
     // 메뉴얼 두번째
     private void SetManualSecond(string title, string text)
     {
+        // 활성화
+        m_skillManual[1].layout.SetActive(true);
+        // 매뉴얼 2 타이틀
         m_skillManual[1].title.text = title;
+        // 메뉴얼 텍스트
         m_skillManual[1].text.text = text;
     }
 }
