@@ -1,0 +1,433 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c459f70d465dac488b4246e19ea594b, type: 3}
+  m_Name: SkillData
+  m_EditorClassIdentifier: 
+  hp: 0
+  m_skillDamage:
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.5
+      - hitCount:
+        - damage: 0.5
+    - damageType:
+      - hitCount:
+        - damage: 0.625
+      - hitCount:
+        - damage: 0.625
+    - damageType:
+      - hitCount:
+        - damage: 0.75
+      - hitCount:
+        - damage: 0.75
+    - damageType:
+      - hitCount:
+        - damage: 0.875
+      - hitCount:
+        - damage: 0.875
+    - damageType:
+      - hitCount:
+        - damage: 1
+      - hitCount:
+        - damage: 1
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.2
+      - hitCount:
+        - damage: 0.2
+    - damageType:
+      - hitCount:
+        - damage: 0.325
+      - hitCount:
+        - damage: 0.325
+    - damageType:
+      - hitCount:
+        - damage: 0.45
+      - hitCount:
+        - damage: 0.45
+    - damageType:
+      - hitCount:
+        - damage: 0.575
+      - hitCount:
+        - damage: 0.575
+    - damageType:
+      - hitCount:
+        - damage: 0.7
+      - hitCount:
+        - damage: 0.7
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.2
+        - damage: 0.2
+      - hitCount:
+        - damage: 0.2
+        - damage: 0.2
+    - damageType:
+      - hitCount:
+        - damage: 0.325
+        - damage: 0.325
+      - hitCount:
+        - damage: 0.325
+        - damage: 0.325
+    - damageType:
+      - hitCount:
+        - damage: 0.45
+        - damage: 0.45
+      - hitCount:
+        - damage: 0.45
+        - damage: 0.45
+    - damageType:
+      - hitCount:
+        - damage: 0.575
+        - damage: 0.575
+      - hitCount:
+        - damage: 0.575
+        - damage: 0.575
+    - damageType:
+      - hitCount:
+        - damage: 0.7
+        - damage: 0.7
+      - hitCount:
+        - damage: 0.7
+        - damage: 0.7
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+        - damage: 0.3
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+        - damage: 0.3
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+        - damage: 0.425
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+        - damage: 0.425
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+        - damage: 0.55
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+        - damage: 0.55
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+        - damage: 0.675
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+        - damage: 0.675
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+        - damage: 0.8
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+        - damage: 0.8
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.3
+      - hitCount:
+        - damage: 0.3
+    - damageType:
+      - hitCount:
+        - damage: 0.425
+      - hitCount:
+        - damage: 0.425
+    - damageType:
+      - hitCount:
+        - damage: 0.55
+      - hitCount:
+        - damage: 0.55
+    - damageType:
+      - hitCount:
+        - damage: 0.675
+      - hitCount:
+        - damage: 0.675
+    - damageType:
+      - hitCount:
+        - damage: 0.8
+      - hitCount:
+        - damage: 0.8
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.5
+      - hitCount:
+        - damage: 0.5
+    - damageType:
+      - hitCount:
+        - damage: 0.625
+      - hitCount:
+        - damage: 0.625
+    - damageType:
+      - hitCount:
+        - damage: 0.75
+      - hitCount:
+        - damage: 0.75
+    - damageType:
+      - hitCount:
+        - damage: 0.875
+      - hitCount:
+        - damage: 0.875
+    - damageType:
+      - hitCount:
+        - damage: 1
+      - hitCount:
+        - damage: 1
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.5
+      - hitCount:
+        - damage: 0.5
+    - damageType:
+      - hitCount:
+        - damage: 0.625
+      - hitCount:
+        - damage: 0.625
+    - damageType:
+      - hitCount:
+        - damage: 0.75
+      - hitCount:
+        - damage: 0.75
+    - damageType:
+      - hitCount:
+        - damage: 0.875
+      - hitCount:
+        - damage: 0.875
+    - damageType:
+      - hitCount:
+        - damage: 1
+      - hitCount:
+        - damage: 1
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []
+  - level: []

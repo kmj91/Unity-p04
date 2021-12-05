@@ -114,15 +114,34 @@
     // 스킬과 일반 공격들의 데미지를 정해주기 위한 enum
     public enum HaruSkillDamage
     {
+        NormalAttack1,
+        NormalAttack2,
+        NormalAttack2_P,    // 승급
+        NormalAttack3,
+        NormalAttack3_1,    // 2타 변형
+        NormalAttack3_P,    // 승급
+        NormalAttack4,
+        NormalAttack4_1,    // 3_1 이어서
+        NormalAttack4_2,    // 3_1 이어서
+        NormalAttack4_A1,   // 3타 변형
+        NormalAttack4_A2,   // 3타 변형 2
+        NormalAttack4_A3,   // 3타 변형 3
+        NormalAttack5,
+        NormalAttack5_P,    // 승급
+        NormalAttackAir1,
+        NormalAttackAir2,
+        NormalAttackAir3,
+        RiseAttack,
+        SpecialAttack,
+        SpecialAttackAir,
         FirstBlade,
         FirstBlade02,   // 추가 공격
         PierceStep,
+        PierceStep_A1,
+        PierceStep_A2,
+        PierceStep_B,
         SpinCutter,
-        NormalAttack1,
-        NormalAttack2,
-        NormalAttack3,
-        NormalAttack4,
-        NormalAttack5,
+        SpinCutter_A,
         End
     }
 

@@ -11,15 +11,24 @@ public class SkillDataScriptableObject : ScriptableObject
     [System.Serializable]
     public class SkillType
     {
+        [System.Serializable]
         public class SkillLevel
         {
-            public class SkillHitCount
+            [System.Serializable]
+            public class SkillDamageType
             {
+                [System.Serializable]
+                public class SkillHitCount
+                {
+                    public float damage;
+                }
 
+                public SkillHitCount[] hitCount;
+                public SkillHitCount this[int index] { get { return hitCount[index]; } }
             }
 
-            public SkillHitCount[] HitCount;
-            public SkillHitCount this[int index] { get { return HitCount[index]; } }
+            public SkillDamageType[] damageType;
+            public SkillDamageType this[int index] { get { return damageType[index]; } }
         }
 
         public SkillLevel[] level;
