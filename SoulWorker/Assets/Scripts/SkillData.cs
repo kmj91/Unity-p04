@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SkillData", menuName = "ScriptableObjects/SkillDataScriptableObject", order = 1)]
-public class SkillDataScriptableObject : ScriptableObject
+public class SkillData : ScriptableObject
 {
     [SerializeField] private int hp;
     public int Hp { get { return hp; } }
@@ -24,7 +24,7 @@ public class SkillDataScriptableObject : ScriptableObject
                 }
 
                 public SkillHitCount[] hitCount;
-                public SkillHitCount this[int index] { get { return hitCount[index]; } }
+                public float this[int index] { get { return hitCount[index].damage; } }
             }
 
             public SkillDamageType[] damageType;
@@ -34,5 +34,11 @@ public class SkillDataScriptableObject : ScriptableObject
         public SkillLevel[] level;
         public SkillLevel this[int index] { get { return level[index]; } }
     }
-    [SerializeField] private SkillType[] m_skillDamage;    // 스킬 데미지
+    // 스킬 데미지
+    // 1 : 스킬 종류
+    // 2 : 스킬 레벨
+    // 3 : 데미지 타입
+    // 4 : 타격 수
+    [SerializeField] private SkillType[] m_skillDamage;
+    public SkillType[] SkillDamage { get { return m_skillDamage; } }
 }

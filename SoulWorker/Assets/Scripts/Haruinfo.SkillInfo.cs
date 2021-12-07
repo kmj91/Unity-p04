@@ -11,13 +11,10 @@ public partial class HaruInfo : PlayerInfo
 
     private HaruSkill[,] m_skillSlot;   // 스킬 슬롯
     private CirculartQueue<HaruSkill>[] skillSlotQueue; // 스킬 슬롯 큐
-    // 1 : 스킬 종류
-    // 2 : 스킬 레벨
-    // 3 : 타격 수
-    // 4 : 피해량 or 슈퍼아머 파괴량
-    private float[,,,] m_skillDamage;
     private float[] m_skillCooldown;    // 스킬 재사용 대기시간
     private bool[] m_readySkill;        // 스킬 사용 준비
+
+    [SerializeField] private SkillData m_skillData;     // 스킬 데이터
 
 
     // 최대 스킬 포인트 얻어오기
@@ -293,7 +290,7 @@ public partial class HaruInfo : PlayerInfo
                 break;
         }
 
-        damage = m_skillDamage[(int)skill, m_skillLevel[(int)skillLevel] - 1, cnt, (int)SkillDamageType.Damage];
+        damage = m_skillData.SkillDamage[(int)skill][m_skillLevel[(int)skillLevel] - 1][(int)SkillDamageType.Damage][cnt];
 
         return true;
     }
@@ -306,9 +303,12 @@ public partial class HaruInfo : PlayerInfo
     {
         float damage = 0;
 
-        for (int iCnt = 0; iCnt < (int)SkillBasicInfo.MaxLevel; ++iCnt)
+        var arrayDamage = m_skillData.SkillDamage[(int)skillDamage][m_skillLevel[(int)skill] - 1][(int)type];
+        int iHitCount = arrayDamage.hitCount.Length;
+
+        for (int iCnt = 0; iCnt < iHitCount; ++iCnt)
         {
-           damage += m_skillDamage[(int)skillDamage, m_skillLevel[(int)skill] - 1, iCnt, (int)type];
+            damage += arrayDamage[iCnt];
         }
 
         return damage;

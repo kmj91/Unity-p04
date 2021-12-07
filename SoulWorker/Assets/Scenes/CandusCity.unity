@@ -6717,6 +6717,12 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: e2e46092c7331f541928acb76c06bf45, type: 3}
     - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
         type: 3}
+      propertyPath: m_skillData
+      value: 
+      objectReference: {fileID: 11400000, guid: 15b8b55da3197284dafa17ea8cefe78b,
+        type: 2}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
       propertyPath: m_hiarColor.b
       value: 0.36862746
       objectReference: {fileID: 0}
