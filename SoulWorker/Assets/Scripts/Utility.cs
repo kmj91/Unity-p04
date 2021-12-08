@@ -5,24 +5,6 @@ using System.IO;
 
 public static class Utility
 {
-    public static Vector3 GetRandomPointOnNavMesh(Vector3 center, float distance, int areaMask)
-    {
-        var randomPos = Random.insideUnitSphere * distance + center;
-
-        NavMeshHit hit;
-
-        NavMesh.SamplePosition(randomPos, out hit, distance, areaMask);
-
-        return hit.position;
-    }
-
-    public static float GetRandomNormalDistribution(float mean, float standard)
-    {
-        var x1 = Random.Range(0f, 1f);
-        var x2 = Random.Range(0f, 1f);
-        return mean + standard * (Mathf.Sqrt(-2.0f * Mathf.Log(x1)) * Mathf.Sin(2.0f * Mathf.PI * x2));
-    }
-
     // 텍스트 파일 쓰기
     public static void WriteText(string filePath, string message)
     {
@@ -43,6 +25,7 @@ public static class Utility
     }
 
     // 텍스트 파일 읽기
+    // filePath : 읽을 파일 주소
     public static string ReadText(string filePath)
     {
         FileInfo fileInfo = new FileInfo(filePath);
@@ -59,6 +42,10 @@ public static class Utility
     }
 
     // 파싱 에어리어
+    // fileText : 파싱 대상 텍스트 문자열
+    // areaName : 파싱할 구역 이름
+    // data : 파싱된 구역
+    // 반환값 : 성공시 true 실패 false
     public static bool Parser_GetArea(string fileText, string areaName, out string data)
     {
         int length = fileText.Length - 1;
@@ -69,9 +56,11 @@ public static class Utility
 
         while (end < length)
         {
+            // 다음 문자열로 이동
             if (!NextWord(fileText, ref begin, ref end))
                 return false;
 
+            // 해당 이름의 구역 파싱
             if (ParsingArea(fileText, areaName, ref begin, ref end, ref data))
                 return true;
         }
@@ -80,6 +69,9 @@ public static class Utility
     }
 
     // 파싱 다음 에어리어
+    // fileText : 파싱 대상 텍스트 문자열
+    // data : 파싱된 다음 구역
+    // 반환값 : 성공시 true 실패 false
     public static bool Parser_GetNextArea(ref string fileText, out string data)
     {
         int length = fileText.Length - 1;
@@ -90,6 +82,7 @@ public static class Utility
 
         while (end < length)
         {
+            // 다음 구역 파싱
             if (ParsingNextArea(ref fileText, ref begin, ref end, ref data))
                 return true;
         }
@@ -97,6 +90,12 @@ public static class Utility
         return false;
     }
 
+    // 파싱 데이터 float
+    // 구역에서 해당 이름의 데이터 반환
+    // text : 파싱 대상 텍스트 문자열
+    // name : 값을 얻어올 데이터 이름
+    // value : 얻어온 데이터
+    // 반환값 : 성공 true 실패 false
     public static bool Parser_GetValue_Float(string text, string name, out float value)
     {
         int length = text.Length - 1;
@@ -108,24 +107,30 @@ public static class Utility
 
         while (end < length)
         {
+            // 다음 문자열로 이동
             if (!NextWord(text, ref begin, ref end))
                 return false;
 
+            // 데이터 이름 비교
             if (!NameCompare(text, name, ref begin, ref end))
             {
+                // 다음 줄로 이동
                 if (!NextLine(text, ref begin, ref end))
                     return false;
 
                 continue;
             }
 
+            // 데이터 얻기
             if (GetValue(text, ref data, ref begin, ref end))
             {
+                // 문자열 형변환 float
                 value = System.Convert.ToSingle(data);
                 return true;
             }
             else
             {
+                // 다음 줄로 이동
                 if (!NextLine(text, ref begin, ref end))
                     return false;
 
@@ -136,6 +141,12 @@ public static class Utility
         return false;
     }
 
+    // 파싱 데이터 string
+    // 구역에서 해당 이름의 데이터 반환
+    // text : 파싱 대상 텍스트 문자열
+    // name : 값을 얻어올 데이터 이름
+    // value : 얻어온 데이터
+    // 반환값 : 성공 true 실패 false
     public static bool Parser_GetValue_String(string text, string name, out string value)
     {
         int length = text.Length - 1;
@@ -146,23 +157,28 @@ public static class Utility
 
         while (end < length)
         {
+            // 다음 문자열로 이동
             if (!NextWord(text, ref begin, ref end))
                 return false;
 
+            // 데이터 이름 비교
             if (!NameCompare(text, name, ref begin, ref end))
             {
+                // 다음 줄로 이동
                 if (!NextLine(text, ref begin, ref end))
                     return false;
 
                 continue;
             }
 
+            // 데이터 얻기
             if (GetValue(text, ref value, ref begin, ref end))
             {
                 return true;
             }
             else
             {
+                // 다음 줄로 이동
                 if (!NextLine(text, ref begin, ref end))
                     return false;
 
@@ -176,6 +192,10 @@ public static class Utility
 
 
     // 다음 문자 시작위치로 인덱스 반환
+    // text : 파싱 대상 텍스트 문자열
+    // begin : 문자열 시작 인덱스
+    // end : 문자열 끝 인덱스
+    // 반환값 : 성공 true 실패 false
     private static bool NextWord(string text, ref int begin, ref int end)
     {
         int length = text.Length - 1;
@@ -199,6 +219,11 @@ public static class Utility
         return true;
     }
 
+    // 다음 줄로 이동
+    // text : 파싱 대상 텍스트 문자열
+    // begin : 문자열 시작 인덱스
+    // end : 문자열 끝 인덱스
+    // 반환값 : 성공 true 실패 false
     private static bool NextLine(string text, ref int begin, ref int end)
     {
         int length = text.Length - 1;
@@ -220,6 +245,11 @@ public static class Utility
         return true;
     }
 
+    // 문자열의 끝 인덱스 반환
+    // text : 파싱 대상 텍스트 문자열
+    // begin : 문자열 시작 인덱스
+    // end : 문자열 끝 인덱스
+    // 반환값 : 성공 true 실패 false
     private static bool EndString(string text, ref int begin, ref int end)
     {
         int length = text.Length - 1;
@@ -263,6 +293,12 @@ public static class Utility
         return true;
     }
 
+    // 파싱할 데이터 이름 비교
+    // text : 파싱 대상 텍스트 문자열
+    // name : 비교할 데이터 이름
+    // begin : 문자열 시작 인덱스
+    // end : 문자열 끝 인덱스
+    // 반환값 : 성공 true 실패 false
     private static bool NameCompare(string text, string name, ref int begin, ref int end)
     {
         if (!EndString(text, ref begin, ref end))
@@ -278,11 +314,19 @@ public static class Utility
         return true;
     }
 
+    // 데이터 얻기
+    // text : 파싱 대상 텍스트 문자열
+    // data : 얻어온 데이터
+    // begin : 문자열 시작 인덱스
+    // end : 문자열 끝 인덱스
+    // 반환값: 성공 true 실패 false
     private static bool GetValue(string text, ref string data, ref int begin, ref int end)
     {
+        // 다음 문자열로 이동
         if (!NextWord(text, ref begin, ref end))
             return false;
 
+        // 문자열의 끝 인덱스 반환
         if (!EndString(text, ref begin, ref end))
             return false;
 
@@ -294,9 +338,11 @@ public static class Utility
 
         begin = end;
 
+        // 다음 문자열로 이동
         if (!NextWord(text, ref begin, ref end))
             return false;
 
+        // 문자열의 끝 인덱스 반환
         if (!EndString(text, ref begin, ref end))
             return false;
 
