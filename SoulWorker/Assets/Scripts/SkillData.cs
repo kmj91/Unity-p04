@@ -41,4 +41,8 @@ public class SkillData : ScriptableObject
     // 4 : 타격 수
     [SerializeField] private SkillType[] m_skillDamage;
     public SkillType[] SkillDamage { get { return m_skillDamage; } }
+
+    // 스킬 재사용 대기시간
+    [SerializeField] private float[] m_skillCooldown;
+    public float[] skillCooldown { get { return m_skillCooldown; } }
 }

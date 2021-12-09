@@ -516,3 +516,7 @@ MonoBehaviour:
   - level: []
   - level: []
   - level: []
+  m_skillCooldown:
+  - 10
+  - 8
+  - 5
