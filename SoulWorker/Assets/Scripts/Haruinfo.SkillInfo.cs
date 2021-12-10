@@ -11,7 +11,6 @@ public partial class HaruInfo : PlayerInfo
 
     private HaruSkill[,] m_skillSlot;   // 스킬 슬롯
     private CirculartQueue<HaruSkill>[] skillSlotQueue; // 스킬 슬롯 큐
-    private float[] m_skillCooldown;    // 스킬 재사용 대기시간
     private bool[] m_readySkill;        // 스킬 사용 준비
 
     [SerializeField] private SkillData m_skillData;     // 스킬 데이터
@@ -317,14 +316,14 @@ public partial class HaruInfo : PlayerInfo
     // 스킬 재사용 대기시간 얻어오기
     public float GetSkillCooldown(HaruSkill skill)
     {
-        return m_skillCooldown[(int)skill];
+        return m_skillData.skillCooldown[(int)skill];
     }
 
 
 
     private IEnumerator CountSkillCooldown(HaruSkill skill)
     {
-        float cooldown = m_skillCooldown[(int)skill];
+        float cooldown = m_skillData.skillCooldown[(int)skill];
         float originCooldown = cooldown;
         // 0.5초
         WaitForSeconds wait = new WaitForSeconds(0.5f);

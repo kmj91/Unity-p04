@@ -125,13 +125,6 @@ public partial class HaruInfo : PlayerInfo
         }
 
 
-        m_skillCooldown = new float[(int)HaruSkill.End];
-
-        m_skillCooldown[(int)HaruSkill.FirstBlade] = 20f;//10f;
-        m_skillCooldown[(int)HaruSkill.PierceStep] = 15f;//8f;
-        m_skillCooldown[(int)HaruSkill.SpinCutter] = 10f;//5f;
-
-
         m_readySkill = new bool[(int)HaruSkill.End];
 
         m_readySkill[(int)HaruSkill.FirstBlade] = true;
