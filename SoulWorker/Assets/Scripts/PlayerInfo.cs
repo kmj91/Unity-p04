@@ -5,8 +5,8 @@ using MyEnum;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public PlayerData originPlayerData;
-    public PlayerData currentPlayerData;
+    public stPlayerData originPlayerData;
+    public stPlayerData currentPlayerData;
 
     public Item headGear;
     public Item shoulderGear;
@@ -15,7 +15,7 @@ public class PlayerInfo : MonoBehaviour
     public Item m_weapon;
 
 
-    public void SetUp(ref PlayerData data)
+    public void SetUp(ref stPlayerData data)
     {
         originPlayerData = data;
         currentPlayerData = data;
@@ -60,7 +60,7 @@ public class PlayerInfo : MonoBehaviour
 
     public float GetCurrentEvade()
     {
-        return currentPlayerData.m_evade;
+        return currentPlayerData.evade;
     }
 
     public float GetCurrentCriticalResistance()

@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillData", menuName = "ScriptableObjects/SkillDataScriptableObject", order = 1)]
+[CreateAssetMenu(fileName = "SkillData", menuName = "ScriptableObjects/SkillData", order = 1)]
 public class SkillData : ScriptableObject
 {
     [SerializeField] private int hp;

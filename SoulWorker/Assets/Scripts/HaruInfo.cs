@@ -50,7 +50,7 @@ public partial class HaruInfo : PlayerInfo
         //public float superArmourBreak;  // 슈퍼아머 파괴력[%]
         #endregion
         // 플레이어 정보 초기화
-        PlayerData data = new PlayerData
+        stPlayerData data = new stPlayerData
         {
             level = 1f,
             hp = 1150f,
@@ -70,7 +70,7 @@ public partial class HaruInfo : PlayerInfo
             extraDmgToBossNamed = 0f,
 
             defense = 7f,
-            m_evade = 0f,
+            evade = 0f,
             damageReduction = 0f,
             criticalResistance = 0f,
             shorterCooldown = 0f,

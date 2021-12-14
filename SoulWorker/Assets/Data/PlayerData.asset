@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12af3b516c6d61a4297fb85c7259c32a, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  m_originPlayerData:
+  - level: 0
+    hp: 0
+    stamina: 0
+    staminaRegen: 0
+    sg: 0
+    moveSpeed: 0
+    maxAtk: 0
+    minAtk: 0
+    criticalRate: 0
+    criticalDamage: 0
+    atkSpeed: 0
+    accuracy: 0
+    armourBreak: 0
+    extraDmgToEnemy: 0
+    extraDmgToBossNamed: 0
+    defense: 0
+    m_evade: 0
+    damageReduction: 0
+    criticalResistance: 0
+    shorterCooldown: 0
+    partialDamage: 0
+    superArmourBreak: 0
+  - level: 1
+    hp: 1150
+    stamina: 100
+    staminaRegen: 10
+    sg: 200
+    moveSpeed: 1
+    maxAtk: 54
+    minAtk: 43.2
+    criticalRate: 1
+    criticalDamage: 43
+    atkSpeed: 1
+    accuracy: 804
+    armourBreak: 0
+    extraDmgToEnemy: 0
+    extraDmgToBossNamed: 0
+    defense: 7
+    m_evade: 0
+    damageReduction: 0
+    criticalResistance: 0
+    shorterCooldown: 0
+    partialDamage: 50
+    superArmourBreak: 0

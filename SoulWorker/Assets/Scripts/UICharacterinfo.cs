@@ -34,7 +34,7 @@ public class UICharacterinfo : MonoBehaviour
     // 캐릭터 스텟 정보 초기화
     public void InitEquipmentStat()
     {
-        PlayerData data = m_haruInfo.currentPlayerData;
+        stPlayerData data = m_haruInfo.currentPlayerData;
 
         m_equipmentHP.text = data.hp.ToString();
         m_equipmentAttack.text = data.minAtk + " - " + data.maxAtk;
@@ -47,7 +47,7 @@ public class UICharacterinfo : MonoBehaviour
         m_equipmentStamina.text = data.stamina.ToString();
         m_equipmentMoveSpeed.text = data.moveSpeed.ToString("F1") + "%";
         m_equipmentDefense.text = data.defense.ToString();
-        m_equipmentEvade.text = data.m_evade.ToString();
+        m_equipmentEvade.text = data.evade.ToString();
         m_equipmentDamageReduction.text = data.damageReduction.ToString("F1") + "%";
         m_equipmentCriticalResistance.text = data.criticalResistance.ToString("F1") + "%";
         m_equipmentShorterCooldown.text = data.shorterCooldown.ToString("F1") + "%";

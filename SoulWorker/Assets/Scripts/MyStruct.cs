@@ -69,7 +69,7 @@ namespace MyStruct
 
     // 플레이어 정보
     [Serializable]
-    public struct PlayerData
+    public struct stPlayerData
     {
         public float level;             // 레벨
         public float hp;                // 체력
@@ -89,7 +89,7 @@ namespace MyStruct
         public float extraDmgToBossNamed;   // 적 추가 피해 보스 / 네임드[%]
 
         public float defense;           // 방어도
-        public float m_evade;             // 회피도
+        public float evade;             // 회피도
         public float damageReduction;   // 피해 감소[%]
         public float criticalResistance;// 치명타 저항[%]
         public float shorterCooldown;   // 재사용 대기시간 감소
