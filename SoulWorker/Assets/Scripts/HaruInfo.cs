@@ -22,7 +22,7 @@ public partial class HaruInfo : PlayerInfo
 
     private void Awake()
     {
-        currentPlayerData = m_playerData.originPlayerData[m_level];
+        m_currentPlayerData = m_playerData.originPlayerData[m_level];
     }
 
     private void Start()

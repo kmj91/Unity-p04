@@ -6,31 +6,32 @@ using MyEnum;
 public class PlayerInfo : MonoBehaviour
 {
     [SerializeField] protected PlayerData m_playerData;
-    public stPlayerData currentPlayerData;
+    protected stPlayerData m_currentPlayerData;
+    public stPlayerData currentPlayerData { get { return m_currentPlayerData; } }
     public int m_level = 1;         // 레벨
 
-    public Item headGear;
-    public Item shoulderGear;
-    public Item bodyGear;
-    public Item legGear;
+    public Item m_headGear;
+    public Item m_shoulderGear;
+    public Item m_bodyGear;
+    public Item m_legGear;
     public Item m_weapon;
 
 
 
     public void UpdateInfo()
     {
-        currentPlayerData = m_playerData.originPlayerData[m_level];
+        m_currentPlayerData = m_playerData.originPlayerData[m_level];
 
         foreach (var ability in m_weapon.m_abilityDatas)
         {
             switch (ability.type)
             {
                 case AbilityType.Attack:
-                    currentPlayerData.maxAtk += ability.amount;
-                    currentPlayerData.minAtk = currentPlayerData.maxAtk * 0.8f;
+                    m_currentPlayerData.maxAtk += ability.amount;
+                    m_currentPlayerData.minAtk = m_currentPlayerData.maxAtk * 0.8f;
                     break;
                 case AbilityType.Defense:
-                    currentPlayerData.defense += ability.amount;
+                    m_currentPlayerData.defense += ability.amount;
                     break;
             }
 
@@ -41,7 +42,7 @@ public class PlayerInfo : MonoBehaviour
 
     public float GetCurrentHp()
     {
-        return currentPlayerData.hp;
+        return m_currentPlayerData.hp;
     }
 
     public float GetCurrentLevel()
@@ -51,16 +52,16 @@ public class PlayerInfo : MonoBehaviour
 
     public float GetCurrentDefense()
     {
-        return currentPlayerData.defense;
+        return m_currentPlayerData.defense;
     }
 
     public float GetCurrentEvade()
     {
-        return currentPlayerData.evade;
+        return m_currentPlayerData.evade;
     }
 
     public float GetCurrentCriticalResistance()
     {
-        return currentPlayerData.criticalResistance;
+        return m_currentPlayerData.criticalResistance;
     }
 }
