@@ -71,7 +71,6 @@ namespace MyStruct
     [Serializable]
     public struct stPlayerData
     {
-        public float level;             // 레벨
         public float hp;                // 체력
         public float stamina;           // 스태미나
         public float staminaRegen;      // 스태미나 회복

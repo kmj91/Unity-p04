@@ -6723,6 +6723,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
         type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 653e1e72ac1e0ba43826a87be57e0a56,
+        type: 2}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
       propertyPath: m_hiarColor.b
       value: 0.36862746
       objectReference: {fileID: 0}
@@ -6781,6 +6787,12 @@ PrefabInstance:
       propertyPath: m_shoessRenderer
       value: 
       objectReference: {fileID: 61787862}
+    - target: {fileID: 7781589610224360148, guid: 77d8fd9b0b290f0468996a0df2aa250b,
+        type: 3}
+      propertyPath: m_originPlayerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 653e1e72ac1e0ba43826a87be57e0a56,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d8fd9b0b290f0468996a0df2aa250b, type: 3}
 --- !u!1001 &5824356814942818074

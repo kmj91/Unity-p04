@@ -5,8 +5,9 @@ using MyEnum;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public stPlayerData originPlayerData;
+    [SerializeField] protected PlayerData m_playerData;
     public stPlayerData currentPlayerData;
+    public int m_level = 1;         // 레벨
 
     public Item headGear;
     public Item shoulderGear;
@@ -15,15 +16,10 @@ public class PlayerInfo : MonoBehaviour
     public Item m_weapon;
 
 
-    public void SetUp(ref stPlayerData data)
-    {
-        originPlayerData = data;
-        currentPlayerData = data;
-    }
 
     public void UpdateInfo()
     {
-        currentPlayerData = originPlayerData;
+        currentPlayerData = m_playerData.originPlayerData[m_level];
 
         foreach (var ability in m_weapon.m_abilityDatas)
         {
@@ -50,7 +46,7 @@ public class PlayerInfo : MonoBehaviour
 
     public float GetCurrentLevel()
     {
-        return currentPlayerData.level;
+        return m_level;
     }
 
     public float GetCurrentDefense()

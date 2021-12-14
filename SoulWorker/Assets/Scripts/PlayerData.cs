@@ -6,4 +6,5 @@ using MyStruct;
 public class PlayerData : ScriptableObject
 {
     [SerializeField] private stPlayerData[] m_originPlayerData;
+    public stPlayerData[] originPlayerData { get { return m_originPlayerData; } }
 }
