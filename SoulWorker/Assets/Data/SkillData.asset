@@ -514,29 +514,49 @@ MonoBehaviour:
   - level:
     - damageType:
       - hitCount:
-        - damage: 0.83
+        - damage: 0.25
+        - damage: 0.25
+        - damage: 0.33
       - hitCount:
-        - damage: 3.3
+        - damage: 1
+        - damage: 1
+        - damage: 1.3
     - damageType:
       - hitCount:
-        - damage: 0.87
+        - damage: 0.26
+        - damage: 0.26
+        - damage: 0.35
       - hitCount:
-        - damage: 3.47
+        - damage: 1.05
+        - damage: 1.05
+        - damage: 1.37
     - damageType:
       - hitCount:
-        - damage: 0.97
+        - damage: 0.29
+        - damage: 0.29
+        - damage: 0.39
       - hitCount:
-        - damage: 3.88
+        - damage: 1.18
+        - damage: 1.18
+        - damage: 1.52
     - damageType:
       - hitCount:
-        - damage: 1.08
+        - damage: 0.32
+        - damage: 0.32
+        - damage: 0.44
       - hitCount:
-        - damage: 4.29
+        - damage: 1.3
+        - damage: 1.3
+        - damage: 1.69
     - damageType:
       - hitCount:
-        - damage: 1.24
+        - damage: 0.36
+        - damage: 0.36
+        - damage: 0.52
       - hitCount:
-        - damage: 4.95
+        - damage: 1.5
+        - damage: 1.5
+        - damage: 1.95
   - level: []
   - level: []
   - level: []
