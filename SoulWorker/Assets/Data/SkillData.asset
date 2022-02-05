@@ -560,6 +560,72 @@ MonoBehaviour:
   - level: []
   - level: []
   - level: []
+  - level:
+    - damageType:
+      - hitCount:
+        - damage: 0.356
+        - damage: 0.356
+        - damage: 0.356
+        - damage: 0.356
+        - damage: 0.356
+      - hitCount:
+        - damage: 0.184
+        - damage: 0.184
+        - damage: 0.184
+        - damage: 0.184
+        - damage: 0.184
+    - damageType:
+      - hitCount:
+        - damage: 0.374
+        - damage: 0.374
+        - damage: 0.374
+        - damage: 0.374
+        - damage: 0.374
+      - hitCount:
+        - damage: 0.192
+        - damage: 0.192
+        - damage: 0.192
+        - damage: 0.192
+        - damage: 0.192
+    - damageType:
+      - hitCount:
+        - damage: 0.418
+        - damage: 0.418
+        - damage: 0.418
+        - damage: 0.418
+        - damage: 0.418
+      - hitCount:
+        - damage: 0.216
+        - damage: 0.216
+        - damage: 0.216
+        - damage: 0.216
+        - damage: 0.216
+    - damageType:
+      - hitCount:
+        - damage: 0.462
+        - damage: 0.462
+        - damage: 0.462
+        - damage: 0.462
+        - damage: 0.462
+      - hitCount:
+        - damage: 0.238
+        - damage: 0.238
+        - damage: 0.238
+        - damage: 0.238
+        - damage: 0.238
+    - damageType:
+      - hitCount:
+        - damage: 0.534
+        - damage: 0.534
+        - damage: 0.534
+        - damage: 0.534
+        - damage: 0.534
+      - hitCount:
+        - damage: 0.276
+        - damage: 0.276
+        - damage: 0.276
+        - damage: 0.276
+        - damage: 0.276
   - level: []
   m_skillCooldown:
   - 10
