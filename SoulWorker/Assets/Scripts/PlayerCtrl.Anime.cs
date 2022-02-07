@@ -1058,34 +1058,103 @@ public partial class PlayerCtrl : MonoBehaviour
     }
 
     // 피어스 스탭
+    // 3타 공격
     private void Ani_PierceStep()
     {
-        if (m_hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Pierce_Step"))
+        // 현재 진행 애니메이션이 피어스 스탭이 아니면 예외
+        if (!m_hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_Pierce_Step"))
+            return;
+
+        // 애니메이션 표준화된 진행 시간 (애니메이션 끝이 1.0)
+        float time = m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+        // 무기 충돌 트리거 관련 On, Off 처리
+        // 애니메이션 재생 진행에 따라 트리거가 켜지고 꺼짐
+        // 1타 시작
+        if (!m_isAttacking && 0.3f > time && time >= 0.23f)
         {
-            float time = m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            m_isAttacking = true;
+            // 무기 충돌 트리거 ON
+            m_weapon.OnTrigger();
+            // 공격 타입
+            m_weapon.m_attackType = AttackType.Normal;
+            // 데미지 정보
+            float damage;
+            if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.PierceStep, 0, out damage))
+                return;
+            m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
+        }
+        // 1타 끝
+        else if (m_isAttacking && 0.33f > time && time >= 0.3f)
+        {
+            m_isAttacking = false;
+            // 무기 충돌 트리거 OFF
+            m_weapon.OffTrigger();
+        }
+        // 2타 시작
+        else if (!m_isAttacking && 0.4f > time && time >= 0.33f)
+        {
+            m_isAttacking = true;
+            // 무기 충돌 트리거 ON
+            m_weapon.OnTrigger();
+            // 공격 타입
+            m_weapon.m_attackType = AttackType.Normal;
+            // 데미지 정보
+            float damage;
+            if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.PierceStep, 1, out damage))
+                return;
+            m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
+        }
+        // 2타 끝
+        else if (m_isAttacking && 0.43f > time && time >= 0.4f)
+        {
+            m_isAttacking = false;
+            // 무기 충돌 트리거 OFF
+            m_weapon.OffTrigger();
+        }
+        // 3타 시작
+        else if (!m_isAttacking && 0.5f > time && time >= 0.43f)
+        {
+            m_isAttacking = true;
+            // 무기 충돌 트리거 ON
+            m_weapon.OnTrigger();
+            // 공격 타입
+            m_weapon.m_attackType = AttackType.Normal;
+            // 데미지 정보
+            float damage;
+            if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.PierceStep, 2, out damage))
+                return;
+            m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
+        }
+        // 3타 끝
+        else if (m_isAttacking && time >= 0.5f)
+        {
+            m_isAttacking = false;
+            // 무기 충돌 트리거 OFF
+            m_weapon.OffTrigger();
+        }
 
-            if (m_moveAttack && 0.4f <= time)
-            {
-                m_moveAttack = false;
-            }
+        if (m_moveAttack && 0.4f <= time)
+        {
+            m_moveAttack = false;
+        }
 
-            if (m_lockInput && 0.7f <= time)
-            {
-                m_lockInput = false;
-            }
+        if (m_lockInput && 0.7f <= time)
+        {
+            m_lockInput = false;
+        }
 
-            if (!m_moveStand && 0.72f <= time)
-            {
-                m_moveStand = true;
-            }
+        if (!m_moveStand && 0.72f <= time)
+        {
+            m_moveStand = true;
+        }
 
-            if (0.99f <= time)
-            {
-                ChangeFlagFalse();
-                lastIdleChangeTime = Time.time;
-                m_state = HaruState.Idle;
-                ChangeFlagTrue();
-            }
+        if (0.99f <= time)
+        {
+            ChangeFlagFalse();
+            lastIdleChangeTime = Time.time;
+            m_state = HaruState.Idle;
+            ChangeFlagTrue();
         }
     }
 
