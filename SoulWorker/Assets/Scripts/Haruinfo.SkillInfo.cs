@@ -316,14 +316,42 @@ public partial class HaruInfo : PlayerInfo
     // 스킬 재사용 대기시간 얻어오기
     public float GetSkillCooldown(HaruSkill skill)
     {
-        return m_skillData.skillCooldown[(int)skill];
+        return m_skillData.SkillCooldown[(int)skill];
     }
+
+    // 공격 시간 검사
+    // _enSkill : 공격 스킬 타입
+    // _fTime : 애니메이션 표준화 시간
+    // _iAttackCount : 공격 타 수
+    // 반환 값 : 공격 시간 범위 안에 들어오면 true, 아니면 false
+    public bool CheckAttackTime(HaruSkillDamage _enSkill, float _fTime, out int _iAttackCount)
+    {
+        _iAttackCount = 0;
+        foreach (var timeInfo in m_skillData.SkillAttackTime[(int)_enSkill].hitCount)
+        {
+            // 시간 범위 안에 들어오면 true
+            if (timeInfo.filst <= _fTime && _fTime < timeInfo.second)
+                return true;
+            // 공격 타 수 증가
+            ++_iAttackCount;
+        }
+
+        // 조건에 안걸리면 false
+        return false;
+    }
+
+
+
+
+
+
+
 
 
 
     private IEnumerator CountSkillCooldown(HaruSkill skill)
     {
-        float cooldown = m_skillData.skillCooldown[(int)skill];
+        float cooldown = m_skillData.SkillCooldown[(int)skill];
         float originCooldown = cooldown;
         // 0.5초
         WaitForSeconds wait = new WaitForSeconds(0.5f);

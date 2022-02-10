@@ -662,4 +662,36 @@ public partial class PlayerCtrl : MonoBehaviour
                 break;
         }
     }
+
+    // 공격 처리
+    // _fTime : 애니메이션 표준화 시간
+    void AttackProc(HaruSkillDamage _enSkill, float _fTime)
+    {
+        // 애니메이션 시간이 표준화 범위를 벗어나면 예외
+        if (_fTime < 0 || 1 < _fTime)
+            return;
+
+        int iAttackCount;
+        if (!m_playerInfo.CheckAttackTime(_enSkill, _fTime, out iAttackCount))
+        {
+            if (m_isAttacking)
+            {
+                m_isAttacking = false;
+                // 무기 충돌 트리거 OFF
+                m_weapon.OffTrigger();
+            }
+            return;
+        }
+
+        m_isAttacking = true;
+        // 무기 충돌 트리거 ON
+        m_weapon.OnTrigger();
+        // 공격 타입
+        m_weapon.m_attackType = AttackType.Normal;
+        // 데미지 정보
+        float damage;
+        if (!m_playerInfo.GetSkillDamage(_enSkill, iAttackCount, out damage))
+            return;
+        m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
+    }
 }

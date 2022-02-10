@@ -4,10 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SkillData", menuName = "ScriptableObjects/SkillData", order = 1)]
 public class SkillData : ScriptableObject
 {
-    [SerializeField] private int hp;
-    public int Hp { get { return hp; } }
-
-
     [System.Serializable]
     public class SkillType
     {
@@ -21,8 +17,6 @@ public class SkillData : ScriptableObject
                 public class SkillHitCount
                 {
                     public float damage;
-                    public float filst;
-                    public float second;
                 }
 
                 public SkillHitCount[] hitCount;
@@ -46,5 +40,23 @@ public class SkillData : ScriptableObject
 
     // 스킬 재사용 대기시간
     [SerializeField] private float[] m_skillCooldown;
-    public float[] skillCooldown { get { return m_skillCooldown; } }
+    public float[] SkillCooldown { get { return m_skillCooldown; } }
+
+
+    [System.Serializable]
+    public class SkillAttackTimeRange
+    {
+        [System.Serializable]
+        public class SkillHitCount
+        {
+            public float filst;
+            public float second;
+        }
+
+        public SkillHitCount[] hitCount;
+        public SkillHitCount this[int index] { get { return hitCount[index]; } }
+    }
+    // 스킬 공격 시간 범위
+    [SerializeField] private SkillAttackTimeRange[] m_skillAttackTime;
+    public SkillAttackTimeRange[] SkillAttackTime { get { return m_skillAttackTime; } }
 }

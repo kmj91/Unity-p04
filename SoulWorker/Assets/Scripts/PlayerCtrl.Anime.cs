@@ -1070,69 +1070,7 @@ public partial class PlayerCtrl : MonoBehaviour
 
         // 무기 충돌 트리거 관련 On, Off 처리
         // 애니메이션 재생 진행에 따라 트리거가 켜지고 꺼짐
-        // 1타 시작
-        if (!m_isAttacking && 0.3f > time && time >= 0.23f)
-        {
-            m_isAttacking = true;
-            // 무기 충돌 트리거 ON
-            m_weapon.OnTrigger();
-            // 공격 타입
-            m_weapon.m_attackType = AttackType.Normal;
-            // 데미지 정보
-            float damage;
-            if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.PierceStep, 0, out damage))
-                return;
-            m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
-        }
-        // 1타 끝
-        else if (m_isAttacking && 0.33f > time && time >= 0.3f)
-        {
-            m_isAttacking = false;
-            // 무기 충돌 트리거 OFF
-            m_weapon.OffTrigger();
-        }
-        // 2타 시작
-        else if (!m_isAttacking && 0.4f > time && time >= 0.33f)
-        {
-            m_isAttacking = true;
-            // 무기 충돌 트리거 ON
-            m_weapon.OnTrigger();
-            // 공격 타입
-            m_weapon.m_attackType = AttackType.Normal;
-            // 데미지 정보
-            float damage;
-            if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.PierceStep, 1, out damage))
-                return;
-            m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
-        }
-        // 2타 끝
-        else if (m_isAttacking && 0.43f > time && time >= 0.4f)
-        {
-            m_isAttacking = false;
-            // 무기 충돌 트리거 OFF
-            m_weapon.OffTrigger();
-        }
-        // 3타 시작
-        else if (!m_isAttacking && 0.5f > time && time >= 0.43f)
-        {
-            m_isAttacking = true;
-            // 무기 충돌 트리거 ON
-            m_weapon.OnTrigger();
-            // 공격 타입
-            m_weapon.m_attackType = AttackType.Normal;
-            // 데미지 정보
-            float damage;
-            if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.PierceStep, 2, out damage))
-                return;
-            m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
-        }
-        // 3타 끝
-        else if (m_isAttacking && time >= 0.5f)
-        {
-            m_isAttacking = false;
-            // 무기 충돌 트리거 OFF
-            m_weapon.OffTrigger();
-        }
+        AttackProc(HaruSkillDamage.PierceStep, time);
 
         if (m_moveAttack && 0.4f <= time)
         {
