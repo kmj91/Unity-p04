@@ -18,406 +18,766 @@ MonoBehaviour:
     - damageType:
       - hitCount:
         - damage: 0.5
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.5
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.625
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.625
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.75
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.75
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.875
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.875
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.2
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.2
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.325
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.325
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.45
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.45
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.575
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.575
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.7
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.7
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.2
+          filst: 0
+          second: 0
         - damage: 0.2
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.2
+          filst: 0
+          second: 0
         - damage: 0.2
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.325
+          filst: 0
+          second: 0
         - damage: 0.325
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.325
+          filst: 0
+          second: 0
         - damage: 0.325
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.45
+          filst: 0
+          second: 0
         - damage: 0.45
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.45
+          filst: 0
+          second: 0
         - damage: 0.45
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.575
+          filst: 0
+          second: 0
         - damage: 0.575
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.575
+          filst: 0
+          second: 0
         - damage: 0.575
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.7
+          filst: 0
+          second: 0
         - damage: 0.7
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.7
+          filst: 0
+          second: 0
         - damage: 0.7
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
         - damage: 0.3
+          filst: 0
+          second: 0
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
         - damage: 0.3
+          filst: 0
+          second: 0
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
         - damage: 0.425
+          filst: 0
+          second: 0
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
         - damage: 0.425
+          filst: 0
+          second: 0
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
         - damage: 0.55
+          filst: 0
+          second: 0
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
         - damage: 0.55
+          filst: 0
+          second: 0
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
         - damage: 0.675
+          filst: 0
+          second: 0
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
         - damage: 0.675
+          filst: 0
+          second: 0
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
         - damage: 0.8
+          filst: 0
+          second: 0
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
         - damage: 0.8
+          filst: 0
+          second: 0
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.425
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.55
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.675
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.8
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.5
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.5
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.625
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.625
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.75
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.75
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.875
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.875
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.5
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.5
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.625
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.625
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.75
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.75
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.875
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.875
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
   - level: []
   - level: []
   - level: []
@@ -425,138 +785,290 @@ MonoBehaviour:
     - damageType:
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
   - level: []
   - level: []
   - level:
     - damageType:
       - hitCount:
         - damage: 2.7
+          filst: 0
+          second: 0
         - damage: 2.7
+          filst: 0
+          second: 0
         - damage: 1.35
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.45
+          filst: 0
+          second: 0
         - damage: 1.45
+          filst: 0
+          second: 0
         - damage: 0.72
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 2.81
+          filst: 0
+          second: 0
         - damage: 2.81
+          filst: 0
+          second: 0
         - damage: 1.46
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.51
+          filst: 0
+          second: 0
         - damage: 1.51
+          filst: 0
+          second: 0
         - damage: 0.78
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 3.09
+          filst: 0
+          second: 0
         - damage: 3.09
+          filst: 0
+          second: 0
         - damage: 1.74
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.66
+          filst: 0
+          second: 0
         - damage: 1.66
+          filst: 0
+          second: 0
         - damage: 0.94
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 3.37
+          filst: 0
+          second: 0
         - damage: 3.37
+          filst: 0
+          second: 0
         - damage: 2.03
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.81
+          filst: 0
+          second: 0
         - damage: 1.81
+          filst: 0
+          second: 0
         - damage: 1.08
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 3.82
+          filst: 0
+          second: 0
         - damage: 3.82
+          filst: 0
+          second: 0
         - damage: 2.48
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 2.05
+          filst: 0
+          second: 0
         - damage: 2.05
+          filst: 0
+          second: 0
         - damage: 1.33
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 1.35
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.72
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 1.42
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.76
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 1.58
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.85
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 1.75
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.94
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 2.02
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.09
+          filst: 0
+          second: 0
   - level:
     - damageType:
       - hitCount:
         - damage: 0.25
+          filst: 0.23
+          second: 0.3
         - damage: 0.25
+          filst: 0.33
+          second: 0.4
         - damage: 0.33
+          filst: 0.43
+          second: 0.5
       - hitCount:
         - damage: 1
+          filst: 0
+          second: 0
         - damage: 1
+          filst: 0
+          second: 0
         - damage: 1.3
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.26
+          filst: 0
+          second: 0
         - damage: 0.26
+          filst: 0
+          second: 0
         - damage: 0.35
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.05
+          filst: 0
+          second: 0
         - damage: 1.05
+          filst: 0
+          second: 0
         - damage: 1.37
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.29
+          filst: 0
+          second: 0
         - damage: 0.29
+          filst: 0
+          second: 0
         - damage: 0.39
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.18
+          filst: 0
+          second: 0
         - damage: 1.18
+          filst: 0
+          second: 0
         - damage: 1.52
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.32
+          filst: 0
+          second: 0
         - damage: 0.32
+          filst: 0
+          second: 0
         - damage: 0.44
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.3
+          filst: 0
+          second: 0
         - damage: 1.3
+          filst: 0
+          second: 0
         - damage: 1.69
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.36
+          filst: 0
+          second: 0
         - damage: 0.36
+          filst: 0
+          second: 0
         - damage: 0.52
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 1.5
+          filst: 0
+          second: 0
         - damage: 1.5
+          filst: 0
+          second: 0
         - damage: 1.95
+          filst: 0
+          second: 0
   - level: []
   - level: []
   - level: []
@@ -564,68 +1076,168 @@ MonoBehaviour:
     - damageType:
       - hitCount:
         - damage: 0.356
+          filst: 0
+          second: 0
         - damage: 0.356
+          filst: 0
+          second: 0
         - damage: 0.356
+          filst: 0
+          second: 0
         - damage: 0.356
+          filst: 0
+          second: 0
         - damage: 0.356
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.184
+          filst: 0
+          second: 0
         - damage: 0.184
+          filst: 0
+          second: 0
         - damage: 0.184
+          filst: 0
+          second: 0
         - damage: 0.184
+          filst: 0
+          second: 0
         - damage: 0.184
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.374
+          filst: 0
+          second: 0
         - damage: 0.374
+          filst: 0
+          second: 0
         - damage: 0.374
+          filst: 0
+          second: 0
         - damage: 0.374
+          filst: 0
+          second: 0
         - damage: 0.374
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.192
+          filst: 0
+          second: 0
         - damage: 0.192
+          filst: 0
+          second: 0
         - damage: 0.192
+          filst: 0
+          second: 0
         - damage: 0.192
+          filst: 0
+          second: 0
         - damage: 0.192
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.418
+          filst: 0
+          second: 0
         - damage: 0.418
+          filst: 0
+          second: 0
         - damage: 0.418
+          filst: 0
+          second: 0
         - damage: 0.418
+          filst: 0
+          second: 0
         - damage: 0.418
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.216
+          filst: 0
+          second: 0
         - damage: 0.216
+          filst: 0
+          second: 0
         - damage: 0.216
+          filst: 0
+          second: 0
         - damage: 0.216
+          filst: 0
+          second: 0
         - damage: 0.216
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.462
+          filst: 0
+          second: 0
         - damage: 0.462
+          filst: 0
+          second: 0
         - damage: 0.462
+          filst: 0
+          second: 0
         - damage: 0.462
+          filst: 0
+          second: 0
         - damage: 0.462
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.238
+          filst: 0
+          second: 0
         - damage: 0.238
+          filst: 0
+          second: 0
         - damage: 0.238
+          filst: 0
+          second: 0
         - damage: 0.238
+          filst: 0
+          second: 0
         - damage: 0.238
+          filst: 0
+          second: 0
     - damageType:
       - hitCount:
         - damage: 0.534
+          filst: 0
+          second: 0
         - damage: 0.534
+          filst: 0
+          second: 0
         - damage: 0.534
+          filst: 0
+          second: 0
         - damage: 0.534
+          filst: 0
+          second: 0
         - damage: 0.534
+          filst: 0
+          second: 0
       - hitCount:
         - damage: 0.276
+          filst: 0
+          second: 0
         - damage: 0.276
+          filst: 0
+          second: 0
         - damage: 0.276
+          filst: 0
+          second: 0
         - damage: 0.276
+          filst: 0
+          second: 0
         - damage: 0.276
+          filst: 0
+          second: 0
   - level: []
   m_skillCooldown:
   - 10

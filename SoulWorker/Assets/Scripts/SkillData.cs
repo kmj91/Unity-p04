@@ -21,6 +21,8 @@ public class SkillData : ScriptableObject
                 public class SkillHitCount
                 {
                     public float damage;
+                    public float filst;
+                    public float second;
                 }
 
                 public SkillHitCount[] hitCount;
