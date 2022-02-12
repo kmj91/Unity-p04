@@ -664,6 +664,7 @@ public partial class PlayerCtrl : MonoBehaviour
     }
 
     // 공격 처리
+    // _enSkill : 스킬 종류
     // _fTime : 애니메이션 표준화 시간
     void AttackProc(HaruSkillDamage _enSkill, float _fTime)
     {
@@ -671,8 +672,11 @@ public partial class PlayerCtrl : MonoBehaviour
         if (_fTime < 0 || 1 < _fTime)
             return;
 
+        // 공격 횟수
         int iAttackCount;
-        if (!m_playerInfo.CheckAttackTime(_enSkill, _fTime, out iAttackCount))
+        // 공격 타입
+        AttackType enAttackType;
+        if (!m_playerInfo.CheckAttackInfo(_enSkill, _fTime, out iAttackCount, out enAttackType))
         {
             if (m_isAttacking)
             {
@@ -687,7 +691,7 @@ public partial class PlayerCtrl : MonoBehaviour
         // 무기 충돌 트리거 ON
         m_weapon.OnTrigger();
         // 공격 타입
-        m_weapon.m_attackType = AttackType.Normal;
+        m_weapon.m_attackType = enAttackType;
         // 데미지 정보
         float damage;
         if (!m_playerInfo.GetSkillDamage(_enSkill, iAttackCount, out damage))

@@ -323,15 +323,20 @@ public partial class HaruInfo : PlayerInfo
     // _enSkill : 공격 스킬 타입
     // _fTime : 애니메이션 표준화 시간
     // _iAttackCount : 공격 타 수
+    // _enAttackType : 공격 타입
     // 반환 값 : 공격 시간 범위 안에 들어오면 true, 아니면 false
-    public bool CheckAttackTime(HaruSkillDamage _enSkill, float _fTime, out int _iAttackCount)
+    public bool CheckAttackInfo(HaruSkillDamage _enSkill, float _fTime, out int _iAttackCount, out AttackType _enAttackType)
     {
         _iAttackCount = 0;
-        foreach (var timeInfo in m_skillData.SkillAttackTime[(int)_enSkill].hitCount)
+        _enAttackType = AttackType.None;
+        foreach (var attackInfo in m_skillData.SkillAtkInfo[(int)_enSkill].hitCount)
         {
             // 시간 범위 안에 들어오면 true
-            if (timeInfo.filst <= _fTime && _fTime < timeInfo.second)
+            if (attackInfo.filst <= _fTime && _fTime < attackInfo.second)
+            {
+                _enAttackType = attackInfo.attackType;
                 return true;
+            }
             // 공격 타 수 증가
             ++_iAttackCount;
         }

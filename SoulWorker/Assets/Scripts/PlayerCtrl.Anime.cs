@@ -932,96 +932,50 @@ public partial class PlayerCtrl : MonoBehaviour
     // 퍼스트 블레이드
     private void Ani_FirstBlade()
     {
-        if (m_hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_First_Blade"))
+        // 현재 진행 애니메이션이 퍼스트 블레이드가 아니면 예외
+        if (!m_hairAnime.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Skill.B_Skill_First_Blade"))
+            return;
+
+        // 애니메이션 표준화된 진행 시간 (애니메이션 끝이 1.0)
+        float time = m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+        // 무기 충돌 트리거 관련 On, Off 처리
+        // 애니메이션 재생 진행에 따라 트리거가 켜지고 꺼짐
+        AttackProc(HaruSkillDamage.FirstBlade, time);
+
+        if (m_moveAttack && 0.5f <= time)
         {
-            float time = m_bodyAnime.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            m_moveAttack = false;
+        }
 
-            if (m_isAttacking && time >= 0.67f)
-            {
-                m_isAttacking = false;
-                // 무기 충돌 트리거 OFF
-                m_weapon.OffTrigger();
-            }
-            else if (!m_isAttacking && 0.67f > time && time >= 0.43f)
-            {
-                m_isAttacking = true;
-                // 무기 충돌 트리거 ON
-                m_weapon.OnTrigger();
-                m_weapon.m_attackType = AttackType.Strike;
-                float damage;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 2, out damage))
-                    return;
-                m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
-            }
-            else if (m_isAttacking && 0.43f > time && time >= 0.3f)
-            {
-                m_isAttacking = false;
-                // 무기 충돌 트리거 OFF
-                m_weapon.OffTrigger();
-            }
-            else if (!m_isAttacking && 0.3f > time && time >= 0.2f)
-            {
-                m_isAttacking = true;
-                // 무기 충돌 트리거 ON
-                m_weapon.OnTrigger();
-                m_weapon.m_attackType = AttackType.Normal;
-                float damage;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 1, out damage))
-                    return;
-                m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
-            }
-            else if (m_isAttacking && 0.2f > time && time >= 0.17f)
-            {
-                m_isAttacking = false;
-                // 무기 충돌 트리거 OFF
-                m_weapon.OffTrigger();
-            }
-            else if (!m_isAttacking && 0.17f > time && time >= 0.1f)
-            {
-                m_isAttacking = true;
-                // 무기 충돌 트리거 ON
-                m_weapon.OnTrigger();
-                m_weapon.m_attackType = AttackType.Normal;
-                float damage;
-                if (!m_playerInfo.GetSkillDamage(HaruSkillDamage.FirstBlade, 0, out damage))
-                    return;
-                m_weapon.m_attackDamage = Random.Range(m_playerInfo.currentPlayerData.minAtk, m_playerInfo.currentPlayerData.maxAtk) * damage;
-            }
-
-            if (m_moveAttack && 0.5f <= time)
-            {
-                m_moveAttack = false;
-            }
-
-            if (0.43f > time && time >= 0.3f)
-            {
-                // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
-                if (m_gameManager.KeyInputCheck(KeyCode.Mouse1, 0.5f))
-                {
-                    ChangeFlagFalse();
-                    m_state = HaruState.FirstBlade02;
-                    ChangeFlagTrue();
-                    return;
-                }
-            }
-
-            if (m_lockInput && 0.7f <= time)
-            {
-                m_lockInput = false;
-            }
-
-            if (!m_moveStand && 0.8f <= time)
-            {
-                m_moveStand = true;
-            }
-
-            if (0.99f <= time)
+        if (0.43f > time && time >= 0.3f)
+        {
+            // 키 입력 판정보다 약간 이전에 입력 받았어도 허용
+            if (m_gameManager.KeyInputCheck(KeyCode.Mouse1, 0.5f))
             {
                 ChangeFlagFalse();
-                lastIdleChangeTime = Time.time;
-                m_state = HaruState.Idle;
+                m_state = HaruState.FirstBlade02;
                 ChangeFlagTrue();
+                return;
             }
+        }
+
+        if (m_lockInput && 0.7f <= time)
+        {
+            m_lockInput = false;
+        }
+
+        if (!m_moveStand && 0.8f <= time)
+        {
+            m_moveStand = true;
+        }
+
+        if (0.99f <= time)
+        {
+            ChangeFlagFalse();
+            lastIdleChangeTime = Time.time;
+            m_state = HaruState.Idle;
+            ChangeFlagTrue();
         }
     }
 

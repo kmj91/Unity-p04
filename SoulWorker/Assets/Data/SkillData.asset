@@ -651,15 +651,27 @@ MonoBehaviour:
   - hitCount: []
   - hitCount: []
   - hitCount: []
-  - hitCount: []
+  - hitCount:
+    - filst: 0.1
+      second: 0.17
+      attackType: 1
+    - filst: 0.2
+      second: 0.3
+      attackType: 1
+    - filst: 0.43
+      second: 0.67
+      attackType: 5
   - hitCount: []
   - hitCount:
     - filst: 0.23
       second: 0.3
+      attackType: 1
     - filst: 0.33
       second: 0.4
+      attackType: 1
     - filst: 0.43
       second: 0.5
+      attackType: 1
   - hitCount: []
   - hitCount: []
   - hitCount: []

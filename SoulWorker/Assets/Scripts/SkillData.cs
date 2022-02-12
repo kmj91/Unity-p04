@@ -1,5 +1,6 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+
+using MyEnum;
 
 [CreateAssetMenu(fileName = "SkillData", menuName = "ScriptableObjects/SkillData", order = 1)]
 public class SkillData : ScriptableObject
@@ -43,20 +44,26 @@ public class SkillData : ScriptableObject
     public float[] SkillCooldown { get { return m_skillCooldown; } }
 
 
+    // 스킬 공격 정보
+    // 스킬 종류
     [System.Serializable]
-    public class SkillAttackTimeRange
+    public class SkillAttackInfo
     {
+        // 타격 수
         [System.Serializable]
         public class SkillHitCount
         {
-            public float filst;
-            public float second;
+            public float filst;                     // 공격 타이밍 시작
+            public float second;                    // 공격 타이밍 끝
+            [SerializeField] public AttackType attackType; // 공격 타입
         }
 
         public SkillHitCount[] hitCount;
         public SkillHitCount this[int index] { get { return hitCount[index]; } }
     }
-    // 스킬 공격 시간 범위
-    [SerializeField] private SkillAttackTimeRange[] m_skillAttackTime;
-    public SkillAttackTimeRange[] SkillAttackTime { get { return m_skillAttackTime; } }
+    // 스킬 공격 정보
+    // 1 : 스킬 종류
+    // 2 : 타격 수
+    [SerializeField] private SkillAttackInfo[] m_skillAttackTime;
+    public SkillAttackInfo[] SkillAtkInfo { get { return m_skillAttackTime; } }
 }
